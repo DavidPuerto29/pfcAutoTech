@@ -1,0 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package davidpuertocuenca.autotech.clases;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+/**
+ *
+ * @author David 
+ */
+@Entity @Getter @Setter  @NoArgsConstructor
+@NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
+public class Cliente {
+    @Id
+    private String usuario;
+    private String contrasena; //PROVISIONAL
+    private String dni;
+    private String nombre;
+    private String apellidos;
+    private String correoElectronico;
+    private int numeroTelefono;
+    private String direccion;
+    private boolean administrador;
+
+ //   @OneToMany(mappedBy = "cliente")
+    private ArrayList vehiculos;
+    
+    public Cliente(String usuario, String contrasena, String dni, String nombre, String apellidos, String correoElectronico, int numeroTelefono, String direccion, boolean administrador) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correoElectronico = correoElectronico;
+        this.numeroTelefono = numeroTelefono;
+        this.direccion = direccion;
+        this.administrador = administrador;
+    }
+    
+}

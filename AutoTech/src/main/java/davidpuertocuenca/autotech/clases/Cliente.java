@@ -34,14 +34,14 @@ public class Cliente {
     private String nombre;
     private String apellidos;
     private String correoElectronico;
-    private int numeroTelefono;
+    private String numeroTelefono;
     private String direccion;
     private boolean administrador;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Vehiculos> vehiculos;
     
-    public Cliente(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, int numeroTelefono, String direccion, boolean administrador) {
+    public Cliente(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, String numeroTelefono, String direccion, boolean administrador) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.randomizador = randomizador;

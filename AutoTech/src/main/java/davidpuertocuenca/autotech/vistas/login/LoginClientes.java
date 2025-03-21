@@ -9,6 +9,7 @@ import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacio
 import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
+import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
 import javax.swing.JOptionPane;
 
 
@@ -41,6 +42,7 @@ public class LoginClientes extends javax.swing.JFrame {
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
         inicioSesionAdministrador = new javax.swing.JToggleButton();
+        botonRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión");
@@ -56,6 +58,13 @@ public class LoginClientes extends javax.swing.JFrame {
         inicioSesionAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inicioSesionAdministradorActionPerformed(evt);
+            }
+        });
+
+        botonRegistrar.setText("Registro");
+        botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarActionPerformed(evt);
             }
         });
 
@@ -76,7 +85,9 @@ public class LoginClientes extends javax.swing.JFrame {
                             .addComponent(textUsuario)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(368, 368, 368)
-                        .addComponent(botonIniciarSesion)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonRegistrar)
+                            .addComponent(botonIniciarSesion))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,7 +101,9 @@ public class LoginClientes extends javax.swing.JFrame {
                 .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(botonIniciarSesion)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(botonRegistrar)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,6 +125,13 @@ public class LoginClientes extends javax.swing.JFrame {
             loginAdministrador.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_inicioSesionAdministradorActionPerformed
+
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
+        // TODO add your handling code here:
+        RegistroClientes r = new RegistroClientes();
+        r.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +171,7 @@ public class LoginClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton botonIniciarSesion;
+    private javax.swing.JButton botonRegistrar;
     private javax.swing.JToggleButton inicioSesionAdministrador;
     private javax.swing.JTextField textContraseña;
     private javax.swing.JTextField textUsuario;

@@ -36,6 +36,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
         textContraseña = new javax.swing.JTextField();
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
+        botonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
@@ -50,6 +51,14 @@ public class LoginAdministradores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 600, -1, -1));
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -69,6 +78,13 @@ public class LoginAdministradores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        // TODO add your handling code here:
+        LoginClientes l = new LoginClientes();
+            l.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +122,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JTextField textContraseña;
     private javax.swing.JTextField textUsuario;

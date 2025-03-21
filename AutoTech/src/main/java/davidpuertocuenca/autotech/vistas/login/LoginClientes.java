@@ -4,9 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
-import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;

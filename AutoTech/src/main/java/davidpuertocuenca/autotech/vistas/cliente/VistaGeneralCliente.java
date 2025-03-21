@@ -4,9 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.cliente;
 
-import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import davidpuertocuenca.autotech.vistas.login.*;
 import java.util.ArrayList;

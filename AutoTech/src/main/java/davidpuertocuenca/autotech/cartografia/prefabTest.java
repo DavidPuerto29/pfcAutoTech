@@ -22,7 +22,7 @@ public class prefabTest {
     String hash = cifrarContraseña(contrasena, randormizador);
     
     Cliente c = new Cliente("normal",hash,randormizador,"4215698547A","David","Puerto Cuenca","david@hotmail.com",123456789,"Calle falsa 123",true); //TEST
-    //crearClienteSql(c);
+    crearClienteSql(c);
     
     System.out.println(comprobacionAutenticacionUsuario(c,"normal"));
     

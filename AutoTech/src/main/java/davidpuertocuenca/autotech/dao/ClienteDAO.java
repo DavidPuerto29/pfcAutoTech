@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.dao;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import jakarta.persistence.NoResultException;
+import java.util.List;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 
@@ -39,6 +40,15 @@ public class ClienteDAO {
                 q.setParameter("username", usuario);
                     q.setParameter("password", contrasena);
                         return (Cliente) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+     public static List<Cliente> obtenerTodosClientesSql(){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Cliente> q = session.createNamedQuery("get_todos_clientes", Cliente.class);
+            return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

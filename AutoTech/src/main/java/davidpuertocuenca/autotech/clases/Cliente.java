@@ -5,14 +5,12 @@
 package davidpuertocuenca.autotech.clases;
 
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.verificarContraseña;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +23,7 @@ import lombok.Setter;
 @Entity @Getter @Setter  @NoArgsConstructor
 @NamedQuery(name = "get_cliente_username", query = "FROM Cliente p WHERE p.usuario = :username")
 @NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
+@NamedQuery(name = "get_todos_clientes", query = "FROM Cliente q ORDER BY q.usuario ASC")
 public class Cliente {
     @Id
     private String usuario;

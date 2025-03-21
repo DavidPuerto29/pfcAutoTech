@@ -4,7 +4,13 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
+import davidpuertocuenca.autotech.clases.Cliente;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -17,8 +23,81 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
      */
     public VistaGeneralAdministrador() {
         initComponents();
+        crearTabla();
     }
 
+        private void crearTabla() {
+        
+        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electronico", "Numero de teléfono","Direccion","Es administrador"}; 
+        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
+            //Edicion de celdas deshabilida.
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;  
+            }
+        };
+        tablaClientes.setModel(miModelo);
+
+            List<Cliente> clientes = new ArrayList(obtenerTodosClientesSql());
+          
+            for(Cliente cliente : clientes){
+                Object[] fila = new Object[8];
+                fila[0] = cliente.getUsuario();
+                fila[1] = cliente.getDni();
+                fila[2] = cliente.getNombre();
+                fila[3] = cliente.getApellidos();
+                fila[4] = cliente.getCorreoElectronico();
+                fila[5] = cliente.getNumeroTelefono();
+                fila[6] = cliente.getDireccion();
+                fila[7] = cliente.isAdministrador();
+                    miModelo.addRow(fila);
+            }
+         
+            //Dimensiones de la tabla.
+            tablaClientes.setRowHeight(20);
+            TableColumn columnaFecha = tablaClientes.getColumn("Usuario");
+            columnaFecha.setMinWidth(100);
+            columnaFecha.setMaxWidth(400);
+            columnaFecha.setPreferredWidth(150); 
+            
+            TableColumn columnaCliente = tablaClientes.getColumn("Dni");
+            columnaCliente.setMinWidth(100);
+            columnaCliente.setMaxWidth(400);
+            columnaCliente.setPreferredWidth(200); 
+            
+            TableColumn columnaEnvios = tablaClientes.getColumn("Nombre");
+            columnaEnvios.setMinWidth(100);
+            columnaEnvios.setMaxWidth(400);
+            columnaEnvios.setPreferredWidth(200); 
+            
+            TableColumn columnaCiudad = tablaClientes.getColumn("Apellidos");
+            columnaCiudad.setMinWidth(100);
+            columnaCiudad.setMaxWidth(400);
+            columnaCiudad.setPreferredWidth(200); 
+            
+            TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electronico");
+            columnaCorreo.setMinWidth(100);
+            columnaCorreo.setMaxWidth(400);
+            columnaCorreo.setPreferredWidth(200); 
+            
+            TableColumn columnaTelefono = tablaClientes.getColumn("Numero de teléfono");
+            columnaTelefono.setMinWidth(100);
+            columnaTelefono.setMaxWidth(400);
+            columnaTelefono.setPreferredWidth(200); 
+            
+            TableColumn columnaDireccion = tablaClientes.getColumn("Direccion");
+            columnaDireccion.setMinWidth(100);
+            columnaDireccion.setMaxWidth(400);
+            columnaDireccion.setPreferredWidth(200); 
+            
+            TableColumn columnaAdministrador = tablaClientes.getColumn("Es administrador");
+            columnaAdministrador.setMinWidth(100);
+            columnaAdministrador.setMaxWidth(400);
+            columnaAdministrador.setPreferredWidth(200); 
+
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,12 +107,12 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        A = new javax.swing.JLabel();
         botonLogout = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaClientes = new javax.swing.JTable();
+        botonRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        A.setText("ADMIN");
 
         botonLogout.setText("salir");
         botonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -42,25 +121,53 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             }
         });
 
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(tablaClientes);
+
+        botonRefrescar.setText("Refrescar");
+        botonRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRefrescarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(botonRefrescar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
                 .addComponent(botonLogout)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(473, 473, 473))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonLogout)
-                    .addComponent(A, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(botonLogout))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(botonRefrescar)))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -72,6 +179,11 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         LoginClientes login = new LoginClientes();
         login.setVisible(true);
     }//GEN-LAST:event_botonLogoutActionPerformed
+
+    private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
+        // TODO add your handling code here:
+        crearTabla();
+    }//GEN-LAST:event_botonRefrescarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,7 +221,9 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel A;
     private javax.swing.JToggleButton botonLogout;
+    private javax.swing.JButton botonRefrescar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 }

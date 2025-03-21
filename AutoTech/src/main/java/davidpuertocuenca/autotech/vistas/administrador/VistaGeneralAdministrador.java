@@ -28,7 +28,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         crearTabla();
     }
 
-        private void crearTabla() {
+    private void crearTabla() {
         
         Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electronico", "Numero de teléfono","Direccion","Es administrador"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){

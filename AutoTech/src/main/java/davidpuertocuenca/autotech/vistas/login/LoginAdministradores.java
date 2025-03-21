@@ -63,10 +63,10 @@ public class LoginAdministradores extends javax.swing.JFrame {
                  VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
                      vistaGeneralAdministrador.setVisible(true);
            }else{
-               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
            }
         }else{
-            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         } 
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 

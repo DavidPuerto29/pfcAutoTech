@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +22,21 @@ import lombok.Setter;
  *
  * @author David Puerto Cuenca
  */
+@NamedQuery(name = "get_todos_vehiculos", query = "FROM Vehiculos q ORDER BY q.matricula ASC")
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Vehiculos {
     
     @Id
     private String matricula;
     private String modelo;
-    private int anoMatriculacion;
+    private String anoMatriculacion;
     @ManyToOne
     @JoinColumn(name = "cliente", referencedColumnName = "usuario")
     private Cliente cliente;
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Citas> citas;
 
-    public Vehiculos(String matricula, String modelo, int anoMatriculacion, Cliente cliente, ArrayList citas) {
+    public Vehiculos(String matricula, String modelo, String anoMatriculacion, Cliente cliente, ArrayList citas) {
         this.matricula = matricula;
         this.modelo = modelo;
         this.anoMatriculacion = anoMatriculacion;

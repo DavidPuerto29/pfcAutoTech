@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class RegistroClientes extends javax.swing.JFrame {
 
@@ -23,6 +23,7 @@ public class RegistroClientes extends javax.swing.JFrame {
      */
     public RegistroClientes() {
         initComponents();
+        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
 
     private boolean registrarCliente(){
@@ -31,12 +32,12 @@ public class RegistroClientes extends javax.swing.JFrame {
 
             char[] passwordChars = fieldContrasena.getPassword();
                 String contrasena = new String(passwordChars);
-
+                System.out.println("contra" +contrasena);
             // Limpiar el array de caracteres por seguridad
             java.util.Arrays.fill(passwordChars, '\0');
 
         String hash = cifrarContraseña(contrasena, randormizador);
-        Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),true); //ADMIN A FALSE
+        Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false); //ADMIN A FALSE
             crearClienteSql(c);
             return true;
         }else{

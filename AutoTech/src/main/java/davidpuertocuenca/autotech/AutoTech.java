@@ -18,7 +18,7 @@ public class AutoTech {
             LoginClientes test = new LoginClientes();
                 test.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexión con el servidor.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexión con el servidor.", "Error de conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

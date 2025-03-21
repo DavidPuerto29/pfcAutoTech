@@ -5,10 +5,13 @@
 package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.clases.Cliente;
+import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.loginClienteSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -101,24 +104,20 @@ public class LoginClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-
-        Cliente cliente = loginClienteSql(textUsuario.getText(),textContraseña.getText());
-        try{
-            if(cliente != null){
-                this.dispose();
-                    VistaGeneralCliente test = new VistaGeneralCliente();
-                        test.setVisible(true);
-            }
-        }catch(NullPointerException e){
-             JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+        if(comprobacionAutenticacionUsuario(obtenerClientePorUsuarioSql(textUsuario.getText()),textContraseña.getText())){
+            this.dispose();
+                VistaGeneralCliente test = new VistaGeneralCliente();
+                    test.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void inicioSesionAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionAdministradorActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         LoginAdministradores loginAdministrador = new LoginAdministradores();
-        loginAdministrador.setVisible(true);
+            loginAdministrador.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_inicioSesionAdministradorActionPerformed
 
     /**

@@ -5,7 +5,8 @@
 package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.loginClienteSql;
+import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
 import javax.swing.JOptionPane;
 
@@ -75,19 +76,19 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-
-        Cliente cliente = loginClienteSql(textUsuario.getText(),textContraseña.getText());
-        if(cliente == null){
-             JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
         
-        if(cliente.isAdministrador()){
+        if(comprobacionAutenticacionUsuario(cliente,textContraseña.getText())){
+           if(cliente.isAdministrador()){
             this.dispose();
-            VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
-            vistaGeneralAdministrador.setVisible(true);
+                 VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
+                     vistaGeneralAdministrador.setVisible(true);
+           }else{
+               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error", JOptionPane.ERROR_MESSAGE);
+           }
         }else{
-            JOptionPane.showMessageDialog(null, "No eres administrador", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error", JOptionPane.ERROR_MESSAGE);
+        } 
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     /**

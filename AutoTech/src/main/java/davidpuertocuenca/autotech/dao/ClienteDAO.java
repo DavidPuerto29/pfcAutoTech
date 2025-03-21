@@ -16,14 +16,24 @@ import org.hibernate.Session;
  */
 public class ClienteDAO {
     public static void crearClienteSql(Cliente cliente) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession();) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();
             session.persist(cliente);
             session.getTransaction().commit();
         }
     }
     
-    public static Cliente loginClienteSql(String usuario,String contrasena){
+    public static Cliente obtenerClientePorUsuarioSql(String usuario){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Cliente> q = session.createNamedQuery("get_cliente_username", Cliente.class);
+                q.setParameter("username", usuario);
+                    return (Cliente) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+    public static Cliente loginClienteSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_cliente", Cliente.class);
             q.setParameter("username", usuario);

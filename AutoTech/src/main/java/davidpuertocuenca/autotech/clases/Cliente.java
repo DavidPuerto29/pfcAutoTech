@@ -4,6 +4,8 @@
  */
 package davidpuertocuenca.autotech.clases;
 
+import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.verificarContraseña;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,11 +22,14 @@ import lombok.Setter;
  * @author David 
  */
 @Entity @Getter @Setter  @NoArgsConstructor
+@NamedQuery(name = "get_cliente_username", query = "FROM Cliente p WHERE p.usuario = :username")
 @NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
 public class Cliente {
     @Id
     private String usuario;
     private String contrasena; //PROVISIONAL
+    private String randomizador;   //cifrado
+    
     private String dni;
     private String nombre;
     private String apellidos;
@@ -36,9 +41,10 @@ public class Cliente {
  //   @OneToMany(mappedBy = "cliente")
     private ArrayList vehiculos;
     
-    public Cliente(String usuario, String contrasena, String dni, String nombre, String apellidos, String correoElectronico, int numeroTelefono, String direccion, boolean administrador) {
+    public Cliente(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, int numeroTelefono, String direccion, boolean administrador) {
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.randomizador = randomizador;
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -48,4 +54,11 @@ public class Cliente {
         this.administrador = administrador;
     }
     
+    public static boolean comprobacionAutenticacionUsuario(Cliente cliente, String contrasena){
+        if (cliente == null) {
+         return false;
+        }
+        return verificarContraseña(contrasena, cliente.getRandomizador(), cliente.getContrasena());
+    }
+  
 }

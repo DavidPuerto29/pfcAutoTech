@@ -6,6 +6,8 @@ package davidpuertocuenca.autotech.clases;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,18 +17,21 @@ import lombok.Setter;
  * @author David
  */
 
-@Getter @Setter  @NoArgsConstructor
+@Entity @Getter @Setter  @NoArgsConstructor
 public class Talleres {
-    /*
+    
     @Id
     private long numeroIdentificacion;
     private String nombre;
     private String taller;
+    @ManyToOne
+    @JoinColumn(name = "cita", referencedColumnName = "numeroCita")
+    private Citas cita;
     
     public Talleres(long numeroIdentificacion, String nombre, String taller) {
         this.numeroIdentificacion = numeroIdentificacion;
         this.nombre = nombre;
         this.taller = taller;
     }
-*/
+
 }

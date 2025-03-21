@@ -4,8 +4,13 @@
  */
 package davidpuertocuenca.autotech.clases;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.util.Date;
 import lombok.Getter;
@@ -16,21 +21,23 @@ import lombok.Setter;
  *
  * @author David
  */ 
-@Getter @Setter  @NoArgsConstructor
+@Entity @Getter @Setter  @NoArgsConstructor
 public class Citas {
-    /*
+    
     @Id
     private long numeroCita;
     private Date fecha;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "vehiculo", referencedColumnName = "matricula")
     private Vehiculos vehiculo;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "taller", referencedColumnName = "numeroIdentificacion")
     private Talleres taller;
 
     public Citas(Date fecha, Vehiculos vehiculo, Talleres taller) {
         this.fecha = fecha;
         this.vehiculo = vehiculo;
-        this.taller = taller;
+       // this.taller = taller;
     }
-*/
+
 }

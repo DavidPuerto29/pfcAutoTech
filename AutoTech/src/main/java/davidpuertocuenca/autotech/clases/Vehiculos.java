@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,19 +22,18 @@ import lombok.Setter;
  *
  * @author David
  */
-
-@Getter @Setter  @NoArgsConstructor
+@Entity @Getter @Setter  @NoArgsConstructor
 public class Vehiculos {
-    /*
+    
     @Id
     private String matricula;
     private String modelo;
     private int anoMatriculacion;
     @ManyToOne
-    @JoinColumn(name = "cliente_usuario", referencedColumnName = "usuario")
+    @JoinColumn(name = "cliente", referencedColumnName = "usuario")
     private Cliente cliente;
-    @OneToMany(mappedBy = "vehiculos", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private ArrayList citas;
+    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Citas> citas;
 
     public Vehiculos(String matricula, String modelo, int anoMatriculacion, Cliente cliente, ArrayList citas) {
         this.matricula = matricula;
@@ -42,5 +42,5 @@ public class Vehiculos {
         this.cliente = cliente;
         this.citas = citas;
     }
-*/
+
 }

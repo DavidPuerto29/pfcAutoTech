@@ -18,8 +18,8 @@ public class ClienteDAO {
     public static void crearClienteSql(Cliente cliente) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();
-            session.persist(cliente);
-            session.getTransaction().commit();
+                session.persist(cliente);
+                    session.getTransaction().commit();
         }
     }
     
@@ -36,9 +36,9 @@ public class ClienteDAO {
     public static Cliente loginClienteSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_cliente", Cliente.class);
-            q.setParameter("username", usuario);
-            q.setParameter("password", contrasena);
-            return (Cliente) q.getSingleResult();
+                q.setParameter("username", usuario);
+                    q.setParameter("password", contrasena);
+                        return (Cliente) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }

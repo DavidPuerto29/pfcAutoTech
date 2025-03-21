@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,8 +39,8 @@ public class Cliente {
     private String direccion;
     private boolean administrador;
 
- //   @OneToMany(mappedBy = "cliente")
-    private ArrayList vehiculos;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Vehiculos> vehiculos;
     
     public Cliente(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, int numeroTelefono, String direccion, boolean administrador) {
         this.usuario = usuario;

@@ -14,7 +14,8 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author David
+ * 
+ * @author David Puerto Cuenca
  */
 public class VistaGeneralAdministrador extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
      */
     public VistaGeneralAdministrador() {
         initComponents();
+        setExtendedState(VistaGeneralAdministrador.MAXIMIZED_BOTH);
         crearTabla();
     }
 

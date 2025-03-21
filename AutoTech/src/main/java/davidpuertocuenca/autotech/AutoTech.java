@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class AutoTech {
     public static void main(String[] args) {

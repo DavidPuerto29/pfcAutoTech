@@ -8,7 +8,7 @@ import davidpuertocuenca.autotech.vistas.login.*;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class VistaGeneralCliente extends javax.swing.JFrame {
 
@@ -17,6 +17,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
      */
     public VistaGeneralCliente() {
         initComponents();
+        setExtendedState(VistaGeneralCliente.MAXIMIZED_BOTH);
     }
 
     /**

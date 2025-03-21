@@ -19,7 +19,7 @@ import lombok.Setter;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Vehiculos {

@@ -11,7 +11,7 @@ import java.util.Base64;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class CifradoSHA256 {
     

@@ -18,7 +18,7 @@ import lombok.Setter;
 
 /**
  *
- * @author David 
+ * @author David Puerto Cuenca
  */
 @Entity @Getter @Setter  @NoArgsConstructor
 @NamedQuery(name = "get_cliente_username", query = "FROM Cliente p WHERE p.usuario = :username")

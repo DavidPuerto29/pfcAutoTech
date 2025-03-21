@@ -12,7 +12,7 @@ import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class prefabTest {
     public static void main(String[] args) {

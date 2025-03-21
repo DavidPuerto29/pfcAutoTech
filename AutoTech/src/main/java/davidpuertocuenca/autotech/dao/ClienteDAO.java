@@ -13,7 +13,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class ClienteDAO {
     public static void crearClienteSql(Cliente cliente) {

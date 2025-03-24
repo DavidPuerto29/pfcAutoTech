@@ -81,7 +81,6 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
         LoginClientes l = new LoginClientes();
             l.setVisible(true);
                 this.dispose();

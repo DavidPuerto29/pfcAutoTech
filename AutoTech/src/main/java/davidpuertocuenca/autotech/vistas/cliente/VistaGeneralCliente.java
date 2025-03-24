@@ -144,7 +144,6 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }
     
     private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
-        // TODO add your handling code here:
         LoginClientes login = new LoginClientes();
             login.setVisible(true);
                 this.dispose();

@@ -203,26 +203,24 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
-        // TODO add your handling code here:
         LoginClientes login = new LoginClientes();
             login.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonLogoutActionPerformed
 
     private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
-        // TODO add your handling code here:
-        crearTabla();
+       crearTabla();
     }//GEN-LAST:event_botonRefrescarActionPerformed
 
     private void botonHacerAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHacerAdministradorActionPerformed
-        // TODO add your handling code here:
         try{
              Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
+             if(cliente == null){
+                         JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+             }
+             
              if(!cliente.isAdministrador()){
                  if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                     if(cliente == null){
-                         JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-                     }
                      cliente.setAdministrador(true);
                          if(actualizarClienteSql(cliente)){
                              JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);   //ALOMEJOR ES DEMASIADO DIALOG
@@ -243,7 +241,6 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonHacerAdministradorActionPerformed
 
     private void botonQuitarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonQuitarAdministradorActionPerformed
-        // TODO add your handling code here:
         try{
              Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
              if(cliente.isAdministrador()){

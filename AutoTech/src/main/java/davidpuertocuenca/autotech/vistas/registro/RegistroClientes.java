@@ -170,14 +170,12 @@ public class RegistroClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-            LoginClientes l = new LoginClientes();
+        LoginClientes l = new LoginClientes();
                 l.setVisible(true);
+                    this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        // TODO add your handling code here:
         if(registrarCliente()){
             LoginClientes l = new LoginClientes();
                     l.setVisible(true);

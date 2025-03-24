@@ -117,14 +117,12 @@ public class LoginClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void inicioSesionAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionAdministradorActionPerformed
-        // TODO add your handling code here:
         LoginAdministradores loginAdministrador = new LoginAdministradores();
             loginAdministrador.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_inicioSesionAdministradorActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        // TODO add your handling code here:
         RegistroClientes r = new RegistroClientes();
             r.setVisible(true);
                 this.dispose();

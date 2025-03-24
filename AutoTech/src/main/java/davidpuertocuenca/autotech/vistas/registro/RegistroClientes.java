@@ -9,6 +9,7 @@ import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandom
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorDniSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.Arrays;
 
@@ -77,6 +78,13 @@ public class RegistroClientes extends javax.swing.JFrame {
                     textoErrorDni.setText("Debe introducir un dni.");
         }
         
+        //Comprobación de que el dni no esta ya en uso.
+        if(obtenerClientePorDniSql(fieldDni.getText()) != null){
+            formatoCorrecto = false;
+                textoErrorDni.setText("Dni ya en uso.");
+                    textoErrorDni.setVisible(true);            
+        }
+        
         //TODO FORMATO DNI
         
         //Comprobación de que el nombre no este vacio.
@@ -109,11 +117,20 @@ public class RegistroClientes extends javax.swing.JFrame {
                     textoErrorTelefono.setText("Debe introducir un teléfono.");
         }
         
+        //Comprobación de que el teléfono sean números y no letras.
+          try {
+            Integer.parseInt(fieldTelefono.getText()); 
+          }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorTelefono.setVisible(true);
+                    textoErrorTelefono.setText("El teléfono no puede contener letras.");
+          } 
+          
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
         if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
-                    textoErrorTelefono.setText("El formato no es el correcto.");
+                    textoErrorTelefono.setText("El formato no es el correcto.");         
         }
         
         //Comprobación de que la dirección no este vacio.
@@ -280,9 +297,9 @@ public class RegistroClientes extends javax.swing.JFrame {
                                 .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(textoErrorTelefono)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(textoErrorDireccion)))))
-                .addGap(15, 15, 15))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,11 +325,11 @@ public class RegistroClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textoErrorCorreoElectronico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoErrorDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(textoErrorNombre)
                         .addComponent(textoErrorApellidos)
-                        .addComponent(textoErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textoErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textoErrorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar)

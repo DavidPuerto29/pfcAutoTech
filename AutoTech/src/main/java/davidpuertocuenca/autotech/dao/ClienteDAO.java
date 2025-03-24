@@ -42,6 +42,16 @@ public class ClienteDAO {
         }
     }
     
+    public static Cliente obtenerClientePorDniSql(String dni){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Cliente> q = session.createNamedQuery("get_cliente_dni", Cliente.class);
+                q.setParameter("dniCliente", dni);
+                    return (Cliente) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
     public static Cliente loginClienteSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_cliente_login", Cliente.class);

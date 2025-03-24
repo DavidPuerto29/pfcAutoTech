@@ -83,13 +83,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="textoErrorTelefono" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="33" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="textoErrorDireccion" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -120,11 +120,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="textoErrorCorreoElectronico" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
-                  <Component id="textoErrorDireccion" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="textoErrorNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textoErrorApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="textoErrorTelefono" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="textoErrorDireccion" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="61" max="32767" attributes="0"/>

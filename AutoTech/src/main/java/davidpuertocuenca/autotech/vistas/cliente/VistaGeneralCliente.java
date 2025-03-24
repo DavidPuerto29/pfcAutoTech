@@ -80,7 +80,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaVehiculos);
 
-        botonCitas.setText("citas");
+        botonCitas.setText("Ver citas");
         botonCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCitasActionPerformed(evt);

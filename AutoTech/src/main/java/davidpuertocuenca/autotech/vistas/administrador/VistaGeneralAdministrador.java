@@ -205,7 +205,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 .addComponent(botonRefrescar)
                 .addGap(18, 18, 18)
                 .addComponent(botonVehiculos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(botonLogout)
                 .addGap(77, 77, 77)
                 .addComponent(botonEliminar)

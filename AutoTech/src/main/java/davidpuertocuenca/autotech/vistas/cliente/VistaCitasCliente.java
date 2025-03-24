@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.vistas.cliente;
 
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.swing.table.TableColumn;
  * @author David
  */
 public class VistaCitasCliente extends javax.swing.JFrame {
-    private Cliente cliente;
+    private Vehiculos vehiculo;
     
     /**
      * Creates new form VistaCitasCliente
@@ -28,9 +29,9 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         crearTabla();
     }
     
-    public VistaCitasCliente(Cliente cliente) {
+    public VistaCitasCliente(Vehiculo vehiculo) {
         initComponents();
-        this.cliente = cliente;
+        this.vehiculo = vehiculo;
         setExtendedState(this.MAXIMIZED_BOTH);
         crearTabla();
     }
@@ -111,7 +112,7 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         };
         tablaVehiculos.setModel(miModelo);
 
-            List<Citas> citas = new ArrayList(obtenerTodasCitasSql(cliente));
+            List<Citas> citas = new ArrayList(obtenerTodasCitasSql(vehiculo));
            
             for(Citas Cita : citas){
                 Object[] fila = new Object[4];

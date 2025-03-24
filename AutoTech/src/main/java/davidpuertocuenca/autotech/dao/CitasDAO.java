@@ -6,7 +6,6 @@ package davidpuertocuenca.autotech.dao;
 
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Cliente;
-import davidpuertocuenca.autotech.clases.Vehiculos;
 import jakarta.persistence.NoResultException;
 import java.util.List;
 import org.hibernate.Session;
@@ -17,10 +16,10 @@ import org.hibernate.query.Query;
  * @author David
  */
 public class CitasDAO {
-    public static List<Citas> obtenerTodasCitasSql(Cliente cliente){
+    public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    //HACERLO POR MATRICULA
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Citas> q = session.createNamedQuery("get_todas_citas_usuario", Citas.class);
-                q.setParameter("vehiculos", cliente.getVehiculos());
+            Query<Citas> q = session.createNamedQuery("get_todas_citas_matricula", Citas.class);
+                q.setParameter("vehiculo", vehiculo.getVehiculos());
             return q.getResultList();
         } catch (NoResultException e) {
             return null;

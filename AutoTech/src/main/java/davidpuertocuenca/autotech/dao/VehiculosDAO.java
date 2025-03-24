@@ -20,7 +20,7 @@ public class VehiculosDAO {
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Vehiculos> q = session.createNamedQuery("get_todos_vehiculos_usuario", Vehiculos.class);
                 q.setParameter("client", cliente);
-            return q.getResultList();
+                    return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

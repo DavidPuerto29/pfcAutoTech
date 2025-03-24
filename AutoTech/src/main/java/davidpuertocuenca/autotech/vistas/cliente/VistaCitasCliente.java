@@ -6,9 +6,7 @@ package davidpuertocuenca.autotech.vistas.cliente;
 
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Cliente;
-import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -149,8 +147,8 @@ public class VistaCitasCliente extends javax.swing.JFrame {
     
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        VistaGeneralCliente vg = new VistaGeneralCliente();
-            vg.setVisible(true);
+        VistaGeneralCliente vgc = new VistaGeneralCliente();
+            vgc.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     /**

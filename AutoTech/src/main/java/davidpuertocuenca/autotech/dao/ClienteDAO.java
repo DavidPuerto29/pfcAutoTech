@@ -27,8 +27,8 @@ public class ClienteDAO {
     public static void eliminarClienteSql(Cliente cliente){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
-            session.remove(cliente);
-            session.getTransaction().commit();
+                session.remove(cliente);
+                    session.getTransaction().commit();
         }
     }
     

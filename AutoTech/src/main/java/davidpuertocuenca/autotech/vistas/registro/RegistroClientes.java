@@ -11,7 +11,6 @@ import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuario
 import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.Arrays;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -127,11 +126,10 @@ public class RegistroClientes extends javax.swing.JFrame {
         if(formatoCorrecto){
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
-                String hash = cifrarContraseña(String.valueOf(contasenaChar), randormizador);
+                Cliente cliente = new Cliente(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
                     //Se limpia el array para aumentar la seguridad.
-                    java.util.Arrays.fill(contasenaChar, '\0');
-                        Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
-                            crearClienteSql(c);
+                    java.util.Arrays.fill(contasenaChar, '\0');    
+                        crearClienteSql(cliente);
                                 return true;
         }else{
             return false;
@@ -333,8 +331,8 @@ public class RegistroClientes extends javax.swing.JFrame {
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
          if(registrarCliente()){
-            LoginClientes l = new LoginClientes();
-                l.setVisible(true);
+            LoginClientes lgc = new LoginClientes();
+                lgc.setVisible(true);
                     this.dispose(); 
         }
     }//GEN-LAST:event_botonRegistrarActionPerformed

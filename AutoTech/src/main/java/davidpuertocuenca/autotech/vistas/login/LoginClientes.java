@@ -23,8 +23,6 @@ public class LoginClientes extends javax.swing.JFrame {
     public LoginClientes() {
         initComponents();
         setExtendedState(this.MAXIMIZED_BOTH);
-        //Cliente c = new Cliente("normal","normal","4215698547A","David","Puerto Cuenca","david@hotmail.com",123456789,"Calle falsa 123",false); //TEST
-        //crearClienteSql(c);
     }
 
     /**

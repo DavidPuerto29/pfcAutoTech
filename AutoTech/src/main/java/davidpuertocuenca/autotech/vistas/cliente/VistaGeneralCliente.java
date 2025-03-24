@@ -6,12 +6,12 @@ package davidpuertocuenca.autotech.vistas.cliente;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import davidpuertocuenca.autotech.vistas.login.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 
 /**
  *
@@ -123,7 +123,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         };
         tablaVehiculos.setModel(miModelo);
 
-            List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql(this.cliente));
+            List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosClienteSql(this.cliente));
            
             for(Vehiculos Vehiculo : vehiculos){
                 Object[] fila = new Object[4];

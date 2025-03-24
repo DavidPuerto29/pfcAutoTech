@@ -123,6 +123,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         botonHacerAdministrador = new javax.swing.JButton();
         botonQuitarAdministrador = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
+        botonVehiculos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Administrador");
@@ -176,6 +177,14 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             }
         });
 
+        botonVehiculos.setText("Vehiculos");
+        botonVehiculos.setToolTipText("");
+        botonVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVehiculosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +195,9 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addComponent(botonRefrescar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botonVehiculos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(botonLogout)
                 .addGap(77, 77, 77)
                 .addComponent(botonEliminar)
@@ -205,7 +216,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                     .addComponent(botonLogout)
                     .addComponent(botonRefrescar)
                     .addComponent(botonHacerAdministrador)
-                    .addComponent(botonEliminar))
+                    .addComponent(botonEliminar)
+                    .addComponent(botonVehiculos))
                 .addGap(18, 18, 18)
                 .addComponent(botonQuitarAdministrador)
                 .addGap(23, 23, 23))
@@ -297,6 +309,13 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         crearTabla();
     }//GEN-LAST:event_botonEliminarActionPerformed
 
+    private void botonVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVehiculosActionPerformed
+        // TODO add your handling code here:
+        VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
+            vha.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_botonVehiculosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,6 +357,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonLogout;
     private javax.swing.JButton botonQuitarAdministrador;
     private javax.swing.JButton botonRefrescar;
+    private javax.swing.JButton botonVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables

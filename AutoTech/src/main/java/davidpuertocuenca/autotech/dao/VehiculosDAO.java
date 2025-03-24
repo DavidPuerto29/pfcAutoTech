@@ -16,11 +16,38 @@ import org.hibernate.query.Query;
  * @author David Puerto Cuenca
  */
 public class VehiculosDAO {
-    public static List<Vehiculos> obtenerTodosVehiculosSql(Cliente cliente){
+    public static List<Vehiculos> obtenerTodosVehiculosClienteSql(Cliente cliente){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Vehiculos> q = session.createNamedQuery("get_todos_vehiculos_usuario", Vehiculos.class);
                 q.setParameter("client", cliente);
                     return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+    public static List<Vehiculos> obtenerTodosVehiculosSql(){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Vehiculos> q = session.createNamedQuery("get_todos_vehiculos", Vehiculos.class);
+                return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+    public static void eliminarVehiculoSql(Vehiculos vehiculo){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.getTransaction().begin();
+                session.remove(vehiculo);
+                    session.getTransaction().commit();
+        }
+    }
+    
+    public static Vehiculos obtenerVehiculoSql(String matricula){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Vehiculos> q = session.createNamedQuery("get_vehiculo", Vehiculos.class);
+                q.setParameter("identificacion", matricula);
+                    return (Vehiculos) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }

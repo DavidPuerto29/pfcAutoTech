@@ -49,6 +49,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         tablaVehiculos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vista General Cliente");
 
         botonLogout.setText("salir");
         botonLogout.addActionListener(new java.awt.event.ActionListener() {

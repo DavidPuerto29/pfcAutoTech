@@ -24,6 +24,14 @@ public class ClienteDAO {
         }
     }
     
+    public static void eliminarClienteSql(Cliente cliente){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.getTransaction().begin();
+            session.remove(cliente);
+            session.getTransaction().commit();
+        }
+    }
+    
     public static Cliente obtenerClientePorUsuarioSql(String usuario){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_cliente_username", Cliente.class);

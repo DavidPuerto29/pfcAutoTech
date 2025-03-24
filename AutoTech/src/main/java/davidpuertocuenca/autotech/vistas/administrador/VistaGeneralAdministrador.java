@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.vistas.administrador;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.actualizarClienteSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.eliminarClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
@@ -122,8 +123,10 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         botonRefrescar = new javax.swing.JButton();
         botonHacerAdministrador = new javax.swing.JButton();
         botonQuitarAdministrador = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vista General Administrador");
 
         botonLogout.setText("salir");
         botonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +170,13 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             }
         });
 
+        botonEliminar.setText("Eliminar");
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,9 +187,11 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addComponent(botonRefrescar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addComponent(botonLogout)
-                .addGap(178, 178, 178)
+                .addGap(77, 77, 77)
+                .addComponent(botonEliminar)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonQuitarAdministrador)
                     .addComponent(botonHacerAdministrador))
@@ -193,7 +205,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonLogout)
                     .addComponent(botonRefrescar)
-                    .addComponent(botonHacerAdministrador))
+                    .addComponent(botonHacerAdministrador)
+                    .addComponent(botonEliminar))
                 .addGap(18, 18, 18)
                 .addComponent(botonQuitarAdministrador)
                 .addGap(23, 23, 23))
@@ -267,6 +280,25 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_botonQuitarAdministradorActionPerformed
 
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        try{
+            Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
+            if(cliente == null){
+                JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
+
+            if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                eliminarClienteSql(cliente);        
+            }else{
+                JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+         }
+        //Siempre al finalizar actualiza la tabla.
+        crearTabla();
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -303,6 +335,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonHacerAdministrador;
     private javax.swing.JToggleButton botonLogout;
     private javax.swing.JButton botonQuitarAdministrador;

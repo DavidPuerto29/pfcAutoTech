@@ -67,9 +67,17 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Matrícula", "Modelo", "Año De Matriculación", "Citas Reservadas"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaVehiculos);
 
         botonCitas.setText("citas");
@@ -113,7 +121,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearTabla() {
-        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año de matriculación","Citas reservadas"}; 
+        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año De Matriculación","Citas Reservadas"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -146,12 +154,12 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
             columnaModelo.setMaxWidth(400);
             columnaModelo.setPreferredWidth(200); 
             
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año de matriculación");
+            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
             columnaAnoMatriculacion.setMinWidth(100);
             columnaAnoMatriculacion.setMaxWidth(400);
             columnaAnoMatriculacion.setPreferredWidth(200); 
             
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas reservadas");
+            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(400);
             columnaCitas.setPreferredWidth(200);

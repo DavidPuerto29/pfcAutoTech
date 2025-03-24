@@ -34,7 +34,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
 
     //Tambien usado para actualizar la tabla
     private void crearTabla() { 
-        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número de teléfono","Dirección","Es administrador"}; 
+        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número De Teléfono","Dirección","Es Administrador"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -90,7 +90,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             columnaCorreo.setMaxWidth(400);
             columnaCorreo.setPreferredWidth(200); 
             
-            TableColumn columnaTelefono = tablaClientes.getColumn("Número de teléfono");
+            TableColumn columnaTelefono = tablaClientes.getColumn("Número De Teléfono");
             columnaTelefono.setMinWidth(100);
             columnaTelefono.setMaxWidth(400);
             columnaTelefono.setPreferredWidth(200); 
@@ -100,7 +100,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             columnaDireccion.setMaxWidth(400);
             columnaDireccion.setPreferredWidth(200); 
             
-            TableColumn columnaAdministrador = tablaClientes.getColumn("Es administrador");
+            TableColumn columnaAdministrador = tablaClientes.getColumn("Es Administrador");
             columnaAdministrador.setMinWidth(100);
             columnaAdministrador.setMaxWidth(400);
             columnaAdministrador.setPreferredWidth(200); 
@@ -137,15 +137,23 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Usuario", "Dni", "Nombre", "Apellidos", "Correo Electrónico", "Número De Teléfono", "Dirección", "Es Administrador"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tablaClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tablaClientes);
 

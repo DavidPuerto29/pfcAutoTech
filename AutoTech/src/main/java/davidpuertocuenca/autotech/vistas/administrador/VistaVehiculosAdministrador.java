@@ -32,7 +32,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }
 
     private void crearTabla() {
-        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año de matriculación","Citas reservadas"}; 
+        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año De Matriculación","Citas Reservadas"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -65,12 +65,12 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             columnaModelo.setMaxWidth(600);
             columnaModelo.setPreferredWidth(200); 
             
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año de matriculación");
+            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
             columnaAnoMatriculacion.setMinWidth(100);
             columnaAnoMatriculacion.setMaxWidth(600);
             columnaAnoMatriculacion.setPreferredWidth(200); 
             
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas reservadas");
+            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(600);
             columnaCitas.setPreferredWidth(200);
@@ -101,12 +101,26 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Matrícula", "Modelo", "Año De Matriculación", "Citas Reservadas"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tablaVehiculos.setToolTipText("");
         jScrollPane1.setViewportView(tablaVehiculos);
 
         botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         botonEliminar1.setText("Eliminar");
         botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +175,12 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         //Siempre al finalizar actualiza la tabla.
         crearTabla();
     }//GEN-LAST:event_botonEliminar1ActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+            vga.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments

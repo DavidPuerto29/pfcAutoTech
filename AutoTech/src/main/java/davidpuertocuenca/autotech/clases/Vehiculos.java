@@ -22,7 +22,7 @@ import lombok.Setter;
  *
  * @author David Puerto Cuenca
  */
-@NamedQuery(name = "get_todos_vehiculos", query = "FROM Vehiculos q ORDER BY q.matricula ASC")
+@NamedQuery(name = "get_todos_vehiculos_usuario", query = "FROM Vehiculos q Where q.cliente = :client ORDER BY q.matricula ASC ")
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Vehiculos {
     

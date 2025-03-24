@@ -4,6 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
+import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
@@ -34,9 +35,8 @@ public class LoginClientes extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        textContraseña = new javax.swing.JTextField();
+        textContrasena = new javax.swing.JTextField();
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
         inicioSesionAdministrador = new javax.swing.JToggleButton();
@@ -71,21 +71,18 @@ public class LoginClientes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(563, Short.MAX_VALUE)
+                .addGap(368, 368, 368)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRegistrar)
+                    .addComponent(botonIniciarSesion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(inicioSesionAdministrador)
                 .addGap(442, 442, 442))
             .addGroup(layout.createSequentialGroup()
+                .addGap(341, 341, 341)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(347, 347, 347)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(textUsuario)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(368, 368, 368)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonRegistrar)
-                            .addComponent(botonIniciarSesion))))
+                    .addComponent(textContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,11 +90,11 @@ public class LoginClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(inicioSesionAdministrador)
-                .addGap(7, 7, 7)
-                .addComponent(textContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
+                .addComponent(textContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(botonIniciarSesion)
                 .addGap(28, 28, 28)
                 .addComponent(botonRegistrar)
@@ -108,8 +105,10 @@ public class LoginClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-        if(comprobacionAutenticacionUsuario(obtenerClientePorUsuarioSql(textUsuario.getText()),textContraseña.getText())){
-            VistaGeneralCliente g = new VistaGeneralCliente();
+        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
+        
+        if(comprobacionAutenticacionUsuario(cliente,textContrasena.getText())){
+            VistaGeneralCliente g = new VistaGeneralCliente(cliente);
                     g.setVisible(true);
                         this.dispose();
         }else{
@@ -171,7 +170,7 @@ public class LoginClientes extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JButton botonRegistrar;
     private javax.swing.JToggleButton inicioSesionAdministrador;
-    private javax.swing.JTextField textContraseña;
+    private javax.swing.JTextField textContrasena;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.cliente;
 
+import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import davidpuertocuenca.autotech.vistas.login.*;
@@ -17,12 +18,19 @@ import javax.swing.table.TableColumn;
  * @author David Puerto Cuenca
  */
 public class VistaGeneralCliente extends javax.swing.JFrame {
-
+    private Cliente cliente = null;
     /**
-     * Creates new form testSesionIniciada
+     * Creates new form VistaGeneralCliente
      */
     public VistaGeneralCliente() {
         initComponents();
+        setExtendedState(VistaGeneralCliente.MAXIMIZED_BOTH);
+            crearTabla();
+    }
+    
+    public VistaGeneralCliente(Cliente cliente) {
+        initComponents();
+        this.cliente = cliente;
         setExtendedState(VistaGeneralCliente.MAXIMIZED_BOTH);
             crearTabla();
     }
@@ -101,7 +109,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         };
         tablaVehiculos.setModel(miModelo);
 
-            List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql());
+            List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql(this.cliente));
            
             for(Vehiculos Vehiculo : vehiculos){
                 Object[] fila = new Object[4];

@@ -25,26 +25,20 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="563" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="368" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonIniciarSesion" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="122" max="32767" attributes="0"/>
               <Component id="inicioSesionAdministrador" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="442" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="347" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="textContraseña" pref="129" max="32767" attributes="0"/>
-                          <Component id="textUsuario" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="368" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
-                          <Component id="botonIniciarSesion" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="textContrasena" min="-2" pref="129" max="-2" attributes="0"/>
+                  <Component id="textUsuario" min="-2" pref="129" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -55,11 +49,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="inicioSesionAdministrador" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="textContraseña" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="textUsuario" min="-2" pref="46" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="textContrasena" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="botonIniciarSesion" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
@@ -69,7 +63,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="textContrase&#xf1;a">
+    <Component class="javax.swing.JTextField" name="textContrasena">
     </Component>
     <Component class="javax.swing.JTextField" name="textUsuario">
     </Component>

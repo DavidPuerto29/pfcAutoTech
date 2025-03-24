@@ -18,7 +18,7 @@ import javax.swing.table.TableColumn;
  * @author David Puerto Cuenca
  */
 public class VistaGeneralCliente extends javax.swing.JFrame {
-    private Cliente cliente = null;
+    private Cliente cliente;
     /**
      * Creates new form VistaGeneralCliente
      */
@@ -100,7 +100,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
 
     private void crearTabla() {
         
-        Object[] cabecera = new Object[]{"Matricula","Modelo","Año de matriculacíon","Citas"}; 
+        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año de matriculación","Citas reservadas"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -117,13 +117,13 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
                 fila[0] = Vehiculo.getMatricula();
                 fila[1] = Vehiculo.getModelo();
                 fila[2] = Vehiculo.getAnoMatriculacion();
-                fila[3] = Vehiculo.getCitas();
+                fila[3] = Vehiculo.getCitas().size();
                     miModelo.addRow(fila);
             }
          
             //Dimensiones de la tabla.
             tablaVehiculos.setRowHeight(20);
-            TableColumn columnaMatricula = tablaVehiculos.getColumn("Matricula");
+            TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");
             columnaMatricula.setMinWidth(100);
             columnaMatricula.setMaxWidth(400);
             columnaMatricula.setPreferredWidth(150); 
@@ -133,12 +133,12 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
             columnaModelo.setMaxWidth(400);
             columnaModelo.setPreferredWidth(200); 
             
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año de matriculacíon");
+            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año de matriculación");
             columnaAnoMatriculacion.setMinWidth(100);
             columnaAnoMatriculacion.setMaxWidth(400);
             columnaAnoMatriculacion.setPreferredWidth(200); 
             
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas");
+            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(400);
             columnaCitas.setPreferredWidth(200); 

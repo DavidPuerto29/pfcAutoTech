@@ -33,38 +33,63 @@
                       <Component id="botonRegistrar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="fieldUsuario" min="-2" pref="143" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="fieldContrasena" min="-2" pref="120" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="fieldNombre" min="-2" pref="143" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="fieldApellidos" min="-2" pref="143" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="fieldCorreo" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="fieldContrasenaVerificar" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="fieldUsuario" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="textoErrorUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textoErrorContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="fieldContrasena" min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="fieldContrasenaVerificar" min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="fieldDni" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="textoErrorDni" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="fieldNombre" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="textoErrorNombre" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="fieldApellidos" min="-2" pref="143" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="textoErrorApellidos" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textoErrorCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldCorreo" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="fieldTelefono" min="-2" pref="143" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="fieldDireccion" min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="fieldDni" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="textoErrorTelefono" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="33" max="32767" attributes="0"/>
+                              <Component id="textoErrorDireccion" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,6 +103,12 @@
                   <Component id="fieldContrasena" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="fieldDni" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="textoErrorUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoErrorContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoErrorDni" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="fieldCorreo" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
@@ -86,7 +117,15 @@
                   <Component id="fieldApellidos" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="fieldNombre" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="111" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="textoErrorNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoErrorApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoErrorCorreoElectronico" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="textoErrorTelefono" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="textoErrorDireccion" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -162,6 +201,70 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorUsuario">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Usuario ya en uso."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorContrasena">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Las contrase&#xf1;as no coinciden."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorDni">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="El formato no es correcto."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorNombre">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un nombre."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorApellidos">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un apellido."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorCorreoElectronico">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un correo electr&#xf3;nico."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorTelefono">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un tel&#xe9;fono."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorDireccion">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir una direcci&#xf3;n."/>
       </Properties>
     </Component>
   </SubComponents>

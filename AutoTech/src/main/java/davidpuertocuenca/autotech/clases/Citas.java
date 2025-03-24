@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import lombok.Setter;
  *
  * @author David Puerto Cuenca
  */ 
+@NamedQuery(name = "get_todas_citas_usuario", query = "FROM Citas q Where q.vehiculo.cliente = :vehiculos ORDER BY q.numeroCita ASC ")
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Citas {
     

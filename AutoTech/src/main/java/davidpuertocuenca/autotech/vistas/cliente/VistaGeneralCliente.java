@@ -47,6 +47,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         botonLogout = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
+        botonCitas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Cliente");
@@ -71,6 +72,13 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaVehiculos);
 
+        botonCitas.setText("citas");
+        botonCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCitasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,13 +92,19 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonCitas)
+                .addGap(377, 377, 377))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(botonCitas)
+                .addGap(3, 3, 3)
                 .addComponent(botonLogout)
                 .addGap(38, 38, 38))
         );
@@ -140,7 +154,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
             TableColumn columnaCitas = tablaVehiculos.getColumn("Citas reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(400);
-            columnaCitas.setPreferredWidth(200); 
+            columnaCitas.setPreferredWidth(200);
     }
     
     private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
@@ -148,6 +162,13 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
             login.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonLogoutActionPerformed
+
+    private void botonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasActionPerformed
+        // TODO add your handling code here:
+        VistaCitasCliente vc = new VistaCitasCliente(cliente);
+            vc.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_botonCitasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +209,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCitas;
     private javax.swing.JToggleButton botonLogout;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaVehiculos;

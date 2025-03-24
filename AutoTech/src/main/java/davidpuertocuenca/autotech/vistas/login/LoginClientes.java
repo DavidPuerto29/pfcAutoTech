@@ -118,7 +118,7 @@ public class LoginClientes extends javax.swing.JFrame {
         }else{
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contasenaChar, '\0');
-                JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 

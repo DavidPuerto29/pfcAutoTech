@@ -34,7 +34,6 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
 
     //Tambien usado para actualizar la tabla
     private void crearTabla() { 
-        
         Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número de teléfono","Dirección","Es administrador"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
@@ -286,7 +285,6 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             if(cliente == null){
                 JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
             }
-
             if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                 eliminarClienteSql(cliente);        
             }else{

@@ -125,14 +125,14 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-        String randormizador = generarRandomizador();
-        char[] contasenaChar = fieldContrasena.getPassword();
-            String hash = cifrarContraseña(String.valueOf(contasenaChar), randormizador);
-                //Se limpia el array para aumentar la seguridad.
-                java.util.Arrays.fill(contasenaChar, '\0');
-                    Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
-                        crearClienteSql(c);
-                            return true;
+            String randormizador = generarRandomizador();
+            char[] contasenaChar = fieldContrasena.getPassword();
+                String hash = cifrarContraseña(String.valueOf(contasenaChar), randormizador);
+                    //Se limpia el array para aumentar la seguridad.
+                    java.util.Arrays.fill(contasenaChar, '\0');
+                        Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
+                            crearClienteSql(c);
+                                return true;
         }else{
             return false;
         }
@@ -326,15 +326,15 @@ public class RegistroClientes extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         LoginClientes l = new LoginClientes();
-                l.setVisible(true);
-                    this.dispose();
+            l.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
          if(registrarCliente()){
             LoginClientes l = new LoginClientes();
-                    l.setVisible(true);
-                        this.dispose(); 
+                l.setVisible(true);
+                    this.dispose(); 
         }
     }//GEN-LAST:event_botonRegistrarActionPerformed
 

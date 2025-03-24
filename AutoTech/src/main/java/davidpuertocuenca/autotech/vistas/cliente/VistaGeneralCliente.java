@@ -99,7 +99,6 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearTabla() {
-        
         Object[] cabecera = new Object[]{"Matrícula","Modelo","Año de matriculación","Citas reservadas"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.

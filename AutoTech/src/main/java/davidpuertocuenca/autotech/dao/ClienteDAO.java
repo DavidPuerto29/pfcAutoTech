@@ -56,7 +56,7 @@ public class ClienteDAO {
      public static List<Cliente> obtenerTodosClientesSql(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_todos_clientes", Cliente.class);
-            return q.getResultList();
+                return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

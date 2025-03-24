@@ -28,8 +28,8 @@ import lombok.Setter;
 public class Cliente {
     @Id
     private String usuario;
-    private String contrasena; //PROVISIONAL
-    private String randomizador;   //cifrado
+    private String contrasena; 
+    private String randomizador;   
     
     private String dni;
     private String nombre;

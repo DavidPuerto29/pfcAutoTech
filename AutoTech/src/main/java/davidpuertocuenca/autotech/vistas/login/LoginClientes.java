@@ -109,9 +109,9 @@ public class LoginClientes extends javax.swing.JFrame {
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         if(comprobacionAutenticacionUsuario(obtenerClientePorUsuarioSql(textUsuario.getText()),textContraseña.getText())){
-            this.dispose();
-                VistaGeneralCliente test = new VistaGeneralCliente();
-                    test.setVisible(true);
+            VistaGeneralCliente g = new VistaGeneralCliente();
+                    g.setVisible(true);
+                        this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
@@ -127,8 +127,8 @@ public class LoginClientes extends javax.swing.JFrame {
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
         RegistroClientes r = new RegistroClientes();
-        r.setVisible(true);
-        this.dispose();
+            r.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     /**

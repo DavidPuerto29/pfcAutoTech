@@ -24,7 +24,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     public VistaGeneralCliente() {
         initComponents();
         setExtendedState(VistaGeneralCliente.MAXIMIZED_BOTH);
-        crearTabla();
+            crearTabla();
     }
 
     /**
@@ -137,9 +137,9 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     
     private void botonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLogoutActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         LoginClientes login = new LoginClientes();
-        login.setVisible(true);
+            login.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_botonLogoutActionPerformed
 
     /**

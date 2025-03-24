@@ -22,7 +22,8 @@ import lombok.Setter;
  */
 @Entity @Getter @Setter  @NoArgsConstructor
 @NamedQuery(name = "get_cliente_username", query = "FROM Cliente p WHERE p.usuario = :username")
-@NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
+@NamedQuery(name = "get_cliente_login", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
+@NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username")
 @NamedQuery(name = "get_todos_clientes", query = "FROM Cliente q ORDER BY q.usuario ASC")
 public class Cliente {
     @Id

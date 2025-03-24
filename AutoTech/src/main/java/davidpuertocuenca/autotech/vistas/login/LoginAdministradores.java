@@ -68,9 +68,10 @@ public class LoginAdministradores extends javax.swing.JFrame {
         
         if(comprobacionAutenticacionUsuario(cliente,textContraseña.getText())){
            if(cliente.isAdministrador()){
-            this.dispose();
-                 VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
-                     vistaGeneralAdministrador.setVisible(true);
+            VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
+               vistaGeneralAdministrador.setVisible(true);
+                this.dispose();
+                 
            }else{
                JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
            }

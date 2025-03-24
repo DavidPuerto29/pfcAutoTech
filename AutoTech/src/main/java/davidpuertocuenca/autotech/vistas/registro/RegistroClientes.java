@@ -179,9 +179,9 @@ public class RegistroClientes extends javax.swing.JFrame {
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
         if(registrarCliente()){
-            this.dispose();
-                LoginClientes l = new LoginClientes();
-                    l.setVisible(true); 
+            LoginClientes l = new LoginClientes();
+                    l.setVisible(true);
+                        this.dispose(); 
         }
     }//GEN-LAST:event_botonRegistrarActionPerformed
 

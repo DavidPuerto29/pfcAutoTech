@@ -29,14 +29,10 @@ public class RegistroClientes extends javax.swing.JFrame {
     private boolean registrarCliente(){
         if(Arrays.equals(fieldContrasena.getPassword(), fieldContrasenaVerificar.getPassword())){
         String randormizador = generarRandomizador();
-
-            char[] passwordChars = fieldContrasena.getPassword();
-                String contrasena = new String(passwordChars);
-                System.out.println("contra" +contrasena);
-            // Limpiar el array de caracteres por seguridad
-            java.util.Arrays.fill(passwordChars, '\0');
-
-        String hash = cifrarContraseña(contrasena, randormizador);
+            char[] contasenaChar = fieldContrasena.getPassword();
+                String hash = cifrarContraseña(String.valueOf(contasenaChar), randormizador);
+                    //Se limpia el array para aumentar la seguridad.
+                    java.util.Arrays.fill(contasenaChar, '\0');
         Cliente c = new Cliente(fieldUsuario.getText(),hash,randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false); //ADMIN A FALSE
             crearClienteSql(c);
             return true;

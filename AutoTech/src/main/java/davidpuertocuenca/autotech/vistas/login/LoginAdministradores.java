@@ -33,15 +33,14 @@ public class LoginAdministradores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textContraseña = new javax.swing.JTextField();
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
         botonCancelar = new javax.swing.JButton();
+        textContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(textContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 185, 38));
         getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 185, 38));
 
         botonIniciarSesion.setText("Login");
@@ -59,14 +58,18 @@ public class LoginAdministradores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, -1, -1));
+        getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 190, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
+        char[] contasenaChar = textContrasena.getPassword();
         
-        if(comprobacionAutenticacionUsuario(cliente,textContraseña.getText())){
+        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
+            //Se limpia el array para aumentar la seguridad.
+            java.util.Arrays.fill(contasenaChar, '\0');
            if(cliente.isAdministrador()){
             VistaGeneralAdministrador vistaGeneralAdministrador = new VistaGeneralAdministrador();
                vistaGeneralAdministrador.setVisible(true);
@@ -124,7 +127,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JToggleButton botonIniciarSesion;
-    private javax.swing.JTextField textContraseña;
+    private javax.swing.JPasswordField textContrasena;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables
 }

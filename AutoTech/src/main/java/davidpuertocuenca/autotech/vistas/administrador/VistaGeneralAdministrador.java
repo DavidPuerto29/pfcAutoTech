@@ -32,9 +32,10 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             crearTabla();
     }
 
-    private void crearTabla() { //Tambien usado para actualizar la tabla
+    //Tambien usado para actualizar la tabla
+    private void crearTabla() { 
         
-        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electronico", "Numero de teléfono","Direccion","Es administrador"}; 
+        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número de teléfono","Dirección","Es administrador"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -85,17 +86,17 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             columnaCiudad.setMaxWidth(400);
             columnaCiudad.setPreferredWidth(200); 
             
-            TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electronico");
+            TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electrónico");
             columnaCorreo.setMinWidth(100);
             columnaCorreo.setMaxWidth(400);
             columnaCorreo.setPreferredWidth(200); 
             
-            TableColumn columnaTelefono = tablaClientes.getColumn("Numero de teléfono");
+            TableColumn columnaTelefono = tablaClientes.getColumn("Número de teléfono");
             columnaTelefono.setMinWidth(100);
             columnaTelefono.setMaxWidth(400);
             columnaTelefono.setPreferredWidth(200); 
             
-            TableColumn columnaDireccion = tablaClientes.getColumn("Direccion");
+            TableColumn columnaDireccion = tablaClientes.getColumn("Dirección");
             columnaDireccion.setMinWidth(100);
             columnaDireccion.setMaxWidth(400);
             columnaDireccion.setPreferredWidth(200); 
@@ -104,7 +105,6 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             columnaAdministrador.setMinWidth(100);
             columnaAdministrador.setMaxWidth(400);
             columnaAdministrador.setPreferredWidth(200); 
-
     }
 
     

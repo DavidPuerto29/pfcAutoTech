@@ -43,7 +43,7 @@ public class VehiculosDAO {
         }
     }
     
-    public static Vehiculos obtenerVehiculoSql(String matricula){  
+    public static Vehiculos obtenerVehiculoMatriculaSql(String matricula){  
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Vehiculos> q = session.createNamedQuery("get_vehiculo", Vehiculos.class);
                 q.setParameter("identificacion", matricula);

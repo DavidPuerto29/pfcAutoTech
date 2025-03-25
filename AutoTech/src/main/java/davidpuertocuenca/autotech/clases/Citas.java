@@ -18,7 +18,7 @@ import lombok.Setter;
  *
  * @author David Puerto Cuenca
  */ 
-@NamedQuery(name = "get_todas_citas_matricula", query = "FROM Citas q Where q.vehiculo.matr = :vehiculos ORDER BY q.n= :vehiculos ORDER BYumeroCita ASC ")
+@NamedQuery(name = "get_todas_citas_matricula", query = "FROM Citas q Where q.vehiculo.matricula = :matricula ORDER BY numeroCita ASC")
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Citas {
     

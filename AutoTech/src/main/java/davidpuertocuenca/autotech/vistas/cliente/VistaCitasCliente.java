@@ -7,7 +7,7 @@ package davidpuertocuenca.autotech.vistas.cliente;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
+import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +19,8 @@ import javax.swing.table.TableColumn;
  */
 public class VistaCitasCliente extends javax.swing.JFrame {
     private Vehiculos vehiculo;
-    
+    //Usado para no perder los datos del cliente cuando se vuelve a la vista general.
+    private Cliente cliente;
     /**
      * Creates new form VistaCitasCliente
      */
@@ -29,9 +30,10 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         crearTabla();
     }
     
-    public VistaCitasCliente(Vehiculo vehiculo) {
+    public VistaCitasCliente(Vehiculos vehiculo, Cliente cliente) {
         initComponents();
         this.vehiculo = vehiculo;
+        this.cliente = cliente;
         setExtendedState(this.MAXIMIZED_BOTH);
         crearTabla();
     }
@@ -112,13 +114,13 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         };
         tablaVehiculos.setModel(miModelo);
 
-            List<Citas> citas = new ArrayList(obtenerTodasCitasSql(vehiculo));
+            List<Citas> citas = new ArrayList(obtenerTodasCitasMatriculaSql(vehiculo));
            
             for(Citas Cita : citas){
                 Object[] fila = new Object[4];
                 fila[0] = Cita.getNumeroCita();
                 fila[1] = Cita.getFecha();
-                fila[2] = Cita.getVehiculo();
+                fila[2] = Cita.getVehiculo().getMatricula();
                 fila[3] = Cita.getTaller();
                     miModelo.addRow(fila);
             } 
@@ -148,8 +150,9 @@ public class VistaCitasCliente extends javax.swing.JFrame {
     
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        VistaGeneralCliente vgc = new VistaGeneralCliente();
+        VistaGeneralCliente vgc = new VistaGeneralCliente(cliente);
             vgc.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed
 
     /**

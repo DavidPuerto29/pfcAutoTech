@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoSql;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import javax.swing.JOptionPane;
 
 /**
@@ -160,7 +158,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     private void botonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminar1ActionPerformed
         // TODO add your handling code here:
         try{
-            Vehiculos vehiculo = obtenerVehiculoSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
+            Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
             if(vehiculo == null){
                 JOptionPane.showMessageDialog(this, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
             }

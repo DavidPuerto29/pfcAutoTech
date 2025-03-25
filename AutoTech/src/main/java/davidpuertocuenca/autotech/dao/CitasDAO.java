@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.dao;
 
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Vehiculos;
 import jakarta.persistence.NoResultException;
 import java.util.List;
 import org.hibernate.Session;
@@ -19,7 +20,7 @@ public class CitasDAO {
     public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    //HACERLO POR MATRICULA
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Citas> q = session.createNamedQuery("get_todas_citas_matricula", Citas.class);
-                q.setParameter("vehiculo", vehiculo.getVehiculos());
+                q.setParameter("matricula", vehiculo.getMatricula());
             return q.getResultList();
         } catch (NoResultException e) {
             return null;

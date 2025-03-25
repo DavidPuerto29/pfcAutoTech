@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 
 /**
  *
@@ -173,7 +174,8 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
 
     private void botonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasActionPerformed
         // TODO add your handling code here:
-        VistaCitasCliente vc = new VistaCitasCliente(cliente);
+        Vehiculos vehiculos = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
+        VistaCitasCliente vc = new VistaCitasCliente(vehiculos, cliente);
             vc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCitasActionPerformed

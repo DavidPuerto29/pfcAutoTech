@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -173,11 +174,14 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLogoutActionPerformed
 
     private void botonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasActionPerformed
-        // TODO add your handling code here:
-        Vehiculos vehiculos = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
-        VistaCitasCliente vc = new VistaCitasCliente(vehiculos, cliente);
-            vc.setVisible(true);
-                this.dispose();
+        try{
+            Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
+                VistaCitasCliente vcc = new VistaCitasCliente(vehiculo, cliente);
+                    vcc.setVisible(true);
+                        this.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+         }
     }//GEN-LAST:event_botonCitasActionPerformed
 
     /**

@@ -26,7 +26,7 @@ public class VistaCitasCliente extends javax.swing.JFrame {
      */
     public VistaCitasCliente() {
         initComponents();
-        setExtendedState(this.MAXIMIZED_BOTH);
+        setExtendedState(VistaCitasCliente.MAXIMIZED_BOTH);
         crearTabla();
     }
     
@@ -34,7 +34,7 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         initComponents();
         this.vehiculo = vehiculo;
         this.cliente = cliente;
-        setExtendedState(this.MAXIMIZED_BOTH);
+        setExtendedState(VistaCitasCliente.MAXIMIZED_BOTH);
         crearTabla();
     }
 

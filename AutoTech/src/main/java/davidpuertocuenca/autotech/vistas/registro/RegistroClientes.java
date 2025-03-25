@@ -118,9 +118,9 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         
         //Comprobación de que el teléfono sean números y no letras.
-          try {
+        try {
             Integer.parseInt(fieldTelefono.getText()); 
-          }catch (NumberFormatException e) {
+        }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El teléfono no puede contener letras.");

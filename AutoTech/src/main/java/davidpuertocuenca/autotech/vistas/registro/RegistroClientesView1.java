@@ -17,6 +17,7 @@ import java.util.Arrays;
  */
 public class RegistroClientesView1 extends javax.swing.JFrame {
     private Cliente cliente;
+    private boolean aceptacionTerminos = false;
     /**
      * Creates new form RegistroClientesView1
      */
@@ -31,6 +32,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         textoErrorContrasena.setVisible(false);
         textoErrorContrasena1.setVisible(false);
         textoErrorCorreoElectronico.setVisible(false);
+        textoErrorTerminos.setVisible(false);
     }
     
     private boolean registrarCliente(){
@@ -79,6 +81,10 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         
         //TODO FORMATO CORREO ELECTRONICO.
         
+        if(aceptacionTerminos == false){
+            textoErrorTerminos.setVisible(true);
+        }
+        
         if(formatoCorrecto){
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
@@ -114,6 +120,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         botonContinuar = new javax.swing.JButton();
         checkTerminosYCondiciones = new javax.swing.JCheckBox();
+        textoErrorTerminos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,34 +167,41 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
             }
         });
 
+        textoErrorTerminos.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorTerminos.setText("Debe aceptar los términos.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(303, 303, 303)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(273, 273, 273)
+                        .addGap(303, 303, 303)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelContrasena)
+                            .addComponent(labelUsuario1)
+                            .addComponent(textoErrorUsuario)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(fieldUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textoErrorCorreoElectronico)
+                            .addComponent(labelContrasena1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(textoErrorContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textoErrorContrasena1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textoErrorTerminos)
+                                    .addComponent(checkTerminosYCondiciones)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(266, 266, 266)
                         .addComponent(botonCancelar)
                         .addGap(44, 44, 44)
-                        .addComponent(botonContinuar))
-                    .addComponent(labelContrasena)
-                    .addComponent(labelUsuario1)
-                    .addComponent(textoErrorUsuario)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(fieldUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(fieldCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textoErrorCorreoElectronico)
-                    .addComponent(labelContrasena1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(textoErrorContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textoErrorContrasena1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(fieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(checkTerminosYCondiciones)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addComponent(botonContinuar)))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,11 +230,13 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
                 .addComponent(textoErrorContrasena)
                 .addGap(18, 18, 18)
                 .addComponent(checkTerminosYCondiciones)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoErrorTerminos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar)
                     .addComponent(botonContinuar))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -232,7 +248,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         // TODO add your handling code here:
-        if(registrarCliente()){
+        if(registrarCliente() && aceptacionTerminos == true){
             RegistroClientesView2 rgc = new RegistroClientesView2(cliente);
                 rgc.setVisible(true);
                     this.dispose(); 
@@ -241,10 +257,16 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
 
     private void checkTerminosYCondicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerminosYCondicionesActionPerformed
         // TODO add your handling code here:
-        if(checkTerminosYCondiciones.isSelected()){
-            TerminosYCondiciones tyc = new TerminosYCondiciones(this, false);
+        TerminosYCondiciones tyc = new TerminosYCondiciones(this, true);
                 tyc.setVisible(true);
-        }
+                    if(tyc.isAceptado()){
+                        checkTerminosYCondiciones.setSelected(true);
+                            aceptacionTerminos = true;
+                                textoErrorTerminos.setVisible(false);
+                    }else{
+                         checkTerminosYCondiciones.setSelected(false);
+                            aceptacionTerminos = false;
+                    }
     }//GEN-LAST:event_checkTerminosYCondicionesActionPerformed
 
     /**
@@ -296,6 +318,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
     private javax.swing.JLabel textoErrorContrasena;
     private javax.swing.JLabel textoErrorContrasena1;
     private javax.swing.JLabel textoErrorCorreoElectronico;
+    private javax.swing.JLabel textoErrorTerminos;
     private javax.swing.JLabel textoErrorUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,12 +10,17 @@ package davidpuertocuenca.autotech.vistas.registro.legal;
  */
 public class TerminosYCondiciones extends javax.swing.JDialog {
 
+    private boolean respuesta = false;
     /**
      * Creates new form TerminosYCondiciones
      */
     public TerminosYCondiciones(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public boolean isAceptado(){
+        return this.respuesta;
     }
 
     /**
@@ -35,6 +40,7 @@ public class TerminosYCondiciones extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Términos y condiciones de uso");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("Términos y Condiciones de Uso de AutoTech\nFecha de actualización: 31 de marzo de 2025\n1. Aceptación de los Términos\nAl acceder, registrarse o utilizar la aplicación AutoTech (en adelante, “la aplicación”), el usuario acepta y se compromete a cumplir los presentes Términos y Condiciones. Si no está de acuerdo con alguno de estos términos, debe abstenerse de utilizar la aplicación.\nEstos términos regulan el acceso y uso de AutoTech, así como los servicios que esta ofrece.\n2. Descripción de la Aplicación\nAutoTech es una plataforma digital diseñada para facilitar la gestión de citas en talleres mecánicos. A través de la aplicación, los usuarios pueden:\nBuscar talleres mecánicos cercanos según su ubicación.\n\n\nAgendar citas con el taller seleccionado.\n\n\nRecibir notificaciones y recordatorios de citas.\n\n\nConsultar información sobre servicios y tarifas de los talleres.\n\n\nLa aplicación busca optimizar la comunicación entre los usuarios y los talleres, eliminando la necesidad de llamadas telefónicas o correos electrónicos.\n3. Requisitos y Registro de Usuario\nPara acceder a ciertos servicios, el usuario debe registrarse en la aplicación proporcionando información veraz y actualizada, incluyendo nombre, correo electrónico y número de teléfono.\nEl usuario es responsable de:\nMantener la seguridad de su cuenta y contraseña.\n\n\nNotificar de inmediato cualquier uso no autorizado de su cuenta.\n\n\nProporcionar datos exactos y completos al registrarse.\n\n\nEl incumplimiento de estos requisitos puede dar lugar a la suspensión o eliminación de la cuenta del usuario.\n4. Uso Permitido y Restricciones\nEl usuario se compromete a utilizar la aplicación de manera responsable y conforme a la ley. Está estrictamente prohibido:\nUsar la aplicación con fines fraudulentos o ilegales.\n\n\nSuplantar la identidad de otra persona o proporcionar información falsa.\n\n\nIntentar acceder sin autorización a otras cuentas o sistemas.\n\n\nPublicar contenido ofensivo, discriminatorio o que infrinja derechos de terceros.\n\n\nManipular, alterar o modificar el código de la aplicación.\n\n\nEl incumplimiento de estas normas puede resultar en la suspensión del acceso a la aplicación y en acciones legales, si corresponde.\n5. Responsabilidad y Disponibilidad del Servicio\nLa aplicación AutoTech se ofrece “tal cual” y “según disponibilidad”, sin garantías de que el servicio sea ininterrumpido o libre de errores.\nAutoTech no se responsabiliza por problemas técnicos que puedan afectar el acceso o la funcionalidad de la aplicación.\n\n\nNo garantizamos que los talleres disponibles en la aplicación tengan citas en el horario deseado.\n\n\nAutoTech no se hace responsable de la calidad de los servicios prestados por los talleres, ya que actúa solo como intermediario.\n\n\nEl usuario acepta que el uso de la aplicación es bajo su propio riesgo.\n6. Política de Privacidad y Protección de Datos\nEl tratamiento de los datos personales del usuario se realizará de acuerdo con nuestra Política de Privacidad, garantizando el cumplimiento de la normativa vigente sobre protección de datos.\nLos datos personales recolectados pueden incluir nombre, correo electrónico, teléfono y ubicación, los cuales serán utilizados exclusivamente para el funcionamiento de la aplicación.\nEl usuario tiene derecho a:\nAcceder a sus datos personales.\n\n\nSolicitar la corrección o eliminación de sus datos.\n\n\nRetirar su consentimiento para el uso de datos personales en cualquier momento.\n\n\n7. Propiedad Intelectual\nTodos los elementos de la aplicación, incluyendo su diseño, código fuente, logotipos, textos y gráficos, son propiedad de AutoTech o de sus licenciantes y están protegidos por las leyes de propiedad intelectual.\nEstá prohibida la reproducción, distribución, modificación o uso comercial de cualquier contenido sin autorización expresa.\n8. Modificaciones de los Términos y Condiciones\nAutoTech se reserva el derecho de modificar estos términos en cualquier momento. En caso de cambios significativos, se notificará a los usuarios mediante un aviso en la aplicación o por correo electrónico.\nEl uso continuado de la aplicación tras la notificación de cambios implica la aceptación de los nuevos términos.\n9. Suspensión y Terminación del Servicio\nAutoTech puede suspender o cancelar el acceso de un usuario en los siguientes casos:\nIncumplimiento de estos términos.\n\n\nUso indebido de la aplicación.\n\n\nActividades fraudulentas o ilegales.\n\n\nEn caso de terminación del servicio, el usuario perderá el acceso a su cuenta y a sus datos almacenados en la aplicación.\n10. Legislación Aplicable y Jurisdicción\nEstos términos y condiciones se rigen por las leyes de España . Cualquier disputa relacionada con la aplicación será sometida a la jurisdicción de los tribunales de La Comunidad De Madrid.\n11. Contacto\nPara consultas, quejas o sugerencias, el usuario puede ponerse en contacto con AutoTech a través del correo electrónico: tecnicos@autotech.com .\n");
@@ -88,15 +94,14 @@ public class TerminosYCondiciones extends javax.swing.JDialog {
 
     private void botonRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRechazarActionPerformed
         // TODO add your handling code here:
+        respuesta = false;
+            this.dispose();
     }//GEN-LAST:event_botonRechazarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
-        if(registrarCliente()){
-            RegistroClientesView2 rgc = new RegistroClientesView2(cliente);
-            rgc.setVisible(true);
+        respuesta = true;
             this.dispose();
-        }
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     /**

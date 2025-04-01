@@ -24,34 +24,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelContrasena" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelUsuario1" min="-2" max="-2" attributes="0"/>
+                          <Component id="textoErrorUsuario" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="fieldUsuario" alignment="0" max="32767" attributes="0"/>
+                              <Component id="fieldCorreo" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="textoErrorCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelContrasena1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="textoErrorContrasena" alignment="0" max="32767" attributes="0"/>
+                              <Component id="textoErrorContrasena1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="fieldContrasena" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="fieldContrasenaVerificar" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="textoErrorTerminos" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkTerminosYCondiciones" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
                       <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="labelContrasena" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelUsuario1" min="-2" max="-2" attributes="0"/>
-                  <Component id="textoErrorUsuario" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="fieldUsuario" alignment="0" max="32767" attributes="0"/>
-                      <Component id="fieldCorreo" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="textoErrorCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelContrasena1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="textoErrorContrasena" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textoErrorContrasena1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="fieldContrasena" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
-                      <Component id="fieldContrasenaVerificar" min="-2" pref="192" max="-2" attributes="0"/>
-                      <Component id="checkTerminosYCondiciones" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace pref="356" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,12 +89,14 @@
               <Component id="textoErrorContrasena" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="checkTerminosYCondiciones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textoErrorTerminos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonContinuar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="91" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -177,6 +186,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkTerminosYCondicionesActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorTerminos">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe aceptar los t&#xe9;rminos."/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

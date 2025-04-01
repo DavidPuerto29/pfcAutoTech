@@ -143,6 +143,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         botonFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro Cliente Paso 2");
 
         fieldTelefono.setToolTipText("");
 

@@ -123,6 +123,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         textoErrorTerminos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro Cliente Paso 1");
 
         fieldUsuario.setToolTipText("");
 

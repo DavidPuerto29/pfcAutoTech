@@ -23,78 +23,78 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="888" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="445" pref="445" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="fieldDni" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                              <Component id="textoErrorDni" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="fieldNombre" alignment="1" min="-2" pref="143" max="-2" attributes="0"/>
-                              <Component id="textoErrorNombre" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                  <Component id="fieldApellidos" min="-2" pref="143" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="textoErrorApellidos" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="249" pref="249" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="fieldTelefono" min="-2" pref="143" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="fieldDireccion" min="-2" pref="143" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="textoErrorTelefono" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="textoErrorDireccion" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="432" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textoErrorApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldDni" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="textoErrorDni" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelDni" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldTelefono" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="textoErrorTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="textoErrorDireccion" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldDireccion" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Component id="labelDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="fieldApellidos" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fieldNombre" min="-2" pref="143" max="-2" attributes="0"/>
+                                  <Component id="labelApellidos" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textoErrorNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="451" max="-2" attributes="0"/>
+                      <Component id="botonFinalizar" min="-2" pref="91" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+              <EmptySpace pref="530" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                  <Component id="fieldDni" min="-2" pref="42" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textoErrorDni" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="fieldTelefono" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="fieldDireccion" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="fieldApellidos" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="fieldNombre" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textoErrorNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textoErrorApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textoErrorTelefono" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="textoErrorDireccion" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="75" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Component id="labelNombre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="fieldNombre" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="textoErrorNombre" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="labelApellidos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="fieldApellidos" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textoErrorApellidos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelDni" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Component id="fieldDni" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textoErrorDni" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="labelTelefono" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="fieldTelefono" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textoErrorTelefono" min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="labelDireccion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="fieldDireccion" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textoErrorDireccion" min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="botonFinalizar" min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,13 +102,11 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fieldTelefono">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Numero Telefono"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fieldDireccion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Direccion"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -130,7 +128,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldDni">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dni"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -144,7 +141,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldApellidos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Apellidos"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -166,9 +162,44 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldNombre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldNombreActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelApellidos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellidos"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelDni">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dni"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelTelefono">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelDireccion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonFinalizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Finalizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonFinalizarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -9,6 +9,7 @@ import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacio
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
+import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -161,8 +162,8 @@ public class LoginClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_inicioSesionAdministradorActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        RegistroClientes r = new RegistroClientes();
-            r.setVisible(true);
+        RegistroClientesView1 rg = new RegistroClientesView1();
+            rg.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 

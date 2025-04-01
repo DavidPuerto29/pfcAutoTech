@@ -23,33 +23,44 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="270" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="303" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="fieldUsuario" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                  <Component id="textoErrorUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="369" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textoErrorCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="fieldContrasena" alignment="0" max="32767" attributes="0"/>
-                      <Component id="fieldContrasenaVerificar" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textoErrorContrasena" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                      <Component id="botonCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="botonContinuar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="fieldCorreo" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                  <Component id="labelContrasena" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelUsuario1" min="-2" max="-2" attributes="0"/>
+                  <Component id="textoErrorUsuario" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="fieldUsuario" alignment="0" max="32767" attributes="0"/>
+                      <Component id="fieldCorreo" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="textoErrorCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelContrasena1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="textoErrorContrasena" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textoErrorContrasena1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="fieldContrasena" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                      <Component id="fieldContrasenaVerificar" min="-2" pref="192" max="-2" attributes="0"/>
+                      <Component id="checkTerminosYCondiciones" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="322" max="-2" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="52" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+              <Component id="labelUsuario1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="fieldUsuario" min="-2" pref="42" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="textoErrorUsuario" min="-2" max="-2" attributes="0"/>
@@ -58,12 +69,25 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="textoErrorCorreoElectronico" min="-2" pref="16" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelContrasena" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               <Component id="fieldContrasena" min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textoErrorContrasena1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelContrasena1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="fieldContrasenaVerificar" min="-2" pref="46" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="textoErrorContrasena" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="fieldContrasenaVerificar" min="-2" pref="46" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+              <Component id="checkTerminosYCondiciones" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonContinuar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,7 +95,6 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fieldUsuario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Usuario"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -84,14 +107,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="fieldContrasena">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="fieldContrasenaVerificar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="textoErrorContrasena">
       <Properties>
@@ -103,7 +120,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCorreo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Correo Electronico"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -114,6 +130,53 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Debe introducir un correo electr&#xf3;nico."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelUsuario1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelContrasena">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelContrasena1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorContrasena1">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Las contrase&#xf1;as no coinciden."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonContinuar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Continuar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonContinuarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="checkTerminosYCondiciones">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="T&#xe9;rminos y condiciones de uso"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkTerminosYCondicionesActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

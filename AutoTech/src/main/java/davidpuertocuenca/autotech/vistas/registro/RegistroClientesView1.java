@@ -4,19 +4,93 @@
  */
 package davidpuertocuenca.autotech.vistas.registro;
 
+import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
+import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
+import davidpuertocuenca.autotech.clases.Cliente;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
+import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
+import java.util.Arrays;
+
 /**
  *
  * @author David
  */
 public class RegistroClientesView1 extends javax.swing.JFrame {
-
+    private Cliente cliente;
     /**
      * Creates new form RegistroClientesView1
      */
     public RegistroClientesView1() {
         initComponents();
+        reiniciarEtiquetas();
+        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
 
+       private void reiniciarEtiquetas(){
+        textoErrorUsuario.setVisible(false);
+        textoErrorContrasena.setVisible(false);
+        textoErrorContrasena1.setVisible(false);
+        textoErrorCorreoElectronico.setVisible(false);
+    }
+    
+    private boolean registrarCliente(){
+                reiniciarEtiquetas();
+        boolean formatoCorrecto = true;
+        
+        //Comprobación de que el usuario no esta ya en uso.
+        if(obtenerClientePorUsuarioSql(fieldUsuario.getText()) != null){
+            formatoCorrecto = false;
+                textoErrorUsuario.setText("Usuario ya en uso.");
+                    textoErrorUsuario.setVisible(true);            
+        }
+        
+        //Comprobación de que el campo usuario no esta vacio.
+        if(fieldUsuario.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorUsuario.setText("Debe introducir un usuario.");
+                    textoErrorUsuario.setVisible(true);
+        }
+        
+        //Comprobación de que las dos contraseñas coincidan
+        if(!Arrays.equals(fieldContrasena.getPassword(), fieldContrasenaVerificar.getPassword())){
+           formatoCorrecto = false;
+               textoErrorContrasena.setText("Las contraseñas no coinciden.");
+                    textoErrorContrasena.setVisible(true);
+                        textoErrorContrasena1.setText("Las contraseñas no coinciden.");
+                            textoErrorContrasena1.setVisible(true);
+                    
+        }
+        
+        //Comprobación de que las dos contraseñas no esten vacias.
+        if(String.valueOf(fieldContrasena.getPassword()).isEmpty() && String.valueOf(fieldContrasenaVerificar.getPassword()).isEmpty()){
+           formatoCorrecto = false;
+               textoErrorContrasena.setText("Debe introducir una contraseña.");
+                    textoErrorContrasena.setVisible(true); 
+                        textoErrorContrasena1.setText("Debe introducir una contraseña.");
+                            textoErrorContrasena1.setVisible(true); 
+        }
+        
+        //Comprobación de que el correo electronico no este vacio.
+        if(fieldCorreo.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorCorreoElectronico.setVisible(true);
+                    textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
+        }
+        
+        //TODO FORMATO CORREO ELECTRONICO.
+        
+        if(formatoCorrecto){
+            String randormizador = generarRandomizador();
+            char[] contasenaChar = fieldContrasena.getPassword();
+                //Se guardan los datos obtenidos en la variable global.
+                cliente = new Cliente(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,null, null, null, fieldCorreo.getText(), null, null, false);
+                    //Se limpia el array para aumentar la seguridad.
+                    java.util.Arrays.fill(contasenaChar, '\0');    
+                        return true;
+        }else{
+            return false;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,53 +107,94 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         textoErrorContrasena = new javax.swing.JLabel();
         fieldCorreo = new javax.swing.JTextField();
         textoErrorCorreoElectronico = new javax.swing.JLabel();
+        labelUsuario1 = new javax.swing.JLabel();
+        labelContrasena = new javax.swing.JLabel();
+        labelContrasena1 = new javax.swing.JLabel();
+        textoErrorContrasena1 = new javax.swing.JLabel();
+        botonCancelar = new javax.swing.JButton();
+        botonContinuar = new javax.swing.JButton();
+        checkTerminosYCondiciones = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fieldUsuario.setText("Usuario");
         fieldUsuario.setToolTipText("");
 
         textoErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorUsuario.setText("Usuario ya en uso.");
 
-        fieldContrasena.setText("Contraseña1");
-
-        fieldContrasenaVerificar.setText("Contraseña2");
-
         textoErrorContrasena.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorContrasena.setText("Las contraseñas no coinciden.");
 
-        fieldCorreo.setText("Correo Electronico");
         fieldCorreo.setToolTipText("");
 
         textoErrorCorreoElectronico.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
+
+        labelUsuario1.setText("Usuario");
+
+        labelContrasena.setText("Contraseña");
+
+        labelContrasena1.setText("Contraseña");
+
+        textoErrorContrasena1.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorContrasena1.setText("Las contraseñas no coinciden.");
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+
+        botonContinuar.setText("Continuar");
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
+
+        checkTerminosYCondiciones.setText("Términos y condiciones de uso");
+        checkTerminosYCondiciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTerminosYCondicionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
+                .addGap(303, 303, 303)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoErrorUsuario))
-                .addContainerGap(369, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textoErrorCorreoElectronico)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(273, 273, 273)
+                        .addComponent(botonCancelar)
+                        .addGap(44, 44, 44)
+                        .addComponent(botonContinuar))
+                    .addComponent(labelContrasena)
+                    .addComponent(labelUsuario1)
+                    .addComponent(textoErrorUsuario)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(fieldContrasena, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(textoErrorContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(fieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(322, 322, 322))
+                        .addComponent(fieldUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fieldCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoErrorCorreoElectronico)
+                    .addComponent(labelContrasena1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(textoErrorContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textoErrorContrasena1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(fieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(checkTerminosYCondiciones)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(labelUsuario1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textoErrorUsuario)
@@ -88,16 +203,49 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textoErrorCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(labelContrasena)
+                .addGap(2, 2, 2)
                 .addComponent(fieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoErrorContrasena1)
+                .addGap(18, 18, 18)
+                .addComponent(labelContrasena1)
+                .addGap(12, 12, 12)
+                .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textoErrorContrasena)
                 .addGap(18, 18, 18)
-                .addComponent(fieldContrasenaVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
+                .addComponent(checkTerminosYCondiciones)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCancelar)
+                    .addComponent(botonContinuar))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        // TODO add your handling code here:
+        if(registrarCliente()){
+            RegistroClientesView2 rgc = new RegistroClientesView2(cliente);
+                rgc.setVisible(true);
+                    this.dispose(); 
+        }
+    }//GEN-LAST:event_botonContinuarActionPerformed
+
+    private void checkTerminosYCondicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerminosYCondicionesActionPerformed
+        // TODO add your handling code here:
+        if(checkTerminosYCondiciones.isSelected()){
+            TerminosYCondiciones tyc = new TerminosYCondiciones(this, false);
+                tyc.setVisible(true);
+        }
+    }//GEN-LAST:event_checkTerminosYCondicionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,11 +283,18 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonContinuar;
+    private javax.swing.JCheckBox checkTerminosYCondiciones;
     private javax.swing.JPasswordField fieldContrasena;
     private javax.swing.JPasswordField fieldContrasenaVerificar;
     private javax.swing.JTextField fieldCorreo;
     private javax.swing.JTextField fieldUsuario;
+    private javax.swing.JLabel labelContrasena;
+    private javax.swing.JLabel labelContrasena1;
+    private javax.swing.JLabel labelUsuario1;
     private javax.swing.JLabel textoErrorContrasena;
+    private javax.swing.JLabel textoErrorContrasena1;
     private javax.swing.JLabel textoErrorCorreoElectronico;
     private javax.swing.JLabel textoErrorUsuario;
     // End of variables declaration//GEN-END:variables

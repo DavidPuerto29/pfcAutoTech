@@ -180,6 +180,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         textoErrorCorreoElectronico = new javax.swing.JLabel();
         textoErrorTelefono = new javax.swing.JLabel();
         textoErrorDireccion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar");
@@ -246,6 +247,8 @@ public class RegistroClientes extends javax.swing.JFrame {
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setText("Debe introducir una dirección.");
 
+        jLabel1.setText("EN DESUSO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -288,7 +291,8 @@ public class RegistroClientes extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textoErrorCorreoElectronico)
-                            .addComponent(fieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -334,7 +338,9 @@ public class RegistroClientes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar)
                     .addComponent(botonRegistrar))
-                .addGap(95, 95, 95))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -402,6 +408,7 @@ public class RegistroClientes extends javax.swing.JFrame {
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
     private javax.swing.JTextField fieldUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel textoErrorApellidos;
     private javax.swing.JLabel textoErrorContrasena;
     private javax.swing.JLabel textoErrorCorreoElectronico;

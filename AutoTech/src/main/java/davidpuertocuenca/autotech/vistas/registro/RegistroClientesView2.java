@@ -4,19 +4,118 @@
  */
 package davidpuertocuenca.autotech.vistas.registro;
 
+import davidpuertocuenca.autotech.clases.Cliente;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorDniSql;
+import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+
 /**
  *
  * @author David
  */
 public class RegistroClientesView2 extends javax.swing.JFrame {
-
+    private Cliente cliente;
     /**
      * Creates new form RegistroClientesView2ç
      */
     public RegistroClientesView2() {
         initComponents();
+        reiniciarEtiquetas();
+        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+    }
+    
+    public RegistroClientesView2(Cliente cliente) {
+        initComponents();
+        reiniciarEtiquetas();
+        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        this.cliente = cliente;
     }
 
+     private void reiniciarEtiquetas(){
+        textoErrorDni.setVisible(false);
+        textoErrorNombre.setVisible(false);
+        textoErrorApellidos.setVisible(false);
+        textoErrorTelefono.setVisible(false);
+        textoErrorDireccion.setVisible(false);
+    }
+     
+    private boolean registrarCliente(){
+        reiniciarEtiquetas();
+        boolean formatoCorrecto = true;
+        
+        //Comprobación de que el dni no este vacio.
+        if(fieldDni.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorDni.setVisible(true);
+                    textoErrorDni.setText("Debe introducir un dni.");
+        }
+        
+        //Comprobación de que el dni no esta ya en uso.
+        if(obtenerClientePorDniSql(fieldDni.getText()) != null){
+            formatoCorrecto = false;
+                textoErrorDni.setText("Dni ya en uso.");
+                    textoErrorDni.setVisible(true);            
+        }
+        
+        //TODO FORMATO DNI
+        
+        //Comprobación de que el nombre no este vacio.
+        if(fieldNombre.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorNombre.setVisible(true);
+                    textoErrorNombre.setText("Debe introducir un nombre.");
+        }
+        
+        //Comprobación de que los apellidos no esten vacios.
+        if(fieldApellidos.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorApellidos.setVisible(true);
+                    textoErrorApellidos.setText("Debe introducir los apellidos.");
+        }
+
+        //Comprobación de que el teléfono no este vacio.
+        if(fieldTelefono.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorTelefono.setVisible(true);
+                    textoErrorTelefono.setText("Debe introducir un teléfono.");
+        }
+        
+        //Comprobación de que el teléfono sean números y no letras.
+        try {
+            Integer.parseInt(fieldTelefono.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorTelefono.setVisible(true);
+                    textoErrorTelefono.setText("El teléfono no puede contener letras.");
+          } 
+          
+        //Comprobación de que el teléfono tenga el formato correcto. (123546789)
+        if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorTelefono.setVisible(true);
+                    textoErrorTelefono.setText("El formato no es el correcto.");         
+        }
+        
+        //Comprobación de que la dirección no este vacio.
+        if(fieldDireccion.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorDireccion.setVisible(true);
+                    textoErrorDireccion.setText("Debe introducir una dirección.");
+        }
+        
+        if(formatoCorrecto){
+            cliente.setNombre(fieldNombre.getText());
+            cliente.setApellidos(fieldApellidos.getText());
+            cliente.setDni(fieldDni.getText());
+            cliente.setDireccion(fieldDireccion.getText());
+            cliente.setNumeroTelefono(fieldTelefono.getText());
+                        crearClienteSql(cliente);
+                                return true;
+        }else{
+            return false;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,13 +135,17 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorApellidos = new javax.swing.JLabel();
         textoErrorNombre = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
+        labelNombre = new javax.swing.JLabel();
+        labelApellidos = new javax.swing.JLabel();
+        labelDni = new javax.swing.JLabel();
+        labelTelefono = new javax.swing.JLabel();
+        labelDireccion = new javax.swing.JLabel();
+        botonFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fieldTelefono.setText("Numero Telefono");
         fieldTelefono.setToolTipText("");
 
-        fieldDireccion.setText("Direccion");
         fieldDireccion.setToolTipText("");
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
@@ -51,13 +154,11 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setText("Debe introducir un teléfono.");
 
-        fieldDni.setText("Dni");
         fieldDni.setToolTipText("");
 
         textoErrorDni.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDni.setText("El formato no es correcto.");
 
-        fieldApellidos.setText("Apellidos");
         fieldApellidos.setToolTipText("");
 
         textoErrorApellidos.setForeground(new java.awt.Color(255, 0, 0));
@@ -66,72 +167,114 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setText("Debe introducir un nombre.");
 
-        fieldNombre.setText("Nombre");
         fieldNombre.setToolTipText("");
+        fieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNombreActionPerformed(evt);
+            }
+        });
+
+        labelNombre.setText("Nombre");
+
+        labelApellidos.setText("Apellidos");
+
+        labelDni.setText("Dni");
+
+        labelTelefono.setText("Teléfono");
+
+        labelDireccion.setText("Dirección");
+
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 888, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(445, 445, 445)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(fieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textoErrorDni)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(textoErrorNombre))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(16, 16, 16)
-                                    .addComponent(fieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(textoErrorApellidos)))
-                            .addGap(249, 249, 249)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(textoErrorTelefono)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(textoErrorDireccion)))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(432, 432, 432)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoErrorApellidos)
+                            .addComponent(fieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoErrorDni)
+                            .addComponent(labelDni)
+                            .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoErrorTelefono)
+                            .addComponent(labelTelefono)
+                            .addComponent(textoErrorDireccion)
+                            .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelDireccion)
+                            .addComponent(fieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelApellidos)
+                                    .addComponent(textoErrorNombre)
+                                    .addComponent(labelNombre)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(451, 451, 451)
+                        .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(530, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(73, 73, 73)
-                    .addComponent(fieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(textoErrorDni)
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(textoErrorNombre)
-                        .addComponent(textoErrorApellidos)
-                        .addComponent(textoErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textoErrorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(75, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(labelNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(textoErrorNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelApellidos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoErrorApellidos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDni)
+                .addGap(8, 8, 8)
+                .addComponent(fieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoErrorDni)
+                .addGap(18, 18, 18)
+                .addComponent(labelTelefono)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoErrorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelDireccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoErrorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNombreActionPerformed
+
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
+         if(registrarCliente()){
+            LoginClientes lgc = new LoginClientes();
+                lgc.setVisible(true);
+                    this.dispose(); 
+        }
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,11 +313,17 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonFinalizar;
     private javax.swing.JTextField fieldApellidos;
     private javax.swing.JTextField fieldDireccion;
     private javax.swing.JTextField fieldDni;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
+    private javax.swing.JLabel labelApellidos;
+    private javax.swing.JLabel labelDireccion;
+    private javax.swing.JLabel labelDni;
+    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel labelTelefono;
     private javax.swing.JLabel textoErrorApellidos;
     private javax.swing.JLabel textoErrorDireccion;
     private javax.swing.JLabel textoErrorDni;

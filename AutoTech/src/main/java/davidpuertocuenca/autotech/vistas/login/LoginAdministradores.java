@@ -8,6 +8,7 @@ import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,11 +38,16 @@ public class LoginAdministradores extends javax.swing.JFrame {
         botonIniciarSesion = new javax.swing.JToggleButton();
         botonCancelar = new javax.swing.JButton();
         textContrasena = new javax.swing.JPasswordField();
+        botonMostrarContrasena = new javax.swing.JToggleButton();
+        labelContrasena = new javax.swing.JLabel();
+        labelUsuario1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, 185, 38));
+
+        textUsuario.setToolTipText("Usuario");
+        getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 220, 70));
 
         botonIniciarSesion.setText("Login");
         botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +55,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 600, -1, -1));
+        getContentPane().add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, -1, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -57,8 +63,24 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 370, -1, -1));
-        getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 190, 30));
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 230, -1, -1));
+
+        textContrasena.setToolTipText("Contraseña");
+        getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 220, 60));
+
+        botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
+        botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarContrasenaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 400, 60, 40));
+
+        labelContrasena.setText("Contraseña");
+        getContentPane().add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
+
+        labelUsuario1.setText("Usuario");
+        getContentPane().add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -88,6 +110,16 @@ public class LoginAdministradores extends javax.swing.JFrame {
             lgc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarContrasenaActionPerformed
+            if (textContrasena.getEchoChar() == '\u0000') {
+                    textContrasena.setEchoChar('•'); 
+                        botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png")));
+             } else {
+                    textContrasena.setEchoChar('\u0000'); 
+                        botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconOcultarContrasena.png")));
+            }
+    }//GEN-LAST:event_botonMostrarContrasenaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +159,9 @@ public class LoginAdministradores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JToggleButton botonIniciarSesion;
+    private javax.swing.JToggleButton botonMostrarContrasena;
+    private javax.swing.JLabel labelContrasena;
+    private javax.swing.JLabel labelUsuario1;
     private javax.swing.JPasswordField textContrasena;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables

@@ -50,11 +50,11 @@ public class LoginClientes extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         logo = new javax.swing.JLabel();
+        botonMostrarContrasena = new javax.swing.JToggleButton();
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
         botonRegistro = new javax.swing.JButton();
         textContrasena = new javax.swing.JPasswordField();
-        botonMostrarContrasena = new javax.swing.JToggleButton();
         labelContrasena = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         labelUsuario1 = new javax.swing.JLabel();
@@ -75,6 +75,22 @@ public class LoginClientes extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(330, 995, 0, 0);
         getContentPane().add(logo, gridBagConstraints);
+
+        botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
+        botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarContrasenaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.ipadx = -7;
+        gridBagConstraints.ipady = -2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 50, 0, 0);
+        getContentPane().add(botonMostrarContrasena, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -110,7 +126,7 @@ public class LoginClientes extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -125,22 +141,6 @@ public class LoginClientes extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
         getContentPane().add(textContrasena, gridBagConstraints);
-
-        botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
-        botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMostrarContrasenaActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 15;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.ipadx = -7;
-        gridBagConstraints.ipady = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 2, 0, 0);
-        getContentPane().add(botonMostrarContrasena, gridBagConstraints);
 
         labelContrasena.setBackground(new java.awt.Color(255, 255, 255));
         labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,7 +179,7 @@ public class LoginClientes extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.gridwidth = 25;
         gridBagConstraints.gridheight = 8;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;

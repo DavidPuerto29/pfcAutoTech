@@ -74,13 +74,6 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
                 textoErrorApellidos.setVisible(true);
                     textoErrorApellidos.setText("Debe introducir los apellidos.");
         }
-
-        //Comprobación de que el teléfono no este vacio.
-        if(fieldTelefono.getText().isEmpty()){
-            formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
-                    textoErrorTelefono.setText("Debe introducir un teléfono.");
-        }
         
         //Comprobación de que el teléfono sean números y no letras.
         try {
@@ -96,6 +89,13 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El formato no es el correcto.");         
+        }
+        
+        //Comprobación de que el teléfono no este vacio.
+        if(fieldTelefono.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorTelefono.setVisible(true);
+                    textoErrorTelefono.setText("Debe introducir un teléfono.");
         }
         
         //Comprobación de que la dirección no este vacio.

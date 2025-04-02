@@ -50,9 +50,13 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
         botonCitas = new javax.swing.JButton();
+        labelVehiculos = new javax.swing.JLabel();
+        CabeceraVehiculos = new javax.swing.JLabel();
+        fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Cliente");
+        getContentPane().setLayout(null);
 
         botonLogout.setText("salir");
         botonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +64,8 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
                 botonLogoutActionPerformed(evt);
             }
         });
+        getContentPane().add(botonLogout);
+        botonLogout.setBounds(550, 640, 120, 60);
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,42 +88,31 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaVehiculos);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 130, 1870, 460);
+
         botonCitas.setText("Ver citas");
         botonCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCitasActionPerformed(evt);
             }
         });
+        getContentPane().add(botonCitas);
+        botonCitas.setBounds(1070, 630, 340, 80);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(335, 335, 335)
-                        .addComponent(botonLogout))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 907, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(botonCitas)
-                .addGap(377, 377, 377))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(botonCitas)
-                .addGap(3, 3, 3)
-                .addComponent(botonLogout)
-                .addGap(38, 38, 38))
-        );
+        labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        labelVehiculos.setText("Mis Vehiculos");
+        getContentPane().add(labelVehiculos);
+        labelVehiculos.setBounds(30, 20, 510, 80);
+
+        CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
+        getContentPane().add(CabeceraVehiculos);
+        CabeceraVehiculos.setBounds(20, 30, 1910, 66);
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 2000, 1231);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,9 +218,12 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CabeceraVehiculos;
     private javax.swing.JButton botonCitas;
     private javax.swing.JToggleButton botonLogout;
+    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelVehiculos;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
 }

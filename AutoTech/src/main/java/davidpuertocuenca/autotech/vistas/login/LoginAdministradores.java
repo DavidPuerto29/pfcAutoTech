@@ -43,24 +43,25 @@ public class LoginAdministradores extends javax.swing.JFrame {
         labelContrasena = new javax.swing.JLabel();
         labelUsuario1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
+        labelIniciarSesion = new javax.swing.JLabel();
+        fondoCabecera = new javax.swing.JLabel();
+        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         textUsuario.setToolTipText("Usuario");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.ipadx = 154;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(14, 890, 0, 0);
         getContentPane().add(textUsuario, gridBagConstraints);
 
         botonIniciarSesion.setText("Login");
@@ -71,7 +72,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
@@ -85,7 +86,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(17, 0, 0, 0);
@@ -94,13 +95,13 @@ public class LoginAdministradores extends javax.swing.JFrame {
         textContrasena.setToolTipText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 154;
         gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 890, 0, 0);
         getContentPane().add(textContrasena, gridBagConstraints);
 
         botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
@@ -110,8 +111,8 @@ public class LoginAdministradores extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.ipadx = -5;
         gridBagConstraints.ipady = -4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -122,37 +123,73 @@ public class LoginAdministradores extends javax.swing.JFrame {
         labelContrasena.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(8, 890, 0, 0);
         getContentPane().add(labelContrasena, gridBagConstraints);
 
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Usuario");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 890, 0, 0);
         getContentPane().add(labelUsuario1, gridBagConstraints);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/logo_prov.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(330, 0, 0, 0);
+        getContentPane().add(logo, gridBagConstraints);
+
+        labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        labelIniciarSesion.setText("Iniciar Sesión");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.ipadx = 10;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 910, 0, 0);
+        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+
+        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipady = -175;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 870, 0, 0);
+        getContentPane().add(fondoCabecera, gridBagConstraints);
+
+        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 11;
+        gridBagConstraints.ipadx = -2614;
+        gridBagConstraints.ipady = -3542;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(330, 995, 0, 0);
-        getContentPane().add(logo, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(300, 800, 0, 0);
+        getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 9;
-        gridBagConstraints.ipadx = 220;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridheight = 12;
+        gridBagConstraints.ipadx = 155;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 
@@ -234,8 +271,11 @@ public class LoginAdministradores extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JToggleButton botonMostrarContrasena;
+    private javax.swing.JLabel fondoCabecera;
+    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelContrasena;
+    private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelUsuario1;
     private javax.swing.JLabel logo;
     private javax.swing.JPasswordField textContrasena;

@@ -174,6 +174,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         getContentPane().add(fieldDireccion, gridBagConstraints);
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -184,6 +185,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         getContentPane().add(textoErrorDireccion, gridBagConstraints);
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -205,6 +207,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         getContentPane().add(fieldDni, gridBagConstraints);
 
         textoErrorDni.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorDni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDni.setText("El formato no es correcto.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -226,6 +229,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         getContentPane().add(fieldApellidos, gridBagConstraints);
 
         textoErrorApellidos.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorApellidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorApellidos.setText("Debe introducir un apellido.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -236,6 +240,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         getContentPane().add(textoErrorApellidos, gridBagConstraints);
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

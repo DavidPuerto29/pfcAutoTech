@@ -145,6 +145,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         getContentPane().add(fieldUsuario, gridBagConstraints);
 
         textoErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorUsuario.setText("Usuario ya en uso.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -173,6 +174,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         getContentPane().add(fieldContrasenaVerificar, gridBagConstraints);
 
         textoErrorContrasena.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorContrasena.setText("Las contraseñas no coinciden.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -194,6 +196,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         getContentPane().add(fieldCorreo, gridBagConstraints);
 
         textoErrorCorreoElectronico.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorCorreoElectronico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -234,6 +237,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         getContentPane().add(labelCorreoElectronico, gridBagConstraints);
 
         textoErrorContrasena1.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorContrasena1.setText("Las contraseñas no coinciden.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -288,6 +292,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         getContentPane().add(checkTerminosYCondiciones, gridBagConstraints);
 
         textoErrorTerminos.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorTerminos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTerminos.setText("Debe aceptar los términos.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

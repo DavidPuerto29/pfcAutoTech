@@ -8,6 +8,7 @@ import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContras
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
+import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
 
@@ -244,7 +245,9 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        // TODO add your handling code here:
+        LoginClientes lgc = new LoginClientes();
+            lgc.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed

@@ -37,6 +37,8 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorApellidos.setVisible(false);
         textoErrorTelefono.setVisible(false);
         textoErrorDireccion.setVisible(false);
+        this.revalidate(); 
+        this.repaint(); 
     }
      
     private boolean registrarCliente(){
@@ -142,6 +144,9 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         labelTelefono = new javax.swing.JLabel();
         labelDireccion = new javax.swing.JLabel();
         botonFinalizar = new javax.swing.JButton();
+        labelIniciarSesion = new javax.swing.JLabel();
+        fondoCabecera = new javax.swing.JLabel();
+        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -154,23 +159,23 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         fieldTelefono.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(fieldTelefono, gridBagConstraints);
 
         fieldDireccion.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(fieldDireccion, gridBagConstraints);
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
@@ -178,10 +183,10 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorDireccion.setText("Debe introducir una dirección.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorDireccion, gridBagConstraints);
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
@@ -189,21 +194,21 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorTelefono, gridBagConstraints);
 
         fieldDni.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(fieldDni, gridBagConstraints);
 
         textoErrorDni.setForeground(new java.awt.Color(255, 0, 0));
@@ -211,21 +216,21 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorDni.setText("El formato no es correcto.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorDni, gridBagConstraints);
 
         fieldApellidos.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(fieldApellidos, gridBagConstraints);
 
         textoErrorApellidos.setForeground(new java.awt.Color(255, 0, 0));
@@ -233,10 +238,10 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorApellidos.setText("Debe introducir un apellido.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorApellidos, gridBagConstraints);
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
@@ -244,10 +249,10 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         textoErrorNombre.setText("Debe introducir un nombre.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorNombre, gridBagConstraints);
 
         fieldNombre.setToolTipText("");
@@ -258,61 +263,61 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(fieldNombre, gridBagConstraints);
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(260, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(labelNombre, gridBagConstraints);
 
         labelApellidos.setForeground(new java.awt.Color(255, 255, 255));
         labelApellidos.setText("Apellidos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(14, 920, 0, 0);
         getContentPane().add(labelApellidos, gridBagConstraints);
 
         labelDni.setForeground(new java.awt.Color(255, 255, 255));
         labelDni.setText("Dni");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
         getContentPane().add(labelDni, gridBagConstraints);
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(24, 920, 0, 0);
         getContentPane().add(labelTelefono, gridBagConstraints);
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(24, 920, 0, 0);
         getContentPane().add(labelDireccion, gridBagConstraints);
 
         botonFinalizar.setText("Finalizar");
@@ -322,21 +327,58 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.ipady = 26;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(14, 22, 0, 0);
         getContentPane().add(botonFinalizar, gridBagConstraints);
+
+        labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        labelIniciarSesion.setText("[○●] Paso 2: Crear cuenta(Con mas estilo)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(190, 840, 0, 0);
+        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+
+        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -1276;
+        gridBagConstraints.ipady = -82;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(190, 830, 0, 0);
+        getContentPane().add(fondoCabecera, gridBagConstraints);
+
+        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridheight = 19;
+        gridBagConstraints.ipadx = -2484;
+        gridBagConstraints.ipady = -3232;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
+        getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.gridheight = 17;
+        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridheight = 20;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
@@ -399,10 +441,13 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
     private javax.swing.JTextField fieldDni;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
+    private javax.swing.JLabel fondoCabecera;
+    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelApellidos;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelDni;
+    private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
     private javax.swing.JLabel textoErrorApellidos;

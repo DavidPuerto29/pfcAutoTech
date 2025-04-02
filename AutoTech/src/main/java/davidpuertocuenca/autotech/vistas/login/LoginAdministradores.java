@@ -160,13 +160,14 @@ public class LoginAdministradores extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 910, 0, 0);
         getContentPane().add(labelIniciarSesion, gridBagConstraints);
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.jpg"))); // NOI18N
+        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = -175;
+        gridBagConstraints.ipadx = -1521;
+        gridBagConstraints.ipady = -82;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 870, 0, 0);
         getContentPane().add(fondoCabecera, gridBagConstraints);

@@ -8,8 +8,9 @@ import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,18 @@ public class LoginClientes extends javax.swing.JFrame {
      */
     public LoginClientes() {
         initComponents();
-        setExtendedState(this.MAXIMIZED_BOTH);
+        setExtendedState(LoginClientes.MAXIMIZED_BOTH);
+                
+        textUsuario.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_T) {
+                LoginAdministradores loginAdministrador = new LoginAdministradores();
+                    loginAdministrador.setVisible(true);
+                        dispose();
+            }
+        }
+        });
     }
 
     /**
@@ -35,18 +47,42 @@ public class LoginClientes extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        logo = new javax.swing.JLabel();
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
-        inicioSesionAdministrador = new javax.swing.JToggleButton();
         botonRegistrar = new javax.swing.JButton();
         textContrasena = new javax.swing.JPasswordField();
         botonMostrarContrasena = new javax.swing.JToggleButton();
         labelContrasena = new javax.swing.JLabel();
         labelUsuario1 = new javax.swing.JLabel();
+        fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(700, 500));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/logo_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(330, 0, 0, 0);
+        getContentPane().add(logo, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 154;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 940, 0, 0);
+        getContentPane().add(textUsuario, gridBagConstraints);
 
         botonIniciarSesion.setText("Login");
         botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -54,13 +90,12 @@ public class LoginClientes extends javax.swing.JFrame {
                 botonIniciarSesionActionPerformed(evt);
             }
         });
-
-        inicioSesionAdministrador.setText("admin");
-        inicioSesionAdministrador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inicioSesionAdministradorActionPerformed(evt);
-            }
-        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 0, 0, 0);
+        getContentPane().add(botonIniciarSesion, gridBagConstraints);
 
         botonRegistrar.setText("Registro");
         botonRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +103,25 @@ public class LoginClientes extends javax.swing.JFrame {
                 botonRegistrarActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 10, 0, 0);
+        getContentPane().add(botonRegistrar, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 154;
+        gridBagConstraints.ipady = 21;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 940, 0, 0);
+        getContentPane().add(textContrasena, gridBagConstraints);
 
         botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
         botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -75,65 +129,44 @@ public class LoginClientes extends javax.swing.JFrame {
                 botonMostrarContrasenaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipady = -4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 2, 0, 0);
+        getContentPane().add(botonMostrarContrasena, gridBagConstraints);
 
+        labelContrasena.setBackground(new java.awt.Color(255, 255, 255));
+        labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena.setText("Contraseña");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 940, 0, 0);
+        getContentPane().add(labelContrasena, gridBagConstraints);
 
+        labelUsuario1.setBackground(new java.awt.Color(255, 255, 255));
+        labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Usuario");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 940, 0, 0);
+        getContentPane().add(labelUsuario1, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(botonIniciarSesion))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelContrasena)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(textContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelUsuario1, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(inicioSesionAdministrador))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(botonMostrarContrasena))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(356, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(botonMostrarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(labelUsuario1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inicioSesionAdministrador)
-                            .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelContrasena)
-                        .addGap(5, 5, 5)
-                        .addComponent(textContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(botonIniciarSesion)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(237, Short.MAX_VALUE))
-        );
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.ipadx = 220;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(fondoPantalla, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,12 +187,6 @@ public class LoginClientes extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
-
-    private void inicioSesionAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionAdministradorActionPerformed
-        LoginAdministradores loginAdministrador = new LoginAdministradores();
-            loginAdministrador.setVisible(true);
-                this.dispose();
-    }//GEN-LAST:event_inicioSesionAdministradorActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         RegistroClientesView1 rg = new RegistroClientesView1();
@@ -217,9 +244,10 @@ public class LoginClientes extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JToggleButton botonMostrarContrasena;
     private javax.swing.JButton botonRegistrar;
-    private javax.swing.JToggleButton inicioSesionAdministrador;
+    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelContrasena;
     private javax.swing.JLabel labelUsuario1;
+    private javax.swing.JLabel logo;
     private javax.swing.JPasswordField textContrasena;
     private javax.swing.JTextField textUsuario;
     // End of variables declaration//GEN-END:variables

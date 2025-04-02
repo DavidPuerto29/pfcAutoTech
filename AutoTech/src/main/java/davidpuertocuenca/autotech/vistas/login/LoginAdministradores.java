@@ -41,13 +41,15 @@ public class LoginAdministradores extends javax.swing.JFrame {
         botonMostrarContrasena = new javax.swing.JToggleButton();
         labelContrasena = new javax.swing.JLabel();
         labelUsuario1 = new javax.swing.JLabel();
+        fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         textUsuario.setToolTipText("Usuario");
-        getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 220, 70));
+        getContentPane().add(textUsuario);
+        textUsuario.setBounds(640, 280, 220, 70);
 
         botonIniciarSesion.setText("Login");
         botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +57,8 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 480, -1, -1));
+        getContentPane().add(botonIniciarSesion);
+        botonIniciarSesion.setBounds(740, 480, 60, 23);
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,10 +66,12 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 230, -1, -1));
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(990, 230, 76, 23);
 
         textContrasena.setToolTipText("Contraseña");
-        getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 220, 60));
+        getContentPane().add(textContrasena);
+        textContrasena.setBounds(640, 390, 220, 60);
 
         botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
         botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -74,13 +79,22 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonMostrarContrasenaActionPerformed(evt);
             }
         });
-        getContentPane().add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 400, 60, 40));
+        getContentPane().add(botonMostrarContrasena);
+        botonMostrarContrasena.setBounds(870, 400, 60, 40);
 
+        labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena.setText("Contraseña");
-        getContentPane().add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, -1, -1));
+        getContentPane().add(labelContrasena);
+        labelContrasena.setBounds(640, 370, 60, 16);
 
+        labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Usuario");
-        getContentPane().add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
+        getContentPane().add(labelUsuario1);
+        labelUsuario1.setBounds(640, 260, 40, 16);
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 2140, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +174,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JToggleButton botonMostrarContrasena;
+    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelContrasena;
     private javax.swing.JLabel labelUsuario1;
     private javax.swing.JPasswordField textContrasena;

@@ -109,7 +109,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(840, 660, 72, 23);
+        jButton1.setBounds(780, 640, 100, 40);
 
         labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));

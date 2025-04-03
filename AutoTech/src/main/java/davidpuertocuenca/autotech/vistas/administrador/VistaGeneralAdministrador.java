@@ -124,9 +124,14 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         botonQuitarAdministrador = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonVehiculos = new javax.swing.JButton();
+        fondoPantalla = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Administrador");
+        getContentPane().setLayout(null);
 
         botonLogout.setText("salir");
         botonLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +139,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 botonLogoutActionPerformed(evt);
             }
         });
+        getContentPane().add(botonLogout);
+        botonLogout.setBounds(440, 740, 51, 23);
 
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -157,12 +164,17 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         tablaClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tablaClientes);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 130, 1020, 581);
+
         botonRefrescar.setText("Refrescar");
         botonRefrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRefrescarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonRefrescar);
+        botonRefrescar.setBounds(170, 740, 78, 23);
 
         botonHacerAdministrador.setText("Hacer administrador");
         botonHacerAdministrador.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +182,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 botonHacerAdministradorActionPerformed(evt);
             }
         });
+        getContentPane().add(botonHacerAdministrador);
+        botonHacerAdministrador.setBounds(670, 740, 138, 23);
 
         botonQuitarAdministrador.setText("Quitar administrador");
         botonQuitarAdministrador.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +191,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 botonQuitarAdministradorActionPerformed(evt);
             }
         });
+        getContentPane().add(botonQuitarAdministrador);
+        botonQuitarAdministrador.setBounds(670, 790, 140, 23);
 
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +200,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 botonEliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(botonEliminar);
+        botonEliminar.setBounds(570, 740, 73, 23);
 
         botonVehiculos.setText("Vehiculos");
         botonVehiculos.setToolTipText("");
@@ -192,44 +210,32 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 botonVehiculosActionPerformed(evt);
             }
         });
+        getContentPane().add(botonVehiculos);
+        botonVehiculos.setBounds(260, 740, 81, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(botonRefrescar)
-                .addGap(18, 18, 18)
-                .addComponent(botonVehiculos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(botonLogout)
-                .addGap(77, 77, 77)
-                .addComponent(botonEliminar)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonQuitarAdministrador)
-                    .addComponent(botonHacerAdministrador))
-                .addGap(220, 220, 220))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonLogout)
-                    .addComponent(botonRefrescar)
-                    .addComponent(botonHacerAdministrador)
-                    .addComponent(botonEliminar)
-                    .addComponent(botonVehiculos))
-                .addGap(18, 18, 18)
-                .addComponent(botonQuitarAdministrador)
-                .addGap(23, 23, 23))
-        );
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 2000, 1231);
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(90, 32768));
+        jMenuBar1.setName(""); // NOI18N
+        jMenuBar1.setOpaque(true);
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(40, 40));
+
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setText("File");
+        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu1.setMinimumSize(new java.awt.Dimension(50, 22));
+        jMenu1.setPreferredSize(new java.awt.Dimension(60, 22));
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -366,6 +372,10 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton botonQuitarAdministrador;
     private javax.swing.JButton botonRefrescar;
     private javax.swing.JButton botonVehiculos;
+    private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables

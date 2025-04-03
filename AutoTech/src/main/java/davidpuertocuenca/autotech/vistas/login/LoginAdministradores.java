@@ -8,6 +8,8 @@ import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -23,8 +25,42 @@ public class LoginAdministradores extends javax.swing.JFrame {
     public LoginAdministradores() {
         initComponents();
         setExtendedState(LoginAdministradores.MAXIMIZED_BOTH);
+        
+        //Método para acceder al programa pulsando enter.
+        textContrasena.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               iniciarSesion(); 
+            }
+        });
+        //Método para acceder al programa pulsando enter.
+        textUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               iniciarSesion(); 
+            }
+        });
     }
 
+    private void iniciarSesion(){
+        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
+        char[] contasenaChar = textContrasena.getPassword();
+        
+        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
+            //Se limpia el array para aumentar la seguridad.
+            java.util.Arrays.fill(contasenaChar, '\0');
+           if(cliente.isAdministrador()){
+            VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+               vga.setVisible(true);
+                this.dispose();
+                 
+           }else{
+               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+           }
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de búsqueda", JOptionPane.ERROR_MESSAGE);
+        } 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,23 +234,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
-        char[] contasenaChar = textContrasena.getPassword();
-        
-        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
-            //Se limpia el array para aumentar la seguridad.
-            java.util.Arrays.fill(contasenaChar, '\0');
-           if(cliente.isAdministrador()){
-            VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
-               vga.setVisible(true);
-                this.dispose();
-                 
-           }else{
-               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-           }
-        }else{
-            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de búsqueda", JOptionPane.ERROR_MESSAGE);
-        } 
+        iniciarSesion();
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

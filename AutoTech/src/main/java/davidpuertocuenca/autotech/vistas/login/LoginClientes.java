@@ -9,6 +9,8 @@ import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacio
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
@@ -26,7 +28,8 @@ public class LoginClientes extends javax.swing.JFrame {
     public LoginClientes() {
         initComponents();
         setExtendedState(LoginClientes.MAXIMIZED_BOTH);
-                
+        
+        //Método de acceso al paner de adminsitradores con Cntrl + T
         textUsuario.addKeyListener(new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -37,8 +40,39 @@ public class LoginClientes extends javax.swing.JFrame {
             }
         }
         });
+        
+        //Método para acceder al programa pulsando enter.
+        textContrasena.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               iniciarSesion(); 
+            }
+        });
+        //Método para acceder al programa pulsando enter.
+        textUsuario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               iniciarSesion(); 
+            }
+        });
     }
 
+    private void iniciarSesion(){
+        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
+        char[] contasenaChar = textContrasena.getPassword();
+        
+        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
+            //Se limpia el array para aumentar la seguridad.
+            java.util.Arrays.fill(contasenaChar, '\0');
+                VistaGeneralCliente g = new VistaGeneralCliente(cliente);
+                    g.setVisible(true);
+                        this.dispose();
+        }else{
+            //Se limpia el array para aumentar la seguridad.
+            java.util.Arrays.fill(contasenaChar, '\0');
+                JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -229,20 +263,7 @@ public class LoginClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
-        char[] contasenaChar = textContrasena.getPassword();
-        
-        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
-            //Se limpia el array para aumentar la seguridad.
-            java.util.Arrays.fill(contasenaChar, '\0');
-                VistaGeneralCliente g = new VistaGeneralCliente(cliente);
-                    g.setVisible(true);
-                        this.dispose();
-        }else{
-            //Se limpia el array para aumentar la seguridad.
-            java.util.Arrays.fill(contasenaChar, '\0');
-                JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-        }
+        iniciarSesion();
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed

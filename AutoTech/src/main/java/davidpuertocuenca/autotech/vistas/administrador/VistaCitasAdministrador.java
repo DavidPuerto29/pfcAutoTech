@@ -221,7 +221,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuBar1.add(jMenuClientes);
 
         jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuVehiculos.setText("Vehiculos");
+        jMenuVehiculos.setText("Vehículos");
         jMenuVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuVehiculos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

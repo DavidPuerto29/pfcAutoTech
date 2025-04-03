@@ -314,10 +314,10 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenuBar1.add(jMenuClientes);
 
         jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuVehiculos.setText("Vehículos");
         jMenuVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuVehiculos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenuVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenuVehiculos.setLabel("Vehiculos");
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));

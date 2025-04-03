@@ -163,7 +163,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
         labelGestionarVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarVehiculos.setForeground(new java.awt.Color(255, 255, 255));
-        labelGestionarVehiculos.setText("Gestión De Vehiculos");
+        labelGestionarVehiculos.setText("Gestión De Vehículos");
         labelGestionarVehiculos.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -203,7 +203,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(50, 50));
 
         jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuVehiculos.setText("Vehiculos");
+        jMenuVehiculos.setText("Vehículos");
         jMenuVehiculos.setToolTipText("");
         jMenuVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jMenuVehiculos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -257,7 +257,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemCitas.setText("Menu De Citas");
         JMenuItemCitas.setToolTipText("");
         JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {

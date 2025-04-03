@@ -36,7 +36,7 @@ public class Citas {
     public Citas(Date fecha, Vehiculos vehiculo, Talleres taller) {
         this.fecha = fecha;
         this.vehiculo = vehiculo;
-       // this.taller = taller;
+        this.taller = taller;
     }
 
 }

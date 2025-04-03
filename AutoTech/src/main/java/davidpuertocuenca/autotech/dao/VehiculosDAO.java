@@ -16,6 +16,15 @@ import org.hibernate.query.Query;
  * @author David Puerto Cuenca
  */
 public class VehiculosDAO {
+    
+    public static void crearVehiculoSql(Vehiculos vehiculo) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.getTransaction().begin();
+                session.persist(vehiculo);
+                    session.getTransaction().commit();
+        }
+    }
+    
     public static List<Vehiculos> obtenerTodosVehiculosClienteSql(Cliente cliente){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Vehiculos> q = session.createNamedQuery("get_todos_vehiculos_usuario", Vehiculos.class);
@@ -50,6 +59,14 @@ public class VehiculosDAO {
                     return (Vehiculos) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
+        }
+    }
+    
+    public static void actualizarVehiculoSql(Vehiculos vehiculo){
+        try(Session session = HibernateUtil.getSessionFactory().openSession();){
+            session.getTransaction().begin();
+                session.merge(vehiculo);
+                    session.getTransaction().commit();
         }
     }
 }

@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import davidpuertocuenca.autotech.vistas.Vehiculos.ModificarVehiculo;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,6 +88,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         tablaVehiculos = new javax.swing.JTable();
         botonSalir = new javax.swing.JButton();
         botonEliminar1 = new javax.swing.JButton();
+        modificarVehiculo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehículos Administrador");
@@ -127,6 +129,13 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             }
         });
 
+        modificarVehiculo.setText("Modificar");
+        modificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarVehiculoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,8 +147,13 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonEliminar1)
-                .addGap(325, 325, 325))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonEliminar1)
+                        .addGap(325, 325, 325))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(modificarVehiculo)
+                        .addGap(271, 271, 271))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +163,9 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 .addComponent(botonEliminar1)
                 .addGap(3, 3, 3)
                 .addComponent(botonSalir)
-                .addGap(120, 120, 120))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(modificarVehiculo)
+                .addGap(85, 85, 85))
         );
 
         pack();
@@ -179,6 +195,13 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             vga.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void modificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarVehiculoActionPerformed
+        // TODO add your handling code here:
+        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+            mv.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_modificarVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,6 +242,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton botonEliminar1;
     private javax.swing.JButton botonSalir;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificarVehiculo;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
 }

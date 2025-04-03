@@ -82,7 +82,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El teléfono no puede contener letras.");
-          } 
+        } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
         if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){

@@ -39,7 +39,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
     }
     
     private boolean registrarCliente(){
-                reiniciarEtiquetas();
+        reiniciarEtiquetas();
         boolean formatoCorrecto = true;
         
         //Comprobación de que el usuario no esta ya en uso.

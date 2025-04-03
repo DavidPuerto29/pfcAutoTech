@@ -5,7 +5,6 @@
 package davidpuertocuenca.autotech.dao;
 
 import davidpuertocuenca.autotech.clases.Citas;
-import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import jakarta.persistence.NoResultException;
 import java.util.List;

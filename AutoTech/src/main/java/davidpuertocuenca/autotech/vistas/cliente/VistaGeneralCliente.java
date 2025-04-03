@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import davidpuertocuenca.autotech.vistas.Vehiculos.AnadirVehiculo;
 import javax.swing.JOptionPane;
 
 /**
@@ -50,6 +51,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
         botonCitas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         labelVehiculos = new javax.swing.JLabel();
         CabeceraVehiculos = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
@@ -99,6 +101,15 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
         });
         getContentPane().add(botonCitas);
         botonCitas.setBounds(1070, 630, 340, 80);
+
+        jButton1.setText("Vehicu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(840, 660, 72, 23);
 
         labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,6 +190,12 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_botonCitasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AnadirVehiculo av = new AnadirVehiculo(cliente);
+            av.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +239,7 @@ public class VistaGeneralCliente extends javax.swing.JFrame {
     private javax.swing.JButton botonCitas;
     private javax.swing.JToggleButton botonLogout;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelVehiculos;
     private javax.swing.JTable tablaVehiculos;

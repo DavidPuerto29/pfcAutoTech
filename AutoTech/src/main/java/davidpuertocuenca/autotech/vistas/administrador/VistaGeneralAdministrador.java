@@ -12,6 +12,7 @@ import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -30,6 +31,11 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         initComponents();
         setExtendedState(VistaGeneralAdministrador.MAXIMIZED_BOTH);
             crearTabla();
+            
+        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
+        jMenuBar1.remove(jMenu5);
+        jMenuBar1.add(Box.createHorizontalGlue());
+        jMenuBar1.add(jMenu5);
     }
 
     //Tambien usado para actualizar la tabla
@@ -124,10 +130,16 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         botonQuitarAdministrador = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
         botonVehiculos = new javax.swing.JButton();
+        labelGestionarClientes = new javax.swing.JLabel();
+        CabeceraClientes = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Administrador");
@@ -165,7 +177,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaClientes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 130, 1020, 581);
+        jScrollPane1.setBounds(20, 120, 1880, 581);
 
         botonRefrescar.setText("Refrescar");
         botonRefrescar.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +225,16 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         getContentPane().add(botonVehiculos);
         botonVehiculos.setBounds(260, 740, 81, 23);
 
+        labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
+        labelGestionarClientes.setText("Gestión De Clientes");
+        getContentPane().add(labelGestionarClientes);
+        labelGestionarClientes.setBounds(30, 20, 510, 80);
+
+        CabeceraClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
+        getContentPane().add(CabeceraClientes);
+        CabeceraClientes.setBounds(20, 30, 1910, 66);
+
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla);
         fondoPantalla.setBounds(0, 0, 2000, 1231);
@@ -225,15 +247,37 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenuBar1.setPreferredSize(new java.awt.Dimension(40, 40));
 
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu1.setText("File");
+        jMenu1.setToolTipText("");
         jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu1.setLabel("Clientes");
         jMenu1.setMinimumSize(new java.awt.Dimension(50, 22));
-        jMenu1.setPreferredSize(new java.awt.Dimension(60, 22));
+        jMenu1.setPreferredSize(new java.awt.Dimension(100, 22));
+
+        menuClientes.setLabel("Clientes");
+        jMenu1.add(menuClientes);
+        menuClientes.getAccessibleContext().setAccessibleName("Clientes");
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
-        jMenu2.setText("Edit");
+        jMenu2.setLabel("Vehiculos");
+        jMenu2.setPreferredSize(new java.awt.Dimension(100, 22));
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setText("Citas");
+        jMenu3.setPreferredSize(new java.awt.Dimension(100, 22));
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu4.setText("Talleres");
+        jMenu4.setPreferredSize(new java.awt.Dimension(100, 22));
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu5.setText("Cerrar Sesión");
+        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -366,6 +410,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CabeceraClientes;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonHacerAdministrador;
     private javax.swing.JToggleButton botonLogout;
@@ -375,8 +420,13 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelGestionarClientes;
+    private javax.swing.JMenu menuClientes;
     private javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 }

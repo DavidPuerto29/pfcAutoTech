@@ -17,6 +17,8 @@ import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -82,6 +84,13 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(600);
             columnaCitas.setPreferredWidth(300);
+            
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            //Usado para centrar el texto de las celdas.
+            for (int i = 0; i < tablaVehiculos.getColumnCount(); i++) {
+                tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
     }
     
     /**
@@ -101,11 +110,12 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVehiculos = new javax.swing.JMenu();
-        JMenuItemModificarClientes = new javax.swing.JMenuItem();
-        JMenuItemEliminarCliente = new javax.swing.JMenuItem();
+        JMenuItemModificarVehiculo = new javax.swing.JMenuItem();
+        JMenuItemEliminarVehiculo = new javax.swing.JMenuItem();
         jMenuClientes = new javax.swing.JMenu();
         JMenuItemClientes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        JMenuItemCitas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
@@ -201,23 +211,23 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemModificarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemModificarClientes.setText("Modificar");
-        JMenuItemModificarClientes.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItemModificarVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemModificarVehiculo.setText("Modificar");
+        JMenuItemModificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMenuItemModificarClientesActionPerformed(evt);
+                JMenuItemModificarVehiculoActionPerformed(evt);
             }
         });
-        jMenuVehiculos.add(JMenuItemModificarClientes);
+        jMenuVehiculos.add(JMenuItemModificarVehiculo);
 
-        JMenuItemEliminarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemEliminarCliente.setText("Eliminar");
-        JMenuItemEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItemEliminarVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemEliminarVehiculo.setText("Eliminar");
+        JMenuItemEliminarVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMenuItemEliminarClienteActionPerformed(evt);
+                JMenuItemEliminarVehiculoActionPerformed(evt);
             }
         });
-        jMenuVehiculos.add(JMenuItemEliminarCliente);
+        jMenuVehiculos.add(JMenuItemEliminarVehiculo);
 
         jMenuBar1.add(jMenuVehiculos);
 
@@ -246,6 +256,17 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setText("Menu De Citas");
+        JMenuItemCitas.setToolTipText("");
+        JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemCitasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(JMenuItemCitas);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,13 +300,13 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
+    private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
         ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
             mv.setVisible(true);
                 this.dispose();
-    }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
+    }//GEN-LAST:event_JMenuItemModificarVehiculoActionPerformed
 
-    private void JMenuItemEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarClienteActionPerformed
+    private void JMenuItemEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarVehiculoActionPerformed
        try{
             Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
             if(vehiculo == null){
@@ -301,7 +322,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
          }
         //Siempre al finalizar actualiza la tabla.
         crearTabla();
-    }//GEN-LAST:event_JMenuItemEliminarClienteActionPerformed
+    }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
         VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
@@ -316,6 +337,12 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
+
+    private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
+        VistaCitasAdministrador vca = new VistaCitasAdministrador();
+            vca.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,9 +381,10 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CabeceraVehiculos;
+    private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemClientes;
-    private javax.swing.JMenuItem JMenuItemEliminarCliente;
-    private javax.swing.JMenuItem JMenuItemModificarClientes;
+    private javax.swing.JMenuItem JMenuItemEliminarVehiculo;
+    private javax.swing.JMenuItem JMenuItemModificarVehiculo;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;

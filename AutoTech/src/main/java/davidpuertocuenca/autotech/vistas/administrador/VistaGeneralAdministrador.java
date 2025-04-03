@@ -157,6 +157,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenuVehiculos = new javax.swing.JMenu();
         JMenuItemVehiculos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        JMenuItemCitas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
@@ -337,6 +338,17 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setText("Menu De Citas");
+        JMenuItemCitas.setToolTipText("");
+        JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemCitasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(JMenuItemCitas);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setForeground(new java.awt.Color(255, 255, 255));
@@ -468,6 +480,12 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
+    private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
+        VistaCitasAdministrador vca = new VistaCitasAdministrador();
+            vca.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_JMenuItemCitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -507,6 +525,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel CabeceraClientes;
     private javax.swing.JMenu JMenuGestionClientes;
     private javax.swing.JMenuItem JMenuItemAdministrador;
+    private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemEliminarCliente;
     private javax.swing.JMenuItem JMenuItemModificarClientes;
     private javax.swing.JMenuItem JMenuItemVehiculos;

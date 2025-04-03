@@ -25,4 +25,13 @@ public class CitasDAO {
             return null;
         }
     }
+    
+    public static List<Citas> obtenerTodasCitasSql(){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Citas> q = session.createNamedQuery("get_todas_citas", Citas.class);
+                return q.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 }

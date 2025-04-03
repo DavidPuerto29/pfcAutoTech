@@ -92,6 +92,9 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehículos Administrador");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        getContentPane().setLayout(null);
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,12 +118,17 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         tablaVehiculos.setToolTipText("");
         jScrollPane1.setViewportView(tablaVehiculos);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 842, 287);
+
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(botonSalir);
+        botonSalir.setBounds(276, 349, 72, 23);
 
         botonEliminar1.setText("Eliminar");
         botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +136,8 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 botonEliminar1ActionPerformed(evt);
             }
         });
+        getContentPane().add(botonEliminar1);
+        botonEliminar1.setBounds(444, 323, 73, 23);
 
         modificarVehiculo.setText("Modificar");
         modificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -135,38 +145,8 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 modificarVehiculoActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(botonSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(botonEliminar1)
-                        .addGap(325, 325, 325))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(modificarVehiculo)
-                        .addGap(271, 271, 271))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(botonEliminar1)
-                .addGap(3, 3, 3)
-                .addComponent(botonSalir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(modificarVehiculo)
-                .addGap(85, 85, 85))
-        );
+        getContentPane().add(modificarVehiculo);
+        modificarVehiculo.setBounds(490, 384, 81, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

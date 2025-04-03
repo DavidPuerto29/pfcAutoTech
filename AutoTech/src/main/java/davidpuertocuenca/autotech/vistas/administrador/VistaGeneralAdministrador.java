@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -53,6 +56,9 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             }
         };
         tablaClientes.setModel(miModelo);
+        tablaClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaClientes.getTableHeader().setReorderingAllowed(false);
+
 
             List<Cliente> clientes = new ArrayList(obtenerTodosClientesSql());
           
@@ -74,46 +80,54 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
             }
          
             //Dimensiones de la tabla.
-            tablaClientes.setRowHeight(20);
+            tablaClientes.setRowHeight(40);
             TableColumn columnaFecha = tablaClientes.getColumn("Usuario");
             columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(400);
-            columnaFecha.setPreferredWidth(150); 
+            columnaFecha.setMaxWidth(600);
+            columnaFecha.setPreferredWidth(300); 
             
             TableColumn columnaCliente = tablaClientes.getColumn("Dni");
             columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(400);
-            columnaCliente.setPreferredWidth(200); 
+            columnaCliente.setMaxWidth(600);
+            columnaCliente.setPreferredWidth(300); 
             
             TableColumn columnaEnvios = tablaClientes.getColumn("Nombre");
             columnaEnvios.setMinWidth(100);
-            columnaEnvios.setMaxWidth(400);
-            columnaEnvios.setPreferredWidth(200); 
+            columnaEnvios.setMaxWidth(600);
+            columnaEnvios.setPreferredWidth(300); 
             
             TableColumn columnaCiudad = tablaClientes.getColumn("Apellidos");
             columnaCiudad.setMinWidth(100);
-            columnaCiudad.setMaxWidth(400);
-            columnaCiudad.setPreferredWidth(200); 
+            columnaCiudad.setMaxWidth(600);
+            columnaCiudad.setPreferredWidth(300); 
             
             TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electrónico");
             columnaCorreo.setMinWidth(100);
-            columnaCorreo.setMaxWidth(400);
-            columnaCorreo.setPreferredWidth(200); 
+            columnaCorreo.setMaxWidth(600);
+            columnaCorreo.setPreferredWidth(300); 
             
             TableColumn columnaTelefono = tablaClientes.getColumn("Número De Teléfono");
             columnaTelefono.setMinWidth(100);
-            columnaTelefono.setMaxWidth(400);
-            columnaTelefono.setPreferredWidth(200); 
+            columnaTelefono.setMaxWidth(600);
+            columnaTelefono.setPreferredWidth(300); 
             
             TableColumn columnaDireccion = tablaClientes.getColumn("Dirección");
             columnaDireccion.setMinWidth(100);
-            columnaDireccion.setMaxWidth(400);
-            columnaDireccion.setPreferredWidth(200); 
+            columnaDireccion.setMaxWidth(600);
+            columnaDireccion.setPreferredWidth(300); 
             
             TableColumn columnaAdministrador = tablaClientes.getColumn("Es Administrador");
             columnaAdministrador.setMinWidth(100);
-            columnaAdministrador.setMaxWidth(400);
-            columnaAdministrador.setPreferredWidth(200); 
+            columnaAdministrador.setMaxWidth(600);
+            columnaAdministrador.setPreferredWidth(300); 
+            
+           
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            //Usado para centrar el texto de las celdas.
+            for (int i = 0; i < tablaClientes.getColumnCount(); i++) {
+                tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+            }
     }
 
     
@@ -151,6 +165,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         setTitle("Vista General Administrador");
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
+
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -180,7 +196,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 1864;
-        gridBagConstraints.ipady = 1010;
+        gridBagConstraints.ipady = 565;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -210,6 +226,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 97;
+        gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 0, 0);
         getContentPane().add(labelGestionarClientes, gridBagConstraints);
@@ -220,7 +238,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 1310;
+        gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = -66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
@@ -233,7 +251,6 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.gridheight = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
         getContentPane().add(fondoPantalla, gridBagConstraints);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -337,7 +354,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu5.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        jMenuItem1.setText("Cerrar Sesíon");
+        jMenuItem1.setText("jMenuItem1");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -446,8 +463,8 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
             LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
+            login.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

@@ -13,7 +13,10 @@ import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.Vehiculos.ModificarVehiculo;
+import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import javax.swing.Box;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -28,6 +31,10 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         initComponents();
         crearTabla();
         setExtendedState(VistaVehiculosAdministrador.MAXIMIZED_BOTH);
+        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
+        jMenuBar1.remove(jMenu5);
+        jMenuBar1.add(Box.createHorizontalGlue());
+        jMenuBar1.add(jMenu5);
     }
 
     private void crearTabla() {
@@ -40,7 +47,9 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             }
         };
         tablaVehiculos.setModel(miModelo);
-
+        tablaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaVehiculos.getTableHeader().setReorderingAllowed(false);
+                
             List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql());
            
             for(Vehiculos Vehiculo : vehiculos){
@@ -53,26 +62,26 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             }
          
             //Dimensiones de la tabla.
-            tablaVehiculos.setRowHeight(20);
+            tablaVehiculos.setRowHeight(40);
             TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");
             columnaMatricula.setMinWidth(100);
             columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(150); 
+            columnaMatricula.setPreferredWidth(300); 
             
             TableColumn columnaModelo = tablaVehiculos.getColumn("Modelo");
             columnaModelo.setMinWidth(100);
             columnaModelo.setMaxWidth(600);
-            columnaModelo.setPreferredWidth(200); 
+            columnaModelo.setPreferredWidth(300); 
             
             TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
             columnaAnoMatriculacion.setMinWidth(100);
             columnaAnoMatriculacion.setMaxWidth(600);
-            columnaAnoMatriculacion.setPreferredWidth(200); 
+            columnaAnoMatriculacion.setPreferredWidth(300); 
             
             TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(600);
-            columnaCitas.setPreferredWidth(200);
+            columnaCitas.setPreferredWidth(300);
     }
     
     /**
@@ -83,18 +92,29 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
-        botonSalir = new javax.swing.JButton();
-        botonEliminar1 = new javax.swing.JButton();
-        modificarVehiculo = new javax.swing.JButton();
+        labelGestionarVehiculos = new javax.swing.JLabel();
+        CabeceraVehiculos = new javax.swing.JLabel();
+        fondoPantalla = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuVehiculos = new javax.swing.JMenu();
+        JMenuItemModificarClientes = new javax.swing.JMenuItem();
+        JMenuItemEliminarCliente = new javax.swing.JMenuItem();
+        jMenuClientes = new javax.swing.JMenu();
+        JMenuItemClientes = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vehículos Administrador");
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,42 +138,155 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         tablaVehiculos.setToolTipText("");
         jScrollPane1.setViewportView(tablaVehiculos);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 842, 287);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1864;
+        gridBagConstraints.ipady = 870;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
-        botonSalir.setText("Salir");
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+        labelGestionarVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelGestionarVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        labelGestionarVehiculos.setText("Gestión De Vehiculos");
+        labelGestionarVehiculos.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 61;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 30, 0, 0);
+        getContentPane().add(labelGestionarVehiculos, gridBagConstraints);
+
+        CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = -66;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        getContentPane().add(CabeceraVehiculos, gridBagConstraints);
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(fondoPantalla, gridBagConstraints);
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(90, 32768));
+        jMenuBar1.setName(""); // NOI18N
+        jMenuBar1.setOpaque(true);
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuVehiculos.setText("Vehiculos");
+        jMenuVehiculos.setToolTipText("");
+        jMenuVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuVehiculos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuVehiculos.setMinimumSize(new java.awt.Dimension(50, 22));
+        jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemModificarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemModificarClientes.setText("Modificar");
+        JMenuItemModificarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
+                JMenuItemModificarClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(botonSalir);
-        botonSalir.setBounds(276, 349, 72, 23);
+        jMenuVehiculos.add(JMenuItemModificarClientes);
 
-        botonEliminar1.setText("Eliminar");
-        botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItemEliminarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemEliminarCliente.setText("Eliminar");
+        JMenuItemEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEliminar1ActionPerformed(evt);
+                JMenuItemEliminarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(botonEliminar1);
-        botonEliminar1.setBounds(444, 323, 73, 23);
+        jMenuVehiculos.add(JMenuItemEliminarCliente);
 
-        modificarVehiculo.setText("Modificar");
-        modificarVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenuVehiculos);
+
+        jMenuClientes.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuClientes.setText("Clientes");
+        jMenuClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemClientes.setText("Menu De Clientes");
+        JMenuItemClientes.setToolTipText("");
+        JMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarVehiculoActionPerformed(evt);
+                JMenuItemClientesActionPerformed(evt);
             }
         });
-        getContentPane().add(modificarVehiculo);
-        modificarVehiculo.setBounds(490, 384, 81, 23);
+        jMenuClientes.add(JMenuItemClientes);
+
+        jMenuBar1.add(jMenuClientes);
+
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setText("Citas");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu4.setText("Talleres");
+        jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu4.setPreferredSize(new java.awt.Dimension(100, 40));
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu5.setText("Cerrar Sesión");
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu5.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        jMenuItemCerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItemCerrarSesion.setText("Cerrar Sesión");
+        jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItemCerrarSesion);
+
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminar1ActionPerformed
-        // TODO add your handling code here:
-        try{
+    private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
+        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+            mv.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
+
+    private void JMenuItemEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarClienteActionPerformed
+       try{
             Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
             if(vehiculo == null){
                 JOptionPane.showMessageDialog(this, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
@@ -168,20 +301,21 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
          }
         //Siempre al finalizar actualiza la tabla.
         crearTabla();
-    }//GEN-LAST:event_botonEliminar1ActionPerformed
+    }//GEN-LAST:event_JMenuItemEliminarClienteActionPerformed
 
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+    private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
         VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
             vga.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_botonSalirActionPerformed
-
-    private void modificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarVehiculoActionPerformed
-        // TODO add your handling code here:
-        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
-            mv.setVisible(true);
                 this.dispose();
-    }//GEN-LAST:event_modificarVehiculoActionPerformed
+    }//GEN-LAST:event_JMenuItemClientesActionPerformed
+
+    private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
+        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+            LoginClientes login = new LoginClientes();
+            login.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,10 +353,20 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEliminar1;
-    private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel CabeceraVehiculos;
+    private javax.swing.JMenuItem JMenuItemClientes;
+    private javax.swing.JMenuItem JMenuItemEliminarCliente;
+    private javax.swing.JMenuItem JMenuItemModificarClientes;
+    private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuClientes;
+    private javax.swing.JMenuItem jMenuItemCerrarSesion;
+    private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificarVehiculo;
+    private javax.swing.JLabel labelGestionarVehiculos;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
 }

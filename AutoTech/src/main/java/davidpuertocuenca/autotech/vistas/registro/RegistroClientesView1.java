@@ -7,10 +7,10 @@ package davidpuertocuenca.autotech.vistas.registro;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
 import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
 
 /**
  *
@@ -43,7 +43,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         boolean formatoCorrecto = true;
         
         //Comprobación de que el usuario no esta ya en uso.
-        if(obtenerClientePorUsuarioSql(fieldUsuario.getText()) != null){
+        if(obtenerClienteUsuarioSql(fieldUsuario.getText()) != null){
             formatoCorrecto = false;
                 textoErrorUsuario.setText("Usuario ya en uso.");
                     textoErrorUsuario.setVisible(true);            

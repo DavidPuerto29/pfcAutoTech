@@ -4,12 +4,16 @@
  */
 package davidpuertocuenca.autotech.vistas.Vehiculos;
 
+import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
+import java.util.List;
 
 /**
  *
@@ -43,6 +47,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private void mostrarDatos(){
         fieldAnoMatriculacion.setText(vehiculo.getAnoMatriculacion());
         fieldModelo.setText(vehiculo.getModelo());
+        cargarClientes();
     }
     private boolean modificarVehiculo(){
         reiniciarEtiquetas();
@@ -82,10 +87,22 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         
         if(formatoCorrecto){
             vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
-                vehiculo.setModelo(fieldModelo.getText());
-                    return true;
+                vehiculo.setModelo(fieldModelo.getText()); 
+                    vehiculo.setCliente(obtenerClienteUsuarioSql((String) comboBoxClientes.getSelectedItem()));
+                        return true;
         }else{
             return false;
+        }
+    }
+    
+    private void cargarClientes(){
+        comboBoxClientes.removeAllItems(); 
+          
+        for (Cliente cliente : obtenerTodosClientesSql()) {
+            comboBoxClientes.addItem(cliente.getUsuario()); 
+                if (cliente.getUsuario().equals(vehiculo.getCliente().getUsuario())) {
+                    comboBoxClientes.setSelectedItem(cliente.getUsuario());
+                }
         }
     }
     /**
@@ -106,6 +123,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         comboBoxClientes = new javax.swing.JComboBox<>();
+        labelCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Modificar Vehiculo");
@@ -142,25 +160,35 @@ public class ModificarVehiculo extends javax.swing.JFrame {
             }
         });
 
+        comboBoxClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxClientesActionPerformed(evt);
+            }
+        });
+
+        labelCliente.setForeground(new java.awt.Color(255, 255, 255));
+        labelCliente.setText("Cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(247, 247, 247)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboBoxClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoErrorModelo)
-                    .addComponent(labelAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAnoMatriculacion, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(textoErrorAnoMatriculacion)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCliente)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboBoxClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textoErrorModelo)
+                        .addComponent(labelAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldAnoMatriculacion, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(textoErrorAnoMatriculacion)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(botonCancelar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonModificar))
-                        .addComponent(fieldModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                        .addComponent(fieldModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
                 .addContainerGap(320, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -178,7 +206,9 @@ public class ModificarVehiculo extends javax.swing.JFrame {
                 .addComponent(fieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(textoErrorModelo)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
+                .addComponent(labelCliente)
+                .addGap(3, 3, 3)
                 .addComponent(comboBoxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -191,9 +221,9 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
-            vga.setVisible(true);
-                this.dispose();
+        VistaVehiculosAdministrador vva = new VistaVehiculosAdministrador();
+                    vva.setVisible(true);
+                        this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
@@ -204,6 +234,10 @@ public class ModificarVehiculo extends javax.swing.JFrame {
                         this.dispose();
         }
     }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void comboBoxClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClientesActionPerformed
+
+    }//GEN-LAST:event_comboBoxClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +281,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField fieldAnoMatriculacion;
     private javax.swing.JTextField fieldModelo;
     private javax.swing.JLabel labelAnoMatriculacion;
+    private javax.swing.JLabel labelCliente;
     private javax.swing.JLabel labelModelo;
     private javax.swing.JLabel textoErrorAnoMatriculacion;
     private javax.swing.JLabel textoErrorModelo;

@@ -159,7 +159,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Administrador");
@@ -354,13 +354,14 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu5.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItemCerrarSesion.setText("Cerrar Sesión");
+        jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemCerrarSesionActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem1);
+        jMenu5.add(jMenuItemCerrarSesion);
 
         jMenuBar1.add(jMenu5);
 
@@ -459,14 +460,13 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 this.dispose();
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+    private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
         if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
             LoginClientes login = new LoginClientes();
             login.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -517,7 +517,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuClientes;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JMenuItem jMenuQuitarAdministrador;
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;

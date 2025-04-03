@@ -6,7 +6,6 @@ package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
 import java.awt.event.ActionEvent;
@@ -15,6 +14,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
 
 
 /**
@@ -58,7 +58,7 @@ public class LoginClientes extends javax.swing.JFrame {
     }
 
     private void iniciarSesion(){
-        Cliente cliente = obtenerClientePorUsuarioSql(textUsuario.getText());
+        Cliente cliente = obtenerClienteUsuarioSql(textUsuario.getText());
         char[] contasenaChar = textContrasena.getPassword();
         
         if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){

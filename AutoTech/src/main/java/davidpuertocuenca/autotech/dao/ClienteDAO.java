@@ -32,7 +32,7 @@ public class ClienteDAO {
         }
     }
     
-    public static Cliente obtenerClientePorUsuarioSql(String usuario){
+    public static Cliente obtenerClienteUsuarioSql(String usuario){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Cliente> q = session.createNamedQuery("get_cliente_username", Cliente.class);
                 q.setParameter("username", usuario);

@@ -124,9 +124,11 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
            
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaClientes.getTableHeader().setResizingAllowed(false);
             //Usado para centrar el texto de las celdas.
             for (int i = 0; i < tablaClientes.getColumnCount(); i++) {
                 tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    tablaClientes.getColumnModel().getColumn(i).setResizable(false);
             }
     }
 

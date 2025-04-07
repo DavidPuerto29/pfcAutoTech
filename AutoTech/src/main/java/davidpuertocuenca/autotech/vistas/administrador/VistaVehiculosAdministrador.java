@@ -87,9 +87,11 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaVehiculos.getTableHeader().setResizingAllowed(false);
             //Usado para centrar el texto de las celdas.
             for (int i = 0; i < tablaVehiculos.getColumnCount(); i++) {
                 tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                     tablaVehiculos.getColumnModel().getColumn(i).setResizable(false);
             }
     }
     

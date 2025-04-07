@@ -90,9 +90,11 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
             
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaCitas.getTableHeader().setResizingAllowed(false);
             //Usado para centrar el texto de las celdas.
             for (int i = 0; i < tablaCitas.getColumnCount(); i++) {
                 tablaCitas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    tablaCitas.getColumnModel().getColumn(i).setResizable(false);
             }
     }
 

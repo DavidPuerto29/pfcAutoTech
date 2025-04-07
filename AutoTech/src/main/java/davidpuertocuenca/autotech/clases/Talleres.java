@@ -23,7 +23,7 @@ public class Talleres {
     @Id
     private long numeroIdentificacion;
     private String nombre;
-    private String taller;
+    private String direccion;
     @ManyToOne
     @JoinColumn(name = "cita", referencedColumnName = "numeroCita")
     private Citas cita;
@@ -31,7 +31,7 @@ public class Talleres {
     public Talleres(long numeroIdentificacion, String nombre, String taller) {
         this.numeroIdentificacion = numeroIdentificacion;
         this.nombre = nombre;
-        this.taller = taller;
+        this.direccion = taller;
     }
 
 }

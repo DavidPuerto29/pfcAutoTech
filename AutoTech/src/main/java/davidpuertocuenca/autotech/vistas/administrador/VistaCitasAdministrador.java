@@ -123,6 +123,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Citas Adminsitrador");
         getContentPane().setLayout(null);
 
         tablaCitas.setModel(new javax.swing.table.DefaultTableModel(

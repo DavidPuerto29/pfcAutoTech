@@ -121,6 +121,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuVehiculos = new javax.swing.JMenu();
         JMenuItemVehiculos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItemTalleres = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
@@ -231,7 +232,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemVehiculos.setText("Menu De Vehiculos");
+        JMenuItemVehiculos.setText("Menu De Vehículos");
         JMenuItemVehiculos.setToolTipText("");
         JMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +249,16 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu4.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        jMenuItemTalleres.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItemTalleres.setText("Menu De Talleres");
+        jMenuItemTalleres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTalleresActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemTalleres);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,6 +312,12 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
                 this.dispose();
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
+    private void jMenuItemTalleresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTalleresActionPerformed
+        VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
+        vta.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItemTalleresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -349,6 +366,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuClientes;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
+    private javax.swing.JMenuItem jMenuItemTalleres;
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JMenu jMenuVehiculos2;
     private javax.swing.JScrollPane jScrollPane1;

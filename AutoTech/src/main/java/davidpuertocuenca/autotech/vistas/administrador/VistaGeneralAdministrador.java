@@ -161,6 +161,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         JMenuItemCitas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        JMenuItemTalleres = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
@@ -323,7 +324,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemVehiculos.setText("Menu De Vehiculos");
+        JMenuItemVehiculos.setText("Menu De Vehículos");
         JMenuItemVehiculos.setToolTipText("");
         JMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,6 +360,17 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
         jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu4.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemTalleres.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemTalleres.setText("Menu De Talleres");
+        JMenuItemTalleres.setToolTipText("");
+        JMenuItemTalleres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemTalleresActionPerformed(evt);
+            }
+        });
+        jMenu4.add(JMenuItemTalleres);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
@@ -488,6 +500,12 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
                 this.dispose();
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
+    private void JMenuItemTalleresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemTalleresActionPerformed
+        VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
+            vta.setVisible(true);
+                this.dispose();
+    }//GEN-LAST:event_JMenuItemTalleresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -530,6 +548,7 @@ public class VistaGeneralAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemEliminarCliente;
     private javax.swing.JMenuItem JMenuItemModificarClientes;
+    private javax.swing.JMenuItem JMenuItemTalleres;
     private javax.swing.JMenuItem JMenuItemVehiculos;
     private javax.swing.JButton botonRefrescar;
     private javax.swing.JLabel fondoPantalla;

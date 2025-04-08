@@ -4,6 +4,21 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
+import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Talleres;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
+import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.Box;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author David
@@ -15,6 +30,59 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
      */
     public VistaTalleresAdministrador() {
         initComponents();
+        setExtendedState(VistaGeneralAdministrador.MAXIMIZED_BOTH);
+        crearTabla();
+            
+        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
+        jMenuBar1.remove(jMenu5);
+        jMenuBar1.add(Box.createHorizontalGlue());
+        jMenuBar1.add(jMenu5);
+    }
+    
+     //Tambien usado para actualizar la tabla
+    private void crearTabla() { 
+        Object[] cabecera = new Object[]{"Nombre","Dirección"}; 
+        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
+            //Edicion de celdas deshabilida.
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;  
+            }
+        };
+        
+        tablaTalleres.setModel(miModelo);
+        tablaTalleres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaTalleres.getTableHeader().setReorderingAllowed(false);
+
+            List<Talleres> talleres = new ArrayList(obtenerTodosTalleresSql());
+          
+            for(Talleres taller : talleres){
+                Object[] fila = new Object[2];
+                fila[0] = taller.getNombre();
+                fila[1] = taller.getDireccion();
+                    miModelo.addRow(fila);
+            }
+         
+            //Dimensiones de la tabla.
+            tablaTalleres.setRowHeight(40);
+            TableColumn columnaFecha = tablaTalleres.getColumn("Nombre");
+            columnaFecha.setMinWidth(100);
+            columnaFecha.setMaxWidth(600);
+            columnaFecha.setPreferredWidth(300); 
+            
+            TableColumn columnaCliente = tablaTalleres.getColumn("Dirección");
+            columnaCliente.setMinWidth(100);
+            columnaCliente.setMaxWidth(600);
+            columnaCliente.setPreferredWidth(300); 
+           
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaTalleres.getTableHeader().setResizingAllowed(false);
+            //Usado para centrar el texto de las celdas.
+            for (int i = 0; i < tablaTalleres.getColumnCount(); i++) {
+                tablaTalleres.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    tablaTalleres.getColumnModel().getColumn(i).setResizable(false);
+            }
     }
 
     /**
@@ -26,31 +94,233 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelGestionarClientes = new javax.swing.JLabel();
+        CabeceraVehiculos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaTalleres = new javax.swing.JTable();
+        fondoPantalla = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuTalleres = new javax.swing.JMenu();
+        JMenuItemAnadirTaller = new javax.swing.JMenuItem();
+        JMenuItemModificarTaller = new javax.swing.JMenuItem();
+        JMenuItemEliminarTaller = new javax.swing.JMenuItem();
+        jMenuClientes = new javax.swing.JMenu();
+        JMenuItemClientes = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        JMenuItemCitas = new javax.swing.JMenuItem();
+        jMenuVehiculos = new javax.swing.JMenu();
+        JMenuItemVehiculos = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("TODO");
+        labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
+        labelGestionarClientes.setText("Gestión De Talleres");
+        labelGestionarClientes.setToolTipText("");
+        getContentPane().add(labelGestionarClientes);
+        labelGestionarClientes.setBounds(20, 30, 600, 60);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel1)
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel1)
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
+        CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
+        getContentPane().add(CabeceraVehiculos);
+        CabeceraVehiculos.setBounds(10, 29, 1910, 66);
+
+        tablaTalleres.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Matrícula", "Modelo", "Año De Matriculación", "Citas Reservadas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tablaTalleres.setToolTipText("");
+        jScrollPane1.setViewportView(tablaTalleres);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 119, 1980, 1111);
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 2000, 1231);
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(90, 32768));
+        jMenuBar1.setName(""); // NOI18N
+        jMenuBar1.setOpaque(true);
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        jMenuTalleres.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuTalleres.setText("Talleres");
+        jMenuTalleres.setToolTipText("");
+        jMenuTalleres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuTalleres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuTalleres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuTalleres.setMinimumSize(new java.awt.Dimension(50, 22));
+        jMenuTalleres.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemAnadirTaller.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemAnadirTaller.setText("Añadir");
+        JMenuItemAnadirTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemAnadirTallerActionPerformed(evt);
+            }
+        });
+        jMenuTalleres.add(JMenuItemAnadirTaller);
+
+        JMenuItemModificarTaller.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemModificarTaller.setText("Modificar");
+        JMenuItemModificarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemModificarTallerActionPerformed(evt);
+            }
+        });
+        jMenuTalleres.add(JMenuItemModificarTaller);
+
+        JMenuItemEliminarTaller.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemEliminarTaller.setText("Eliminar");
+        JMenuItemEliminarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemEliminarTallerActionPerformed(evt);
+            }
+        });
+        jMenuTalleres.add(JMenuItemEliminarTaller);
+
+        jMenuBar1.add(jMenuTalleres);
+
+        jMenuClientes.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuClientes.setText("Clientes");
+        jMenuClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemClientes.setText("Menu De Clientes");
+        JMenuItemClientes.setToolTipText("");
+        JMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemClientesActionPerformed(evt);
+            }
+        });
+        jMenuClientes.add(JMenuItemClientes);
+
+        jMenuBar1.add(jMenuClientes);
+
+        jMenu3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu3.setText("Citas");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setText("Menu De Citas");
+        JMenuItemCitas.setToolTipText("");
+        JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemCitasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(JMenuItemCitas);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuVehiculos.setText("Vehículos");
+        jMenuVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuVehiculos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemVehiculos.setText("Menu De Vehículos");
+        JMenuItemVehiculos.setToolTipText("");
+        JMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemVehiculosActionPerformed(evt);
+            }
+        });
+        jMenuVehiculos.add(JMenuItemVehiculos);
+
+        jMenuBar1.add(jMenuVehiculos);
+
+        jMenu5.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu5.setText("Cerrar Sesión");
+        jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu5.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        jMenuItemCerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItemCerrarSesion.setText("Cerrar Sesión");
+        jMenuItemCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItemCerrarSesion);
+
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JMenuItemModificarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarTallerActionPerformed
+        
+    }//GEN-LAST:event_JMenuItemModificarTallerActionPerformed
+
+    private void JMenuItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarTallerActionPerformed
+       
+      
+        //Siempre al finalizar actualiza la tabla.
+        crearTabla();
+    }//GEN-LAST:event_JMenuItemEliminarTallerActionPerformed
+
+    private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
+        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+        vga.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JMenuItemClientesActionPerformed
+
+    private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
+        VistaCitasAdministrador vca = new VistaCitasAdministrador();
+        vca.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JMenuItemCitasActionPerformed
+
+    private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
+        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+            LoginClientes login = new LoginClientes();
+                login.setVisible(true);
+                    this.dispose();
+        }
+    }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
+
+    private void JMenuItemAnadirTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirTallerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JMenuItemAnadirTallerActionPerformed
+
+    private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
+        VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
+        vha.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +358,23 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel CabeceraVehiculos;
+    private javax.swing.JMenuItem JMenuItemAnadirTaller;
+    private javax.swing.JMenuItem JMenuItemCitas;
+    private javax.swing.JMenuItem JMenuItemClientes;
+    private javax.swing.JMenuItem JMenuItemEliminarTaller;
+    private javax.swing.JMenuItem JMenuItemModificarTaller;
+    private javax.swing.JMenuItem JMenuItemVehiculos;
+    private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuClientes;
+    private javax.swing.JMenuItem jMenuItemCerrarSesion;
+    private javax.swing.JMenu jMenuTalleres;
+    private javax.swing.JMenu jMenuVehiculos;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelGestionarClientes;
+    private javax.swing.JTable tablaTalleres;
     // End of variables declaration//GEN-END:variables
 }

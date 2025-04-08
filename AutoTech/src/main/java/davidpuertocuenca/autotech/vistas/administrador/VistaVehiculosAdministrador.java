@@ -62,7 +62,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
                 fila[3] = Vehiculo.getCitas().size();
                     miModelo.addRow(fila);
             }
-         //testpush
+         
             //Dimensiones de la tabla.
             tablaVehiculos.setRowHeight(40);
             TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");

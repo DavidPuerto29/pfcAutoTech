@@ -1,6 +1,6 @@
 Proyecto de fin de grado hecho por David Puerto Cuenca.
 
-***Actualmente las imagenes(Decoración de fondos etc...) son provisionales y soo una orientación para poder ver algo mas complejo.***
+***Actualmente las imagenes(Decoración de fondos etc...) son provisionales y solo una orientación para poder ver algo mas complejo.***
 
 ***Cuando tenga las vistas bastante definidas pasare todo el codigo de acciones a clases por detras ya que se que esta mal 200 métodos en una vista y de hecho mas de uno se puede reutilizar***
 

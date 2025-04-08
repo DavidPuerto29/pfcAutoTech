@@ -5,6 +5,8 @@
 package davidpuertocuenca.autotech.clases;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -20,18 +22,17 @@ import lombok.Setter;
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Talleres {
     
-    @Id
-    private long numeroIdentificacion;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long numeroTaller;
+    
     private String nombre;
     private String direccion;
-    @ManyToOne
-    @JoinColumn(name = "cita", referencedColumnName = "numeroCita")
-    private Citas cita;
+   // @ManyToOne
+    //private Citas cita;
     
-    public Talleres(long numeroIdentificacion, String nombre, String taller) {
-        this.numeroIdentificacion = numeroIdentificacion;
+    public Talleres(String nombre, String direccion) {
         this.nombre = nombre;
-        this.direccion = taller;
+        this.direccion = direccion;
     }
 
 }

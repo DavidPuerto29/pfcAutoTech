@@ -5,8 +5,11 @@
 package davidpuertocuenca.autotech.clases;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -28,12 +31,14 @@ import lombok.Setter;
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Vehiculos {
     
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idVehiculo;
+    @Column(unique = true)
     private String matricula;
     private String modelo;
     private String anoMatriculacion;
     @ManyToOne
-    @JoinColumn(name = "cliente", referencedColumnName = "usuario")
+    @JoinColumn(name = "cliente_id", referencedColumnName = "idCliente")
     private Cliente cliente;
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Citas> citas;

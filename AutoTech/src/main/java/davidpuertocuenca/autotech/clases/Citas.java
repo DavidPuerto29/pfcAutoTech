@@ -5,6 +5,8 @@
 package davidpuertocuenca.autotech.clases;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -23,14 +25,14 @@ import lombok.Setter;
 @Entity @Getter @Setter  @NoArgsConstructor
 public class Citas {
     
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numeroCita;
     private Date fecha;
     @ManyToOne
-    @JoinColumn(name = "vehiculo", referencedColumnName = "matricula")
+    @JoinColumn(name = "vehiculo_id", referencedColumnName = "idVehiculo")
     private Vehiculos vehiculo;
     @ManyToOne
-    @JoinColumn(name = "taller", referencedColumnName = "numeroIdentificacion")
+    @JoinColumn(name = "taller", referencedColumnName = "numeroTaller")
     private Talleres taller;
 
     public Citas(Date fecha, Vehiculos vehiculo, Talleres taller) {

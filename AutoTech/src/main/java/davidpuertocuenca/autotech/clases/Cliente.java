@@ -6,8 +6,11 @@ package davidpuertocuenca.autotech.clases;
 
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.verificarContraseña;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -27,7 +30,9 @@ import lombok.Setter;
 @NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username")
 @NamedQuery(name = "get_todos_clientes", query = "FROM Cliente q ORDER BY q.usuario ASC")
 public class Cliente {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCliente;
+    @Column(unique = true)
     private String usuario;
     private String contrasena; 
     private String randomizador;   

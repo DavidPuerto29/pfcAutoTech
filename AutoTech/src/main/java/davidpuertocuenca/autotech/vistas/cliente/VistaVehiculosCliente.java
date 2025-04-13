@@ -61,6 +61,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
@@ -79,8 +80,8 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista General Cliente");
-        getContentPane().setLayout(null);
+        setTitle("Mis Vehículos");
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -103,8 +104,19 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaVehiculos);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 90, 1870, 860);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1854;
+        gridBagConstraints.ipady = 840;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         botonCitas.setText("Ver citas");
         botonCitas.addActionListener(new java.awt.event.ActionListener() {
@@ -112,22 +124,47 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
                 botonCitasActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCitas);
-        botonCitas.setBounds(1070, 630, 340, 80);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 266;
+        gridBagConstraints.ipady = 57;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(550, 530, 0, 0);
+        getContentPane().add(botonCitas, gridBagConstraints);
 
         labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));
         labelVehiculos.setText("Mis Vehículos");
-        getContentPane().add(labelVehiculos);
-        labelVehiculos.setBounds(30, 0, 510, 80);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 219;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
+        getContentPane().add(labelVehiculos, gridBagConstraints);
 
         CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
-        getContentPane().add(CabeceraVehiculos);
-        CabeceraVehiculos.setBounds(20, 10, 1910, 66);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = -66;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
+        getContentPane().add(CabeceraVehiculos, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 2000, 1231);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(fondoPantalla, gridBagConstraints);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,7 +299,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
             columnaCitas.setMaxWidth(600);
             columnaCitas.setPreferredWidth(300);
             
-             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
             tablaVehiculos.getTableHeader().setResizingAllowed(false);
             //Usado para centrar el texto de las celdas.
@@ -308,7 +345,9 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
-       
+        VistaCitasCliente vcc = new VistaCitasCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
+            vcc.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed

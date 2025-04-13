@@ -16,7 +16,8 @@ import org.hibernate.query.Query;
  * @author David
  */
 public class CitasDAO {
-    public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    //HACERLO POR MATRICULA
+    
+     public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    //HACERLO POR MATRICULA
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Citas> q = session.createNamedQuery("get_todas_citas_matricula", Citas.class);
                 q.setParameter("matricula", vehiculo.getMatricula());
@@ -25,7 +26,7 @@ public class CitasDAO {
             return null;
         }
     }
-    
+        
     public static List<Citas> obtenerTodasCitasSql(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Citas> q = session.createNamedQuery("get_todas_citas", Citas.class);
@@ -34,4 +35,23 @@ public class CitasDAO {
             return null;
         }
     }
+    
+    public static void eliminarCitaSql(Citas citas){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.getTransaction().begin();
+                session.remove(citas);
+                    session.getTransaction().commit();
+        }
+    }
+    
+    public static Citas obtenerCitaPorNumeroSql(Long numeroCita){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Citas> q = session.createNamedQuery("get_cita", Citas.class);
+                q.setParameter("identificacion", numeroCita);
+                    return (Citas) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
 }

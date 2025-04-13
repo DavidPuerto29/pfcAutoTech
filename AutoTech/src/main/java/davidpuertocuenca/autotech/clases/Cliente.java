@@ -63,7 +63,7 @@ public class Cliente {
     
     public static boolean comprobacionAutenticacionUsuario(Cliente cliente, String contrasena){
         if (cliente == null) {
-         return false;
+            return false;
         }
         return verificarContraseña(contrasena, cliente.getRandomizador(), cliente.getContrasena());
     }

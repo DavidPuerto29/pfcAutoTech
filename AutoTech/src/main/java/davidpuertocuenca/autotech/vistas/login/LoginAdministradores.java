@@ -33,6 +33,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
                iniciarSesion(); 
             }
         });
+        
         //Método para acceder al programa pulsando enter.
         textUsuario.addActionListener(new ActionListener() {
             @Override

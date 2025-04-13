@@ -21,7 +21,7 @@ public class CitasDAO {
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Citas> q = session.createNamedQuery("get_todas_citas_matricula", Citas.class);
                 q.setParameter("matricula", vehiculo.getMatricula());
-            return q.getResultList();
+                    return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }

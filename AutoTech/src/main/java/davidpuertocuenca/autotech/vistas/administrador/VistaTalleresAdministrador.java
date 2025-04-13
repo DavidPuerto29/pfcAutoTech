@@ -4,9 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Talleres;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.ArrayList;
@@ -286,7 +284,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemModificarTallerActionPerformed
 
     private void JMenuItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarTallerActionPerformed
-       
+       //eliminarTallerSql()    TODO
       
         //Siempre al finalizar actualiza la tabla.
         crearTabla();
@@ -294,14 +292,14 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
         VistaClientesAdministrador vga = new VistaClientesAdministrador();
-        vga.setVisible(true);
-        this.dispose();
+            vga.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_JMenuItemClientesActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
         VistaCitasAdministrador vca = new VistaCitasAdministrador();
-        vca.setVisible(true);
-        this.dispose();
+            vca.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
@@ -318,8 +316,8 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
         VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
-        vha.setVisible(true);
-        this.dispose();
+            vha.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     /**

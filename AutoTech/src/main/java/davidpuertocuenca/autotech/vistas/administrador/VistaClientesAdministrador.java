@@ -11,8 +11,6 @@ import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import davidpuertocuenca.autotech.vistas.administrador.cliente.ModificarCliente;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
@@ -42,7 +40,6 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
         jMenuBar1.remove(jMenu5);
         jMenuBar1.add(Box.createHorizontalGlue());
         jMenuBar1.add(jMenu5);
-        
     }
 
     //Tambien usado para actualizar la tabla
@@ -417,7 +414,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
          }
         //Siempre al finalizar actualiza la tabla.
@@ -428,21 +425,21 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
         try{
              Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
              if(cliente.isAdministrador()){
-                 if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                  if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      if(cliente == null){
                          JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
                      }
                      cliente.setAdministrador(false);
-                         if(actualizarClienteSql(cliente)){
-                             JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
-                         }else{
+                          if(actualizarClienteSql(cliente)){
+                              JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
+                          }else{
                              JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
-                         }
-                 }else{
-                     JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
-                 }
+                          }
+                  }else{
+                       JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
+                  }
              }else{
-                 JOptionPane.showMessageDialog(this, "Este usuario no es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                  JOptionPane.showMessageDialog(this, "Este usuario no es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
              }
              //Siempre al finalizar actualiza la tabla.
              crearTabla();
@@ -480,8 +477,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemAdministradorActionPerformed
 
     private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
-        // TODO add your handling code here:
-        ModificarCliente mc = new ModificarCliente();
+       ModificarCliente mc = new ModificarCliente();
             mc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
@@ -489,8 +485,8 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
         if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
             LoginClientes login = new LoginClientes();
-            login.setVisible(true);
-            this.dispose();
+                login.setVisible(true);
+                    this.dispose();
         }
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 

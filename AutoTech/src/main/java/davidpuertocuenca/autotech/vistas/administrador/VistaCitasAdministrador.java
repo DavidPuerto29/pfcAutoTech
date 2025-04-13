@@ -30,6 +30,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         initComponents();
         crearTabla();
         setExtendedState(VistaVehiculosAdministrador.MAXIMIZED_BOTH);
+        
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
         jMenuBar1.remove(jMenu5);
         jMenuBar1.add(Box.createHorizontalGlue());
@@ -314,8 +315,8 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemTalleresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTalleresActionPerformed
         VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
-        vta.setVisible(true);
-        this.dispose();
+            vta.setVisible(true);
+                this.dispose();
     }//GEN-LAST:event_jMenuItemTalleresActionPerformed
 
     /**

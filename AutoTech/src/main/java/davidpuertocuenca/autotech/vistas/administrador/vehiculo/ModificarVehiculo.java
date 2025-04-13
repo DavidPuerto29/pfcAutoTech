@@ -68,7 +68,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         
         //Comprobación de que el año de matrículacion sean números y no letras.
         try {
-            Integer.parseInt(fieldAnoMatriculacion.getText()); 
+            Integer.valueOf(fieldAnoMatriculacion.getText()); 
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setVisible(true);

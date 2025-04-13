@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.cartografia;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
@@ -20,7 +21,7 @@ public class CifradoSHA256 {
             MessageDigest cifrado = MessageDigest.getInstance("SHA-256");
                 byte[] hash = cifrado.digest((password + randomizador).getBytes(StandardCharsets.UTF_8));
                     return Base64.getEncoder().encodeToString(hash);
-        } catch (Exception e) {
+        } catch (NoSuchAlgorithmException e) {
             return null;
         }
     }

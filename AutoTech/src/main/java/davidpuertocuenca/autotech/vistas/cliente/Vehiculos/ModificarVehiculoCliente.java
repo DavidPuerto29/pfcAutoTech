@@ -9,12 +9,9 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.administrador.VistaClientesAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
-import java.util.List;
 
 /**
  *

@@ -13,7 +13,6 @@ import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
-import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.ModificarVehiculoCliente;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
@@ -323,14 +322,14 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     private void JMenuItemEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarVehiculoActionPerformed
        try{
             Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
-            if(vehiculo == null){
-                JOptionPane.showMessageDialog(this, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-            }
-            if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                eliminarVehiculoSql(vehiculo);        
-            }else{
-                JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
-            }
+                if(vehiculo == null){
+                    JOptionPane.showMessageDialog(this, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+                }
+                if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    eliminarVehiculoSql(vehiculo);        
+                }else{
+                    JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
+                }
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
          }
@@ -347,8 +346,8 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
         if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
             LoginClientes login = new LoginClientes();
-            login.setVisible(true);
-            this.dispose();
+                login.setVisible(true);
+                    this.dispose();
         }
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 

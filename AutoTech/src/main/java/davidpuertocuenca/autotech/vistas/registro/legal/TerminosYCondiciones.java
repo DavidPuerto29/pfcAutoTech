@@ -93,13 +93,11 @@ public class TerminosYCondiciones extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRechazarActionPerformed
-        // TODO add your handling code here:
         respuesta = false;
             this.dispose();
     }//GEN-LAST:event_botonRechazarActionPerformed
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        // TODO add your handling code here:
         respuesta = true;
             this.dispose();
     }//GEN-LAST:event_botonAceptarActionPerformed

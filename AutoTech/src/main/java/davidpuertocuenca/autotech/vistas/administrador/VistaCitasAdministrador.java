@@ -293,7 +293,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarCitaActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
-        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+        VistaClientesAdministrador vga = new VistaClientesAdministrador();
             vga.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemClientesActionPerformed

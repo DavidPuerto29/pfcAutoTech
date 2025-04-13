@@ -2,68 +2,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.Vehiculos;
+package davidpuertocuenca.autotech.vistas.cliente.Vehiculos;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
+import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
+import davidpuertocuenca.autotech.vistas.administrador.VistaClientesAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
+import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author David
  */
-public class AnadirVehiculo extends javax.swing.JFrame {
+public class ModificarVehiculoCliente extends javax.swing.JFrame {
     private Vehiculos vehiculo;
-    private Cliente cliente;
-    
     /**
-     * Creates new form AnadirVehiculo
+     * Creates new form ModificarVehiculo
      */
-    public AnadirVehiculo() {
+    public ModificarVehiculoCliente() {
         initComponents();
         reiniciarEtiquetas();
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
     
-    public AnadirVehiculo(Cliente cliente) {
+     public ModificarVehiculoCliente(Vehiculos vehiculo) {
         initComponents();
-        this.cliente = cliente;
+        this.vehiculo = vehiculo;
         reiniciarEtiquetas();
+        mostrarDatos();
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
 
     private void reiniciarEtiquetas(){
-        labelErrorMatricula.setVisible(false);
         textoErrorAnoMatriculacion.setVisible(false);
         textoErrorModelo.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
-       
-    private boolean registrarVehiculo(){
+    private void mostrarDatos(){
+        fieldAnoMatriculacion.setText(vehiculo.getAnoMatriculacion());
+        fieldModelo.setText(vehiculo.getModelo());
+        cargarClientes();
+    }
+    private boolean modificarVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
-        
-        //Comprobación de que la matrícula no este vacía.
-        if(fieldMatricula.getText().isEmpty()){
-            formatoCorrecto = false;
-                labelErrorMatricula.setText("Debe introducir una matrícula.");
-                    labelErrorMatricula.setVisible(true);   
-        }
 
-        //Comprobación de que la matrícula cumpla el formato. 0000-XXX (y formato antiguo tambien)
-        
-        //Comprobación de que la matrícula no este registrada.
-        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
-           formatoCorrecto = false;
-                labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
-                    labelErrorMatricula.setVisible(true);    
-        }
-        
         //Comprobación de que el año de matrículacion tenga el formato correcto. (0000)
         if(fieldAnoMatriculacion.getText().length() != 4 && !fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
@@ -97,10 +87,23 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo = new Vehiculos(fieldMatricula.getText(), fieldAnoMatriculacion.getText(), fieldModelo.getText(), cliente, new ArrayList());
-                return true;
+            vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
+                vehiculo.setModelo(fieldModelo.getText()); 
+                    vehiculo.setCliente(obtenerClienteUsuarioSql((String) comboBoxClientes.getSelectedItem()));
+                        return true;
         }else{
             return false;
+        }
+    }
+    
+    private void cargarClientes(){
+        comboBoxClientes.removeAllItems(); 
+          
+        for (Cliente cliente : obtenerTodosClientesSql()) {
+            comboBoxClientes.addItem(cliente.getUsuario()); 
+                if (cliente.getUsuario().equals(vehiculo.getCliente().getUsuario())) {
+                    comboBoxClientes.setSelectedItem(cliente.getUsuario());
+                }
         }
     }
     /**
@@ -112,9 +115,6 @@ public class AnadirVehiculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelMatricula = new javax.swing.JLabel();
-        fieldMatricula = new javax.swing.JTextField();
-        labelErrorMatricula = new javax.swing.JLabel();
         labelAnoMatriculacion = new javax.swing.JLabel();
         fieldAnoMatriculacion = new javax.swing.JTextField();
         textoErrorAnoMatriculacion = new javax.swing.JLabel();
@@ -122,18 +122,12 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         fieldModelo = new javax.swing.JTextField();
         textoErrorModelo = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-        botonAnadir = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
+        comboBoxClientes = new javax.swing.JComboBox<>();
+        labelCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
-        labelMatricula.setText("Matrícula");
-
-        fieldMatricula.setToolTipText("");
-
-        labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
-        labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        labelErrorMatricula.setText("Matrícula ya registrada.");
+        setTitle("Modificar Vehiculo");
 
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
@@ -160,12 +154,21 @@ public class AnadirVehiculo extends javax.swing.JFrame {
             }
         });
 
-        botonAnadir.setText("Añadir");
-        botonAnadir.addActionListener(new java.awt.event.ActionListener() {
+        botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAnadirActionPerformed(evt);
+                botonModificarActionPerformed(evt);
             }
         });
+
+        comboBoxClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxClientesActionPerformed(evt);
+            }
+        });
+
+        labelCliente.setForeground(new java.awt.Color(255, 255, 255));
+        labelCliente.setText("Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,32 +177,25 @@ public class AnadirVehiculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(247, 247, 247)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoErrorModelo)
-                    .addComponent(labelMatricula)
-                    .addComponent(fieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelErrorMatricula)
-                    .addComponent(labelAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoErrorAnoMatriculacion)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
+                    .addComponent(labelCliente)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboBoxClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textoErrorModelo)
+                        .addComponent(labelAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fieldAnoMatriculacion, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(textoErrorAnoMatriculacion)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(botonCancelar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonAnadir))
-                        .addComponent(fieldModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(351, Short.MAX_VALUE))
+                            .addComponent(botonModificar))
+                        .addComponent(fieldModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(labelMatricula)
-                .addGap(4, 4, 4)
-                .addComponent(fieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(labelErrorMatricula)
-                .addGap(24, 24, 24)
+                .addGap(173, 173, 173)
                 .addComponent(labelAnoMatriculacion)
                 .addGap(4, 4, 4)
                 .addComponent(fieldAnoMatriculacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,30 +208,37 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(textoErrorModelo)
                 .addGap(18, 18, 18)
+                .addComponent(labelCliente)
+                .addGap(3, 3, 3)
+                .addComponent(comboBoxClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar)
-                    .addComponent(botonAnadir))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(botonModificar))
+                .addGap(90, 90, 90))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaGeneralCliente vgc = new VistaGeneralCliente();
-            vgc.setVisible(true);
-                this.dispose();
+        VistaVehiculosAdministrador vva = new VistaVehiculosAdministrador();
+                    vva.setVisible(true);
+                        this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
-        if(registrarVehiculo()){
-            crearVehiculoSql(vehiculo);
-                VistaGeneralCliente vgc = new VistaGeneralCliente();
-                    vgc.setVisible(true);
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        if(modificarVehiculo()){
+            actualizarVehiculoSql(vehiculo);
+                VistaVehiculosCliente vvc = new VistaVehiculosCliente();
+                    vvc.setVisible(true);
                         this.dispose();
-                
         }
-    }//GEN-LAST:event_botonAnadirActionPerformed
+    }//GEN-LAST:event_botonModificarActionPerformed
+
+    private void comboBoxClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClientesActionPerformed
+
+    }//GEN-LAST:event_comboBoxClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,33 +257,33 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnadirVehiculo().setVisible(true);
+                new ModificarVehiculoCliente().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAnadir;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonModificar;
+    private javax.swing.JComboBox<String> comboBoxClientes;
     private javax.swing.JTextField fieldAnoMatriculacion;
-    private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldModelo;
     private javax.swing.JLabel labelAnoMatriculacion;
-    private javax.swing.JLabel labelErrorMatricula;
-    private javax.swing.JLabel labelMatricula;
+    private javax.swing.JLabel labelCliente;
     private javax.swing.JLabel labelModelo;
     private javax.swing.JLabel textoErrorAnoMatriculacion;
     private javax.swing.JLabel textoErrorModelo;

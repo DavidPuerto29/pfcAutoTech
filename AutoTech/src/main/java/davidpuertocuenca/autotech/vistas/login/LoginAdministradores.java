@@ -6,7 +6,7 @@ package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.VistaClientesAdministrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -50,7 +50,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contasenaChar, '\0');
            if(cliente.isAdministrador()){
-            VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+            VistaClientesAdministrador vga = new VistaClientesAdministrador();
                vga.setVisible(true);
                 this.dispose();
                  

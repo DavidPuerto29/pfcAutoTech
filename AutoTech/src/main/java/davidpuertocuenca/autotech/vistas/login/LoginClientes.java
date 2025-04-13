@@ -6,7 +6,7 @@ package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import davidpuertocuenca.autotech.vistas.cliente.VistaGeneralCliente;
+import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,7 +64,7 @@ public class LoginClientes extends javax.swing.JFrame {
         if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contasenaChar, '\0');
-                VistaGeneralCliente g = new VistaGeneralCliente(cliente);
+                VistaVehiculosCliente g = new VistaVehiculosCliente(cliente);
                     g.setVisible(true);
                         this.dispose();
         }else{

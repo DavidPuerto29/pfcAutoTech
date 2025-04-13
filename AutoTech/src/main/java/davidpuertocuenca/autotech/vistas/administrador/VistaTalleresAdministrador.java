@@ -30,7 +30,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
      */
     public VistaTalleresAdministrador() {
         initComponents();
-        setExtendedState(VistaGeneralAdministrador.MAXIMIZED_BOTH);
+        setExtendedState(VistaClientesAdministrador.MAXIMIZED_BOTH);
         crearTabla();
             
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
@@ -293,7 +293,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarTallerActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
-        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+        VistaClientesAdministrador vga = new VistaClientesAdministrador();
         vga.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JMenuItemClientesActionPerformed

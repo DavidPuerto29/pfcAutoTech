@@ -150,7 +150,7 @@ public class VistaCitasCliente extends javax.swing.JFrame {
     
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
         // TODO add your handling code here:
-        VistaGeneralCliente vgc = new VistaGeneralCliente(cliente);
+        VistaVehiculosCliente vgc = new VistaVehiculosCliente(cliente);
             vgc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonAtrasActionPerformed

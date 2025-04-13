@@ -26,8 +26,9 @@ public class Talleres {
     
     private String nombre;
     private String direccion;
-   // @ManyToOne
-    //private Citas cita;
+    //private String codigoPostal;
+    //private String teléfono;
+    
     
     public Talleres(String nombre, String direccion) {
         this.nombre = nombre;

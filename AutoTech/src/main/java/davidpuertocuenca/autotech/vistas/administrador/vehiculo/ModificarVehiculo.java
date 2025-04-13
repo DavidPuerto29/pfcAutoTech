@@ -2,18 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.Vehiculos;
+package davidpuertocuenca.autotech.vistas.administrador.vehiculo;
 
 import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.administrador.VistaGeneralAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
-import java.util.List;
 
 /**
  *
@@ -264,6 +261,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ModificarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -12,7 +12,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.Vehiculos.ModificarVehiculo;
+import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
+import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.ModificarVehiculoCliente;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
@@ -338,7 +339,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
-        VistaGeneralAdministrador vga = new VistaGeneralAdministrador();
+        VistaClientesAdministrador vga = new VistaClientesAdministrador();
             vga.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemClientesActionPerformed

@@ -89,6 +89,27 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                     textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
         } 
         
+        //Comprobación de que el campo marca no este vacío.
+        if(fieldMarca.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorMarca.setText("Debe introducir una marca.");
+                    textoErrorMarca.setVisible(true);   
+        }
+        
+        //Comprobación de que el campo color no este vacío.
+        if(fieldColor.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorColor.setText("Debe introducir un color.");
+                    textoErrorColor.setVisible(true);   
+        }
+        
+        //Comprobación de que el campo numero de bastidor no este vacío.
+        if(fieldNumeroBastidor.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
+                    textoErrorNumeroBastidor.setVisible(true);   
+        }
+        
         //Comprobación de que el modelo no este vacío.
         if(fieldModelo.getText().isEmpty()){
             formatoCorrecto = false;
@@ -97,7 +118,7 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo = new Vehiculos(fieldMatricula.getText(), fieldModelo.getText(), fieldAnoMatriculacion.getText(), cliente, new ArrayList());
+            vehiculo = new Vehiculos(fieldMatricula.getText(),fieldMarca.getText(), fieldModelo.getText(), fieldColor.getText(), fieldAnoMatriculacion.getText(),fieldNumeroBastidor.getText(), cliente, new ArrayList());
                 return true;
         }else{
             return false;
@@ -123,6 +144,15 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         textoErrorModelo = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
         botonAnadir = new javax.swing.JButton();
+        labelMarca = new javax.swing.JLabel();
+        fieldMarca = new javax.swing.JTextField();
+        textoErrorMarca = new javax.swing.JLabel();
+        fieldColor = new javax.swing.JTextField();
+        labelColor = new javax.swing.JLabel();
+        textoErrorColor = new javax.swing.JLabel();
+        fieldNumeroBastidor = new javax.swing.JTextField();
+        textoErrorNumeroBastidor = new javax.swing.JLabel();
+        labelNumeroBastidor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Añadir Vehículo");
@@ -168,6 +198,33 @@ public class AnadirVehiculo extends javax.swing.JFrame {
             }
         });
 
+        labelMarca.setForeground(new java.awt.Color(255, 255, 255));
+        labelMarca.setText("Marca");
+
+        fieldMarca.setToolTipText("");
+
+        textoErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorMarca.setText("Debe introducir una marca");
+
+        fieldColor.setToolTipText("");
+
+        labelColor.setForeground(new java.awt.Color(255, 255, 255));
+        labelColor.setText("Color");
+
+        textoErrorColor.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorColor.setText("Debe introducir un color,");
+
+        fieldNumeroBastidor.setToolTipText("");
+
+        textoErrorNumeroBastidor.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorNumeroBastidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
+
+        labelNumeroBastidor.setForeground(new java.awt.Color(255, 255, 255));
+        labelNumeroBastidor.setText("Número De Bastidor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,7 +232,14 @@ public class AnadirVehiculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(247, 247, 247)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoErrorNumeroBastidor)
+                    .addComponent(fieldNumeroBastidor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelNumeroBastidor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoErrorColor)
+                    .addComponent(fieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelColor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoErrorMarca)
+                    .addComponent(fieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textoErrorModelo)
                     .addComponent(labelMatricula)
                     .addComponent(fieldMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,8 +252,10 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                             .addComponent(botonCancelar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonAnadir))
-                        .addComponent(fieldModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(351, Short.MAX_VALUE))
+                        .addComponent(fieldModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,16 +273,34 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(textoErrorAnoMatriculacion)
                 .addGap(18, 18, 18)
-                .addComponent(labelModelo)
+                .addComponent(labelMarca)
                 .addGap(4, 4, 4)
+                .addComponent(fieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(textoErrorMarca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelModelo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(textoErrorModelo)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
+                .addComponent(labelColor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldColor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(textoErrorColor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelNumeroBastidor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fieldNumeroBastidor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(textoErrorNumeroBastidor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCancelar)
                     .addComponent(botonAnadir))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -276,13 +360,22 @@ public class AnadirVehiculo extends javax.swing.JFrame {
     private javax.swing.JButton botonAnadir;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField fieldAnoMatriculacion;
+    private javax.swing.JTextField fieldColor;
+    private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldModelo;
+    private javax.swing.JTextField fieldNumeroBastidor;
     private javax.swing.JLabel labelAnoMatriculacion;
+    private javax.swing.JLabel labelColor;
     private javax.swing.JLabel labelErrorMatricula;
+    private javax.swing.JLabel labelMarca;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelModelo;
+    private javax.swing.JLabel labelNumeroBastidor;
     private javax.swing.JLabel textoErrorAnoMatriculacion;
+    private javax.swing.JLabel textoErrorColor;
+    private javax.swing.JLabel textoErrorMarca;
     private javax.swing.JLabel textoErrorModelo;
+    private javax.swing.JLabel textoErrorNumeroBastidor;
     // End of variables declaration//GEN-END:variables
 }

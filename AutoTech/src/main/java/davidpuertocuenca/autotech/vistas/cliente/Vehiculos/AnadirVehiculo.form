@@ -27,7 +27,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelModelo" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="textoErrorNumeroBastidor" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldNumeroBastidor" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                  <Component id="labelNumeroBastidor" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="textoErrorColor" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldColor" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                  <Component id="labelColor" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="textoErrorMarca" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="fieldMarca" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                   <Component id="textoErrorModelo" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="labelMatricula" min="-2" max="-2" attributes="0"/>
                   <Component id="fieldMatricula" min="-2" pref="250" max="-2" attributes="0"/>
@@ -43,8 +50,10 @@
                       </Group>
                       <Component id="fieldModelo" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="labelMarca" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                  <Component id="labelModelo" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="351" max="32767" attributes="0"/>
+              <EmptySpace pref="303" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,17 +73,35 @@
               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
               <Component id="textoErrorAnoMatriculacion" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="labelModelo" min="-2" max="-2" attributes="0"/>
+              <Component id="labelMarca" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+              <Component id="fieldMarca" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="textoErrorMarca" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="labelModelo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="fieldModelo" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
               <Component id="textoErrorModelo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="labelColor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="fieldColor" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="textoErrorColor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="labelNumeroBastidor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="fieldNumeroBastidor" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Component id="textoErrorNumeroBastidor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botonAnadir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="156" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -167,6 +194,78 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAnadirActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelMarca">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Marca"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fieldMarca">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorMarca">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons/error_prov.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir una marca"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fieldColor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelColor">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Color"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorColor">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons/error_prov.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un color,"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fieldNumeroBastidor">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="textoErrorNumeroBastidor">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons/error_prov.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Debe introducir un bastidor."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNumeroBastidor">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero De Bastidor"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

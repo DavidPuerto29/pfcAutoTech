@@ -26,13 +26,18 @@ public class Talleres {
     
     private String nombre;
     private String direccion;
-    //private String codigoPostal;
-    //private String teléfono;
-    
-    
-    public Talleres(String nombre, String direccion) {
+    private String codigoPostal;
+    private String teléfono;
+    private String cif;
+    private String localidad;
+
+    public Talleres(String nombre, String direccion, String codigoPostal, String teléfono, String cif, String localidad) {
         this.nombre = nombre;
         this.direccion = direccion;
+        this.codigoPostal = codigoPostal;
+        this.teléfono = teléfono;
+        this.cif = cif;
+        this.localidad = localidad;
     }
-
+    
 }

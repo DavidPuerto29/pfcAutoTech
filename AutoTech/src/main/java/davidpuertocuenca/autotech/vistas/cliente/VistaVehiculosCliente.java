@@ -317,13 +317,17 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
                         this.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-         }
+        }
     }//GEN-LAST:event_botonCitasActionPerformed
 
     private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
-        ModificarVehiculoCliente mv = new ModificarVehiculoCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
-            mv.setVisible(true);
-                this.dispose();
+        try{
+            ModificarVehiculoCliente mv = new ModificarVehiculoCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+                mv.setVisible(true);
+                    this.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_JMenuItemModificarVehiculoActionPerformed
 
     private void JMenuItemEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarVehiculoActionPerformed
@@ -345,9 +349,13 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
-        VistaCitasCliente vcc = new VistaCitasCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
-            vcc.setVisible(true);
-                this.dispose();
+        try{
+            VistaCitasCliente vcc = new VistaCitasCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
+                vcc.setVisible(true);
+                    this.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed

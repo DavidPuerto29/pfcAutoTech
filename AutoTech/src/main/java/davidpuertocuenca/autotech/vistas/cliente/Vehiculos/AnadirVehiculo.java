@@ -97,7 +97,7 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo = new Vehiculos(fieldMatricula.getText(), fieldAnoMatriculacion.getText(), fieldModelo.getText(), cliente, new ArrayList());
+            vehiculo = new Vehiculos(fieldMatricula.getText(), fieldModelo.getText(), fieldAnoMatriculacion.getText(), cliente, new ArrayList());
                 return true;
         }else{
             return false;
@@ -222,7 +222,7 @@ public class AnadirVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosCliente vgc = new VistaVehiculosCliente();
+        VistaVehiculosCliente vgc = new VistaVehiculosCliente(cliente);
             vgc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

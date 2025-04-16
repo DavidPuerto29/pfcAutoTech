@@ -28,7 +28,7 @@ public class LoginClientes extends javax.swing.JFrame {
     public LoginClientes() {
         initComponents();
         setExtendedState(LoginClientes.MAXIMIZED_BOTH);
-        
+      
         //Método de acceso al paner de adminsitradores con Cntrl + T
         textUsuario.addKeyListener(new KeyAdapter() {
         @Override

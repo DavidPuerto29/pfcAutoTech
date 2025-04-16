@@ -40,6 +40,9 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         labelErrorMatricula.setVisible(false);
         textoErrorAnoMatriculacion.setVisible(false);
         textoErrorModelo.setVisible(false);
+        textoErrorMarca.setVisible(false);
+        textoErrorColor.setVisible(false);
+        textoErrorNumeroBastidor.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -73,13 +76,6 @@ public class AnadirVehiculo extends javax.swing.JFrame {
         
         //Comprobacion de que el año no sea superior al actual ( > 2025)
         
-        //Comprobación de que el año de matrículacion no este vacío.
-        if(fieldAnoMatriculacion.getText().isEmpty()){
-            formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-                    textoErrorAnoMatriculacion.setVisible(true);   
-        }
-        
         //Comprobación de que el año de matrículacion sean números y no letras.
         try {
             Integer.parseInt(fieldAnoMatriculacion.getText()); 
@@ -88,6 +84,13 @@ public class AnadirVehiculo extends javax.swing.JFrame {
                 textoErrorAnoMatriculacion.setVisible(true);
                     textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
         } 
+        
+        //Comprobación de que el año de matrículacion no este vacío.
+        if(fieldAnoMatriculacion.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorAnoMatriculacion.setText("Debe introducir un año.");
+                    textoErrorAnoMatriculacion.setVisible(true);   
+        }
         
         //Comprobación de que el campo marca no este vacío.
         if(fieldMarca.getText().isEmpty()){

@@ -322,7 +322,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
 
     private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
         try{
-            ModificarVehiculoCliente mv = new ModificarVehiculoCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+            ModificarVehiculoCliente mv = new ModificarVehiculoCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
                 mv.setVisible(true);
                     this.dispose();
         }catch (ArrayIndexOutOfBoundsException e){

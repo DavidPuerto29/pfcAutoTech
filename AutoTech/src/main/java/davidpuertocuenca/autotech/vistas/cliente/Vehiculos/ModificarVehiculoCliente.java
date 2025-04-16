@@ -4,9 +4,9 @@
  */
 package davidpuertocuenca.autotech.vistas.cliente.Vehiculos;
 
+import davidpuertocuenca.autotech.clases.Cliente;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
 
@@ -16,6 +16,7 @@ import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
  */
 public class ModificarVehiculoCliente extends javax.swing.JFrame {
     private Vehiculos vehiculo;
+    private Cliente cliente;
     /**
      * Creates new form ModificarVehiculo
      */
@@ -25,8 +26,9 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
     
-     public ModificarVehiculoCliente(Vehiculos vehiculo) {
+     public ModificarVehiculoCliente(Vehiculos vehiculo, Cliente cliente) {
         initComponents();
+        this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
         mostrarDatos();
@@ -185,7 +187,7 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosCliente vvc = new VistaVehiculosCliente();
+        VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
             vvc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
@@ -193,7 +195,7 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(modificarVehiculo()){
             actualizarVehiculoSql(vehiculo);
-                VistaVehiculosCliente vvc = new VistaVehiculosCliente();
+                VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
                     vvc.setVisible(true);
                         this.dispose();
         }

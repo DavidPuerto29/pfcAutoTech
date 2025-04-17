@@ -42,7 +42,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
         this.repaint(); 
     }
     
-        private boolean registrarVehiculo(){
+    private boolean registrarVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
         
@@ -76,6 +76,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
             return false;
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

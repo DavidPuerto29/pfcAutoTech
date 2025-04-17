@@ -46,6 +46,13 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
     private boolean registrarVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
+
+        //Comprobación de que la matrícula cumpla el formato actual y el antiguo (España).
+        if (!fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$") && !fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[A-Z]{1,2}[0-9]{4}[A-Z]{0,2}$")) {      
+            formatoCorrecto = false;
+                labelErrorMatricula.setText("Debe introducir una matrícula valida.");
+                    labelErrorMatricula.setVisible(true);
+        }
         
         //Comprobación de que la matrícula no este vacía.
         if(fieldMatricula.getText().isEmpty()){
@@ -53,8 +60,6 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
                 labelErrorMatricula.setText("Debe introducir una matrícula.");
                     labelErrorMatricula.setVisible(true);   
         }
-
-        //Comprobación de que la matrícula cumpla el formato. 0000-XXX (y formato antiguo tambien)
         
         //Comprobación de que la matrícula no este registrada.
         if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
@@ -91,7 +96,12 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
                     textoErrorAnoMatriculacion.setVisible(true);   
         }
         
-        //TODO COMPROBACION NUMERO BASTIDOR FORMATO CORRECTO.
+        //Comprobación de que el numero de bastidor tenga el formato correcto.
+        if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Z0-9]{17}$")) {
+            formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor valido.");
+                    textoErrorNumeroBastidor.setVisible(true);
+        }
         
         //Comprobación de que el campo numero de bastidor no este vacío.
         if(fieldNumeroBastidor.getText().isEmpty()){
@@ -101,7 +111,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo = new Vehiculos(fieldMatricula.getText(), null, null, null, fieldAnoMatriculacion.getText(),fieldNumeroBastidor.getText(), cliente, new ArrayList());
+            vehiculo = new Vehiculos(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), null, null, null, fieldAnoMatriculacion.getText(),fieldNumeroBastidor.getText().trim().toUpperCase(), cliente, new ArrayList());
                 return true;
         }else{
             return false;

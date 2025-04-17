@@ -52,7 +52,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
                     textoErrorDni.setVisible(true);            
         }
         
-        //TODO FORMATO DNI
+        //Comprobación de que el dni tenga el formato correcto.
         if (!fieldDni.getText().matches("^[0-9]{8}[A-Za-z]$")) {
             formatoCorrecto = false;
                 textoErrorDni.setVisible(true);

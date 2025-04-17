@@ -162,6 +162,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorUsuario, gridBagConstraints);
@@ -191,6 +192,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorContrasena, gridBagConstraints);
@@ -213,6 +215,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = -1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorCorreoElectronico, gridBagConstraints);
@@ -232,6 +235,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(14, 920, 0, 0);
         getContentPane().add(labelContrasena, gridBagConstraints);
@@ -254,6 +258,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorContrasena1, gridBagConstraints);
@@ -282,6 +287,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(70, 44, 0, 0);
         getContentPane().add(botonContinuar, gridBagConstraints);
@@ -298,6 +304,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 0, 0, 0);
         getContentPane().add(checkTerminosYCondiciones, gridBagConstraints);
@@ -309,6 +316,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 15;
         gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = -2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
         getContentPane().add(textoErrorTerminos, gridBagConstraints);
@@ -319,6 +327,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 920, 0, 0);
         getContentPane().add(labelContrasena2, gridBagConstraints);

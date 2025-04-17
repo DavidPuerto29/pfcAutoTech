@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.AnadirVehiculo;
+import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.AnadirVehiculoView1;
 import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.ModificarVehiculoCliente;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
@@ -367,7 +367,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemAnadirVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirVehiculoActionPerformed
-       AnadirVehiculo av = new AnadirVehiculo(cliente);
+       AnadirVehiculoView1 av = new AnadirVehiculoView1(cliente);
             av.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemAnadirVehiculoActionPerformed

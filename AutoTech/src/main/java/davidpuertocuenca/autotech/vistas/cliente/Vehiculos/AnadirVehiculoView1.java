@@ -138,6 +138,9 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         fieldNumeroBastidor = new javax.swing.JTextField();
         textoErrorNumeroBastidor = new javax.swing.JLabel();
         labelNumeroBastidor = new javax.swing.JLabel();
+        labelIniciarSesion = new javax.swing.JLabel();
+        fondoCabecera = new javax.swing.JLabel();
+        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,15 +151,15 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         labelMatricula.setText("Matrícula");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(360, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(120, 920, 0, 0);
         getContentPane().add(labelMatricula, gridBagConstraints);
 
         fieldMatricula.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
@@ -169,7 +172,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         labelErrorMatricula.setText("Matrícula ya registrada.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -180,7 +183,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         labelAnoMatriculacion.setText("Año De Matriculación");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -190,7 +193,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         fieldAnoMatriculacion.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
@@ -203,7 +206,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
@@ -217,7 +220,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
@@ -231,7 +234,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 10;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -241,7 +244,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         fieldNumeroBastidor.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
@@ -254,7 +257,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.gridwidth = 9;
         gridBagConstraints.ipadx = 17;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -265,19 +268,56 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         labelNumeroBastidor.setText("Número De Bastidor");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
         getContentPane().add(labelNumeroBastidor, gridBagConstraints);
 
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        labelIniciarSesion.setText("[●○] Paso 1: Añadir Vehículo(Con mas estilo)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(190, 840, 0, 0);
+        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+
+        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.gridheight = 11;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -1256;
+        gridBagConstraints.ipady = -82;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(190, 830, 0, 0);
+        getContentPane().add(fondoCabecera, gridBagConstraints);
+
+        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridheight = 13;
+        gridBagConstraints.ipadx = -2464;
+        gridBagConstraints.ipady = -3232;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
+        getContentPane().add(fondoLogin, gridBagConstraints);
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 18;
+        gridBagConstraints.gridheight = 14;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
@@ -341,9 +381,12 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
     private javax.swing.JTextField fieldAnoMatriculacion;
     private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldNumeroBastidor;
+    private javax.swing.JLabel fondoCabecera;
+    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelAnoMatriculacion;
     private javax.swing.JLabel labelErrorMatricula;
+    private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelNumeroBastidor;
     private javax.swing.JLabel textoErrorAnoMatriculacion;

@@ -40,7 +40,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }
 
     private void crearTabla() {
-        Object[] cabecera = new Object[]{"Matrícula","Modelo","Año De Matriculación","Citas Reservadas"}; 
+        Object[] cabecera = new Object[]{"Matrícula", "Marca", "Modelo", "Año De Matriculación", "Color", "Citas Reservadas", "Número De Bastidor"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -55,11 +55,14 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql());
            
             for(Vehiculos Vehiculo : vehiculos){
-                Object[] fila = new Object[4];
+                Object[] fila = new Object[7];
                 fila[0] = Vehiculo.getMatricula();
-                fila[1] = Vehiculo.getModelo();
-                fila[2] = Vehiculo.getAnoMatriculacion();
-                fila[3] = Vehiculo.getCitas().size();
+                fila[1] = Vehiculo.getMarca();
+                fila[2] = Vehiculo.getModelo();
+                fila[3] = Vehiculo.getAnoMatriculacion();
+                fila[4] = Vehiculo.getColor();
+                fila[5] = Vehiculo.getCitas().size();
+                fila[6] = Vehiculo.getNumeroBastidor();
                     miModelo.addRow(fila);
             }
          
@@ -69,6 +72,11 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             columnaMatricula.setMinWidth(100);
             columnaMatricula.setMaxWidth(600);
             columnaMatricula.setPreferredWidth(300); 
+            
+            TableColumn columnaMarca = tablaVehiculos.getColumn("Marca");
+            columnaMarca.setMinWidth(100);
+            columnaMarca.setMaxWidth(600);
+            columnaMarca.setPreferredWidth(300); 
             
             TableColumn columnaModelo = tablaVehiculos.getColumn("Modelo");
             columnaModelo.setMinWidth(100);
@@ -80,10 +88,20 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
             columnaAnoMatriculacion.setMaxWidth(600);
             columnaAnoMatriculacion.setPreferredWidth(300); 
             
+            TableColumn columnaColor = tablaVehiculos.getColumn("Color");
+            columnaColor.setMinWidth(100);
+            columnaColor.setMaxWidth(600);
+            columnaColor.setPreferredWidth(300); 
+            
             TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
             columnaCitas.setMinWidth(100);
             columnaCitas.setMaxWidth(600);
             columnaCitas.setPreferredWidth(300);
+            
+            TableColumn columnaBastidor = tablaVehiculos.getColumn("Número De Bastidor");
+            columnaBastidor.setMinWidth(100);
+            columnaBastidor.setMaxWidth(600);
+            columnaBastidor.setPreferredWidth(300); 
             
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -131,17 +149,17 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Matrícula", "Modelo", "Año De Matriculación", "Citas Reservadas"
+                "Matrícula", "Marca", "Modelo", "Año De Matriculación", "Color", "Citas Reservadas", "Número De Bastidor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

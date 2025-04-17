@@ -75,6 +75,13 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
                             textoErrorContrasena1.setVisible(true); 
         }
         
+        //Comprobación de que el correo electronico tenga el formato requerido.
+        if (!fieldCorreo.getText().matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
+            formatoCorrecto = false;
+                textoErrorCorreoElectronico.setVisible(true);
+                    textoErrorCorreoElectronico.setText("Introduzca un correo electrónico valido.");
+        }
+        
         //Comprobación de que el correo electronico no este vacio.
         if(fieldCorreo.getText().isEmpty()){
             formatoCorrecto = false;
@@ -82,8 +89,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
                     textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
         }
         
-        //TODO FORMATO CORREO ELECTRONICO.
-        
+        //Comprobación de que el usuario haya aceptado los terminos.
         if(aceptacionTerminos == false){
             textoErrorTerminos.setVisible(true);
         }

@@ -45,13 +45,6 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
         
-        //Comprobación de que el dni no este vacio.
-        if(fieldDni.getText().isEmpty()){
-            formatoCorrecto = false;
-                textoErrorDni.setVisible(true);
-                    textoErrorDni.setText("Debe introducir un dni.");
-        }
-        
         //Comprobación de que el dni no esta ya en uso.
         if(obtenerClientePorDniSql(fieldDni.getText()) != null){
             formatoCorrecto = false;
@@ -60,6 +53,18 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         }
         
         //TODO FORMATO DNI
+        if (!fieldDni.getText().matches("^[0-9]{8}[A-Za-z]$")) {
+            formatoCorrecto = false;
+                textoErrorDni.setVisible(true);
+                    textoErrorDni.setText("Debe introducir un dni valido.");
+        }
+        
+        //Comprobación de que el dni no este vacio.
+        if(fieldDni.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorDni.setVisible(true);
+                    textoErrorDni.setText("Debe introducir un dni.");
+        }
         
         //Comprobación de que el nombre no este vacio.
         if(fieldNombre.getText().isEmpty()){

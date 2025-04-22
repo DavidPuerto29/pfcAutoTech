@@ -6,11 +6,11 @@ package davidpuertocuenca.autotech.vistas.administrador.vehiculo;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosClientesSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 
 /**
  *
@@ -85,7 +85,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         if(formatoCorrecto){
             vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
                 vehiculo.setModelo(fieldModelo.getText()); 
-                    vehiculo.setCliente(obtenerClienteUsuarioSql((String) comboBoxClientes.getSelectedItem()));
+                    vehiculo.setCliente(obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()));
                         return true;
         }else{
             return false;
@@ -95,7 +95,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private void cargarClientes(){
         comboBoxClientes.removeAllItems(); 
           
-        for (Usuarios cliente : obtenerTodosClientesSql()) {
+        for (Usuarios cliente : obtenerTodosUsuariosSql()) {
             comboBoxClientes.addItem(cliente.getUsuario()); 
                 if (cliente.getUsuario().equals(vehiculo.getCliente().getUsuario())) {
                     comboBoxClientes.setSelectedItem(cliente.getUsuario());

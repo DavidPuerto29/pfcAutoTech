@@ -16,25 +16,25 @@ import org.hibernate.Session;
  * @author David Puerto Cuenca
  */
 public class UsuariosDAO {
-    public static void crearClienteSql(Usuarios cliente) {
+    public static void crearUsuarioSql(Usuarios usuario) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();
-                session.persist(cliente);
+                session.persist(usuario);
                     session.getTransaction().commit();
         }
     }
     
-    public static void eliminarClienteSql(Usuarios cliente){
+    public static void eliminarUsuarioSql(Usuarios usuario){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
-                session.remove(cliente);
+                session.remove(usuario);
                     session.getTransaction().commit();
         }
     }
     
-    public static Usuarios obtenerClienteUsuarioSql(String usuario){
+    public static Usuarios obtenerUsuarioPorUsuarioSql(String usuario){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Usuarios> q = session.createNamedQuery("get_cliente_username", Usuarios.class);
+            Query<Usuarios> q = session.createNamedQuery("get_usuario_username", Usuarios.class);
                 q.setParameter("username", usuario);
                     return (Usuarios) q.getSingleResult();
         } catch (NoResultException e) {
@@ -42,9 +42,9 @@ public class UsuariosDAO {
         }
     }
     
-    public static Usuarios obtenerClientePorDniSql(String dni){
+    public static Usuarios obtenerUsuarioPorDniSql(String dni){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Usuarios> q = session.createNamedQuery("get_cliente_dni", Usuarios.class);
+            Query<Usuarios> q = session.createNamedQuery("get_usuario_dni", Usuarios.class);
                 q.setParameter("dniCliente", dni);
                     return (Usuarios) q.getSingleResult();
         } catch (NoResultException e) {
@@ -52,9 +52,9 @@ public class UsuariosDAO {
         }
     }
     
-    public static Usuarios loginClienteSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
+    public static Usuarios loginUsuarioSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Usuarios> q = session.createNamedQuery("get_cliente_login", Usuarios.class);
+            Query<Usuarios> q = session.createNamedQuery("get_usuario_login", Usuarios.class);
                 q.setParameter("username", usuario);
                     q.setParameter("password", contrasena);
                         return (Usuarios) q.getSingleResult();
@@ -63,9 +63,9 @@ public class UsuariosDAO {
         }
     }
     
-     public static List<Usuarios> obtenerTodosClientesSql(){
+     public static List<Usuarios> obtenerTodosUsuariosSql(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Usuarios> q = session.createNamedQuery("get_todos_clientes", Usuarios.class);
+            Query<Usuarios> q = session.createNamedQuery("get_todos_usuarios", Usuarios.class);
                 return q.getResultList();
         } catch (NoResultException e) {
             return null;

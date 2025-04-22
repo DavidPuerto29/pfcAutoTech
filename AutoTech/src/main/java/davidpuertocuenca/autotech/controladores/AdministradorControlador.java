@@ -10,9 +10,7 @@ import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarClienteSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarClienteSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosClientesSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
@@ -35,6 +33,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 
 /**
  *
@@ -72,7 +72,7 @@ public class AdministradorControlador {
         tablaClientes.getTableHeader().setReorderingAllowed(false);
 
 
-            List<Usuarios> clientes = new ArrayList(obtenerTodosClientesSql());
+            List<Usuarios> clientes = new ArrayList(obtenerTodosUsuariosSql());
           
             for(Usuarios cliente : clientes){
                 Object[] fila = new Object[8];
@@ -332,7 +332,7 @@ public class AdministradorControlador {
                 JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
             }
             if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                eliminarClienteSql(cliente);        
+                eliminarUsuarioSql(cliente);        
             }else{
                 JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
             }

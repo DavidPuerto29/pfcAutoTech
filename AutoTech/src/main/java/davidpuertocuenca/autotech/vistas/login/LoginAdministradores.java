@@ -4,21 +4,17 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
-import davidpuertocuenca.autotech.clases.Usuarios;
-import static davidpuertocuenca.autotech.clases.Usuarios.comprobacionAutenticacionUsuario;
-import davidpuertocuenca.autotech.vistas.administrador.VistaUsuariosAdministrador;
+import davidpuertocuenca.autotech.controladores.LoginControlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 public class LoginAdministradores extends javax.swing.JFrame {
-
+    private LoginControlador controlador = new LoginControlador();
     /**
      * Creates new form LoginAdministradores
      */
@@ -30,7 +26,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
         textContrasena.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               iniciarSesion(); 
+               controlador.iniciarSesionAdministradores(textUsuario.getText(), textContrasena.getPassword(), LoginAdministradores.this);
             }
         });
         
@@ -38,30 +34,12 @@ public class LoginAdministradores extends javax.swing.JFrame {
         textUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               iniciarSesion(); 
+               controlador.iniciarSesionAdministradores(textUsuario.getText(), textContrasena.getPassword(), LoginAdministradores.this); 
             }
         });
     }
 
-    private void iniciarSesion(){
-        Usuarios cliente = obtenerClienteUsuarioSql(textUsuario.getText());
-        char[] contasenaChar = textContrasena.getPassword();
-        
-        if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
-            //Se limpia el array para aumentar la seguridad.
-            java.util.Arrays.fill(contasenaChar, '\0');
-           if(cliente.isAdministrador()){
-            VistaUsuariosAdministrador vga = new VistaUsuariosAdministrador();
-               vga.setVisible(true);
-                this.dispose();
-                 
-           }else{
-               JOptionPane.showMessageDialog(null, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-           }
-        }else{
-            JOptionPane.showMessageDialog(null, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de búsqueda", JOptionPane.ERROR_MESSAGE);
-        } 
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -235,23 +213,21 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
-        iniciarSesion();
+        controlador.iniciarSesionAdministradores(textUsuario.getText(), textContrasena.getPassword(), this);
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        LoginClientes lgc = new LoginClientes();
-            lgc.setVisible(true);
-                this.dispose();
+        controlador.vistaClientes(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarContrasenaActionPerformed
-            if (textContrasena.getEchoChar() == '\u0000') {
-                    textContrasena.setEchoChar('•'); 
-                        botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png")));
-             } else {
-                    textContrasena.setEchoChar('\u0000'); 
-                        botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconOcultarContrasena.png")));
-            }
+        if (textContrasena.getEchoChar() == '\u0000') {
+               textContrasena.setEchoChar('•'); 
+                    botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png")));
+         } else {
+               textContrasena.setEchoChar('\u0000'); 
+                     botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconOcultarContrasena.png")));
+        }
     }//GEN-LAST:event_botonMostrarContrasenaActionPerformed
 
     /**

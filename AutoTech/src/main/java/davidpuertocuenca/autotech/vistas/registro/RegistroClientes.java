@@ -7,11 +7,11 @@ package davidpuertocuenca.autotech.vistas.registro;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
 import davidpuertocuenca.autotech.clases.Usuarios;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearClienteSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClientePorDniSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.Arrays;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 
 /**
  *
@@ -43,7 +43,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         boolean formatoCorrecto = true;
         
         //Comprobación de que el usuario no esta ya en uso.
-        if(obtenerClienteUsuarioSql(fieldUsuario.getText()) != null){
+        if(obtenerUsuarioPorUsuarioSql(fieldUsuario.getText()) != null){
             formatoCorrecto = false;
                 textoErrorUsuario.setText("Usuario ya en uso.");
                     textoErrorUsuario.setVisible(true);            
@@ -79,7 +79,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         
         //Comprobación de que el dni no esta ya en uso.
-        if(obtenerClientePorDniSql(fieldDni.getText()) != null){
+        if(obtenerUsuarioPorDniSql(fieldDni.getText()) != null){
             formatoCorrecto = false;
                 textoErrorDni.setText("Dni ya en uso.");
                     textoErrorDni.setVisible(true);            
@@ -146,7 +146,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 Usuarios cliente = new Usuarios(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
                     //Se limpia el array para aumentar la seguridad.
                     java.util.Arrays.fill(contasenaChar, '\0');    
-                        crearClienteSql(cliente);
+                        crearUsuarioSql(cliente);
                                 return true;
         }else{
             return false;

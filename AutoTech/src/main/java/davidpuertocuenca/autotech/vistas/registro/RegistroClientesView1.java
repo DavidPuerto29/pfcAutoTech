@@ -10,7 +10,7 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 
 /**
  *
@@ -43,7 +43,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
         boolean formatoCorrecto = true;
         
         //Comprobación de que el usuario no esta ya en uso.
-        if(obtenerClienteUsuarioSql(fieldUsuario.getText()) != null){
+        if(obtenerUsuarioPorUsuarioSql(fieldUsuario.getText()) != null){
             formatoCorrecto = false;
                 textoErrorUsuario.setText("Usuario ya en uso.");
                     textoErrorUsuario.setVisible(true);            

@@ -5,9 +5,9 @@
 package davidpuertocuenca.autotech.vistas.registro;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearClienteSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClientePorDniSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 
 /**
  *
@@ -46,7 +46,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         boolean formatoCorrecto = true;
         
         //Comprobación de que el dni no esta ya en uso.
-        if(obtenerClientePorDniSql(fieldDni.getText()) != null){
+        if(obtenerUsuarioPorDniSql(fieldDni.getText()) != null){
             formatoCorrecto = false;
                 textoErrorDni.setText("Dni ya en uso.");
                     textoErrorDni.setVisible(true);            
@@ -116,7 +116,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
             cliente.setDni(fieldDni.getText());
             cliente.setDireccion(fieldDireccion.getText());
             cliente.setNumeroTelefono(fieldTelefono.getText());
-                        crearClienteSql(cliente);
+                        crearUsuarioSql(cliente);
                                 return true;
         }else{
             return false;

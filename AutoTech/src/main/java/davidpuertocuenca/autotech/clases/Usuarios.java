@@ -24,11 +24,11 @@ import lombok.Setter;
  * @author David Puerto Cuenca
  */
 @Entity @Getter @Setter  @NoArgsConstructor
-@NamedQuery(name = "get_cliente_username", query = "FROM Cliente p WHERE p.usuario = :username")
-@NamedQuery(name = "get_cliente_dni", query = "FROM Cliente p WHERE p.dni = :dniCliente")
-@NamedQuery(name = "get_cliente_login", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
-@NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username")
-@NamedQuery(name = "get_todos_clientes", query = "FROM Cliente q ORDER BY q.usuario ASC")
+@NamedQuery(name = "get_usuario_username", query = "FROM Usuarios p WHERE p.usuario = :username")
+@NamedQuery(name = "get_usuario_dni", query = "FROM Usuarios p WHERE p.dni = :dniCliente")
+@NamedQuery(name = "get_usuario_login", query = "FROM Usuarios p WHERE p.usuario = :username AND p.contrasena = :password")
+@NamedQuery(name = "get_usuario", query = "FROM Usuarios p WHERE p.usuario = :username")
+@NamedQuery(name = "get_todos_usuarios", query = "FROM Usuarios q ORDER BY q.usuario ASC")
 public class Usuarios {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;

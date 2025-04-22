@@ -4,36 +4,27 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.actualizarClienteSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.eliminarClienteSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteSql;
-import davidpuertocuenca.autotech.vistas.administrador.cliente.ModificarCliente;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import javax.swing.Box;
-import javax.swing.JOptionPane;
 
 /**
  *
  * 
  * @author David Puerto Cuenca
  */
-public class VistaClientesAdministrador extends javax.swing.JFrame {
+public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         private AdministradorControlador controlador = new AdministradorControlador();
+        
     /**
      * Creates new form VistaGeneralAdministrador
      */
-    public VistaClientesAdministrador() {
+    public VistaUsuariosAdministrador() {
         initComponents();
-        setExtendedState(VistaClientesAdministrador.MAXIMIZED_BOTH);
+        setExtendedState(VistaUsuariosAdministrador.MAXIMIZED_BOTH);
 
-        controlador.crearTabla(tablaClientes);
-            
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        controlador.crearTablaClientes(tablaClientes);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5);
     }
 
     
@@ -301,7 +292,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
-       controlador.crearTabla(tablaClientes);
+       controlador.crearTablaClientes(tablaClientes);
     }//GEN-LAST:event_botonRefrescarActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
@@ -323,7 +314,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemAdministradorActionPerformed
 
     private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
-       ModificarCliente mc = new ModificarCliente();
+       ModificarUsuarios mc = new ModificarUsuarios();
             mc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
@@ -361,21 +352,23 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaClientesAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaUsuariosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaClientesAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaUsuariosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaClientesAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaUsuariosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaClientesAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaUsuariosAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaClientesAdministrador().setVisible(true);
+                new VistaUsuariosAdministrador().setVisible(true);
             }
         });
     }

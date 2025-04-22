@@ -4,85 +4,24 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.clases.Talleres;
-import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.Box;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
 /**
  *
  * @author David
  */
 public class VistaTalleresAdministrador extends javax.swing.JFrame {
-
+    private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form VistaTalleresAdministrador
      */
     public VistaTalleresAdministrador() {
         initComponents();
-        setExtendedState(VistaClientesAdministrador.MAXIMIZED_BOTH);
-        crearTabla();
-            
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        setExtendedState(VistaUsuariosAdministrador.MAXIMIZED_BOTH);
+        controlador.crearTablaTalleres(tablaTalleres, this);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
-     //Tambien usado para actualizar la tabla
-    private void crearTabla() { 
-        Object[] cabecera = new Object[]{"Nombre","Dirección"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        
-        tablaTalleres.setModel(miModelo);
-        tablaTalleres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaTalleres.getTableHeader().setReorderingAllowed(false);
-
-            List<Talleres> talleres = new ArrayList(obtenerTodosTalleresSql());
-          
-            for(Talleres taller : talleres){
-                Object[] fila = new Object[2];
-                fila[0] = taller.getNombre();
-                fila[1] = taller.getDireccion();
-                    miModelo.addRow(fila);
-            }
-         
-            //Dimensiones de la tabla.
-            tablaTalleres.setRowHeight(40);
-            TableColumn columnaFecha = tablaTalleres.getColumn("Nombre");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaCliente = tablaTalleres.getColumn("Dirección");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300); 
-           
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaTalleres.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaTalleres.getColumnCount(); i++) {
-                tablaTalleres.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaTalleres.getColumnModel().getColumn(i).setResizable(false);
-            }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -287,28 +226,19 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     private void JMenuItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarTallerActionPerformed
        //eliminarTallerSql()    TODO
       
-        //Siempre al finalizar actualiza la tabla.
-        crearTabla();
+       controlador.crearTablaTalleres(tablaTalleres, this);
     }//GEN-LAST:event_JMenuItemEliminarTallerActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
-        VistaClientesAdministrador vga = new VistaClientesAdministrador();
-            vga.setVisible(true);
-                this.dispose();
+        controlador.vistaClientes(this);
     }//GEN-LAST:event_JMenuItemClientesActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
-        VistaCitasAdministrador vca = new VistaCitasAdministrador();
-            vca.setVisible(true);
-                this.dispose();
+        controlador.vistaCitas(this);
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-            LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
-        }
+        controlador.cerrarSesion(this);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemAnadirTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirTallerActionPerformed
@@ -316,9 +246,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemAnadirTallerActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
-        VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
-            vha.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this);
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     /**

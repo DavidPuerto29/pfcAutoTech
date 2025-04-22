@@ -6,12 +6,12 @@ package davidpuertocuenca.autotech.vistas.registro;
 
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
-import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorDniSql;
+import davidpuertocuenca.autotech.clases.Usuarios;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearClienteSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClientePorDniSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import java.util.Arrays;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 
 /**
  *
@@ -143,7 +143,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         if(formatoCorrecto){
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
-                Cliente cliente = new Cliente(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
+                Usuarios cliente = new Usuarios(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,fieldDni.getText(),fieldNombre.getText(),fieldApellidos.getText(),fieldCorreo.getText(),fieldTelefono.getText(),fieldDireccion.getText(),false);
                     //Se limpia el array para aumentar la seguridad.
                     java.util.Arrays.fill(contasenaChar, '\0');    
                         crearClienteSql(cliente);

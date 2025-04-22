@@ -4,14 +4,14 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
-import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import davidpuertocuenca.autotech.vistas.administrador.VistaClientesAdministrador;
+import davidpuertocuenca.autotech.clases.Usuarios;
+import static davidpuertocuenca.autotech.clases.Usuarios.comprobacionAutenticacionUsuario;
+import davidpuertocuenca.autotech.vistas.administrador.VistaUsuariosAdministrador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 
 /**
  *
@@ -44,14 +44,14 @@ public class LoginAdministradores extends javax.swing.JFrame {
     }
 
     private void iniciarSesion(){
-        Cliente cliente = obtenerClienteUsuarioSql(textUsuario.getText());
+        Usuarios cliente = obtenerClienteUsuarioSql(textUsuario.getText());
         char[] contasenaChar = textContrasena.getPassword();
         
         if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contasenaChar, '\0');
            if(cliente.isAdministrador()){
-            VistaClientesAdministrador vga = new VistaClientesAdministrador();
+            VistaUsuariosAdministrador vga = new VistaUsuariosAdministrador();
                vga.setVisible(true);
                 this.dispose();
                  

@@ -6,18 +6,18 @@ package davidpuertocuenca.autotech.vistas.registro;
 
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 
 /**
  *
  * @author David
  */
 public class RegistroClientesView1 extends javax.swing.JFrame {
-    private Cliente cliente;
+    private Usuarios cliente;
     private boolean aceptacionTerminos = false;
     /**
      * Creates new form RegistroClientesView1
@@ -98,7 +98,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
                 //Se guardan los datos obtenidos en la variable global.
-                cliente = new Cliente(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,null, null, null, fieldCorreo.getText(), null, null, false);
+                cliente = new Usuarios(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,null, null, null, fieldCorreo.getText(), null, null, false);
                     //Se limpia el array para aumentar la seguridad.
                     java.util.Arrays.fill(contasenaChar, '\0');    
                         return true;

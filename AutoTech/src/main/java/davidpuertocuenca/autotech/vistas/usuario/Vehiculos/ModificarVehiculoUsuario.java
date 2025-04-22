@@ -2,31 +2,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.cliente.Vehiculos;
+package davidpuertocuenca.autotech.vistas.usuario.Vehiculos;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
 
 /**
  *
  * @author David
  */
-public class ModificarVehiculoCliente extends javax.swing.JFrame {
+public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
-    private Cliente cliente;
+    private Usuarios cliente;
     /**
      * Creates new form ModificarVehiculo
      */
-    public ModificarVehiculoCliente() {
+    public ModificarVehiculoUsuario() {
         initComponents();
         reiniciarEtiquetas();
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
     
-     public ModificarVehiculoCliente(Vehiculos vehiculo, Cliente cliente) {
+     public ModificarVehiculoUsuario(Vehiculos vehiculo, Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
         this.vehiculo = vehiculo;
@@ -187,7 +187,7 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
             vvc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
@@ -195,7 +195,7 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(modificarVehiculo()){
             actualizarVehiculoSql(vehiculo);
-                VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+                VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
                     vvc.setVisible(true);
                         this.dispose();
         }
@@ -218,21 +218,23 @@ public class ModificarVehiculoCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarVehiculoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarVehiculoCliente().setVisible(true);
+                new ModificarVehiculoUsuario().setVisible(true);
             }
         });
     }

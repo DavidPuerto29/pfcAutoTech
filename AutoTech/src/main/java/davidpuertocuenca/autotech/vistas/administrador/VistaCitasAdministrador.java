@@ -4,99 +4,22 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.clases.Citas;
-import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.Box;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
 /**
  *
  * @author David
  */
 public class VistaCitasAdministrador extends javax.swing.JFrame {
-
+    private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form VitaCitasAdministrador
      */
     public VistaCitasAdministrador() {
         initComponents();
-        crearTabla();
         setExtendedState(VistaVehiculosAdministrador.MAXIMIZED_BOTH);
-        
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
-    }
-    
-    private void crearTabla() {
-        Object[] cabecera = new Object[]{"Numero De Cita","Fecha","Nombre Del Taller","Matrícula","Cliente"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        tablaCitas.setModel(miModelo);
-        tablaCitas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaCitas.getTableHeader().setReorderingAllowed(false);
-                
-            List<Citas> citas = new ArrayList(obtenerTodasCitasSql());
-           
-            for(Citas cita : citas){
-                Object[] fila = new Object[5];
-                fila[0] = cita.getNumeroCita();
-                fila[1] = cita.getFecha();
-                fila[2] = cita.getTaller().getNombre();
-                fila[3] = cita.getVehiculo().getMatricula();
-                fila[4] = cita.getVehiculo().getCliente().getNombre();
-                    miModelo.addRow(fila);
-            }
-         
-            //Dimensiones de la tabla.
-            tablaCitas.setRowHeight(40);
-            TableColumn columnaNumeroCita = tablaCitas.getColumn("Numero De Cita");
-            columnaNumeroCita.setMinWidth(100);
-            columnaNumeroCita.setMaxWidth(600);
-            columnaNumeroCita.setPreferredWidth(300); 
-            
-            TableColumn columnaFecha = tablaCitas.getColumn("Fecha");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaTaller = tablaCitas.getColumn("Nombre Del Taller");
-            columnaTaller.setMinWidth(100);
-            columnaTaller.setMaxWidth(600);
-            columnaTaller.setPreferredWidth(300); 
-            
-            TableColumn columnaMatricula = tablaCitas.getColumn("Matrícula");
-            columnaMatricula.setMinWidth(100);
-            columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(300);
-            
-            TableColumn columnaCliente = tablaCitas.getColumn("Cliente");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300);
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaCitas.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaCitas.getColumnCount(); i++) {
-                tablaCitas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaCitas.getColumnModel().getColumn(i).setResizable(false);
-            }
+        controlador.crearTablaCitas(tablaCitas, this);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
 
     /**
@@ -294,29 +217,19 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarCitaActionPerformed
 
     private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
-        VistaClientesAdministrador vga = new VistaClientesAdministrador();
-            vga.setVisible(true);
-                this.dispose();
+        controlador.vistaClientes(this);
     }//GEN-LAST:event_JMenuItemClientesActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-            LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
-        }
+        controlador.cerrarSesion(this);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
-        VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
-            vha.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this);
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     private void jMenuItemTalleresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTalleresActionPerformed
-        VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
-            vta.setVisible(true);
-                this.dispose();
+         controlador.vistaTalleres(this);
     }//GEN-LAST:event_jMenuItemTalleresActionPerformed
 
     /**

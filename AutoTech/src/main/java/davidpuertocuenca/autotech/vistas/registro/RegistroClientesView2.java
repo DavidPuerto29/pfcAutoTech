@@ -4,9 +4,9 @@
  */
 package davidpuertocuenca.autotech.vistas.registro;
 
-import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.crearClienteSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClientePorDniSql;
+import davidpuertocuenca.autotech.clases.Usuarios;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearClienteSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClientePorDniSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 
 /**
@@ -14,7 +14,7 @@ import davidpuertocuenca.autotech.vistas.login.LoginClientes;
  * @author David
  */
 public class RegistroClientesView2 extends javax.swing.JFrame {
-    private Cliente cliente;
+    private Usuarios cliente;
     /**
      * Creates new form RegistroClientesView2ç
      */
@@ -24,7 +24,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
     }
     
-    public RegistroClientesView2(Cliente cliente) {
+    public RegistroClientesView2(Usuarios cliente) {
         initComponents();
         reiniciarEtiquetas();
         setExtendedState(RegistroClientes.MAXIMIZED_BOTH);

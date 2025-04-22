@@ -4,7 +4,7 @@
  */
 package davidpuertocuenca.autotech.dao;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import jakarta.persistence.NoResultException;
 import java.util.List;
@@ -25,7 +25,7 @@ public class VehiculosDAO {
         }
     }
     
-    public static List<Vehiculos> obtenerTodosVehiculosClienteSql(Cliente cliente){
+    public static List<Vehiculos> obtenerTodosVehiculosClienteSql(Usuarios cliente){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Vehiculos> q = session.createNamedQuery("get_todos_vehiculos_usuario", Vehiculos.class);
                 q.setParameter("client", cliente);

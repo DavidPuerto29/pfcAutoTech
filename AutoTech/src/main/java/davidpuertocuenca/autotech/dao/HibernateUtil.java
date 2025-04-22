@@ -5,7 +5,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import davidpuertocuenca.autotech.clases.Citas;
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 
@@ -27,7 +27,7 @@ public class HibernateUtil {
                     StandardServiceRegistryBuilder().build();) {
                 sessionFactory = new MetadataSources(registry)
                         .addAnnotatedClass(Citas.class)
-                        .addAnnotatedClass(Cliente.class)
+                        .addAnnotatedClass(Usuarios.class)
                         .addAnnotatedClass(Talleres.class)
                         .addAnnotatedClass(Vehiculos.class)
                         .buildMetadata().buildSessionFactory();

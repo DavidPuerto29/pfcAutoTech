@@ -29,7 +29,7 @@ import lombok.Setter;
 @NamedQuery(name = "get_cliente_login", query = "FROM Cliente p WHERE p.usuario = :username AND p.contrasena = :password")
 @NamedQuery(name = "get_cliente", query = "FROM Cliente p WHERE p.usuario = :username")
 @NamedQuery(name = "get_todos_clientes", query = "FROM Cliente q ORDER BY q.usuario ASC")
-public class Cliente {
+public class Usuarios {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
     @Column(unique = true)
@@ -48,7 +48,7 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Vehiculos> vehiculos;
     
-    public Cliente(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, String numeroTelefono, String direccion, boolean administrador) {
+    public Usuarios(String usuario, String contrasena, String randomizador, String dni, String nombre, String apellidos, String correoElectronico, String numeroTelefono, String direccion, boolean administrador) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.randomizador = randomizador;
@@ -61,7 +61,7 @@ public class Cliente {
         this.administrador = administrador;
     }
     
-    public static boolean comprobacionAutenticacionUsuario(Cliente cliente, String contrasena){
+    public static boolean comprobacionAutenticacionUsuario(Usuarios cliente, String contrasena){
         if (cliente == null) {
             return false;
         }

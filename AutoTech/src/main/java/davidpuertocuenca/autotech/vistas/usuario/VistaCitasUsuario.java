@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.cliente;
+package davidpuertocuenca.autotech.vistas.usuario;
 
 import davidpuertocuenca.autotech.clases.Citas;
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
@@ -25,16 +25,16 @@ import javax.swing.table.TableColumn;
  *
  * @author David
  */
-public class VistaCitasCliente extends javax.swing.JFrame {
+public class VistaCitasUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
     //Usado para no perder los datos del cliente cuando se vuelve a la vista general.
-    private Cliente cliente;
+    private Usuarios cliente;
     /**
      * Creates new form VistaCitasCliente
      */
-    public VistaCitasCliente() {
+    public VistaCitasUsuario() {
         initComponents();
-        setExtendedState(VistaCitasCliente.MAXIMIZED_BOTH);
+        setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
         crearTabla();
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
         jMenuBar1.remove(jMenu5);
@@ -42,11 +42,11 @@ public class VistaCitasCliente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
     }
     
-    public VistaCitasCliente(Vehiculos vehiculo, Cliente cliente) {
+    public VistaCitasUsuario(Vehiculos vehiculo, Usuarios cliente) {
         initComponents();
         this.vehiculo = vehiculo;
         this.cliente = cliente;
-        setExtendedState(VistaCitasCliente.MAXIMIZED_BOTH);
+        setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
         crearTabla();
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
         jMenuBar1.remove(jMenu5);
@@ -265,7 +265,7 @@ public class VistaCitasCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemCancelarCitaActionPerformed
 
     private void JMenuItemVehículosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehículosActionPerformed
-        VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
             vvc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_JMenuItemVehículosActionPerformed
@@ -351,20 +351,21 @@ public class VistaCitasCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaCitasCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCitasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaCitasCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCitasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaCitasCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCitasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaCitasCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaCitasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaCitasCliente().setVisible(true);
+                new VistaCitasUsuario().setVisible(true);
             }
         });
     }

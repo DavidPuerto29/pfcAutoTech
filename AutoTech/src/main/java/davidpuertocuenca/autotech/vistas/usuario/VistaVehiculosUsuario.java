@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.cliente;
+package davidpuertocuenca.autotech.vistas.usuario;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import davidpuertocuenca.autotech.vistas.login.*;
@@ -14,8 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.AnadirVehiculoView1;
-import davidpuertocuenca.autotech.vistas.cliente.Vehiculos.ModificarVehiculoCliente;
+import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoView1;
+import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsuario;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -26,14 +26,14 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author David Puerto Cuenca
  */
-public class VistaVehiculosCliente extends javax.swing.JFrame {
-    private Cliente cliente;
+public class VistaVehiculosUsuario extends javax.swing.JFrame {
+    private Usuarios cliente;
     /**
      * Creates new form VistaGeneralCliente
      */
-    public VistaVehiculosCliente() {
+    public VistaVehiculosUsuario() {
         initComponents();
-        setExtendedState(VistaVehiculosCliente.MAXIMIZED_BOTH);
+        setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
             crearTabla();
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
         jMenuBar1.remove(jMenu5);
@@ -41,10 +41,10 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
     }
     
-    public VistaVehiculosCliente(Cliente cliente) {
+    public VistaVehiculosUsuario(Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
-        setExtendedState(VistaVehiculosCliente.MAXIMIZED_BOTH);
+        setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
             crearTabla();
         
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
@@ -330,7 +330,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
     private void botonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasActionPerformed
         try{
             Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
-                VistaCitasCliente vcc = new VistaCitasCliente(vehiculo, cliente);
+                VistaCitasUsuario vcc = new VistaCitasUsuario(vehiculo, cliente);
                     vcc.setVisible(true);
                         this.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
@@ -340,7 +340,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
 
     private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
         try{
-            ModificarVehiculoCliente mv = new ModificarVehiculoCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
+            ModificarVehiculoUsuario mv = new ModificarVehiculoUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
                 mv.setVisible(true);
                     this.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
@@ -368,7 +368,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
         try{
-            VistaCitasCliente vcc = new VistaCitasCliente(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
+            VistaCitasUsuario vcc = new VistaCitasUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
                 vcc.setVisible(true);
                     this.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
@@ -407,14 +407,22 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaVehiculosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaVehiculosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaVehiculosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaVehiculosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaVehiculosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaVehiculosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaVehiculosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaVehiculosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -427,7 +435,7 @@ public class VistaVehiculosCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaVehiculosCliente().setVisible(true);
+                new VistaVehiculosUsuario().setVisible(true);
             }
         });
     }

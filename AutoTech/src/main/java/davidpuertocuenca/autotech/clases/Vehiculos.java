@@ -42,11 +42,11 @@ public class Vehiculos {
     private String numeroBastidor;
     @ManyToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "idCliente")
-    private Cliente cliente;
+    private Usuarios cliente;
     @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Citas> citas;
 
-    public Vehiculos(String matricula, String marca, String modelo, String color, String anoMatriculacion, String numeroBastidor, Cliente cliente, List<Citas> citas) {
+    public Vehiculos(String matricula, String marca, String modelo, String color, String anoMatriculacion, String numeroBastidor, Usuarios cliente, List<Citas> citas) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;

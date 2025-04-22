@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.cliente.Vehiculos;
+package davidpuertocuenca.autotech.vistas.usuario.Vehiculos;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class AnadirVehiculoView1 extends javax.swing.JFrame {
     private Vehiculos vehiculo;
-    private Cliente cliente;
+    private Usuarios cliente;
     
     /**
      * Creates new form AnadirVehiculo
@@ -28,7 +28,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
         setExtendedState(AnadirVehiculoView1.MAXIMIZED_BOTH);
     }
     
-    public AnadirVehiculoView1(Cliente cliente) {
+    public AnadirVehiculoView1(Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
         reiniciarEtiquetas();
@@ -326,7 +326,7 @@ public class AnadirVehiculoView1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
             vvc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed

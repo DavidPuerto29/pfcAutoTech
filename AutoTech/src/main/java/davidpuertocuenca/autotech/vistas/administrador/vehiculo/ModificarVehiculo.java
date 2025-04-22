@@ -4,10 +4,10 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador.vehiculo;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosClientesSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
@@ -95,7 +95,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private void cargarClientes(){
         comboBoxClientes.removeAllItems(); 
           
-        for (Cliente cliente : obtenerTodosClientesSql()) {
+        for (Usuarios cliente : obtenerTodosClientesSql()) {
             comboBoxClientes.addItem(cliente.getUsuario()); 
                 if (cliente.getUsuario().equals(vehiculo.getCliente().getUsuario())) {
                     comboBoxClientes.setSelectedItem(cliente.getUsuario());

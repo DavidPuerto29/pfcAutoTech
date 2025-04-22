@@ -4,9 +4,9 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
-import davidpuertocuenca.autotech.clases.Cliente;
-import static davidpuertocuenca.autotech.clases.Cliente.comprobacionAutenticacionUsuario;
-import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
+import static davidpuertocuenca.autotech.clases.Usuarios.comprobacionAutenticacionUsuario;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +14,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteUsuarioSql;
 
 
 /**
@@ -59,13 +59,13 @@ public class LoginClientes extends javax.swing.JFrame {
     }
 
     private void iniciarSesion(){
-        Cliente cliente = obtenerClienteUsuarioSql(textUsuario.getText());
+        Usuarios cliente = obtenerClienteUsuarioSql(textUsuario.getText());
         char[] contasenaChar = textContrasena.getPassword();
         
         if(comprobacionAutenticacionUsuario(cliente, String.valueOf(contasenaChar))){
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contasenaChar, '\0');
-                VistaVehiculosCliente g = new VistaVehiculosCliente(cliente);
+                VistaVehiculosUsuario g = new VistaVehiculosUsuario(cliente);
                     g.setVisible(true);
                         this.dispose();
         }else{

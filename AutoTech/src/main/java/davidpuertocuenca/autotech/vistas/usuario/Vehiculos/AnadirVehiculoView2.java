@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.cliente.Vehiculos;
+package davidpuertocuenca.autotech.vistas.usuario.Vehiculos;
 
-import davidpuertocuenca.autotech.clases.Cliente;
+import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
-import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 
 /**
  *
@@ -15,7 +15,7 @@ import davidpuertocuenca.autotech.vistas.cliente.VistaVehiculosCliente;
  */
 public class AnadirVehiculoView2 extends javax.swing.JFrame {
     private Vehiculos vehiculo;
-    private Cliente cliente;
+    private Usuarios cliente;
     
     /**
      * Creates new form AnadirVehiculoView2
@@ -26,7 +26,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
         setExtendedState(AnadirVehiculoView2.MAXIMIZED_BOTH);
     }
     
-    public AnadirVehiculoView2(Cliente cliente, Vehiculos vehiculo) {
+    public AnadirVehiculoView2(Usuarios cliente, Vehiculos vehiculo) {
         initComponents();
         this.cliente = cliente;
         this.vehiculo = vehiculo;
@@ -286,7 +286,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
             vvc.setVisible(true);
                 this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
@@ -294,7 +294,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
         if(registrarVehiculo()){
             crearVehiculoSql(vehiculo);
-                VistaVehiculosCliente vvc = new VistaVehiculosCliente(cliente);
+                VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
                     vvc.setVisible(true);
                         this.dispose();
         }

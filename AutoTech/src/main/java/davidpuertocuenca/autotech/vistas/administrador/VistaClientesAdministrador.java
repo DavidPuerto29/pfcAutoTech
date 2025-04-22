@@ -8,18 +8,11 @@ import davidpuertocuenca.autotech.clases.Cliente;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.actualizarClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.eliminarClienteSql;
 import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerClienteSql;
-import static davidpuertocuenca.autotech.dao.ClienteDAO.obtenerTodosClientesSql;
 import davidpuertocuenca.autotech.vistas.administrador.cliente.ModificarCliente;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import java.util.ArrayList;
-import java.util.List;
+import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -27,106 +20,20 @@ import javax.swing.table.TableColumn;
  * @author David Puerto Cuenca
  */
 public class VistaClientesAdministrador extends javax.swing.JFrame {
-
+        private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form VistaGeneralAdministrador
      */
     public VistaClientesAdministrador() {
         initComponents();
         setExtendedState(VistaClientesAdministrador.MAXIMIZED_BOTH);
-        crearTabla();
+
+        controlador.crearTabla(tablaClientes);
             
         //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
         jMenuBar1.remove(jMenu5);
         jMenuBar1.add(Box.createHorizontalGlue());
         jMenuBar1.add(jMenu5);
-    }
-
-    //Tambien usado para actualizar la tabla
-    private void crearTabla() { 
-        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número De Teléfono","Dirección","Es Administrador"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        tablaClientes.setModel(miModelo);
-        tablaClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaClientes.getTableHeader().setReorderingAllowed(false);
-
-
-            List<Cliente> clientes = new ArrayList(obtenerTodosClientesSql());
-          
-            for(Cliente cliente : clientes){
-                Object[] fila = new Object[8];
-                fila[0] = cliente.getUsuario();
-                fila[1] = cliente.getDni();
-                fila[2] = cliente.getNombre();
-                fila[3] = cliente.getApellidos();
-                fila[4] = cliente.getCorreoElectronico();
-                fila[5] = cliente.getNumeroTelefono();
-                fila[6] = cliente.getDireccion();
-                if(cliente.isAdministrador()){
-                    fila[7] = "Si";
-                }else{
-                    fila[7] = "No";
-                }
-                    miModelo.addRow(fila);
-            }
-         
-            //Dimensiones de la tabla.
-            tablaClientes.setRowHeight(40);
-            TableColumn columnaFecha = tablaClientes.getColumn("Usuario");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaCliente = tablaClientes.getColumn("Dni");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300); 
-            
-            TableColumn columnaEnvios = tablaClientes.getColumn("Nombre");
-            columnaEnvios.setMinWidth(100);
-            columnaEnvios.setMaxWidth(600);
-            columnaEnvios.setPreferredWidth(300); 
-            
-            TableColumn columnaCiudad = tablaClientes.getColumn("Apellidos");
-            columnaCiudad.setMinWidth(100);
-            columnaCiudad.setMaxWidth(600);
-            columnaCiudad.setPreferredWidth(300); 
-            
-            TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electrónico");
-            columnaCorreo.setMinWidth(100);
-            columnaCorreo.setMaxWidth(600);
-            columnaCorreo.setPreferredWidth(300); 
-            
-            TableColumn columnaTelefono = tablaClientes.getColumn("Número De Teléfono");
-            columnaTelefono.setMinWidth(100);
-            columnaTelefono.setMaxWidth(600);
-            columnaTelefono.setPreferredWidth(300); 
-            
-            TableColumn columnaDireccion = tablaClientes.getColumn("Dirección");
-            columnaDireccion.setMinWidth(100);
-            columnaDireccion.setMaxWidth(600);
-            columnaDireccion.setPreferredWidth(300); 
-            
-            TableColumn columnaAdministrador = tablaClientes.getColumn("Es Administrador");
-            columnaAdministrador.setMinWidth(100);
-            columnaAdministrador.setMaxWidth(600);
-            columnaAdministrador.setPreferredWidth(300); 
-            
-           
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaClientes.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaClientes.getColumnCount(); i++) {
-                tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaClientes.getColumnModel().getColumn(i).setResizable(false);
-            }
     }
 
     
@@ -394,7 +301,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
-       crearTabla();
+       controlador.crearTabla(tablaClientes);
     }//GEN-LAST:event_botonRefrescarActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
@@ -404,76 +311,15 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     private void JMenuItemEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarClienteActionPerformed
-        try{
-            Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
-            if(cliente == null){
-                JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-            }
-            if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                eliminarClienteSql(cliente);        
-            }else{
-                JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
-            }
-         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-         }
-        //Siempre al finalizar actualiza la tabla.
-        crearTabla();
+        controlador.eliminarCliente(tablaClientes, this);
     }//GEN-LAST:event_JMenuItemEliminarClienteActionPerformed
 
     private void jMenuQuitarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuQuitarAdministradorActionPerformed
-        try{
-             Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
-             if(cliente.isAdministrador()){
-                  if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                     if(cliente == null){
-                         JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-                     }
-                     cliente.setAdministrador(false);
-                          if(actualizarClienteSql(cliente)){
-                              JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
-                          }else{
-                             JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
-                          }
-                  }else{
-                       JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
-                  }
-             }else{
-                  JOptionPane.showMessageDialog(this, "Este usuario no es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
-             }
-             //Siempre al finalizar actualiza la tabla.
-             crearTabla();
-         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-         }
+        controlador.quitarAdministrador(tablaClientes, this);
     }//GEN-LAST:event_jMenuQuitarAdministradorActionPerformed
 
     private void JMenuItemAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAdministradorActionPerformed
-        try{
-             Cliente cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
-             if(cliente == null){
-                         JOptionPane.showMessageDialog(this, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
-             }
-             
-             if(!cliente.isAdministrador()){
-                 if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                     cliente.setAdministrador(true);
-                         if(actualizarClienteSql(cliente)){
-                             JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);   //ALOMEJOR ES DEMASIADO DIALOG
-                         }else{
-                             JOptionPane.showMessageDialog(this, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
-                         }
-                 }else{
-                     JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
-                 }
-             }else{
-                 JOptionPane.showMessageDialog(this, "Este usuario ya es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
-             }
-             //Siempre al finalizar actualiza la tabla.
-             crearTabla();
-        }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(this, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+        controlador.hacerAdministrador(tablaClientes, this);
     }//GEN-LAST:event_JMenuItemAdministradorActionPerformed
 
     private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
@@ -483,11 +329,7 @@ public class VistaClientesAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-            LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
-        }
+        controlador.cerrarSesion(this);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed

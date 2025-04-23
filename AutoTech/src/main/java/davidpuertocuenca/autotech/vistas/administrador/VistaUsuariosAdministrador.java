@@ -6,7 +6,6 @@ package davidpuertocuenca.autotech.vistas.administrador;
 
 import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
-import javax.swing.Box;
 
 /**
  *
@@ -14,7 +13,7 @@ import javax.swing.Box;
  * @author David Puerto Cuenca
  */
 public class VistaUsuariosAdministrador extends javax.swing.JFrame {
-        private AdministradorControlador controlador = new AdministradorControlador();
+    private AdministradorControlador controlador = new AdministradorControlador();
         
     /**
      * Creates new form VistaGeneralAdministrador
@@ -296,9 +295,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRefrescarActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
-        VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
-            vha.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this);
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     private void JMenuItemEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarClienteActionPerformed
@@ -314,9 +311,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemAdministradorActionPerformed
 
     private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
-       ModificarUsuarios mc = new ModificarUsuarios();
-            mc.setVisible(true);
-                this.dispose();
+       controlador.vistaModificarUsuario(this);
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
@@ -324,15 +319,11 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
-        VistaCitasAdministrador vca = new VistaCitasAdministrador();
-            vca.setVisible(true);
-                this.dispose();
+        controlador.vistaCitas(this);
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void JMenuItemTalleresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemTalleresActionPerformed
-        VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
-            vta.setVisible(true);
-                this.dispose();
+        controlador.vistaTalleres(this);
     }//GEN-LAST:event_JMenuItemTalleresActionPerformed
 
     /**

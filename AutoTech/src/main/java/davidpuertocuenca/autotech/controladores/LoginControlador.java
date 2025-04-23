@@ -4,20 +4,20 @@
  */
 package davidpuertocuenca.autotech.controladores;
 
+import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.verificarContraseña;
 import davidpuertocuenca.autotech.clases.Usuarios;
-import static davidpuertocuenca.autotech.clases.Usuarios.comprobacionAutenticacionUsuario;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaUsuariosAdministrador;
 import davidpuertocuenca.autotech.vistas.login.LoginAdministradores;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
+import davidpuertocuenca.autotech.vistas.registro.RegistroClientesPaso1;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class LoginControlador {
     
@@ -36,6 +36,13 @@ public class LoginControlador {
         }else{
             JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de búsqueda", JOptionPane.ERROR_MESSAGE);
         } 
+    }
+    
+    public boolean comprobacionAutenticacionUsuario(Usuarios usuario, String contrasena){
+        if (usuario == null) {
+            return false;
+        }
+        return verificarContraseña(contrasena, usuario.getRandomizador(), usuario.getContrasena());
     }
     
     public void iniciarSesionUsuarios(String usuario, char[] contrasena, JFrame vista){
@@ -77,7 +84,7 @@ public class LoginControlador {
     }
     
     public void vistaRegistroUsuarios(JFrame vista){
-        RegistroClientesView1 rg = new RegistroClientesView1();
+        RegistroClientesPaso1 rg = new RegistroClientesPaso1();
             rg.setVisible(true);
                 vista.dispose();
     }

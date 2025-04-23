@@ -8,11 +8,15 @@ import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContras
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import davidpuertocuenca.autotech.vistas.registro.RegistroClientesPaso2;
+import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
+import javax.swing.JFrame;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class RegistroControlador {
     /* Echarle un pensamiento
@@ -84,4 +88,23 @@ public class RegistroControlador {
         }
     }
     */
+    
+    public void vistaLoginClientes(JFrame vista){
+       LoginClientes lgc = new LoginClientes();
+            lgc.setVisible(true);
+                vista.dispose(); 
+    }
+    
+    public void vistaRegistroPasoDos(JFrame vista, Usuarios usuario){
+        RegistroClientesPaso2 rgc = new RegistroClientesPaso2(usuario);
+                rgc.setVisible(true);
+                    vista.dispose(); 
+    }
+    
+    //Devuelve si los terminos han sido aceptados o no
+    public boolean vistaTerminosCondiciones(JFrame vista){
+        TerminosYCondiciones tyc = new TerminosYCondiciones(vista, true);
+                tyc.setVisible(true);
+                    return tyc.isAceptado();
+    }
 }

@@ -5,29 +5,30 @@
 package davidpuertocuenca.autotech.vistas.registro;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
+import davidpuertocuenca.autotech.controladores.RegistroControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
-public class RegistroClientesView2 extends javax.swing.JFrame {
+public class RegistroClientesPaso2 extends javax.swing.JFrame {
     private Usuarios cliente;
+    private RegistroControlador controlador = new RegistroControlador();
     /**
-     * Creates new form RegistroClientesView2ç
+     * Creates new form RegistroClientesView2
      */
-    public RegistroClientesView2() {
+    public RegistroClientesPaso2() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(RegistroClientesPaso2.MAXIMIZED_BOTH);
     }
     
-    public RegistroClientesView2(Usuarios cliente) {
+    public RegistroClientesPaso2(Usuarios cliente) {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(RegistroClientesPaso2.MAXIMIZED_BOTH);
         this.cliente = cliente;
     }
 
@@ -397,9 +398,7 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
 
     private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
          if(registrarCliente()){
-            LoginClientes lgc = new LoginClientes();
-                lgc.setVisible(true);
-                    this.dispose(); 
+            controlador.vistaLoginClientes(this);
         }
     }//GEN-LAST:event_botonFinalizarActionPerformed
 
@@ -420,21 +419,23 @@ public class RegistroClientesView2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientesView2().setVisible(true);
+                new RegistroClientesPaso2().setVisible(true);
             }
         });
     }

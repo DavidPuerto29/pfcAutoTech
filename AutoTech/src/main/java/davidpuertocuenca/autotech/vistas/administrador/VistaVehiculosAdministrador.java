@@ -4,15 +4,12 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
 
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     private AdministradorControlador controlador = new AdministradorControlador();
@@ -245,9 +242,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
-        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
-            mv.setVisible(true);
-                this.dispose();
+        controlador.vistaModificarVehiculo(tablaVehiculos, this);
     }//GEN-LAST:event_JMenuItemModificarVehiculoActionPerformed
 
     private void JMenuItemEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarVehiculoActionPerformed

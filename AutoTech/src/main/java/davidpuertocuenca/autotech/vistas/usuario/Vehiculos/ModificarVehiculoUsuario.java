@@ -6,24 +6,24 @@ package davidpuertocuenca.autotech.vistas.usuario.Vehiculos;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
     private Usuarios cliente;
+    private UsuarioControlador controlador = new UsuarioControlador();
     /**
      * Creates new form ModificarVehiculo
      */
     public ModificarVehiculoUsuario() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(ModificarVehiculoUsuario.MAXIMIZED_BOTH);
     }
     
      public ModificarVehiculoUsuario(Vehiculos vehiculo, Usuarios cliente) {
@@ -32,7 +32,7 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
         mostrarDatos();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(ModificarVehiculoUsuario.MAXIMIZED_BOTH);
     }
 
     private void reiniciarEtiquetas(){
@@ -187,17 +187,13 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
-            vvc.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this, cliente);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(modificarVehiculo()){
             actualizarVehiculoSql(vehiculo);
-                VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
-                    vvc.setVisible(true);
-                        this.dispose();
+                controlador.vistaVehiculos(this, cliente);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 

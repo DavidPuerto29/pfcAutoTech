@@ -4,7 +4,6 @@
  */
 package davidpuertocuenca.autotech.clases;
 
-import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.verificarContraseña;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -59,13 +58,6 @@ public class Usuarios {
         this.numeroTelefono = numeroTelefono;
         this.direccion = direccion;
         this.administrador = administrador;
-    }
-    
-    public static boolean comprobacionAutenticacionUsuario(Usuarios cliente, String contrasena){
-        if (cliente == null) {
-            return false;
-        }
-        return verificarContraseña(contrasena, cliente.getRandomizador(), cliente.getContrasena());
     }
   
 }

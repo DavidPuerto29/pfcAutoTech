@@ -8,7 +8,7 @@ import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class VistaTalleresAdministrador extends javax.swing.JFrame {
     private AdministradorControlador controlador = new AdministradorControlador();

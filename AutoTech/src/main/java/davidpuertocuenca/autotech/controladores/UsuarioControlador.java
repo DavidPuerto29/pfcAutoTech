@@ -14,9 +14,11 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoView1;
+import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
+import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso2;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
@@ -33,7 +35,7 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class UsuarioControlador {
     
@@ -239,8 +241,20 @@ public class UsuarioControlador {
     }
     
     public void vistaAnadirVehiculo(JFrame vista, Usuarios usuario){
-        AnadirVehiculoView1 av = new AnadirVehiculoView1(usuario);
+        AnadirVehiculoPaso1 av = new AnadirVehiculoPaso1(usuario);
             av.setVisible(true);
                 vista.dispose();
     }
+    
+    public void vistaAnadirVehiculoPaso2(JFrame vista, Usuarios usuario, Vehiculos vehiculo){
+        AnadirVehiculoPaso2 avp2 = new AnadirVehiculoPaso2(usuario, vehiculo);
+            avp2.setVisible(true);
+                vista.dispose();
+    }
+    public void vistaVehiculos(JFrame vista, Usuarios usuario){
+        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(usuario);
+            vvc.setVisible(true);
+                vista.dispose();
+    }
+    
 }

@@ -13,11 +13,11 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class CitasDAO {
     
-     public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    //HACERLO POR MATRICULA
+    public static List<Citas> obtenerTodasCitasMatriculaSql(Vehiculos vehiculo){    
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Citas> q = session.createNamedQuery("get_todas_citas_matricula", Citas.class);
                 q.setParameter("matricula", vehiculo.getMatricula());

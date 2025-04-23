@@ -7,25 +7,25 @@ package davidpuertocuenca.autotech.vistas.registro;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.cifrarContraseña;
 import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandomizador;
 import davidpuertocuenca.autotech.clases.Usuarios;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
+import davidpuertocuenca.autotech.controladores.RegistroControlador;
 import java.util.Arrays;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
-public class RegistroClientesView1 extends javax.swing.JFrame {
-    private Usuarios cliente;
+public class RegistroClientesPaso1 extends javax.swing.JFrame {
+    private Usuarios usuario;
     private boolean aceptacionTerminos = false;
+    private RegistroControlador controlador = new RegistroControlador();
     /**
      * Creates new form RegistroClientesView1
      */
-    public RegistroClientesView1() {
+    public RegistroClientesPaso1() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(RegistroClientesPaso1.MAXIMIZED_BOTH);
     }
 
        private void reiniciarEtiquetas(){
@@ -98,7 +98,7 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
                 //Se guardan los datos obtenidos en la variable global.
-                cliente = new Usuarios(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,null, null, null, fieldCorreo.getText(), null, null, false);
+                usuario = new Usuarios(fieldUsuario.getText(),cifrarContraseña(String.valueOf(contasenaChar), randormizador),randormizador,null, null, null, fieldCorreo.getText(), null, null, false);
                     //Se limpia el array para aumentar la seguridad.
                     java.util.Arrays.fill(contasenaChar, '\0');    
                         return true;
@@ -383,32 +383,24 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        LoginClientes lgc = new LoginClientes();
-            lgc.setVisible(true);
-                this.dispose();
+        controlador.vistaLoginClientes(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        // TODO add your handling code here:
         if(registrarCliente() && aceptacionTerminos == true){
-            RegistroClientesView2 rgc = new RegistroClientesView2(cliente);
-                rgc.setVisible(true);
-                    this.dispose(); 
+            controlador.vistaRegistroPasoDos(this, usuario);
         }
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     private void checkTerminosYCondicionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTerminosYCondicionesActionPerformed
-        // TODO add your handling code here:
-        TerminosYCondiciones tyc = new TerminosYCondiciones(this, true);
-                tyc.setVisible(true);
-                    if(tyc.isAceptado()){
-                        checkTerminosYCondiciones.setSelected(true);
-                            aceptacionTerminos = true;
-                                textoErrorTerminos.setVisible(false);
-                    }else{
-                         checkTerminosYCondiciones.setSelected(false);
-                            aceptacionTerminos = false;
-                    }
+        if(controlador.vistaTerminosCondiciones(this)){
+            checkTerminosYCondiciones.setSelected(true);
+                aceptacionTerminos = true;
+                    textoErrorTerminos.setVisible(false);
+        }else{
+            checkTerminosYCondiciones.setSelected(false);
+                aceptacionTerminos = false;
+        }
     }//GEN-LAST:event_checkTerminosYCondicionesActionPerformed
 
     /**
@@ -428,20 +420,21 @@ public class RegistroClientesView1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesView1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientesView1().setVisible(true);
+                new RegistroClientesPaso1().setVisible(true);
             }
         });
     }

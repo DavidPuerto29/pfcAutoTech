@@ -6,25 +6,24 @@ package davidpuertocuenca.autotech.vistas.administrador.vehiculo;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
-import davidpuertocuenca.autotech.vistas.administrador.VistaVehiculosAdministrador;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientes;
+import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class ModificarVehiculo extends javax.swing.JFrame {
     private Vehiculos vehiculo;
+    private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form ModificarVehiculo
      */
     public ModificarVehiculo() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(ModificarVehiculo.MAXIMIZED_BOTH);
     }
     
      public ModificarVehiculo(Vehiculos vehiculo) {
@@ -32,7 +31,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
         mostrarDatos();
-        setExtendedState(RegistroClientes.MAXIMIZED_BOTH);
+        setExtendedState(ModificarVehiculo.MAXIMIZED_BOTH);
     }
 
     private void reiniciarEtiquetas(){
@@ -41,11 +40,13 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         this.revalidate(); 
         this.repaint(); 
     }
+    
     private void mostrarDatos(){
         fieldAnoMatriculacion.setText(vehiculo.getAnoMatriculacion());
         fieldModelo.setText(vehiculo.getModelo());
         cargarClientes();
     }
+    
     private boolean modificarVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
@@ -218,17 +219,12 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosAdministrador vva = new VistaVehiculosAdministrador();
-                    vva.setVisible(true);
-                        this.dispose();
+        controlador.vistaVehiculos(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if(modificarVehiculo()){
-            actualizarVehiculoSql(vehiculo);
-                VistaVehiculosAdministrador vva = new VistaVehiculosAdministrador();
-                    vva.setVisible(true);
-                        this.dispose();
+        if(modificarVehiculo()){    //TERMINAR
+            controlador.modificarVehiculo(this, vehiculo);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 

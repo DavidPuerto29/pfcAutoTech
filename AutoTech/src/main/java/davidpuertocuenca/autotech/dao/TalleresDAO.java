@@ -12,7 +12,7 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class TalleresDAO {
     public static List<Talleres> obtenerTodosTalleresSql(){

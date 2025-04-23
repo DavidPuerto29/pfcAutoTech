@@ -4,23 +4,9 @@
  */
 package davidpuertocuenca.autotech.vistas.usuario;
 
-import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
-import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
-import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
-import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
-import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.Box;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -247,17 +233,11 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemCancelarCitaActionPerformed
 
     private void JMenuItemVehículosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehículosActionPerformed
-        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
-            vvc.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this, cliente);
     }//GEN-LAST:event_JMenuItemVehículosActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-            LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
-        }
+        controlador.cerrarSesion(this);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     

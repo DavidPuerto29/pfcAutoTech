@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.vistas.usuario.Vehiculos;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 
@@ -13,25 +14,25 @@ import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
  *
  * @author David
  */
-public class AnadirVehiculoView2 extends javax.swing.JFrame {
+public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     private Vehiculos vehiculo;
     private Usuarios cliente;
-    
+    private UsuarioControlador controlador = new UsuarioControlador();
     /**
      * Creates new form AnadirVehiculoView2
      */
-    public AnadirVehiculoView2() {
+    public AnadirVehiculoPaso2() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoView2.MAXIMIZED_BOTH);
+        setExtendedState(AnadirVehiculoPaso2.MAXIMIZED_BOTH);
     }
     
-    public AnadirVehiculoView2(Usuarios cliente, Vehiculos vehiculo) {
+    public AnadirVehiculoPaso2(Usuarios cliente, Vehiculos vehiculo) {
         initComponents();
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoView2.MAXIMIZED_BOTH);
+        setExtendedState(AnadirVehiculoPaso2.MAXIMIZED_BOTH);
     }
 
     private void reiniciarEtiquetas(){
@@ -286,9 +287,7 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
-            vvc.setVisible(true);
-                this.dispose();
+        controlador.vistaVehiculos(this, cliente);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
@@ -317,20 +316,21 @@ public class AnadirVehiculoView2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculoView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculoPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculoView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculoPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculoView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculoPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirVehiculoView2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnadirVehiculoPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnadirVehiculoView2().setVisible(true);
+                new AnadirVehiculoPaso2().setVisible(true);
             }
         });
     }

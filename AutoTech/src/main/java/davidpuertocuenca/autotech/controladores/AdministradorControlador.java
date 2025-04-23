@@ -14,7 +14,6 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.VistaCitasAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaUsuariosAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaTalleresAdministrador;
@@ -35,13 +34,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
+import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class AdministradorControlador {
-    
        
     public void cerrarSesion(JFrame vista){
         if(JOptionPane.showOptionDialog(vista, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
@@ -361,6 +363,11 @@ public class AdministradorControlador {
         crearTablaVehiculos(tablaVehiculos, vista);
     }
     
+    public void modificarVehiculo(JFrame vista, Vehiculos vehiculo){
+        actualizarVehiculoSql(vehiculo);
+            vistaVehiculos(vista);
+    }
+    
     public void quitarAdministrador(JTable tablaClientes, JFrame vista){
         try{
              Usuarios cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
@@ -439,4 +446,17 @@ public class AdministradorControlador {
             vha.setVisible(true);
                 vista.dispose();
     }
+    
+    public void vistaModificarVehiculo(JTable tablaVehiculos, JFrame vista){
+        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+            mv.setVisible(true);
+                vista.dispose();
+    }
+    
+    public void vistaModificarUsuario(JFrame vista){
+        ModificarUsuarios mc = new ModificarUsuarios();
+            mc.setVisible(true);
+                vista.dispose();
+    }
+    
 }

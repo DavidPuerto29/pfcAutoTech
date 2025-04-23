@@ -7,6 +7,7 @@ package davidpuertocuenca.autotech.vistas.usuario;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
@@ -29,17 +30,15 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
     //Usado para no perder los datos del cliente cuando se vuelve a la vista general.
     private Usuarios cliente;
+    private UsuarioControlador controlador = new UsuarioControlador();
     /**
      * Creates new form VistaCitasCliente
      */
     public VistaCitasUsuario() {
         initComponents();
         setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
-        crearTabla();
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        controlador.crearTablaVehiculos(tablaCitasVehiculo, cliente);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
     public VistaCitasUsuario(Vehiculos vehiculo, Usuarios cliente) {
@@ -47,11 +46,8 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         this.vehiculo = vehiculo;
         this.cliente = cliente;
         setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
-        crearTabla();
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        controlador.crearTablaVehiculos(tablaCitasVehiculo, cliente);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
 
     /**
@@ -247,21 +243,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemModificarCitaActionPerformed
 
     private void JMenuItemCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCancelarCitaActionPerformed
-        try{
-            Citas cita = obtenerCitaPorNumeroSql((Long) tablaCitasVehiculo.getValueAt(tablaCitasVehiculo.getSelectedRow(), 0));
-                if(vehiculo == null){
-                    JOptionPane.showMessageDialog(this, "La cita no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                    eliminarCitaSql(cita);
-                }else{
-                    JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE);
-                }
-        }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //Siempre al finalizar actualiza la tabla.
-        crearTabla();
+        controlador.cancelarCitas(tablaCitasVehiculo, vehiculo, this);
     }//GEN-LAST:event_JMenuItemCancelarCitaActionPerformed
 
     private void JMenuItemVehículosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehículosActionPerformed
@@ -278,61 +260,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
-    private void crearTabla() {
-        Object[] cabecera = new Object[]{"Número de cita","Fecha","Vehiculo","Taller"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        tablaCitasVehiculo.setModel(miModelo);
-        tablaCitasVehiculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaCitasVehiculo.getTableHeader().setReorderingAllowed(false);
-
-            List<Citas> citas = new ArrayList(obtenerTodasCitasMatriculaSql(vehiculo));
-           
-            for(Citas Cita : citas){
-                Object[] fila = new Object[4];
-                fila[0] = Cita.getNumeroCita();
-                fila[1] = Cita.getFecha();
-                fila[2] = Cita.getVehiculo().getMatricula();
-                fila[3] = Cita.getTaller();
-                    miModelo.addRow(fila);
-            } 
-            
-            //Dimensiones de la tabla.
-            tablaCitasVehiculo.setRowHeight(40);
-            TableColumn columnaNumeroCita = tablaCitasVehiculo.getColumn("Número de cita");
-            columnaNumeroCita.setMinWidth(100);
-            columnaNumeroCita.setMaxWidth(600);
-            columnaNumeroCita.setPreferredWidth(300); 
-            
-            TableColumn columnaFecha = tablaCitasVehiculo.getColumn("Fecha");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaAnoVehiculo = tablaCitasVehiculo.getColumn("Vehiculo");
-            columnaAnoVehiculo.setMinWidth(100);
-            columnaAnoVehiculo.setMaxWidth(600);
-            columnaAnoVehiculo.setPreferredWidth(300); 
-            
-            TableColumn columnaTaller = tablaCitasVehiculo.getColumn("Taller");
-            columnaTaller.setMinWidth(100);
-            columnaTaller.setMaxWidth(600);
-            columnaTaller.setPreferredWidth(300); 
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaCitasVehiculo.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaCitasVehiculo.getColumnCount(); i++) {
-                tablaCitasVehiculo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaCitasVehiculo.getColumnModel().getColumn(i).setResizable(false);
-            }
-    }
     
     /**
      * @param args the command line arguments

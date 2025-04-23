@@ -4,8 +4,12 @@
  */
 package davidpuertocuenca.autotech.controladores;
 
+import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
+import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
+import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
@@ -122,6 +126,62 @@ public class UsuarioControlador {
             }
     }
     
+    public void crearTablaCitas(JTable tablaCitasVehiculo, Vehiculos vehiculo){
+        Object[] cabecera = new Object[]{"Número de cita","Fecha","Vehiculo","Taller"}; 
+        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
+            //Edicion de celdas deshabilida.
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;  
+            }
+        };
+        tablaCitasVehiculo.setModel(miModelo);
+        tablaCitasVehiculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaCitasVehiculo.getTableHeader().setReorderingAllowed(false);
+
+            List<Citas> citas = new ArrayList(obtenerTodasCitasMatriculaSql(vehiculo));
+           
+            for(Citas Cita : citas){
+                Object[] fila = new Object[4];
+                fila[0] = Cita.getNumeroCita();
+                fila[1] = Cita.getFecha();
+                fila[2] = Cita.getVehiculo().getMatricula();
+                fila[3] = Cita.getTaller();
+                    miModelo.addRow(fila);
+            } 
+            
+            //Dimensiones de la tabla.
+            tablaCitasVehiculo.setRowHeight(40);
+            TableColumn columnaNumeroCita = tablaCitasVehiculo.getColumn("Número de cita");
+            columnaNumeroCita.setMinWidth(100);
+            columnaNumeroCita.setMaxWidth(600);
+            columnaNumeroCita.setPreferredWidth(300); 
+            
+            TableColumn columnaFecha = tablaCitasVehiculo.getColumn("Fecha");
+            columnaFecha.setMinWidth(100);
+            columnaFecha.setMaxWidth(600);
+            columnaFecha.setPreferredWidth(300); 
+            
+            TableColumn columnaAnoVehiculo = tablaCitasVehiculo.getColumn("Vehiculo");
+            columnaAnoVehiculo.setMinWidth(100);
+            columnaAnoVehiculo.setMaxWidth(600);
+            columnaAnoVehiculo.setPreferredWidth(300); 
+            
+            TableColumn columnaTaller = tablaCitasVehiculo.getColumn("Taller");
+            columnaTaller.setMinWidth(100);
+            columnaTaller.setMaxWidth(600);
+            columnaTaller.setPreferredWidth(300); 
+            
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaCitasVehiculo.getTableHeader().setResizingAllowed(false);
+            //Usado para centrar el texto de las celdas.
+            for (int i = 0; i < tablaCitasVehiculo.getColumnCount(); i++) {
+                tablaCitasVehiculo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    tablaCitasVehiculo.getColumnModel().getColumn(i).setResizable(false);
+            }
+    }
+    
     public void vistaCitas(JTable tablaVehiculos, Usuarios usuario, JFrame vista){
        try{
             VistaCitasUsuario vcc = new VistaCitasUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), usuario);
@@ -158,6 +218,24 @@ public class UsuarioControlador {
         }
         //Siempre al finalizar actualiza la tabla.
         crearTablaVehiculos(tablaVehiculos, usuario);
+    }
+    
+    public void cancelarCitas(JTable tablaCitasVehiculo, Vehiculos vehiculo, JFrame vista){
+         try{
+            Citas cita = obtenerCitaPorNumeroSql((Long) tablaCitasVehiculo.getValueAt(tablaCitasVehiculo.getSelectedRow(), 0));
+                if(vehiculo == null){
+                    JOptionPane.showMessageDialog(vista, "La cita no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    eliminarCitaSql(cita);
+                }else{
+                    JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                }
+         }catch (ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+         }
+         //Siempre al finalizar actualiza la tabla.
+         crearTablaCitas(tablaCitasVehiculo, vehiculo);
     }
     
     public void vistaAnadirVehiculo(JFrame vista, Usuarios usuario){

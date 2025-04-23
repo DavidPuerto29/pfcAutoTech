@@ -5,23 +5,7 @@
 package davidpuertocuenca.autotech.vistas.usuario;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
-import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
-import davidpuertocuenca.autotech.vistas.login.*;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
-import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoView1;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsuario;
-import javax.swing.Box;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *

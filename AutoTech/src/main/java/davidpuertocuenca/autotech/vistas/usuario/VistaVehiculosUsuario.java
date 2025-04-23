@@ -6,6 +6,7 @@ package davidpuertocuenca.autotech.vistas.usuario;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import davidpuertocuenca.autotech.vistas.login.*;
 import java.util.ArrayList;
@@ -28,29 +29,23 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class VistaVehiculosUsuario extends javax.swing.JFrame {
     private Usuarios cliente;
+    private UsuarioControlador controlador = new UsuarioControlador();
     /**
      * Creates new form VistaGeneralCliente
      */
     public VistaVehiculosUsuario() {
         initComponents();
         setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
-            crearTabla();
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
     public VistaVehiculosUsuario(Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
         setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
-            crearTabla();
-        
-        //Requerido para que la opción de cerrar sesión aparezca a la derecha de la pantalla.     
-        jMenuBar1.remove(jMenu5);
-        jMenuBar1.add(Box.createHorizontalGlue());
-        jMenuBar1.add(jMenu5);
+        controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
+        controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
 
     /**
@@ -65,7 +60,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
-        botonCitas = new javax.swing.JButton();
         labelVehiculos = new javax.swing.JLabel();
         CabeceraVehiculos = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
@@ -117,21 +111,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
         getContentPane().add(jScrollPane1, gridBagConstraints);
-
-        botonCitas.setText("Ver citas");
-        botonCitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCitasActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 266;
-        gridBagConstraints.ipady = 57;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(550, 530, 0, 0);
-        getContentPane().add(botonCitas, gridBagConstraints);
 
         labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,141 +232,25 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void crearTabla() {
-        Object[] cabecera = new Object[]{"Matrícula", "Marca", "Modelo", "Año De Matriculación", "Color", "Citas Reservadas", "Número De Bastidor"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        tablaVehiculos.setModel(miModelo);
-        tablaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaVehiculos.getTableHeader().setReorderingAllowed(false);
-
-            List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosClienteSql(this.cliente));
-           
-            for(Vehiculos Vehiculo : vehiculos){
-                Object[] fila = new Object[7];
-                fila[0] = Vehiculo.getMatricula();
-                fila[1] = Vehiculo.getMarca();
-                fila[2] = Vehiculo.getModelo();
-                fila[3] = Vehiculo.getAnoMatriculacion();
-                fila[4] = Vehiculo.getColor();
-                fila[5] = Vehiculo.getCitas().size();
-                fila[6] = Vehiculo.getNumeroBastidor();
-                    miModelo.addRow(fila);
-            }
-         
-            //Dimensiones de la tabla.
-            tablaVehiculos.setRowHeight(40);
-            TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");
-            columnaMatricula.setMinWidth(100);
-            columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(300); 
-            
-            TableColumn columnaMarca = tablaVehiculos.getColumn("Marca");
-            columnaMarca.setMinWidth(100);
-            columnaMarca.setMaxWidth(600);
-            columnaMarca.setPreferredWidth(300); 
-            
-            TableColumn columnaModelo = tablaVehiculos.getColumn("Modelo");
-            columnaModelo.setMinWidth(100);
-            columnaModelo.setMaxWidth(600);
-            columnaModelo.setPreferredWidth(300); 
-            
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
-            columnaAnoMatriculacion.setMinWidth(100);
-            columnaAnoMatriculacion.setMaxWidth(600);
-            columnaAnoMatriculacion.setPreferredWidth(300); 
-            
-            TableColumn columnaColor = tablaVehiculos.getColumn("Color");
-            columnaColor.setMinWidth(100);
-            columnaColor.setMaxWidth(600);
-            columnaColor.setPreferredWidth(300); 
-            
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
-            columnaCitas.setMinWidth(100);
-            columnaCitas.setMaxWidth(600);
-            columnaCitas.setPreferredWidth(300);
-            
-            TableColumn columnaBastidor = tablaVehiculos.getColumn("Número De Bastidor");
-            columnaBastidor.setMinWidth(100);
-            columnaBastidor.setMaxWidth(600);
-            columnaBastidor.setPreferredWidth(300); 
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaVehiculos.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaVehiculos.getColumnCount(); i++) {
-                tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaVehiculos.getColumnModel().getColumn(i).setResizable(false);
-            }
-    }
     
-    private void botonCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCitasActionPerformed
-        try{
-            Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
-                VistaCitasUsuario vcc = new VistaCitasUsuario(vehiculo, cliente);
-                    vcc.setVisible(true);
-                        this.dispose();
-        }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_botonCitasActionPerformed
-
     private void JMenuItemModificarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarVehiculoActionPerformed
-        try{
-            ModificarVehiculoUsuario mv = new ModificarVehiculoUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
-                mv.setVisible(true);
-                    this.dispose();
-        }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+        controlador.vistaModificarVehiculo(tablaVehiculos, cliente, this);
     }//GEN-LAST:event_JMenuItemModificarVehiculoActionPerformed
 
     private void JMenuItemEliminarVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarVehiculoActionPerformed
-        try{
-            Vehiculos vehiculo = obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0));
-                if(vehiculo == null){
-                    JOptionPane.showMessageDialog(this, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                if(JOptionPane.showOptionDialog(this, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-                    eliminarVehiculoSql(vehiculo);
-                }else{
-                    JOptionPane.showMessageDialog(this, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE);
-                }
-        }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //Siempre al finalizar actualiza la tabla.
-        crearTabla();
+        controlador.eliminarVehiculo(tablaVehiculos, cliente, this);
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCitasActionPerformed
-        try{
-            VistaCitasUsuario vcc = new VistaCitasUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), cliente);
-                vcc.setVisible(true);
-                    this.dispose();
-        }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+        controlador.vistaCitas(tablaVehiculos, cliente, this);
     }//GEN-LAST:event_JMenuItemCitasActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
-        if(JOptionPane.showOptionDialog(this, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
-            LoginClientes login = new LoginClientes();
-                login.setVisible(true);
-                    this.dispose();
-        }
+        controlador.cerrarSesion(this);
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemAnadirVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirVehiculoActionPerformed
-       AnadirVehiculoView1 av = new AnadirVehiculoView1(cliente);
-            av.setVisible(true);
-                this.dispose();
+       controlador.vistaAnadirVehiculo(this, cliente);
     }//GEN-LAST:event_JMenuItemAnadirVehiculoActionPerformed
 
     /**
@@ -446,7 +309,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemEliminarVehiculo;
     private javax.swing.JMenuItem JMenuItemModificarVehiculo;
-    private javax.swing.JButton botonCitas;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;

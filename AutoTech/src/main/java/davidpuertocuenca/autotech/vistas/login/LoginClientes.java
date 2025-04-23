@@ -4,18 +4,12 @@
  */
 package davidpuertocuenca.autotech.vistas.login;
 
-import davidpuertocuenca.autotech.clases.Usuarios;
-import static davidpuertocuenca.autotech.clases.Usuarios.comprobacionAutenticacionUsuario;
 import davidpuertocuenca.autotech.controladores.LoginControlador;
-import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientesView1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 
 
 /**

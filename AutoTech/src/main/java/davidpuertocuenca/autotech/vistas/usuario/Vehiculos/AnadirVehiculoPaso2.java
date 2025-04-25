@@ -113,7 +113,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 87;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(40, 920, 0, 0);
@@ -123,7 +123,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -136,7 +136,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
@@ -157,7 +157,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -170,7 +170,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorModelo, gridBagConstraints);
@@ -180,7 +180,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
@@ -190,7 +190,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 14;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -203,7 +203,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorColor, gridBagConstraints);
@@ -228,9 +228,9 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 30, 0, 0);
@@ -242,7 +242,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridwidth = 17;
         gridBagConstraints.ipadx = 43;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -253,7 +253,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 15;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -1256;
         gridBagConstraints.ipady = -82;
@@ -265,7 +265,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 16;
         gridBagConstraints.gridheight = 13;
         gridBagConstraints.ipadx = -2484;
         gridBagConstraints.ipady = -3232;
@@ -277,7 +277,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 18;
         gridBagConstraints.gridheight = 14;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;

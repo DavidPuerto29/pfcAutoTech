@@ -8,6 +8,8 @@ import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
+import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
@@ -343,6 +345,24 @@ public class AdministradorControlador {
          }
         //Siempre al finalizar actualiza la tabla.
         crearTablaClientes(tablaClientes);
+    }
+    
+    public void eliminarCita(JTable tablaCitas, JFrame vista){
+        try{
+            Citas cita = obtenerCitaPorNumeroSql((Long) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 0));
+            if(cita == null){
+                JOptionPane.showMessageDialog(vista, "La cita seleccionada no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
+            if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                eliminarCitaSql(cita);        
+            }else{
+                JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
+            }
+         }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+         }
+        //Siempre al finalizar actualiza la tabla.
+        crearTablaCitas(tablaCitas, vista);
     }
     
     public void eliminarVehiculo(JTable tablaVehiculos, JFrame vista){

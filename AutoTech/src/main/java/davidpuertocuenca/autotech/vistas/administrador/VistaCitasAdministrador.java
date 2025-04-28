@@ -213,7 +213,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemModificarCitaActionPerformed
 
     private void JMenuItemEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarCitaActionPerformed
-
+        controlador.eliminarCita(tablaCitas, this);
     }//GEN-LAST:event_JMenuItemEliminarCitaActionPerformed
 
     private void JMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemUsuariosActionPerformed

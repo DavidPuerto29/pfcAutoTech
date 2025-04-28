@@ -4,7 +4,6 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador;
 
-import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
 /**
@@ -22,7 +21,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         initComponents();
         setExtendedState(VistaUsuariosAdministrador.MAXIMIZED_BOTH);
 
-        controlador.crearTablaClientes(tablaClientes);
+        controlador.crearTablaClientes(tablaUsuarios);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5);
     }
 
@@ -38,7 +37,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaClientes = new javax.swing.JTable();
+        tablaUsuarios = new javax.swing.JTable();
         botonRefrescar = new javax.swing.JButton();
         labelGestionarClientes = new javax.swing.JLabel();
         CabeceraClientes = new javax.swing.JLabel();
@@ -65,7 +64,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
-        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -84,9 +83,9 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tablaClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tablaClientes.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        jScrollPane1.setViewportView(tablaClientes);
+        tablaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaUsuarios.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        jScrollPane1.setViewportView(tablaUsuarios);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -291,7 +290,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
-       controlador.crearTablaClientes(tablaClientes);
+       controlador.crearTablaClientes(tablaUsuarios);
     }//GEN-LAST:event_botonRefrescarActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
@@ -299,19 +298,19 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
     private void JMenuItemEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarClienteActionPerformed
-        controlador.eliminarCliente(tablaClientes, this);
+        controlador.eliminarCliente(tablaUsuarios, this);
     }//GEN-LAST:event_JMenuItemEliminarClienteActionPerformed
 
     private void jMenuQuitarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuQuitarAdministradorActionPerformed
-        controlador.quitarAdministrador(tablaClientes, this);
+        controlador.quitarAdministrador(tablaUsuarios, this);
     }//GEN-LAST:event_jMenuQuitarAdministradorActionPerformed
 
     private void JMenuItemAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAdministradorActionPerformed
-        controlador.hacerAdministrador(tablaClientes, this);
+        controlador.hacerAdministrador(tablaUsuarios, this);
     }//GEN-LAST:event_JMenuItemAdministradorActionPerformed
 
     private void JMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarClientesActionPerformed
-       controlador.vistaModificarUsuario(this);
+       controlador.vistaModificarUsuario(tablaUsuarios, this);
     }//GEN-LAST:event_JMenuItemModificarClientesActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
@@ -385,6 +384,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelGestionarClientes;
-    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
 }

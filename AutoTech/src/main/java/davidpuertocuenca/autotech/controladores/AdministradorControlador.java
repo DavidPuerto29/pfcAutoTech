@@ -9,8 +9,6 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarClienteSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerClienteSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
@@ -38,6 +36,8 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
 
 /**
  *
@@ -329,7 +329,7 @@ public class AdministradorControlador {
     
     public void eliminarCliente(JTable tablaClientes, JFrame vista){
         try{
-            Usuarios cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
+            Usuarios cliente = obtenerUsuarioSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
             if(cliente == null){
                 JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
             }
@@ -370,14 +370,14 @@ public class AdministradorControlador {
     
     public void quitarAdministrador(JTable tablaClientes, JFrame vista){
         try{
-             Usuarios cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
+             Usuarios cliente = obtenerUsuarioSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
              if(cliente.isAdministrador()){
                   if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      if(cliente == null){
                          JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
                      }
                      cliente.setAdministrador(false);
-                          if(actualizarClienteSql(cliente)){
+                          if(actualizarUsuarioSql(cliente)){
                               JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
                           }else{
                              JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
@@ -397,7 +397,7 @@ public class AdministradorControlador {
     
     public void hacerAdministrador(JTable tablaClientes, JFrame vista){
         try{
-             Usuarios cliente = obtenerClienteSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
+             Usuarios cliente = obtenerUsuarioSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
              if(cliente == null){
                          JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
              }
@@ -405,7 +405,7 @@ public class AdministradorControlador {
              if(!cliente.isAdministrador()){
                  if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      cliente.setAdministrador(true);
-                         if(actualizarClienteSql(cliente)){
+                         if(actualizarUsuarioSql(cliente)){
                              JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);   //ALOMEJOR ES DEMASIADO DIALOG
                          }else{
                              JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
@@ -423,7 +423,7 @@ public class AdministradorControlador {
         }
     }
     
-    public void vistaClientes(JFrame vista){
+    public void vistaUsuarios(JFrame vista){
         VistaUsuariosAdministrador vga = new VistaUsuariosAdministrador();
             vga.setVisible(true);
                 vista.dispose();
@@ -448,15 +448,23 @@ public class AdministradorControlador {
     }
     
     public void vistaModificarVehiculo(JTable tablaVehiculos, JFrame vista){
-        ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
-            mv.setVisible(true);
-                vista.dispose();
+        try{
+            ModificarVehiculo mv = new ModificarVehiculo(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)));
+                mv.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
-    public void vistaModificarUsuario(JFrame vista){
-        ModificarUsuarios mc = new ModificarUsuarios();
-            mc.setVisible(true);
-                vista.dispose();
+    public void vistaModificarUsuario(JTable tablaUsuarios, JFrame vista){
+        try{
+            ModificarUsuarios mu = new ModificarUsuarios(obtenerUsuarioSql((String) tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));
+                mu.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

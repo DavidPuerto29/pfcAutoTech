@@ -72,18 +72,18 @@ public class UsuariosDAO {
         }
     }
     
-     public static boolean actualizarClienteSql(Usuarios cliente){
-        try(Session session = HibernateUtil.getSessionFactory().openSession();){
+     public static boolean actualizarUsuarioSql(Usuarios usuario){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
-                session.merge(cliente);
+                session.merge(usuario);
                     session.getTransaction().commit();
                         return true;
         }
      }
      
-     public static Usuarios obtenerClienteSql(String usuario){  
+     public static Usuarios obtenerUsuarioSql(String usuario){  
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<Usuarios> q = session.createNamedQuery("get_cliente", Usuarios.class);
+            Query<Usuarios> q = session.createNamedQuery("get_usuario", Usuarios.class);
                 q.setParameter("username", usuario);
                     return (Usuarios) q.getSingleResult();
         } catch (NoResultException e) {

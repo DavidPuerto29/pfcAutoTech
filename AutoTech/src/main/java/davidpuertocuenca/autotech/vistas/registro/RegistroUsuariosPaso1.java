@@ -28,7 +28,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         setExtendedState(RegistroUsuariosPaso1.MAXIMIZED_BOTH);
     }
 
-       private void reiniciarEtiquetas(){
+     private void reiniciarEtiquetas(){
         textoErrorUsuario.setVisible(false);
         textoErrorContrasena.setVisible(false);
         textoErrorContrasena1.setVisible(false);
@@ -146,7 +146,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 23;
+        gridBagConstraints.gridwidth = 27;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -159,7 +159,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
@@ -167,7 +167,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 23;
+        gridBagConstraints.gridwidth = 27;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -176,7 +176,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 23;
+        gridBagConstraints.gridwidth = 27;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -189,7 +189,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
@@ -199,7 +199,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 23;
+        gridBagConstraints.gridwidth = 27;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -212,7 +212,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 15;
         gridBagConstraints.ipadx = -1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
@@ -255,7 +255,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
@@ -282,9 +282,9 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 17;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(70, 44, 0, 0);
@@ -301,7 +301,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.gridwidth = 20;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 0, 0, 0);
@@ -313,7 +313,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.ipadx = -2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
@@ -336,7 +336,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 26;
+        gridBagConstraints.gridwidth = 30;
         gridBagConstraints.ipadx = 76;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -347,7 +347,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 24;
+        gridBagConstraints.gridwidth = 28;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -1276;
         gridBagConstraints.ipady = -82;
@@ -359,7 +359,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.gridwidth = 29;
         gridBagConstraints.gridheight = 18;
         gridBagConstraints.ipadx = -2484;
         gridBagConstraints.ipady = -3282;
@@ -371,7 +371,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 31;
         gridBagConstraints.gridheight = 19;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;

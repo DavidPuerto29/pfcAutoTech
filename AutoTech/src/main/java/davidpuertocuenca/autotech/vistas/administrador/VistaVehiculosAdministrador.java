@@ -251,7 +251,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
     private void JMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemUsuariosActionPerformed
-        controlador.vistaClientes(this);
+        controlador.vistaUsuarios(this);
     }//GEN-LAST:event_JMenuItemUsuariosActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed

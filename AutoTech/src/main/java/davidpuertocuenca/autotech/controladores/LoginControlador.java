@@ -10,7 +10,7 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuari
 import davidpuertocuenca.autotech.vistas.administrador.VistaUsuariosAdministrador;
 import davidpuertocuenca.autotech.vistas.login.LoginAdministradores;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientesPaso1;
+import davidpuertocuenca.autotech.vistas.registro.RegistroUsuariosPaso1;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -84,7 +84,7 @@ public class LoginControlador {
     }
     
     public void vistaRegistroUsuarios(JFrame vista){
-        RegistroClientesPaso1 rg = new RegistroClientesPaso1();
+        RegistroUsuariosPaso1 rg = new RegistroUsuariosPaso1();
             rg.setVisible(true);
                 vista.dispose();
     }

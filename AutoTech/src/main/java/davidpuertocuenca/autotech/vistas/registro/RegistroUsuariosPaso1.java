@@ -15,17 +15,17 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuari
  *
  * @author David Puerto Cuenca
  */
-public class RegistroClientesPaso1 extends javax.swing.JFrame {
+public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
     private Usuarios usuario;
     private boolean aceptacionTerminos = false;
     private RegistroControlador controlador = new RegistroControlador();
     /**
      * Creates new form RegistroClientesView1
      */
-    public RegistroClientesPaso1() {
+    public RegistroUsuariosPaso1() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientesPaso1.MAXIMIZED_BOTH);
+        setExtendedState(RegistroUsuariosPaso1.MAXIMIZED_BOTH);
     }
 
        private void reiniciarEtiquetas(){
@@ -139,9 +139,7 @@ public class RegistroClientesPaso1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Cliente Paso 1");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         fieldUsuario.setToolTipText("");
@@ -420,21 +418,23 @@ public class RegistroClientesPaso1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientesPaso1().setVisible(true);
+                new RegistroUsuariosPaso1().setVisible(true);
             }
         });
     }

@@ -13,22 +13,22 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql
  *
  * @author David Puerto Cuenca
  */
-public class RegistroClientesPaso2 extends javax.swing.JFrame {
+public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
     private Usuarios cliente;
     private RegistroControlador controlador = new RegistroControlador();
     /**
      * Creates new form RegistroClientesView2
      */
-    public RegistroClientesPaso2() {
+    public RegistroUsuariosPaso2() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientesPaso2.MAXIMIZED_BOTH);
+        setExtendedState(RegistroUsuariosPaso2.MAXIMIZED_BOTH);
     }
     
-    public RegistroClientesPaso2(Usuarios cliente) {
+    public RegistroUsuariosPaso2(Usuarios cliente) {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(RegistroClientesPaso2.MAXIMIZED_BOTH);
+        setExtendedState(RegistroUsuariosPaso2.MAXIMIZED_BOTH);
         this.cliente = cliente;
     }
 
@@ -157,9 +157,7 @@ public class RegistroClientesPaso2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Cliente Paso 2");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         fieldTelefono.setToolTipText("");
@@ -419,14 +417,18 @@ public class RegistroClientesPaso2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientesPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuariosPaso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -435,7 +437,7 @@ public class RegistroClientesPaso2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientesPaso2().setVisible(true);
+                new RegistroUsuariosPaso2().setVisible(true);
             }
         });
     }

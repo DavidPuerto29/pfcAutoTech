@@ -42,8 +42,8 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuVehiculos = new javax.swing.JMenu();
         JMenuItemModificarVehiculo = new javax.swing.JMenuItem();
         JMenuItemEliminarVehiculo = new javax.swing.JMenuItem();
-        jMenuClientes = new javax.swing.JMenu();
-        JMenuItemClientes = new javax.swing.JMenuItem();
+        jMenuUsuarios = new javax.swing.JMenu();
+        JMenuItemUsuarios = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         JMenuItemCitas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -162,24 +162,25 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuVehiculos);
 
-        jMenuClientes.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuClientes.setText("Clientes");
-        jMenuClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenuClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
+        jMenuUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuUsuarios.setText("Usuarios");
+        jMenuUsuarios.setToolTipText("");
+        jMenuUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuUsuarios.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemClientes.setText("Menu De Clientes");
-        JMenuItemClientes.setToolTipText("");
-        JMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
+        JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemUsuarios.setText("Menu De Usuarios");
+        JMenuItemUsuarios.setToolTipText("");
+        JMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMenuItemClientesActionPerformed(evt);
+                JMenuItemUsuariosActionPerformed(evt);
             }
         });
-        jMenuClientes.add(JMenuItemClientes);
+        jMenuUsuarios.add(JMenuItemUsuarios);
 
-        jMenuBar1.add(jMenuClientes);
+        jMenuBar1.add(jMenuUsuarios);
 
         jMenu3.setForeground(new java.awt.Color(255, 255, 255));
         jMenu3.setText("Citas");
@@ -249,9 +250,9 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         controlador.eliminarVehiculo(tablaVehiculos, this);
     }//GEN-LAST:event_JMenuItemEliminarVehiculoActionPerformed
 
-    private void JMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClientesActionPerformed
+    private void JMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemUsuariosActionPerformed
         controlador.vistaClientes(this);
-    }//GEN-LAST:event_JMenuItemClientesActionPerformed
+    }//GEN-LAST:event_JMenuItemUsuariosActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed
         controlador.cerrarSesion(this);
@@ -303,17 +304,17 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CabeceraVehiculos;
     private javax.swing.JMenuItem JMenuItemCitas;
-    private javax.swing.JMenuItem JMenuItemClientes;
     private javax.swing.JMenuItem JMenuItemEliminarVehiculo;
     private javax.swing.JMenuItem JMenuItemModificarVehiculo;
+    private javax.swing.JMenuItem JMenuItemUsuarios;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuClientes;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JMenuItem jMenuItemTalleres;
+    private javax.swing.JMenu jMenuUsuarios;
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelGestionarVehiculos;

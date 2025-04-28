@@ -9,7 +9,7 @@ import static davidpuertocuenca.autotech.cartografia.CifradoSHA256.generarRandom
 import davidpuertocuenca.autotech.clases.Usuarios;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
-import davidpuertocuenca.autotech.vistas.registro.RegistroClientesPaso2;
+import davidpuertocuenca.autotech.vistas.registro.RegistroUsuariosPaso2;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import java.util.Arrays;
 import javax.swing.JFrame;
@@ -96,7 +96,7 @@ public class RegistroControlador {
     }
     
     public void vistaRegistroPasoDos(JFrame vista, Usuarios usuario){
-        RegistroClientesPaso2 rgc = new RegistroClientesPaso2(usuario);
+        RegistroUsuariosPaso2 rgc = new RegistroUsuariosPaso2(usuario);
                 rgc.setVisible(true);
                     vista.dispose(); 
     }

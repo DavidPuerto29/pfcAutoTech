@@ -44,7 +44,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         CabeceraClientes = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuClientes = new javax.swing.JMenu();
+        jMenuUsuarios = new javax.swing.JMenu();
         JMenuGestionClientes = new javax.swing.JMenu();
         JMenuItemAdministrador = new javax.swing.JMenuItem();
         jMenuQuitarAdministrador = new javax.swing.JMenuItem();
@@ -119,7 +119,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
-        labelGestionarClientes.setText("Gestión De Clientes");
+        labelGestionarClientes.setText("Gestión De Usuarios");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -158,14 +158,14 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenuBar1.setOpaque(true);
         jMenuBar1.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jMenuClientes.setForeground(new java.awt.Color(255, 255, 255));
-        jMenuClientes.setToolTipText("");
-        jMenuClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jMenuClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenuClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenuClientes.setLabel("Clientes");
-        jMenuClientes.setMinimumSize(new java.awt.Dimension(50, 22));
-        jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
+        jMenuUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuUsuarios.setText("Usuarios");
+        jMenuUsuarios.setToolTipText("");
+        jMenuUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jMenuUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMenuUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenuUsuarios.setMinimumSize(new java.awt.Dimension(50, 22));
+        jMenuUsuarios.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuGestionClientes.setText("Gestión");
 
@@ -187,7 +187,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         });
         JMenuGestionClientes.add(jMenuQuitarAdministrador);
 
-        jMenuClientes.add(JMenuGestionClientes);
+        jMenuUsuarios.add(JMenuGestionClientes);
         JMenuGestionClientes.getAccessibleContext().setAccessibleName("Clientes");
 
         JMenuItemModificarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -197,7 +197,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
                 JMenuItemModificarClientesActionPerformed(evt);
             }
         });
-        jMenuClientes.add(JMenuItemModificarClientes);
+        jMenuUsuarios.add(JMenuItemModificarClientes);
 
         JMenuItemEliminarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemEliminarCliente.setText("Eliminar");
@@ -206,9 +206,9 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
                 JMenuItemEliminarClienteActionPerformed(evt);
             }
         });
-        jMenuClientes.add(JMenuItemEliminarCliente);
+        jMenuUsuarios.add(JMenuItemEliminarCliente);
 
-        jMenuBar1.add(jMenuClientes);
+        jMenuBar1.add(jMenuUsuarios);
 
         jMenuVehiculos.setForeground(new java.awt.Color(255, 255, 255));
         jMenuVehiculos.setText("Vehículos");
@@ -379,9 +379,9 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuClientes;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JMenuItem jMenuQuitarAdministrador;
+    private javax.swing.JMenu jMenuUsuarios;
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelGestionarClientes;

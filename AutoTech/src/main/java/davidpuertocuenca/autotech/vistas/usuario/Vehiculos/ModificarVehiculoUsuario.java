@@ -8,6 +8,7 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 
 /**
  *
@@ -38,12 +39,13 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private void reiniciarEtiquetas(){ 
         textoErrorAnoMatriculacion.setVisible(false);
         textoErrorModelo.setVisible(false);
-        textoErrorMatricula.setVisible(false);
+        labelErrorMatricula.setVisible(false);
         textoErrorMarca.setVisible(false);
         textoErrorColor.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
+    
     private void mostrarDatos(){ 
         fieldMatricula.setText(vehiculo.getMatricula());
         fieldMarca.setText(vehiculo.getMarca());
@@ -52,10 +54,32 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         fieldModelo.setText(vehiculo.getModelo());
         fieldColor.setText(vehiculo.getColor());
     }
+    
     private boolean modificarVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
 
+        //Comprobación de que la matrícula cumpla el formato actual y el antiguo (España).
+        if (!fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$") && !fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[A-Z]{1,2}[0-9]{4}[A-Z]{0,2}$")) {      
+            formatoCorrecto = false;
+                labelErrorMatricula.setText("Debe introducir una matrícula valida.");
+                    labelErrorMatricula.setVisible(true);
+        }
+        
+        //Comprobación de que la matrícula no este vacía.
+        if(fieldMatricula.getText().isEmpty()){
+            formatoCorrecto = false;
+                labelErrorMatricula.setText("Debe introducir una matrícula.");
+                    labelErrorMatricula.setVisible(true);   
+        }
+        
+        //Comprobación de que la matrícula no este registrada.
+        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
+           formatoCorrecto = false;
+                labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
+                    labelErrorMatricula.setVisible(true);    
+        }
+        
        //Comprobación de que el año de matrículacion tenga el formato correcto. (0000)
         if(fieldAnoMatriculacion.getText().length() != 4 && !fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
@@ -124,7 +148,6 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         labelAnoMatriculacion = new javax.swing.JLabel();
         fieldAnoMatriculacion = new javax.swing.JTextField();
@@ -136,7 +159,7 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         botonModificar = new javax.swing.JButton();
         fieldMatricula = new javax.swing.JTextField();
         labelMatricula = new javax.swing.JLabel();
-        textoErrorMatricula = new javax.swing.JLabel();
+        labelErrorMatricula = new javax.swing.JLabel();
         textoErrorMarca = new javax.swing.JLabel();
         fieldMarca = new javax.swing.JTextField();
         labelMarca = new javax.swing.JLabel();
@@ -153,73 +176,37 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(500, 400));
         setPreferredSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(null);
 
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(labelAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(labelAnoMatriculacion);
+        labelAnoMatriculacion.setBounds(920, 560, 120, 16);
 
         fieldAnoMatriculacion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(fieldAnoMatriculacion);
+        fieldAnoMatriculacion.setBounds(920, 580, 250, 40);
 
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorAnoMatriculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(textoErrorAnoMatriculacion);
+        textoErrorAnoMatriculacion.setBounds(920, 640, 149, 20);
 
         labelModelo.setForeground(new java.awt.Color(255, 255, 255));
         labelModelo.setText("Modelo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(labelModelo, gridBagConstraints);
+        getContentPane().add(labelModelo);
+        labelModelo.setBounds(920, 440, 120, 16);
 
         fieldModelo.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldModelo, gridBagConstraints);
+        getContentPane().add(fieldModelo);
+        fieldModelo.setBounds(920, 460, 250, 40);
 
         textoErrorModelo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorModelo.setText("Debe introducir un modelo.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorModelo, gridBagConstraints);
+        getContentPane().add(textoErrorModelo);
+        textoErrorModelo.setBounds(920, 520, 170, 20);
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -227,13 +214,8 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 930, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(930, 820, 76, 23);
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -241,158 +223,71 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
-        getContentPane().add(botonModificar, gridBagConstraints);
+        getContentPane().add(botonModificar);
+        botonModificar.setBounds(1090, 820, 81, 23);
 
         fieldMatricula.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldMatricula, gridBagConstraints);
+        getContentPane().add(fieldMatricula);
+        fieldMatricula.setBounds(920, 240, 250, 40);
 
         labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
         labelMatricula.setText("Matrícula");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(labelMatricula, gridBagConstraints);
+        getContentPane().add(labelMatricula);
+        labelMatricula.setBounds(920, 220, 60, 16);
 
-        textoErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorMatricula.setText("Matrícula ya registrada.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(textoErrorMatricula, gridBagConstraints);
+        labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
+        labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        labelErrorMatricula.setText("Matrícula ya registrada.");
+        getContentPane().add(labelErrorMatricula);
+        labelErrorMatricula.setBounds(920, 290, 169, 20);
 
         textoErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMarca.setText("Debe introducir una marca.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorMarca, gridBagConstraints);
+        getContentPane().add(textoErrorMarca);
+        textoErrorMarca.setBounds(920, 410, 180, 20);
 
         fieldMarca.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldMarca, gridBagConstraints);
+        getContentPane().add(fieldMarca);
+        fieldMarca.setBounds(920, 350, 250, 40);
 
         labelMarca.setForeground(new java.awt.Color(255, 255, 255));
         labelMarca.setText("Marca");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 87;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(labelMarca, gridBagConstraints);
+        getContentPane().add(labelMarca);
+        labelMarca.setBounds(920, 330, 120, 16);
 
         fieldColor.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldColor, gridBagConstraints);
+        getContentPane().add(fieldColor);
+        fieldColor.setBounds(920, 690, 250, 40);
 
         textoErrorColor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorColor.setText("Debe introducir un color,");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorColor, gridBagConstraints);
+        getContentPane().add(textoErrorColor);
+        textoErrorColor.setBounds(920, 750, 156, 20);
 
         labelColor.setForeground(new java.awt.Color(255, 255, 255));
         labelColor.setText("Color");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 91;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(labelColor, gridBagConstraints);
+        getContentPane().add(labelColor);
+        labelColor.setBounds(920, 670, 120, 16);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("Modificar Vehículo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.ipadx = 29;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(160, 940, 0, 0);
-        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+        getContentPane().add(labelIniciarSesion);
+        labelIniciarSesion.setBounds(940, 160, 230, 40);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 24;
-        gridBagConstraints.ipadx = -1256;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(150, 830, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera);
+        fondoCabecera.setBounds(830, 150, 490, 50);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 25;
-        gridBagConstraints.gridheight = 18;
-        gridBagConstraints.ipadx = -2464;
-        gridBagConstraints.ipady = -3232;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(110, 780, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin);
+        fondoLogin.setBounds(780, 110, 560, 800);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 26;
-        gridBagConstraints.gridheight = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 1920, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -459,6 +354,7 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelAnoMatriculacion;
     private javax.swing.JLabel labelColor;
+    private javax.swing.JLabel labelErrorMatricula;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelMarca;
     private javax.swing.JLabel labelMatricula;
@@ -466,7 +362,6 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel textoErrorAnoMatriculacion;
     private javax.swing.JLabel textoErrorColor;
     private javax.swing.JLabel textoErrorMarca;
-    private javax.swing.JLabel textoErrorMatricula;
     private javax.swing.JLabel textoErrorModelo;
     // End of variables declaration//GEN-END:variables
 }

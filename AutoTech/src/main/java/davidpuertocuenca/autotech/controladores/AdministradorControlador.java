@@ -39,7 +39,9 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatricu
 import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -327,6 +329,17 @@ public class AdministradorControlador {
                 tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                      tablaVehiculos.getColumnModel().getColumn(i).setResizable(false);
             }
+    }
+    
+    public void cargarClientesComboBox(JComboBox comboBoxUsuarios, Vehiculos vehiculo){
+        comboBoxUsuarios.removeAllItems(); 
+          
+        for (Usuarios usuario : obtenerTodosUsuariosSql()) {
+            comboBoxUsuarios.addItem(usuario.getUsuario()); 
+                if (usuario.getUsuario().equals(vehiculo.getCliente().getUsuario())) {
+                    comboBoxUsuarios.setSelectedItem(usuario.getUsuario());
+                }
+        }
     }
     
     public void eliminarCliente(JTable tablaClientes, JFrame vista){

@@ -5,11 +5,14 @@
 package davidpuertocuenca.autotech.controladores;
 
 import davidpuertocuenca.autotech.clases.Citas;
+import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
@@ -19,9 +22,11 @@ import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso2;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
+import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -184,6 +189,13 @@ public class UsuarioControlador {
             }
     }
     
+    public void cargarTalleresComboBox(JComboBox boxTalleres){
+        boxTalleres.removeAllItems(); 
+            for (Talleres taller : obtenerTodosTalleresSql()) {
+                boxTalleres.addItem(taller.getNombre()); 
+            }
+    }
+    
     public void vistaCitas(JTable tablaVehiculos, Usuarios usuario, JFrame vista){
        try{
             VistaCitasUsuario vcc = new VistaCitasUsuario(obtenerVehiculoMatriculaSql((String) tablaVehiculos.getValueAt(tablaVehiculos.getSelectedRow(), 0)), usuario);
@@ -191,6 +203,16 @@ public class UsuarioControlador {
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void vistaPedirCita(JFrame vista){
+        try{
+            PedirCita pc = new PedirCita();
+                pc.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -251,6 +273,7 @@ public class UsuarioControlador {
             avp2.setVisible(true);
                 vista.dispose();
     }
+    
     public void vistaVehiculos(JFrame vista, Usuarios usuario){
         VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(usuario);
             vvc.setVisible(true);

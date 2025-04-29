@@ -61,7 +61,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         }
         
         //Comprobación de que la matrícula no este registrada.
-        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
+        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null && !vehiculo.getMatricula().equals(fieldMatricula.getText())){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
                     labelErrorMatricula.setVisible(true);    

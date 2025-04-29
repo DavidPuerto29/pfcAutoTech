@@ -72,7 +72,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         }
         
         //Comprobación de que la matrícula no este registrada.
-        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
+        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null && !vehiculo.getMatricula().equals(fieldMatricula.getText())){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
                     labelErrorMatricula.setVisible(true);    
@@ -128,7 +128,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo.setMatricula(fieldMatricula.getText());
+            vehiculo.setMatricula(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
                 vehiculo.setMarca(fieldMarca.getText());
                     vehiculo.setModelo(fieldModelo.getText()); 
                         vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
@@ -271,7 +271,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints.gridy = 18;
         gridBagConstraints.gridwidth = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(46, 30, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(46, 0, 0, 0);
         getContentPane().add(botonModificar, gridBagConstraints);
 
         comboBoxClientes.addActionListener(new java.awt.event.ActionListener() {

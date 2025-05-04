@@ -9,16 +9,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 @NamedQuery(name = "get_todos_talleres", query = "FROM Talleres q ")
-@Entity @Getter @Setter  @NoArgsConstructor
+@Entity @NoArgsConstructor @Data
 public class Talleres {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

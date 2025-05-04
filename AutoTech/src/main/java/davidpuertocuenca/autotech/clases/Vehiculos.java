@@ -16,9 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.util.List;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  *
@@ -27,7 +26,7 @@ import lombok.Setter;
 @NamedQuery(name = "get_todos_vehiculos_usuario", query = "FROM Vehiculos q Where q.cliente = :client ORDER BY q.matricula ASC ")
 @NamedQuery(name = "get_todos_vehiculos", query = "FROM Vehiculos q ORDER BY q.matricula ASC ")
 @NamedQuery(name = "get_vehiculo", query = "FROM Vehiculos q Where q.matricula = :identificacion ")
-@Entity @Getter @Setter  @NoArgsConstructor
+@Entity @NoArgsConstructor @Data
 public class Vehiculos {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

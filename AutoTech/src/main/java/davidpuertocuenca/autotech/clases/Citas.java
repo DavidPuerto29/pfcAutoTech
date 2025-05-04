@@ -12,9 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import java.util.Date;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  *
@@ -23,7 +22,7 @@ import lombok.Setter;
 @NamedQuery(name = "get_todas_citas_matricula", query = "FROM Citas q Where q.vehiculo.matricula = :matricula ORDER BY numeroCita ASC")
 @NamedQuery(name = "get_todas_citas", query = "FROM Citas q")
 @NamedQuery(name = "get_cita", query = "FROM Citas q Where q.numeroCita = :identificacion ")
-@Entity @Getter @Setter  @NoArgsConstructor
+@Entity @NoArgsConstructor @Data
 public class Citas {
     
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,6 +8,7 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
 import java.util.ArrayList;
 
 /**
@@ -61,7 +62,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         }
         
         //Comprobación de que la matrícula no este registrada.
-        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null && !vehiculo.getMatricula().equals(fieldMatricula.getText())){
+        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
                     labelErrorMatricula.setVisible(true);    
@@ -102,6 +103,12 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                     textoErrorNumeroBastidor.setVisible(true);
         }
         
+        //Comprobación de que el numero de bastidor no este registrado.
+        if(obtenerVehiculoNumeroBastidorSql(fieldNumeroBastidor.getText()) != null){
+           formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
+                    textoErrorNumeroBastidor.setVisible(true);   
+        }
         //Comprobación de que el campo numero de bastidor no este vacío.
         if(fieldNumeroBastidor.getText().isEmpty()){
             formatoCorrecto = false;

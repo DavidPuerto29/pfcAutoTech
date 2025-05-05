@@ -26,6 +26,7 @@ import lombok.NoArgsConstructor;
 @NamedQuery(name = "get_todos_vehiculos_usuario", query = "FROM Vehiculos q Where q.cliente = :client ORDER BY q.matricula ASC ")
 @NamedQuery(name = "get_todos_vehiculos", query = "FROM Vehiculos q ORDER BY q.matricula ASC ")
 @NamedQuery(name = "get_vehiculo", query = "FROM Vehiculos q Where q.matricula = :identificacion ")
+@NamedQuery(name = "get_vehiculo_bastidor", query = "FROM Vehiculos q Where q.numeroBastidor = :identificacion ")
 @Entity @NoArgsConstructor @Data
 public class Vehiculos {
     

@@ -62,6 +62,16 @@ public class VehiculosDAO {
         }
     }
     
+    public static Vehiculos obtenerVehiculoNumeroBastidorSql(String numeroBastidor){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Vehiculos> q = session.createNamedQuery("get_vehiculo_bastidor", Vehiculos.class);
+                q.setParameter("identificacion", numeroBastidor);
+                    return (Vehiculos) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
     public static void actualizarVehiculoSql(Vehiculos vehiculo){
         try(Session session = HibernateUtil.getSessionFactory().openSession();){
             session.getTransaction().begin();

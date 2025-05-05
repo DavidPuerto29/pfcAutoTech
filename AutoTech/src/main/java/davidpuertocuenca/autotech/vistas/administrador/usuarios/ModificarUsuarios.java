@@ -160,7 +160,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
             usuario.setNombre(fieldNombre.getText());
             usuario.setApellidos(fieldApellidos.getText());
             usuario.setCorreoElectronico(fieldCorreo.getText());
-            usuario.setDni(fieldDni.getText());
+            usuario.setDni(fieldDni.getText().toUpperCase());
             usuario.setNumeroTelefono(fieldTelefono.getText());
             usuario.setDireccion(fieldDireccion.getText());
                         actualizarUsuarioSql(usuario);

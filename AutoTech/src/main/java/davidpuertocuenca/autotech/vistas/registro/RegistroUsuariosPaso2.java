@@ -114,7 +114,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         if(formatoCorrecto){
             cliente.setNombre(fieldNombre.getText());
             cliente.setApellidos(fieldApellidos.getText());
-            cliente.setDni(fieldDni.getText());
+            cliente.setDni(fieldDni.getText().toUpperCase());
             cliente.setDireccion(fieldDireccion.getText());
             cliente.setNumeroTelefono(fieldTelefono.getText());
                         crearUsuarioSql(cliente);

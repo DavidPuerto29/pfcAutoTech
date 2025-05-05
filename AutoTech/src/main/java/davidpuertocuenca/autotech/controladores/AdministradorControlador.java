@@ -11,6 +11,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.eliminarTallerSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosSql;
@@ -213,7 +215,7 @@ public class AdministradorControlador {
     }
     
     public void crearTablaTalleres(JTable tablaTalleres, JFrame vista){
-        Object[] cabecera = new Object[]{"Nombre","Dirección"}; 
+        Object[] cabecera = new Object[]{"Número De Taller","Nombre","Dirección", "Código Postal", "Teléfono", "Localidad", "Identificación Fiscal"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -229,23 +231,55 @@ public class AdministradorControlador {
             List<Talleres> talleres = new ArrayList(obtenerTodosTalleresSql());
           
             for(Talleres taller : talleres){
-                Object[] fila = new Object[2];
-                fila[0] = taller.getNombre();
-                fila[1] = taller.getDireccion();
+                Object[] fila = new Object[7];
+                fila[0] = taller.getNumeroTaller();
+                fila[1] = taller.getNombre();
+                fila[2] = taller.getDireccion();
+                fila[3] = taller.getCodigoPostal();
+                fila[4] = taller.getTeléfono();
+                fila[5] = taller.getLocalidad();
+                fila[6] = taller.getCif();
                     miModelo.addRow(fila);
             }
          
             //Dimensiones de la tabla.
             tablaTalleres.setRowHeight(40);
-            TableColumn columnaFecha = tablaTalleres.getColumn("Nombre");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
             
-            TableColumn columnaCliente = tablaTalleres.getColumn("Dirección");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300); 
+            TableColumn columnaNumeroTaller = tablaTalleres.getColumn("Numero De Taller");
+            columnaNumeroTaller.setMinWidth(100);
+            columnaNumeroTaller.setMaxWidth(600);
+            columnaNumeroTaller.setPreferredWidth(300); 
+            
+            TableColumn columnaNombre = tablaTalleres.getColumn("Nombre");
+            columnaNombre.setMinWidth(100);
+            columnaNombre.setMaxWidth(600);
+            columnaNombre.setPreferredWidth(300); 
+            
+            TableColumn columnaDireccion = tablaTalleres.getColumn("Dirección");
+            columnaDireccion.setMinWidth(100);
+            columnaDireccion.setMaxWidth(600);
+            columnaDireccion.setPreferredWidth(300); 
+            
+            TableColumn columnaCodigoPostal = tablaTalleres.getColumn("Código Postal");
+            columnaCodigoPostal.setMinWidth(100);
+            columnaCodigoPostal.setMaxWidth(600);
+            columnaCodigoPostal.setPreferredWidth(300); 
+            
+            TableColumn columnaTelefono = tablaTalleres.getColumn("Teléfono");
+            columnaTelefono.setMinWidth(100);
+            columnaTelefono.setMaxWidth(600);
+            columnaTelefono.setPreferredWidth(300); 
+            
+            TableColumn columnaLocalidad = tablaTalleres.getColumn("Localidad");
+            columnaLocalidad.setMinWidth(100);
+            columnaLocalidad.setMaxWidth(600);
+            columnaLocalidad.setPreferredWidth(300); 
+            
+            TableColumn columnaIdentificaciónFiscal = tablaTalleres.getColumn("Identificación Fiscal");
+            columnaIdentificaciónFiscal.setMinWidth(100);
+            columnaIdentificaciónFiscal.setMaxWidth(600);
+            columnaIdentificaciónFiscal.setPreferredWidth(300); 
+            
            
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -376,6 +410,24 @@ public class AdministradorControlador {
          }
         //Siempre al finalizar actualiza la tabla.
         crearTablaCitas(tablaCitas, vista);
+    }
+    
+    public void eliminarTaller(JTable tablaTalleres, JFrame vista){
+        try{
+            Talleres taller = obtenerTallerPorNumeroSql((Long) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0));
+            if(taller == null){
+                JOptionPane.showMessageDialog(vista, "El taller seleccionado no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
+            if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                eliminarTallerSql(taller);        
+            }else{
+                JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
+            }
+         }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+         }
+        //Siempre al finalizar actualiza la tabla.
+        crearTablaTalleres(tablaTalleres, vista);
     }
     
     public void eliminarVehiculo(JTable tablaVehiculos, JFrame vista){

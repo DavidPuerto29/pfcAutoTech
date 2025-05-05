@@ -23,6 +23,16 @@ public class TalleresDAO {
             return null;
         }
     }
+            
+    public static Talleres obtenerTallerPorNumeroSql(Long numeroTaller){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Talleres> q = session.createNamedQuery("get_taller", Talleres.class);
+                q.setParameter("identificacion", numeroTaller);
+                    return (Talleres) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }       
     
     public static void eliminarTallerSql(Talleres taller){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){

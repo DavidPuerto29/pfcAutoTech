@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
  * @author David Puerto Cuenca
  */
 @NamedQuery(name = "get_todos_talleres", query = "FROM Talleres q ")
+@NamedQuery(name = "get_taller", query = "FROM Talleres q Where q.numeroTaller = :identificacion ")
 @Entity @NoArgsConstructor @Data
 public class Talleres {
     

@@ -30,6 +30,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         labelGestionarClientes = new javax.swing.JLabel();
         CabeceraVehiculos = new javax.swing.JLabel();
@@ -52,18 +53,35 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Taleeres Administrador");
-        getContentPane().setLayout(null);
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
         labelGestionarClientes.setText("Gestión De Talleres");
         labelGestionarClientes.setToolTipText("");
-        getContentPane().add(labelGestionarClientes);
-        labelGestionarClientes.setBounds(20, 30, 600, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 194;
+        gridBagConstraints.ipady = -4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        getContentPane().add(labelGestionarClientes, gridBagConstraints);
 
         CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
-        getContentPane().add(CabeceraVehiculos);
-        CabeceraVehiculos.setBounds(10, 29, 1910, 66);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 30;
+        gridBagConstraints.ipady = -66;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(29, 10, 0, 0);
+        getContentPane().add(CabeceraVehiculos, gridBagConstraints);
 
         tablaTalleres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,12 +105,28 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         tablaTalleres.setToolTipText("");
         jScrollPane1.setViewportView(tablaTalleres);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 119, 1980, 1111);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1964;
+        gridBagConstraints.ipady = 1091;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(24, 10, 0, 0);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 2000, 1231);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 17920);
+        getContentPane().add(fondoPantalla, gridBagConstraints);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -224,9 +258,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemModificarTallerActionPerformed
 
     private void JMenuItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarTallerActionPerformed
-       //eliminarTallerSql()    TODO
-      
-       controlador.crearTablaTalleres(tablaTalleres, this);
+       controlador.eliminarTaller(tablaTalleres, this);
     }//GEN-LAST:event_JMenuItemEliminarTallerActionPerformed
 
     private void JMenuItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemUsuariosActionPerformed

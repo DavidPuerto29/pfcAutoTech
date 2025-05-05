@@ -245,7 +245,7 @@ public class AdministradorControlador {
             //Dimensiones de la tabla.
             tablaTalleres.setRowHeight(40);
             
-            TableColumn columnaNumeroTaller = tablaTalleres.getColumn("Numero De Taller");
+            TableColumn columnaNumeroTaller = tablaTalleres.getColumn("Número De Taller");
             columnaNumeroTaller.setMinWidth(100);
             columnaNumeroTaller.setMaxWidth(600);
             columnaNumeroTaller.setPreferredWidth(300); 

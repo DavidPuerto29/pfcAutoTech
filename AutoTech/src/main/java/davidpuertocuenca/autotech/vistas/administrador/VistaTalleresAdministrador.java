@@ -274,7 +274,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemAnadirTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirTallerActionPerformed
-        // TODO add your handling code here:
+        controlador.vistaAnadirVehiculo(this);
     }//GEN-LAST:event_JMenuItemAnadirTallerActionPerformed
 
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed

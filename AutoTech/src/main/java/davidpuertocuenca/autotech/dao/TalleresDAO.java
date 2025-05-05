@@ -34,6 +34,13 @@ public class TalleresDAO {
         }
     }       
     
+    public static void crearTallerSql(Talleres taller) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.getTransaction().begin();
+                session.persist(taller);
+                    session.getTransaction().commit();
+        }
+    }
     public static void eliminarTallerSql(Talleres taller){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();

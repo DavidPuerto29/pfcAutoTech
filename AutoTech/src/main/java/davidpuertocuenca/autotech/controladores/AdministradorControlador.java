@@ -34,15 +34,15 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.ModificarVehiculo;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
+import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import javax.swing.JComboBox;
 
 /**
@@ -526,6 +526,11 @@ public class AdministradorControlador {
                 vista.dispose();
     }
     
+    public void vistaAnadirVehiculo(JFrame vista){
+        AnadirTallerAdministrador ata = new AnadirTallerAdministrador();
+            ata.setVisible(true);
+                vista.dispose();
+    }
     public void vistaVehiculos(JFrame vista){
         VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
             vha.setVisible(true);

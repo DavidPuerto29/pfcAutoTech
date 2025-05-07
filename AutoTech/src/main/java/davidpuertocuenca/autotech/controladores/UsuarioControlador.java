@@ -12,7 +12,6 @@ import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
-import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;

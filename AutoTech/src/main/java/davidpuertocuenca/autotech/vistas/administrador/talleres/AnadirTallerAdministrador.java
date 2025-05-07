@@ -119,7 +119,6 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 textoErrorIdentidicacionFiscal.setVisible(true);
                     textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF.");
         }
-
         
         if(formatoCorrecto){
             crearTallerSql(new Talleres(fieldNombre.getText(), fieldDireccion.getText(), fieldCodigoPostal.getText(), fieldTelefono.getText(), fieldIdentidicacionFiscal.getText().toUpperCase(), fieldLocalidad.getText()));

@@ -34,6 +34,16 @@ public class TalleresDAO {
         }
     }       
     
+    public static Talleres obtenerTallerPorCifSql(String identificacionFiscal){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Talleres> q = session.createNamedQuery("get_taller_cif", Talleres.class);
+                q.setParameter("identificacion", identificacionFiscal);
+                    return (Talleres) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }       
+    
     public static void crearTallerSql(Talleres taller) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();
@@ -41,6 +51,7 @@ public class TalleresDAO {
                     session.getTransaction().commit();
         }
     }
+    
     public static void eliminarTallerSql(Talleres taller){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
@@ -48,4 +59,13 @@ public class TalleresDAO {
                     session.getTransaction().commit();
         }
     }
+    
+    public static void actualizarTallerSql(Talleres taller){
+        try(Session session = HibernateUtil.getSessionFactory().openSession();){
+            session.getTransaction().begin();
+                session.merge(taller);
+                    session.getTransaction().commit();
+        }
+    }
+    
 }

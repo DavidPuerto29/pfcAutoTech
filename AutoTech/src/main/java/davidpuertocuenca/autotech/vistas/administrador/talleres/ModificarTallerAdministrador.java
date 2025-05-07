@@ -6,22 +6,31 @@ package davidpuertocuenca.autotech.vistas.administrador.talleres;
 
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
-import static davidpuertocuenca.autotech.dao.TalleresDAO.crearTallerSql;
-import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorCifSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.actualizarTallerSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
-public class AnadirTallerAdministrador extends javax.swing.JFrame {
+public class ModificarTallerAdministrador extends javax.swing.JFrame {
     private AdministradorControlador controlador = new AdministradorControlador();
+    private Talleres taller;
     /**
      * Creates new form AnadirTallerAdministrador
      */
-    public AnadirTallerAdministrador() {
+    public ModificarTallerAdministrador() {
         initComponents();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        mostrarDatos();
+        reiniciarEtiquetas();
+    }
+    
+    public ModificarTallerAdministrador(Talleres taller) {
+        initComponents();
+        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        this.taller = taller;
+        mostrarDatos();
         reiniciarEtiquetas();
     }
     
@@ -31,9 +40,16 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorDireccion.setVisible(false);
         textoErrorLocalidad.setVisible(false);
         textoErrorCodigoPostal.setVisible(false);
-        textoErrorIdentidicacionFiscal.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
+    }
+    
+    private void mostrarDatos(){
+        fieldNombre.setText(taller.getNombre());
+        fieldDireccion.setText(taller.getDireccion());
+        fieldCodigoPostal.setText(taller.getCodigoPostal());
+        fieldTelefono.setText(taller.getTelefono());
+        fieldLocalidad.setText(taller.getLocalidad());
     }
 
         private boolean registrarTaller(){
@@ -98,32 +114,14 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         }
         
-        // Comprobación de que el CIF tenga el formato correcto.
-        if (!fieldIdentidicacionFiscal.getText().matches("^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
-            formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
-                    textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF válido.");
-        }
-        
-        //Comprobación de que el CIF no este registrado.
-        if(obtenerTallerPorCifSql(fieldIdentidicacionFiscal.getText()) != null){
-           formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setText("Este CIF ya esta registrado.");
-                    textoErrorIdentidicacionFiscal.setVisible(true);    
-        }
-        
-        
-        //Comprobación de que el CIF no este vacia.
-        if(fieldIdentidicacionFiscal.getText().isEmpty()){
-            formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
-                    textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF.");
-        }
-
-        
         if(formatoCorrecto){
-            crearTallerSql(new Talleres(fieldNombre.getText(), fieldDireccion.getText(), fieldCodigoPostal.getText(), fieldTelefono.getText(), fieldIdentidicacionFiscal.getText().toUpperCase(), fieldLocalidad.getText()));
-                return true;
+                taller.setNombre(fieldNombre.getText());
+                    taller.setDireccion(fieldDireccion.getText());
+                        taller.setCodigoPostal(fieldCodigoPostal.getText());
+                            taller.setTelefono(fieldTelefono.getText());
+                                taller.setLocalidad(fieldLocalidad.getText());
+                                    actualizarTallerSql(taller);
+                                        return true;
         }else{
             return false;
         }
@@ -139,10 +137,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         botonCancelar = new javax.swing.JButton();
-        botonAnadir = new javax.swing.JButton();
-        fieldIdentidicacionFiscal = new javax.swing.JTextField();
-        textoErrorIdentidicacionFiscal = new javax.swing.JLabel();
-        labelIdentidicacionFiscal = new javax.swing.JLabel();
+        botonModificar = new javax.swing.JButton();
         textoErrorLocalidad = new javax.swing.JLabel();
         fieldLocalidad = new javax.swing.JTextField();
         labelLocalidad = new javax.swing.JLabel();
@@ -179,10 +174,10 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 1000, 0, 0);
         getContentPane().add(botonCancelar, gridBagConstraints);
 
-        botonAnadir.setText("Añadir");
-        botonAnadir.addActionListener(new java.awt.event.ActionListener() {
+        botonModificar.setText("Modificar");
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAnadirActionPerformed(evt);
+                botonModificarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -192,42 +187,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 60, 0, 0);
-        getContentPane().add(botonAnadir, gridBagConstraints);
-
-        fieldIdentidicacionFiscal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldIdentidicacionFiscal, gridBagConstraints);
-
-        textoErrorIdentidicacionFiscal.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorIdentidicacionFiscal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorIdentidicacionFiscal.setText("Debe introducir un cif.");
-        textoErrorIdentidicacionFiscal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorIdentidicacionFiscal, gridBagConstraints);
-
-        labelIdentidicacionFiscal.setForeground(new java.awt.Color(255, 255, 255));
-        labelIdentidicacionFiscal.setText("Identificación Fiscal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 17;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelIdentidicacionFiscal, gridBagConstraints);
+        getContentPane().add(botonModificar, gridBagConstraints);
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
@@ -405,7 +365,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
-        labelAnadirTaller.setText("Añadir Taller");
+        labelAnadirTaller.setText("Modificar Taller");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -454,14 +414,14 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        controlador.vistaVehiculos(this);
+        controlador.vistaTalleres(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(registrarTaller()){
             controlador.vistaTalleres(this);
         }
-    }//GEN-LAST:event_botonAnadirActionPerformed
+    }//GEN-LAST:event_botonModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,30 +440,32 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AnadirTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AnadirTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AnadirTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AnadirTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarTallerAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnadirTallerAdministrador().setVisible(true);
+                new ModificarTallerAdministrador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAnadir;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JTextField fieldCodigoPostal;
     private javax.swing.JTextField fieldDireccion;
-    private javax.swing.JTextField fieldIdentidicacionFiscal;
     private javax.swing.JTextField fieldLocalidad;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
@@ -513,13 +475,11 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel labelAnadirTaller;
     private javax.swing.JLabel labelCodigoPostal;
     private javax.swing.JLabel labelDireccion;
-    private javax.swing.JLabel labelIdentidicacionFiscal;
     private javax.swing.JLabel labelLocalidad;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
     private javax.swing.JLabel textoErrorCodigoPostal;
     private javax.swing.JLabel textoErrorDireccion;
-    private javax.swing.JLabel textoErrorIdentidicacionFiscal;
     private javax.swing.JLabel textoErrorLocalidad;
     private javax.swing.JLabel textoErrorNombre;
     private javax.swing.JLabel textoErrorTelefono;

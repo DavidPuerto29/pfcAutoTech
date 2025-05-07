@@ -254,7 +254,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMenuItemModificarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarTallerActionPerformed
-        
+        controlador.vistaModificarTaller(tablaTalleres, this);
     }//GEN-LAST:event_JMenuItemModificarTallerActionPerformed
 
     private void JMenuItemEliminarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarTallerActionPerformed

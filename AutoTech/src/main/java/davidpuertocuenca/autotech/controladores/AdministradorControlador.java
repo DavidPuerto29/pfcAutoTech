@@ -43,6 +43,7 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
 import javax.swing.JComboBox;
 
 /**
@@ -236,7 +237,7 @@ public class AdministradorControlador {
                 fila[1] = taller.getNombre();
                 fila[2] = taller.getDireccion();
                 fila[3] = taller.getCodigoPostal();
-                fila[4] = taller.getTeléfono();
+                fila[4] = taller.getTelefono();
                 fila[5] = taller.getLocalidad();
                 fila[6] = taller.getCif();
                     miModelo.addRow(fila);
@@ -531,6 +532,7 @@ public class AdministradorControlador {
             ata.setVisible(true);
                 vista.dispose();
     }
+   
     public void vistaVehiculos(JFrame vista){
         VistaVehiculosAdministrador vha = new VistaVehiculosAdministrador();
             vha.setVisible(true);
@@ -546,6 +548,17 @@ public class AdministradorControlador {
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+    
+     public void vistaModificarTaller(JTable tablaTalleres, JFrame vista){
+        try{
+            ModificarTallerAdministrador mta = new ModificarTallerAdministrador(obtenerTallerPorNumeroSql((Long) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0)));
+                mta.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     
     public void vistaModificarUsuario(JTable tablaUsuarios, JFrame vista){
         try{

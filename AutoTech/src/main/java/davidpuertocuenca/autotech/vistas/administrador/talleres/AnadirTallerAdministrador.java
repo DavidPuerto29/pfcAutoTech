@@ -164,6 +164,11 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Añadir Taller");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         botonCancelar.setText("Cancelar");

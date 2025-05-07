@@ -158,7 +158,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         fieldModelo = new javax.swing.JTextField();
         textoErrorModelo = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-        botonModificar = new javax.swing.JButton();
+        botonAnadir = new javax.swing.JButton();
         comboBoxClientes = new javax.swing.JComboBox<>();
         labelCliente = new javax.swing.JLabel();
         fieldMatricula = new javax.swing.JTextField();
@@ -264,10 +264,10 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(46, 920, 0, 0);
         getContentPane().add(botonCancelar, gridBagConstraints);
 
-        botonModificar.setText("Modificar");
-        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+        botonAnadir.setLabel("Añadir");
+        botonAnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonModificarActionPerformed(evt);
+                botonAnadirActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -276,7 +276,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(46, 0, 0, 0);
-        getContentPane().add(botonModificar, gridBagConstraints);
+        getContentPane().add(botonAnadir, gridBagConstraints);
 
         comboBoxClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,11 +489,11 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         controlador.vistaVehiculos(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
-    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+    private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
         if(anadirVehiculo()){    
             controlador.vistaVehiculos(this);
         }
-    }//GEN-LAST:event_botonModificarActionPerformed
+    }//GEN-LAST:event_botonAnadirActionPerformed
 
     private void comboBoxClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClientesActionPerformed
 
@@ -542,8 +542,8 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAnadir;
     private javax.swing.JButton botonCancelar;
-    private javax.swing.JButton botonModificar;
     private javax.swing.JComboBox<String> comboBoxClientes;
     private javax.swing.JTextField fieldAnoMatriculacion;
     private javax.swing.JTextField fieldColor;

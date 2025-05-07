@@ -155,7 +155,7 @@ public class AdministradorControlador {
     }
     
     public void crearTablaCitas(JTable tablaCitas, JFrame vista){
-        Object[] cabecera = new Object[]{"Numero De Cita","Fecha","Nombre Del Taller","Matrícula","Cliente"}; 
+        Object[] cabecera = new Object[]{"Numero De Cita", "Fecha", "Nombre Del Taller", "Descripción", "Matrícula", "Cliente", "Estado"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -170,12 +170,20 @@ public class AdministradorControlador {
             List<Citas> citas = new ArrayList(obtenerTodasCitasSql());
            
             for(Citas cita : citas){
-                Object[] fila = new Object[5];
+                Object[] fila = new Object[7];
                 fila[0] = cita.getNumeroCita();
                 fila[1] = cita.getFecha();
                 fila[2] = cita.getTaller().getNombre();
-                fila[3] = cita.getVehiculo().getMatricula();
-                fila[4] = cita.getVehiculo().getCliente().getNombre();
+                fila[3] = cita.getDescripcion();
+                fila[4] = cita.getVehiculo().getMatricula();
+                fila[5] = cita.getVehiculo().getCliente().getNombre();
+                switch(cita.getEstadoCita()){
+                    case 1 -> fila[6] = "Pendiente ";
+                    case 2 -> fila[6] = "En proceso ";
+                    case 3 -> fila[6] = "Listo para recoger ";
+                    case 4 -> fila[6] = "Finalizada  ";
+                        default -> fila[6] = "Error";
+                }
                     miModelo.addRow(fila);
             }
          
@@ -196,6 +204,11 @@ public class AdministradorControlador {
             columnaTaller.setMaxWidth(600);
             columnaTaller.setPreferredWidth(300); 
             
+            TableColumn columnaDescripcionr = tablaCitas.getColumn("Descripción");
+            columnaDescripcionr.setMinWidth(100);
+            columnaDescripcionr.setMaxWidth(600);
+            columnaDescripcionr.setPreferredWidth(300); 
+            
             TableColumn columnaMatricula = tablaCitas.getColumn("Matrícula");
             columnaMatricula.setMinWidth(100);
             columnaMatricula.setMaxWidth(600);
@@ -205,6 +218,11 @@ public class AdministradorControlador {
             columnaCliente.setMinWidth(100);
             columnaCliente.setMaxWidth(600);
             columnaCliente.setPreferredWidth(300);
+            
+            TableColumn columnaEstado = tablaCitas.getColumn("Estado");
+            columnaEstado.setMinWidth(100);
+            columnaEstado.setMaxWidth(600);
+            columnaEstado.setPreferredWidth(300);
             
             DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
             centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);

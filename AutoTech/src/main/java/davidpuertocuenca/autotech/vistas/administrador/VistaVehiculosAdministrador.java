@@ -40,6 +40,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVehiculos = new javax.swing.JMenu();
+        JMenuItemAnadirVehiculo = new javax.swing.JMenuItem();
         JMenuItemModificarVehiculo = new javax.swing.JMenuItem();
         JMenuItemEliminarVehiculo = new javax.swing.JMenuItem();
         jMenuUsuarios = new javax.swing.JMenu();
@@ -141,6 +142,15 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenuVehiculos.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        JMenuItemAnadirVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemAnadirVehiculo.setText("Añadir");
+        JMenuItemAnadirVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemAnadirVehiculoActionPerformed(evt);
+            }
+        });
+        jMenuVehiculos.add(JMenuItemAnadirVehiculo);
 
         JMenuItemModificarVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemModificarVehiculo.setText("Modificar");
@@ -266,6 +276,10 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
        controlador.vistaTalleres(this);
     }//GEN-LAST:event_jMenuItemTalleresActionPerformed
 
+    private void JMenuItemAnadirVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirVehiculoActionPerformed
+        controlador.vistaAnadirVehiculo(this);
+    }//GEN-LAST:event_JMenuItemAnadirVehiculoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -303,6 +317,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CabeceraVehiculos;
+    private javax.swing.JMenuItem JMenuItemAnadirVehiculo;
     private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemEliminarVehiculo;
     private javax.swing.JMenuItem JMenuItemModificarVehiculo;

@@ -44,6 +44,7 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
 import javax.swing.JComboBox;
 
 /**
@@ -366,7 +367,7 @@ public class AdministradorControlador {
             }
     }
     
-    public void cargarClientesComboBox(JComboBox comboBoxUsuarios, Vehiculos vehiculo){
+    public void cargarClientesSeleccionadoComboBox(JComboBox comboBoxUsuarios, Vehiculos vehiculo){
         comboBoxUsuarios.removeAllItems(); 
           
         for (Usuarios usuario : obtenerTodosUsuariosSql()) {
@@ -375,6 +376,13 @@ public class AdministradorControlador {
                     comboBoxUsuarios.setSelectedItem(usuario.getUsuario());
                 }
         }
+    }
+    
+    public void cargarClientesComboBox(JComboBox comboBoxUsuarios){
+        comboBoxUsuarios.removeAllItems(); 
+            for (Usuarios usuario : obtenerTodosUsuariosSql()) {
+                comboBoxUsuarios.addItem(usuario.getUsuario()); 
+            }
     }
     
     public void eliminarCliente(JTable tablaClientes, JFrame vista){
@@ -527,9 +535,15 @@ public class AdministradorControlador {
                 vista.dispose();
     }
     
-    public void vistaAnadirVehiculo(JFrame vista){
+    public void vistaAnadirTaller(JFrame vista){
         AnadirTallerAdministrador ata = new AnadirTallerAdministrador();
             ata.setVisible(true);
+                vista.dispose();
+    }
+    
+    public void vistaAnadirVehiculo(JFrame vista){
+        AñadirVehiculoAdministrador ava = new AñadirVehiculoAdministrador();
+            ava.setVisible(true);
                 vista.dispose();
     }
    

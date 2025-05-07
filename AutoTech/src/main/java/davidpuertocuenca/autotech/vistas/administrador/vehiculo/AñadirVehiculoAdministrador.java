@@ -7,53 +7,39 @@ package davidpuertocuenca.autotech.vistas.administrador.vehiculo;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
+import java.util.ArrayList;
 
 /**
  *
  * @author David Puerto Cuenca
  */
-public class ModificarVehiculo extends javax.swing.JFrame {
-    private Vehiculos vehiculo;
+public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
     private AdministradorControlador controlador = new AdministradorControlador();
     /**
-     * Creates new form ModificarVehiculo
+     * Creates new form AñadirVehiculoAdministrador
      */
-    public ModificarVehiculo() {
+    public AñadirVehiculoAdministrador() {
         initComponents();
         reiniciarEtiquetas();
-        mostrarDatos();
-        setExtendedState(ModificarVehiculo.MAXIMIZED_BOTH);
+        setExtendedState(AñadirVehiculoAdministrador.MAXIMIZED_BOTH);
+        controlador.cargarClientesComboBox(comboBoxClientes);
     }
     
-     public ModificarVehiculo(Vehiculos vehiculo) {
-        initComponents();
-        this.vehiculo = vehiculo;
-        reiniciarEtiquetas();
-        mostrarDatos();
-        setExtendedState(ModificarVehiculo.MAXIMIZED_BOTH);
-    }
-
     private void reiniciarEtiquetas(){
         textoErrorAnoMatriculacion.setVisible(false);
         textoErrorModelo.setVisible(false);
         labelErrorMatricula.setVisible(false);
         textoErrorMarca.setVisible(false);
         textoErrorColor.setVisible(false);
+        textoErrorNumeroBastidor.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
     
-    private void mostrarDatos(){
-        fieldMatricula.setText(vehiculo.getMatricula());
-        fieldMarca.setText(vehiculo.getMarca());
-        fieldAnoMatriculacion.setText(vehiculo.getAnoMatriculacion());
-        fieldModelo.setText(vehiculo.getModelo());
-        fieldColor.setText(vehiculo.getColor());
-        controlador.cargarClientesSeleccionadoComboBox(comboBoxClientes, vehiculo);
-    }
-    
-    private boolean modificarVehiculo(){
+    private boolean anadirVehiculo(){
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
 
@@ -72,7 +58,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         }
         
         //Comprobación de que la matrícula no este registrada.
-        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null && !vehiculo.getMatricula().equals(fieldMatricula.getText())){
+        if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
                     labelErrorMatricula.setVisible(true);    
@@ -127,14 +113,29 @@ public class ModificarVehiculo extends javax.swing.JFrame {
                     textoErrorColor.setVisible(true);   
         }
         
+         //Comprobación de que el numero de bastidor tenga el formato correcto.
+        if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Z0-9]{17}$")) {
+            formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor valido.");
+                    textoErrorNumeroBastidor.setVisible(true);
+        }
+        
+        //Comprobación de que el numero de bastidor no este registrado.
+        if(obtenerVehiculoNumeroBastidorSql(fieldNumeroBastidor.getText()) != null){
+           formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
+                    textoErrorNumeroBastidor.setVisible(true);   
+        }
+        //Comprobación de que el campo numero de bastidor no este vacío.
+        if(fieldNumeroBastidor.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
+                    textoErrorNumeroBastidor.setVisible(true);   
+        }
+        
         if(formatoCorrecto){
-            vehiculo.setMatricula(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
-                vehiculo.setMarca(fieldMarca.getText());
-                    vehiculo.setModelo(fieldModelo.getText()); 
-                        vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
-                            vehiculo.setColor(fieldColor.getText());
-                                vehiculo.setCliente(obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()));
-                                    return true;
+            crearVehiculoSql(new Vehiculos(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), fieldMarca.getText(), fieldModelo.getText(), fieldColor.getText() , fieldAnoMatriculacion.getText(), fieldNumeroBastidor.getText().trim().toUpperCase(), obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()), new ArrayList()));
+                  return true;
         }else{
             return false;
         }
@@ -170,12 +171,15 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         fieldColor = new javax.swing.JTextField();
         textoErrorColor = new javax.swing.JLabel();
         labelIniciarSesion = new javax.swing.JLabel();
+        fieldNumeroBastidor = new javax.swing.JTextField();
+        labelNumeroBastidor = new javax.swing.JLabel();
+        textoErrorNumeroBastidor = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Modificar Vehículo");
+        setTitle("Añadir Vehículo");
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -185,21 +189,21 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(24, 910, 0, 0);
         getContentPane().add(labelAnoMatriculacion, gridBagConstraints);
 
         fieldAnoMatriculacion.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 910, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 910, 0, 0);
         getContentPane().add(fieldAnoMatriculacion, gridBagConstraints);
 
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
@@ -208,7 +212,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
         getContentPane().add(textoErrorAnoMatriculacion, gridBagConstraints);
@@ -218,7 +222,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 79;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 910, 0, 0);
@@ -228,7 +232,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -241,9 +245,9 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 910, 0, 0);
         getContentPane().add(textoErrorModelo, gridBagConstraints);
 
         botonCancelar.setText("Cancelar");
@@ -254,7 +258,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridy = 21;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(46, 920, 0, 0);
@@ -267,9 +271,9 @@ public class ModificarVehiculo extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 21;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(46, 0, 0, 0);
         getContentPane().add(botonModificar, gridBagConstraints);
@@ -281,8 +285,8 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 17;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 178;
         gridBagConstraints.ipady = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -293,7 +297,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         labelCliente.setText("Cliente");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridy = 19;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
         getContentPane().add(labelCliente, gridBagConstraints);
@@ -302,7 +306,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -326,7 +330,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.ipadx = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
@@ -337,7 +341,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 87;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 910, 0, 0);
@@ -347,7 +351,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -360,7 +364,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
@@ -370,18 +374,18 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         labelColor.setText("Color");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 910, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
         getContentPane().add(labelColor, gridBagConstraints);
 
         fieldColor.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -393,8 +397,8 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         textoErrorColor.setText("Debe introducir un color,");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
         getContentPane().add(textoErrorColor, gridBagConstraints);
@@ -405,18 +409,52 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 21;
         gridBagConstraints.ipadx = 29;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(130, 930, 0, 0);
         getContentPane().add(labelIniciarSesion, gridBagConstraints);
 
+        fieldNumeroBastidor.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 21;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 910, 0, 0);
+        getContentPane().add(fieldNumeroBastidor, gridBagConstraints);
+
+        labelNumeroBastidor.setForeground(new java.awt.Color(255, 255, 255));
+        labelNumeroBastidor.setText("Número De Bastidor");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 910, 0, 0);
+        getContentPane().add(labelNumeroBastidor, gridBagConstraints);
+
+        textoErrorNumeroBastidor.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorNumeroBastidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.ipadx = 17;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 910, 0, 0);
+        getContentPane().add(textoErrorNumeroBastidor, gridBagConstraints);
+
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 21;
+        gridBagConstraints.gridwidth = 33;
         gridBagConstraints.ipadx = -1256;
         gridBagConstraints.ipady = -82;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -427,10 +465,10 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 22;
-        gridBagConstraints.gridheight = 20;
+        gridBagConstraints.gridwidth = 34;
+        gridBagConstraints.gridheight = 23;
         gridBagConstraints.ipadx = -2464;
-        gridBagConstraints.ipady = -3232;
+        gridBagConstraints.ipady = -3082;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(80, 770, 0, 0);
         getContentPane().add(fondoLogin, gridBagConstraints);
@@ -439,8 +477,8 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 23;
-        gridBagConstraints.gridheight = 21;
+        gridBagConstraints.gridwidth = 35;
+        gridBagConstraints.gridheight = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 
@@ -452,8 +490,8 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if(modificarVehiculo()){    //TERMINAR
-            controlador.modificarVehiculo(this, vehiculo);
+        if(anadirVehiculo()){    
+            controlador.vistaVehiculos(this);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -478,21 +516,27 @@ public class ModificarVehiculo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AñadirVehiculoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AñadirVehiculoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AñadirVehiculoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AñadirVehiculoAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarVehiculo().setVisible(true);
+                new AñadirVehiculoAdministrador().setVisible(true);
             }
         });
     }
@@ -506,6 +550,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldModelo;
+    private javax.swing.JTextField fieldNumeroBastidor;
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
@@ -517,9 +562,11 @@ public class ModificarVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel labelMarca;
     private javax.swing.JLabel labelMatricula;
     private javax.swing.JLabel labelModelo;
+    private javax.swing.JLabel labelNumeroBastidor;
     private javax.swing.JLabel textoErrorAnoMatriculacion;
     private javax.swing.JLabel textoErrorColor;
     private javax.swing.JLabel textoErrorMarca;
     private javax.swing.JLabel textoErrorModelo;
+    private javax.swing.JLabel textoErrorNumeroBastidor;
     // End of variables declaration//GEN-END:variables
 }

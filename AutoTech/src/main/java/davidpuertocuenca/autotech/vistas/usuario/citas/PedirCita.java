@@ -22,7 +22,13 @@ public class PedirCita extends javax.swing.JFrame {
         controlador.cargarTalleresComboBox(boxTalleres);
     }
 
+    public void cargarHorariosJComboBox(){
+        
+    }
     
+    public void anadirCita(){
+        
+    }
  
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,7 +39,7 @@ public class PedirCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         labelTaller = new javax.swing.JLabel();
         boxTalleres = new javax.swing.JComboBox<>();
         labelIniciarSesion = new javax.swing.JLabel();
@@ -47,17 +53,15 @@ public class PedirCita extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
-
-        jLabel1.setText("TODO Fecha y hora");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(980, 300, 110, 40);
+        getContentPane().add(jCalendar1);
+        jCalendar1.setBounds(970, 290, 191, 141);
 
         labelTaller.setText("Taller");
         getContentPane().add(labelTaller);
-        labelTaller.setBounds(970, 390, 120, 16);
+        labelTaller.setBounds(970, 500, 120, 16);
 
         getContentPane().add(boxTalleres);
-        boxTalleres.setBounds(970, 410, 220, 40);
+        boxTalleres.setBounds(970, 520, 220, 40);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +124,7 @@ public class PedirCita extends javax.swing.JFrame {
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
-    private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelTaller;
     // End of variables declaration//GEN-END:variables

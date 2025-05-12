@@ -31,14 +31,16 @@ public class Talleres {
     private String telefono;
     private String cif;
     private String localidad;
+    private int citasMaximas;
 
-    public Talleres(String nombre, String direccion, String codigoPostal, String telefono, String cif, String localidad) {
+    public Talleres(String nombre, String direccion, String codigoPostal, String telefono, String cif, String localidad, int citasMaximas) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;
         this.telefono = telefono;
         this.cif = cif;
         this.localidad = localidad;
+        this.citasMaximas = citasMaximas;
     }
     
 }

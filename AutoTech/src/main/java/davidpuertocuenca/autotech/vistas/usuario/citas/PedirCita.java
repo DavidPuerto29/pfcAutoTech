@@ -20,10 +20,7 @@ public class PedirCita extends javax.swing.JFrame {
         initComponents();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         controlador.cargarTalleresComboBox(boxTalleres);
-    }
-
-    public void cargarHorariosJComboBox(){
-        
+        controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario);
     }
     
     public void anadirCita(){
@@ -39,7 +36,10 @@ public class PedirCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        calendarioDiasCita = new com.toedter.calendar.JCalendar();
+        boxHorario = new javax.swing.JComboBox<>();
+        labelFecha = new javax.swing.JLabel();
+        labelHorario = new javax.swing.JLabel();
         labelTaller = new javax.swing.JLabel();
         boxTalleres = new javax.swing.JComboBox<>();
         labelIniciarSesion = new javax.swing.JLabel();
@@ -53,15 +53,29 @@ public class PedirCita extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
-        getContentPane().add(jCalendar1);
-        jCalendar1.setBounds(970, 290, 191, 141);
+        getContentPane().add(calendarioDiasCita);
+        calendarioDiasCita.setBounds(970, 290, 191, 141);
 
+        getContentPane().add(boxHorario);
+        boxHorario.setBounds(970, 480, 220, 40);
+
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setText("Fecha");
+        getContentPane().add(labelFecha);
+        labelFecha.setBounds(970, 270, 120, 16);
+
+        labelHorario.setForeground(new java.awt.Color(255, 255, 255));
+        labelHorario.setText("Horario");
+        getContentPane().add(labelHorario);
+        labelHorario.setBounds(970, 460, 120, 16);
+
+        labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
         getContentPane().add(labelTaller);
-        labelTaller.setBounds(970, 500, 120, 16);
+        labelTaller.setBounds(970, 560, 120, 16);
 
         getContentPane().add(boxTalleres);
-        boxTalleres.setBounds(970, 520, 220, 40);
+        boxTalleres.setBounds(970, 580, 220, 40);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,11 +134,14 @@ public class PedirCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxHorario;
     private javax.swing.JComboBox<String> boxTalleres;
+    private com.toedter.calendar.JCalendar calendarioDiasCita;
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JLabel labelFecha;
+    private javax.swing.JLabel labelHorario;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelTaller;
     // End of variables declaration//GEN-END:variables

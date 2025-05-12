@@ -4,6 +4,8 @@
  */
 package davidpuertocuenca.autotech.controladores;
 
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Usuarios;
@@ -22,6 +24,9 @@ import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsua
 import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
@@ -193,6 +198,27 @@ public class UsuarioControlador {
             for (Talleres taller : obtenerTodosTalleresSql()) {
                 boxTalleres.addItem(taller.getNombre()); 
             }
+    }
+    
+    public LocalDateTime cargarHorariosCitasJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario){
+        String horaSeleccionada = (String) boxHorario.getSelectedItem();
+
+        //En caso de que el usuario no haya elegido ninguna cita
+        if (calendarioDiasCita.getDate() == null || horaSeleccionada == null) {
+            boxHorario.addItem("Seleccione una fecha.");
+        }else{
+
+        // Castear Date a LocalDate
+        LocalDate fecha = calendarioDiasCita.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        //Usado para poder hacer el cast de String a LocalTime.
+        String[] partesHora = horaSeleccionada.split(":");
+            int horas = Integer.parseInt(partesHora[0]);
+                int minutos = Integer.parseInt(partesHora[1]);
+                    LocalTime horaCita = LocalTime.of(horas, minutos);
+                        return LocalDateTime.of(fecha, horaCita);
+        }
+        return null;
     }
     
     public void vistaCitas(JTable tablaVehiculos, Usuarios usuario, JFrame vista){

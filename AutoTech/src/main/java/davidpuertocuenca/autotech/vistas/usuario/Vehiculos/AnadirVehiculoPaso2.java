@@ -69,9 +69,9 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            vehiculo.setMarca(fieldMarca.getText());
-                vehiculo.setColor(fieldColor.getText());
-                    vehiculo.setModelo(fieldModelo.getText());
+            vehiculo.setMarca(fieldMarca.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
+                vehiculo.setColor(fieldColor.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
+                    vehiculo.setModelo(fieldModelo.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
                 return true;
         }else{
             return false;

@@ -458,7 +458,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        controlador.vistaVehiculos(this);
+        controlador.vistaTalleres(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed

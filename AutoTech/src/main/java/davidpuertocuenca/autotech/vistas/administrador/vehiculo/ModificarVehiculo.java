@@ -129,10 +129,10 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         
         if(formatoCorrecto){
             vehiculo.setMatricula(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
-                vehiculo.setMarca(fieldMarca.getText());
-                    vehiculo.setModelo(fieldModelo.getText()); 
+                vehiculo.setMarca(fieldMarca.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
+                    vehiculo.setModelo(fieldModelo.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "")); 
                         vehiculo.setAnoMatriculacion(fieldAnoMatriculacion.getText());
-                            vehiculo.setColor(fieldColor.getText());
+                            vehiculo.setColor(fieldColor.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""));
                                 vehiculo.setCliente(obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()));
                                     return true;
         }else{

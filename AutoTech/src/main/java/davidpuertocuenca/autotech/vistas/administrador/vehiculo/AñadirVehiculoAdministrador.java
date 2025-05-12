@@ -113,10 +113,10 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
                     textoErrorColor.setVisible(true);   
         }
         
-         //Comprobación de que el numero de bastidor tenga el formato correcto.
-        if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Z0-9]{17}$")) {
+        //Comprobación de que el número de bastidor tenga el formato correcto (acepta mayúsculas y minúsculas).
+        if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Za-hj-npr-z0-9]{17}$")) {
             formatoCorrecto = false;
-                textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor valido.");
+                textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor válido.");
                     textoErrorNumeroBastidor.setVisible(true);
         }
         
@@ -126,6 +126,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
                 textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
                     textoErrorNumeroBastidor.setVisible(true);   
         }
+        
         //Comprobación de que el campo numero de bastidor no este vacío.
         if(fieldNumeroBastidor.getText().isEmpty()){
             formatoCorrecto = false;
@@ -134,7 +135,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         }
         
         if(formatoCorrecto){
-            crearVehiculoSql(new Vehiculos(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), fieldMarca.getText(), fieldModelo.getText(), fieldColor.getText() , fieldAnoMatriculacion.getText(), fieldNumeroBastidor.getText().trim().toUpperCase(), obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()), new ArrayList()));
+            crearVehiculoSql(new Vehiculos(fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), fieldMarca.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), fieldModelo.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), fieldColor.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "") , fieldAnoMatriculacion.getText(), fieldNumeroBastidor.getText().trim().toUpperCase().replaceAll("[\\s\\-]", ""), obtenerUsuarioPorUsuarioSql((String) comboBoxClientes.getSelectedItem()), new ArrayList()));
                   return true;
         }else{
             return false;

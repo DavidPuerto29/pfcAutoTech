@@ -150,6 +150,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         labelTelefono = new javax.swing.JLabel();
         labelDireccion = new javax.swing.JLabel();
         botonFinalizar = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
@@ -157,14 +158,16 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registro Cliente Paso 2");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         fieldTelefono.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -175,7 +178,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -188,7 +191,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridwidth = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorDireccion, gridBagConstraints);
@@ -199,7 +202,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridwidth = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
         getContentPane().add(textoErrorTelefono, gridBagConstraints);
@@ -208,7 +211,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -230,7 +233,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -268,7 +271,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -331,14 +334,29 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 25;
+        gridBagConstraints.ipadx = 7;
+        gridBagConstraints.ipady = -3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 0, 0, 0);
+        getContentPane().add(botonFinalizar, gridBagConstraints);
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 17;
         gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 18;
-        gridBagConstraints.ipady = 26;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 22, 0, 0);
-        getContentPane().add(botonFinalizar, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(14, 2, 0, 0);
+        getContentPane().add(botonCancelar, gridBagConstraints);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -346,7 +364,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridwidth = 37;
         gridBagConstraints.ipadx = 76;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -357,7 +375,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridwidth = 35;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -1276;
         gridBagConstraints.ipady = -82;
@@ -369,8 +387,8 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.gridheight = 19;
+        gridBagConstraints.gridwidth = 36;
+        gridBagConstraints.gridheight = 20;
         gridBagConstraints.ipadx = -2484;
         gridBagConstraints.ipady = -3232;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -381,8 +399,8 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 16;
-        gridBagConstraints.gridheight = 20;
+        gridBagConstraints.gridwidth = 38;
+        gridBagConstraints.gridheight = 21;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
@@ -399,6 +417,10 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
             controlador.vistaLoginClientes(this);
         }
     }//GEN-LAST:event_botonFinalizarActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        controlador.vistaLoginClientes(this);
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,6 +465,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonFinalizar;
     private javax.swing.JTextField fieldApellidos;
     private javax.swing.JTextField fieldDireccion;

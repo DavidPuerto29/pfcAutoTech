@@ -5,6 +5,7 @@
 package davidpuertocuenca.autotech.vistas.usuario.citas;
 
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 
 /**
@@ -20,11 +21,24 @@ public class PedirCita extends javax.swing.JFrame {
         initComponents();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         controlador.cargarTalleresComboBox(boxTalleres);
-        controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario);
+        controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
     }
     
     public void anadirCita(){
-        
+        /*
+        // Castear Date a LocalDate
+        LocalDate fecha = calendarioDiasCita.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        //Usado para poder hacer el cast de String a LocalTime.
+        String[] partesHora = horaSeleccionada.split(":");
+            int horas = Integer.parseInt(partesHora[0]);
+                int minutos = Integer.parseInt(partesHora[1]);
+                    LocalTime horaCita = LocalTime.of(horas, minutos);
+                        return LocalDateTime.of(fecha, horaCita);
+        }
+        return null;
+       
+        */
     }
  
     /**
@@ -54,28 +68,28 @@ public class PedirCita extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
         getContentPane().add(calendarioDiasCita);
-        calendarioDiasCita.setBounds(970, 290, 191, 141);
+        calendarioDiasCita.setBounds(960, 390, 191, 141);
 
         getContentPane().add(boxHorario);
-        boxHorario.setBounds(970, 480, 220, 40);
+        boxHorario.setBounds(960, 570, 220, 40);
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
         labelFecha.setText("Fecha");
         getContentPane().add(labelFecha);
-        labelFecha.setBounds(970, 270, 120, 16);
+        labelFecha.setBounds(960, 370, 120, 16);
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
         labelHorario.setText("Horario");
         getContentPane().add(labelHorario);
-        labelHorario.setBounds(970, 460, 120, 16);
+        labelHorario.setBounds(960, 550, 120, 16);
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
         getContentPane().add(labelTaller);
-        labelTaller.setBounds(970, 560, 120, 16);
+        labelTaller.setBounds(960, 290, 120, 16);
 
         getContentPane().add(boxTalleres);
-        boxTalleres.setBounds(970, 580, 220, 40);
+        boxTalleres.setBounds(960, 310, 220, 40);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));

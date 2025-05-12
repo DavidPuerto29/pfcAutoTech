@@ -12,6 +12,7 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
+import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerNumeroCitasSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
@@ -27,6 +28,7 @@ import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Box;
@@ -200,25 +202,29 @@ public class UsuarioControlador {
             }
     }
     
-    public LocalDateTime cargarHorariosCitasJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario){
-        String horaSeleccionada = (String) boxHorario.getSelectedItem();
+    public void cargarHorariosCitasJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller){
+        //Para asegurar que no hay ningun dato guardado.
+        boxHorario.removeAllItems();
+        
+        String[] horas = {
+        "08:00", "08:30", "09:00", "09:30", "10:00", 
+        "10:30", "11:00", "11:30", "12:00", "12:30", 
+        "13:00", "13:30", "14:00", "14:30", "15:00", 
+        "15:30", "16:00", "16:30", "17:00", "17:30", 
+        "18:00", "18:30", "19:00", "19:30", "20:00",
+        "20:30"
+        };
 
-        //En caso de que el usuario no haya elegido ninguna cita
-        if (calendarioDiasCita.getDate() == null || horaSeleccionada == null) {
+        //En caso de que el usuario no haya elegido ninguna fecha.
+        if (calendarioDiasCita.getDate() == null) {
             boxHorario.addItem("Seleccione una fecha.");
         }else{
-
-        // Castear Date a LocalDate
-        LocalDate fecha = calendarioDiasCita.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-
-        //Usado para poder hacer el cast de String a LocalTime.
-        String[] partesHora = horaSeleccionada.split(":");
-            int horas = Integer.parseInt(partesHora[0]);
-                int minutos = Integer.parseInt(partesHora[1]);
-                    LocalTime horaCita = LocalTime.of(horas, minutos);
-                        return LocalDateTime.of(fecha, horaCita);
+            for (String hora : horas) {
+                if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
+                    boxHorario.addItem(hora);
+                }
+            }
         }
-        return null;
     }
     
     public void vistaCitas(JTable tablaVehiculos, Usuarios usuario, JFrame vista){

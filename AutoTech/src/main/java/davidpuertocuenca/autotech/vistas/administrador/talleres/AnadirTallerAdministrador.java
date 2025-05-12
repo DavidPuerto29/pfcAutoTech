@@ -31,7 +31,8 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorDireccion.setVisible(false);
         textoErrorLocalidad.setVisible(false);
         textoErrorCodigoPostal.setVisible(false);
-        textoErrorIdentidicacionFiscal.setVisible(false);
+        textoErrorCitasMaximas.setVisible(false);
+        textoErrorCitasMaximas.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -84,6 +85,13 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorDireccion.setText("Debe introducir una dirección.");
         }
         
+        //Comprobación de que el numero maximo de citas no este vacio.
+        if(fieldCitasMaximas.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("Debe introducir un número.");
+        }
+        
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
@@ -99,29 +107,29 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         }
         
         // Comprobación de que el CIF tenga el formato correcto.
-        if (!fieldIdentidicacionFiscal.getText().matches("^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
+        if (!fieldCitasMaximas.getText().matches("^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
             formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
-                    textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF válido.");
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("Debe introducir un CIF válido.");
         }
         
         //Comprobación de que el CIF no este registrado.
-        if(obtenerTallerPorCifSql(fieldIdentidicacionFiscal.getText()) != null){
+        if(obtenerTallerPorCifSql(fieldCitasMaximas.getText()) != null){
            formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setText("Este CIF ya esta registrado.");
-                    textoErrorIdentidicacionFiscal.setVisible(true);    
+                textoErrorCitasMaximas.setText("Este CIF ya esta registrado.");
+                    textoErrorCitasMaximas.setVisible(true);    
         }
         
         
         //Comprobación de que el CIF no este vacia.
-        if(fieldIdentidicacionFiscal.getText().isEmpty()){
+        if(fieldCitasMaximas.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
-                    textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF.");
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("Debe introducir un CIF.");
         }
         
         if(formatoCorrecto){
-            crearTallerSql(new Talleres(fieldNombre.getText(), fieldDireccion.getText(), fieldCodigoPostal.getText(), fieldTelefono.getText(), fieldIdentidicacionFiscal.getText().toUpperCase(), fieldLocalidad.getText()));
+            crearTallerSql(new Talleres(fieldNombre.getText(), fieldDireccion.getText(), fieldCodigoPostal.getText(), fieldTelefono.getText(), fieldCitasMaximas.getText().toUpperCase(), fieldLocalidad.getText(), Integer.valueOf(fieldCitasMaximas.getText())));
                 return true;
         }else{
             return false;
@@ -135,13 +143,12 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         botonCancelar = new javax.swing.JButton();
         botonAnadir = new javax.swing.JButton();
-        fieldIdentidicacionFiscal = new javax.swing.JTextField();
-        textoErrorIdentidicacionFiscal = new javax.swing.JLabel();
-        labelIdentidicacionFiscal = new javax.swing.JLabel();
+        fieldCitasMaximas = new javax.swing.JTextField();
+        textoErrorCitasMaximas = new javax.swing.JLabel();
+        labelCitasMaximas = new javax.swing.JLabel();
         textoErrorLocalidad = new javax.swing.JLabel();
         fieldLocalidad = new javax.swing.JTextField();
         labelLocalidad = new javax.swing.JLabel();
@@ -161,6 +168,9 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         fondoCabecera = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
+        fieldIdentidicacionFiscal1 = new javax.swing.JTextField();
+        labelIdentidicacionFiscal1 = new javax.swing.JLabel();
+        textoErrorIdentidicacionFiscal1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Añadir Taller");
@@ -168,7 +178,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(null);
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,12 +186,8 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 1000, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar);
+        botonCancelar.setBounds(1000, 910, 76, 23);
 
         botonAnadir.setText("Añadir");
         botonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -189,270 +195,137 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 botonAnadirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 20;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 60, 0, 0);
-        getContentPane().add(botonAnadir, gridBagConstraints);
+        getContentPane().add(botonAnadir);
+        botonAnadir.setBounds(1160, 910, 83, 23);
 
-        fieldIdentidicacionFiscal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldIdentidicacionFiscal, gridBagConstraints);
+        fieldCitasMaximas.setToolTipText("");
+        getContentPane().add(fieldCitasMaximas);
+        fieldCitasMaximas.setBounds(990, 770, 250, 40);
 
-        textoErrorIdentidicacionFiscal.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorIdentidicacionFiscal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorIdentidicacionFiscal.setText("Debe introducir un cif.");
-        textoErrorIdentidicacionFiscal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 68;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorIdentidicacionFiscal, gridBagConstraints);
+        textoErrorCitasMaximas.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorCitasMaximas.setText("Debe introducir un número.");
+        textoErrorCitasMaximas.setToolTipText("");
+        getContentPane().add(textoErrorCitasMaximas);
+        textoErrorCitasMaximas.setBounds(990, 820, 210, 20);
 
-        labelIdentidicacionFiscal.setForeground(new java.awt.Color(255, 255, 255));
-        labelIdentidicacionFiscal.setText("Identificación Fiscal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 17;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelIdentidicacionFiscal, gridBagConstraints);
+        labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
+        labelCitasMaximas.setText("Citas Maximas");
+        getContentPane().add(labelCitasMaximas);
+        labelCitasMaximas.setBounds(990, 750, 110, 16);
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorLocalidad.setText("Debe introducir una localidad.");
         textoErrorLocalidad.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 27;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorLocalidad, gridBagConstraints);
+        getContentPane().add(textoErrorLocalidad);
+        textoErrorLocalidad.setBounds(990, 720, 212, 20);
 
         fieldLocalidad.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldLocalidad, gridBagConstraints);
+        getContentPane().add(fieldLocalidad);
+        fieldLocalidad.setBounds(990, 670, 250, 40);
 
         labelLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         labelLocalidad.setText("Localidad");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 59;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelLocalidad, gridBagConstraints);
+        getContentPane().add(labelLocalidad);
+        labelLocalidad.setBounds(990, 650, 111, 16);
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         textoErrorTelefono.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 37;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorTelefono, gridBagConstraints);
+        getContentPane().add(textoErrorTelefono);
+        textoErrorTelefono.setBounds(990, 620, 211, 20);
 
         fieldTelefono.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldTelefono, gridBagConstraints);
+        getContentPane().add(fieldTelefono);
+        fieldTelefono.setBounds(990, 570, 250, 40);
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 63;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelTelefono, gridBagConstraints);
+        getContentPane().add(labelTelefono);
+        labelTelefono.setBounds(990, 550, 110, 16);
 
         textoErrorCodigoPostal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCodigoPostal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorCodigoPostal, gridBagConstraints);
+        getContentPane().add(textoErrorCodigoPostal);
+        textoErrorCodigoPostal.setBounds(990, 520, 211, 20);
 
         fieldCodigoPostal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldCodigoPostal, gridBagConstraints);
+        getContentPane().add(fieldCodigoPostal);
+        fieldCodigoPostal.setBounds(990, 470, 250, 40);
 
         labelCodigoPostal.setForeground(new java.awt.Color(255, 255, 255));
         labelCodigoPostal.setText("Código Postal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelCodigoPostal, gridBagConstraints);
+        getContentPane().add(labelCodigoPostal);
+        labelCodigoPostal.setBounds(990, 450, 110, 16);
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorDireccion, gridBagConstraints);
+        getContentPane().add(textoErrorDireccion);
+        textoErrorDireccion.setBounds(990, 420, 191, 20);
 
         fieldDireccion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldDireccion, gridBagConstraints);
+        getContentPane().add(fieldDireccion);
+        fieldDireccion.setBounds(990, 370, 250, 40);
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelDireccion, gridBagConstraints);
+        getContentPane().add(labelDireccion);
+        labelDireccion.setBounds(990, 350, 110, 16);
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorNombre, gridBagConstraints);
+        getContentPane().add(textoErrorNombre);
+        textoErrorNombre.setBounds(990, 320, 189, 20);
 
         fieldNombre.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldNombre, gridBagConstraints);
+        getContentPane().add(fieldNombre);
+        fieldNombre.setBounds(990, 270, 250, 40);
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre Del Taller");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 990, 0, 0);
-        getContentPane().add(labelNombre, gridBagConstraints);
+        getContentPane().add(labelNombre);
+        labelNombre.setBounds(990, 250, 112, 16);
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelAnadirTaller.setText("Añadir Taller");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 86;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(170, 1000, 0, 0);
-        getContentPane().add(labelAnadirTaller, gridBagConstraints);
+        getContentPane().add(labelAnadirTaller);
+        labelAnadirTaller.setBounds(1000, 170, 218, 40);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -1536;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(170, 990, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera);
+        fondoCabecera.setBounds(990, 170, 210, 50);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.gridheight = 22;
-        gridBagConstraints.ipadx = -2414;
-        gridBagConstraints.ipady = -3222;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 790, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin);
+        fondoLogin.setBounds(790, 90, 610, 870);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.gridheight = 23;
-        gridBagConstraints.ipadx = 220;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla);
+        fondoPantalla.setBounds(0, 0, 2140, 1080);
+
+        fieldIdentidicacionFiscal1.setToolTipText("");
+        getContentPane().add(fieldIdentidicacionFiscal1);
+        fieldIdentidicacionFiscal1.setBounds(990, 770, 250, 40);
+
+        labelIdentidicacionFiscal1.setForeground(new java.awt.Color(255, 255, 255));
+        labelIdentidicacionFiscal1.setText("Identificación Fiscal");
+        getContentPane().add(labelIdentidicacionFiscal1);
+        labelIdentidicacionFiscal1.setBounds(990, 750, 110, 16);
+
+        textoErrorIdentidicacionFiscal1.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorIdentidicacionFiscal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorIdentidicacionFiscal1.setText("Debe introducir un cif.");
+        textoErrorIdentidicacionFiscal1.setToolTipText("");
+        getContentPane().add(textoErrorIdentidicacionFiscal1);
+        textoErrorIdentidicacionFiscal1.setBounds(990, 820, 210, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -505,9 +378,10 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAnadir;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JTextField fieldCitasMaximas;
     private javax.swing.JTextField fieldCodigoPostal;
     private javax.swing.JTextField fieldDireccion;
-    private javax.swing.JTextField fieldIdentidicacionFiscal;
+    private javax.swing.JTextField fieldIdentidicacionFiscal1;
     private javax.swing.JTextField fieldLocalidad;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
@@ -515,15 +389,17 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelAnadirTaller;
+    private javax.swing.JLabel labelCitasMaximas;
     private javax.swing.JLabel labelCodigoPostal;
     private javax.swing.JLabel labelDireccion;
-    private javax.swing.JLabel labelIdentidicacionFiscal;
+    private javax.swing.JLabel labelIdentidicacionFiscal1;
     private javax.swing.JLabel labelLocalidad;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
+    private javax.swing.JLabel textoErrorCitasMaximas;
     private javax.swing.JLabel textoErrorCodigoPostal;
     private javax.swing.JLabel textoErrorDireccion;
-    private javax.swing.JLabel textoErrorIdentidicacionFiscal;
+    private javax.swing.JLabel textoErrorIdentidicacionFiscal1;
     private javax.swing.JLabel textoErrorLocalidad;
     private javax.swing.JLabel textoErrorNombre;
     private javax.swing.JLabel textoErrorTelefono;

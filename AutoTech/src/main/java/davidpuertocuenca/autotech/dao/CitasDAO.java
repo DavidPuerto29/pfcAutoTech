@@ -5,8 +5,10 @@
 package davidpuertocuenca.autotech.dao;
 
 import davidpuertocuenca.autotech.clases.Citas;
+import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import jakarta.persistence.NoResultException;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -54,4 +56,16 @@ public class CitasDAO {
         }
     }
     
+    public static int obtenerNumeroCitasSql(Talleres taller, LocalDateTime fechaHora) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<Citas> q = session.createNamedQuery("get_citas_taller_horario", Citas.class);
+                q.setParameter("taller", taller);
+                q.setParameter("fecha", fechaHora);
+                List<Citas> citas = q.getResultList();
+                    return citas.size();
+        } catch (NoResultException e) {
+            return 0;
+        }
+    }
+
 }

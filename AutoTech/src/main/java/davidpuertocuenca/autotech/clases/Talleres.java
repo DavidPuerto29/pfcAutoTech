@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @NamedQuery(name = "get_todos_talleres", query = "FROM Talleres q ")
 @NamedQuery(name = "get_taller", query = "FROM Talleres q Where q.numeroTaller = :identificacion ")
 @NamedQuery(name = "get_taller_cif", query = "FROM Talleres q Where q.cif = :identificacion ")
+@NamedQuery(name = "get_taller_nombre", query = "FROM Talleres q Where q.nombre = :identificacion ")
 @Entity @NoArgsConstructor @Data
 public class Talleres {
     
@@ -31,9 +32,9 @@ public class Talleres {
     private String telefono;
     private String cif;
     private String localidad;
-    private int citasMaximas;
+    private Integer citasMaximas;
 
-    public Talleres(String nombre, String direccion, String codigoPostal, String telefono, String cif, String localidad, int citasMaximas) {
+    public Talleres(String nombre, String direccion, String codigoPostal, String telefono, String cif, String localidad, Integer citasMaximas) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.codigoPostal = codigoPostal;

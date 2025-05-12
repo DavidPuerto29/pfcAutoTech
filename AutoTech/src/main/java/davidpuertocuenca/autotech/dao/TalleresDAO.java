@@ -34,6 +34,16 @@ public class TalleresDAO {
         }
     }       
     
+    public static Talleres obtenerTallerPorNombreSql(String nombre){  
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Query<Talleres> q = session.createNamedQuery("get_taller_nombre", Talleres.class);
+                q.setParameter("identificacion", nombre);
+                    return (Talleres) q.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
     public static Talleres obtenerTallerPorCifSql(String identificacionFiscal){  
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             Query<Talleres> q = session.createNamedQuery("get_taller_cif", Talleres.class);

@@ -159,7 +159,7 @@ public class UsuarioControlador {
                 fila[0] = Cita.getNumeroCita();
                 fila[1] = Cita.getFecha();
                 fila[2] = Cita.getVehiculo().getMatricula();
-                fila[3] = Cita.getTaller();
+                fila[3] = Cita.getTaller().getNombre();
                     miModelo.addRow(fila);
             } 
             
@@ -218,7 +218,7 @@ public class UsuarioControlador {
         //En caso de que el usuario no haya elegido ninguna fecha.
         if (calendarioDiasCita.getDate() == null) {
             boxHorario.addItem("Seleccione una fecha.");
-        }else{
+        }else if(taller.getCitasMaximas() != null){
             for (String hora : horas) {
                 if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
                     boxHorario.addItem(hora);
@@ -237,14 +237,16 @@ public class UsuarioControlador {
         }
     }
     
-    public void vistaPedirCita(JFrame vista){
-        try{
-            PedirCita pc = new PedirCita();
-                pc.setVisible(true);
+    public void vistaCitasConVehiculo(Vehiculos vehiculo, Usuarios usuario, JFrame vista){
+            VistaCitasUsuario vcc = new VistaCitasUsuario(vehiculo, usuario);
+                vcc.setVisible(true);
                     vista.dispose();
-        }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
+    }
+    
+    public void vistaPedirCita(Usuarios usuario, Vehiculos vehiculo, JFrame vista){
+         PedirCita pc = new PedirCita(usuario,vehiculo);
+             pc.setVisible(true);
+                 vista.dispose();  
     }
     
     public void vistaModificarVehiculo(JTable tablaVehiculos, Usuarios usuario, JFrame vista){

@@ -38,6 +38,14 @@ public class CitasDAO {
         }
     }
     
+    public static void crearCitaSql(Citas cita) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.getTransaction().begin();
+                session.persist(cita);
+                    session.getTransaction().commit();
+        }
+    }
+    
     public static void eliminarCitaSql(Citas citas){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();

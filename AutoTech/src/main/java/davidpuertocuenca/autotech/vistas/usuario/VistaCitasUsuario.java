@@ -15,7 +15,7 @@ import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 public class VistaCitasUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
     //Usado para no perder los datos del cliente cuando se vuelve a la vista general.
-    private Usuarios cliente;
+    private Usuarios usuario;
     private UsuarioControlador controlador = new UsuarioControlador();
     /**
      * Creates new form VistaCitasCliente
@@ -23,14 +23,14 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     public VistaCitasUsuario() {
         initComponents();
         setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
-        controlador.crearTablaVehiculos(tablaCitasVehiculo, cliente);
+         controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
-    public VistaCitasUsuario(Vehiculos vehiculo, Usuarios cliente) {
+    public VistaCitasUsuario(Vehiculos vehiculo, Usuarios usuario) {
         initComponents();
         this.vehiculo = vehiculo;
-        this.cliente = cliente;
+        this.usuario = this.usuario;
         setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
         controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
@@ -221,7 +221,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMenuItemPedirCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemPedirCitaActionPerformed
-        controlador.vistaPedirCita(this);
+        controlador.vistaPedirCita(usuario, vehiculo, this);
     }//GEN-LAST:event_JMenuItemPedirCitaActionPerformed
 
     private void JMenuItemModificarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarCitaActionPerformed
@@ -233,7 +233,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemCancelarCitaActionPerformed
 
     private void JMenuItemVehículosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehículosActionPerformed
-        controlador.vistaVehiculos(this, cliente);
+        controlador.vistaVehiculos(this, usuario);
     }//GEN-LAST:event_JMenuItemVehículosActionPerformed
 
     private void jMenuItemCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCerrarSesionActionPerformed

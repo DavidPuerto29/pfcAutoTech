@@ -38,11 +38,11 @@ public class Citas {
     private String descripcion;
     private int estadoCita;
 
-    public Citas(Date fecha, Vehiculos vehiculo, Talleres taller, String motivo, int estadoCita) {
+    public Citas(Date fecha, Vehiculos vehiculo, Talleres taller, String descripcion, int estadoCita) {
         this.fecha = fecha;
         this.vehiculo = vehiculo;
         this.taller = taller;
-        this.descripcion = motivo;
+        this.descripcion = descripcion;
         this.estadoCita = estadoCita;
     }
 

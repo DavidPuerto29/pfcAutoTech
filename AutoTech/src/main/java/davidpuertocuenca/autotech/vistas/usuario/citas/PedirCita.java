@@ -4,9 +4,21 @@
  */
 package davidpuertocuenca.autotech.vistas.usuario.citas;
 
+import davidpuertocuenca.autotech.clases.Citas;
+import davidpuertocuenca.autotech.clases.Usuarios;
+import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
+import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
+import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  *
@@ -14,6 +26,9 @@ import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
  */
 public class PedirCita extends javax.swing.JFrame {
     private UsuarioControlador controlador = new UsuarioControlador();
+    private Citas cita;
+    private Usuarios usuario;
+    private Vehiculos vehiculo;
     /**
      * Creates new form PedirCita
      */
@@ -21,24 +36,48 @@ public class PedirCita extends javax.swing.JFrame {
         initComponents();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         controlador.cargarTalleresComboBox(boxTalleres);
-        controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+       
+        //Listener para que cuando se seleccione una fecha se carguen los horarios.
+        calendarioDiasCita.addPropertyChangeListener(new PropertyChangeListener(){
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) { 
+                controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+            }
+        });
+        
     }
     
-    public void anadirCita(){
-        /*
-        // Castear Date a LocalDate
-        LocalDate fecha = calendarioDiasCita.getDate().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-
-        //Usado para poder hacer el cast de String a LocalTime.
-        String[] partesHora = horaSeleccionada.split(":");
-            int horas = Integer.parseInt(partesHora[0]);
-                int minutos = Integer.parseInt(partesHora[1]);
-                    LocalTime horaCita = LocalTime.of(horas, minutos);
-                        return LocalDateTime.of(fecha, horaCita);
-        }
-        return null;
+    public PedirCita(Usuarios usuario, Vehiculos vehiculo) {
+        initComponents();
+        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        this.usuario = usuario;
+        this.vehiculo = vehiculo;
+        controlador.cargarTalleresComboBox(boxTalleres);
        
-        */
+        //Listener para que cuando se seleccione una fecha se carguen los horarios.
+        calendarioDiasCita.addPropertyChangeListener(new PropertyChangeListener(){
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) { 
+                controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+            }
+        });
+        
+    } 
+    
+    
+    public boolean anadirCita(){
+        boolean formatoCorrecto = true;
+        
+         Date fechaFinal = Date.from(LocalDateTime.of(
+            calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+            LocalTime.parse((String) boxHorario.getSelectedItem())
+        ).atZone(ZoneId.systemDefault()).toInstant());
+
+        if(formatoCorrecto){
+            cita = new Citas(fechaFinal, vehiculo, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()), areaDescripcion.getText(), 1);
+                return true;
+        }
+        return false;
     }
  
     /**
@@ -50,12 +89,15 @@ public class PedirCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        calendarioDiasCita = new com.toedter.calendar.JCalendar();
-        boxHorario = new javax.swing.JComboBox<>();
+        boxHorario = new javax.swing.JComboBox();
         labelFecha = new javax.swing.JLabel();
         labelHorario = new javax.swing.JLabel();
         labelTaller = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        areaDescripcion = new javax.swing.JTextArea();
+        calendarioDiasCita = new com.toedter.calendar.JCalendar();
         boxTalleres = new javax.swing.JComboBox<>();
+        botonPedir = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
@@ -67,9 +109,13 @@ public class PedirCita extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
-        getContentPane().add(calendarioDiasCita);
-        calendarioDiasCita.setBounds(960, 390, 191, 141);
 
+        boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una fecha." }));
+        boxHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxHorarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(boxHorario);
         boxHorario.setBounds(960, 570, 220, 40);
 
@@ -88,8 +134,26 @@ public class PedirCita extends javax.swing.JFrame {
         getContentPane().add(labelTaller);
         labelTaller.setBounds(960, 290, 120, 16);
 
+        areaDescripcion.setColumns(20);
+        areaDescripcion.setRows(5);
+        jScrollPane1.setViewportView(areaDescripcion);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(930, 650, 234, 86);
+        getContentPane().add(calendarioDiasCita);
+        calendarioDiasCita.setBounds(960, 390, 191, 141);
+
         getContentPane().add(boxTalleres);
         boxTalleres.setBounds(960, 310, 220, 40);
+
+        botonPedir.setText("Pedir");
+        botonPedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPedirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonPedir);
+        botonPedir.setBounds(1060, 790, 72, 23);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,6 +175,17 @@ public class PedirCita extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boxHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxHorarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxHorarioActionPerformed
+
+    private void botonPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedirActionPerformed
+        if(anadirCita()){
+            crearCitaSql(cita);
+                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+        }
+    }//GEN-LAST:event_botonPedirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,12 +223,15 @@ public class PedirCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxHorario;
+    private javax.swing.JTextArea areaDescripcion;
+    private javax.swing.JButton botonPedir;
+    private javax.swing.JComboBox boxHorario;
     private javax.swing.JComboBox<String> boxTalleres;
     private com.toedter.calendar.JCalendar calendarioDiasCita;
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHorario;
     private javax.swing.JLabel labelIniciarSesion;

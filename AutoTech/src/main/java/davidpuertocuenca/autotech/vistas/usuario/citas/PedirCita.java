@@ -91,12 +91,14 @@ public class PedirCita extends javax.swing.JFrame {
 
         boxHorario = new javax.swing.JComboBox();
         labelFecha = new javax.swing.JLabel();
+        labelMotivo = new javax.swing.JLabel();
         labelHorario = new javax.swing.JLabel();
         labelTaller = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaDescripcion = new javax.swing.JTextArea();
         calendarioDiasCita = new com.toedter.calendar.JCalendar();
         boxTalleres = new javax.swing.JComboBox<>();
+        botonCancelar = new javax.swing.JButton();
         botonPedir = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
@@ -108,7 +110,7 @@ public class PedirCita extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una fecha." }));
         boxHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -116,35 +118,41 @@ public class PedirCita extends javax.swing.JFrame {
                 boxHorarioActionPerformed(evt);
             }
         });
-        getContentPane().add(boxHorario);
-        boxHorario.setBounds(960, 570, 220, 40);
+        getContentPane().add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 570, 220, 40));
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
         labelFecha.setText("Fecha");
-        getContentPane().add(labelFecha);
-        labelFecha.setBounds(960, 370, 120, 16);
+        getContentPane().add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 370, 120, -1));
+
+        labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
+        labelMotivo.setText("Motivo");
+        labelMotivo.setToolTipText("");
+        getContentPane().add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 630, 120, -1));
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
         labelHorario.setText("Horario");
-        getContentPane().add(labelHorario);
-        labelHorario.setBounds(960, 550, 120, 16);
+        getContentPane().add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 550, 120, -1));
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
-        getContentPane().add(labelTaller);
-        labelTaller.setBounds(960, 290, 120, 16);
+        getContentPane().add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 290, 120, -1));
 
         areaDescripcion.setColumns(20);
         areaDescripcion.setRows(5);
         jScrollPane1.setViewportView(areaDescripcion);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(930, 650, 234, 86);
-        getContentPane().add(calendarioDiasCita);
-        calendarioDiasCita.setBounds(960, 390, 191, 141);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 650, -1, -1));
+        getContentPane().add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 390, -1, -1));
 
-        getContentPane().add(boxTalleres);
-        boxTalleres.setBounds(960, 310, 220, 40);
+        getContentPane().add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 310, 220, 40));
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 770, 80, -1));
 
         botonPedir.setText("Pedir");
         botonPedir.addActionListener(new java.awt.event.ActionListener() {
@@ -152,26 +160,21 @@ public class PedirCita extends javax.swing.JFrame {
                 botonPedirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonPedir);
-        botonPedir.setBounds(1060, 790, 72, 23);
+        getContentPane().add(botonPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 770, -1, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("Pedir Cita");
-        getContentPane().add(labelIniciarSesion);
-        labelIniciarSesion.setBounds(1000, 200, 150, 40);
+        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 150, 40));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera);
-        fondoCabecera.setBounds(960, 200, 180, 50);
+        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 200, 180, 50));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin);
-        fondoLogin.setBounds(780, 90, 560, 800);
+        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 560, 800));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 2140, 1080);
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +189,10 @@ public class PedirCita extends javax.swing.JFrame {
                 controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
         }
     }//GEN-LAST:event_botonPedirActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +231,7 @@ public class PedirCita extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescripcion;
+    private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonPedir;
     private javax.swing.JComboBox boxHorario;
     private javax.swing.JComboBox<String> boxTalleres;
@@ -235,6 +243,7 @@ public class PedirCita extends javax.swing.JFrame {
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHorario;
     private javax.swing.JLabel labelIniciarSesion;
+    private javax.swing.JLabel labelMotivo;
     private javax.swing.JLabel labelTaller;
     // End of variables declaration//GEN-END:variables
 }

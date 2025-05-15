@@ -197,9 +197,10 @@ public class UsuarioControlador {
     
     public void cargarTalleresComboBox(JComboBox boxTalleres){
         boxTalleres.removeAllItems(); 
-            for (Talleres taller : obtenerTodosTalleresSql()) {
-                boxTalleres.addItem(taller.getNombre()); 
-            }
+            boxTalleres.addItem("Seleccione un taller."); 
+                for (Talleres taller : obtenerTodosTalleresSql()) {
+                    boxTalleres.addItem(taller.getNombre()); 
+                }
     }
     
     public void cargarHorariosCitasJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller){
@@ -214,16 +215,16 @@ public class UsuarioControlador {
         "18:00", "18:30", "19:00", "19:30", "20:00",
         "20:30"
         };
-
-        //En caso de que el usuario no haya elegido ninguna fecha.
-        if (calendarioDiasCita.getDate() == null) {
-            boxHorario.addItem("Seleccione una fecha.");
-        }else if(taller.getCitasMaximas() != null){
-            for (String hora : horas) {
-                if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
-                    boxHorario.addItem(hora);
-                }
-            }
+         
+        if(taller != null){
+            if(taller.getCitasMaximas() != null){
+               boxHorario.addItem("Seleccione una hora."); 
+                   for (String hora : horas) {
+                       if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
+                           boxHorario.addItem(hora);
+                       }
+                   }
+           }
         }
     }
     

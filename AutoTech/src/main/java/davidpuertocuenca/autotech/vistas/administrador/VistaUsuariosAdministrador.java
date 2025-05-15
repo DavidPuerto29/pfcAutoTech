@@ -93,10 +93,10 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1864;
-        gridBagConstraints.ipady = 565;
+        gridBagConstraints.ipadx = 1964;
+        gridBagConstraints.ipady = 1091;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -116,7 +116,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 44;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 1270, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(40, 134, 0, 0);
         getContentPane().add(botonRefrescar, gridBagConstraints);
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -126,7 +126,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 97;
+        gridBagConstraints.ipadx = 1233;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 30, 0, 0);
@@ -136,7 +136,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = -66;
@@ -148,8 +148,8 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 

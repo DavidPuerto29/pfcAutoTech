@@ -138,7 +138,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Registro Cliente Paso 1");
+        setTitle("Registro Usuario Paso 1");
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -148,7 +148,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 23;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -169,7 +169,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 23;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -178,7 +178,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 23;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -201,7 +201,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 27;
+        gridBagConstraints.gridwidth = 23;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -214,7 +214,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 15;
+        gridBagConstraints.gridwidth = 13;
         gridBagConstraints.ipadx = -1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
@@ -237,7 +237,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(labelContrasena, gridBagConstraints);
 
         labelCorreoElectronico.setForeground(new java.awt.Color(255, 255, 255));
@@ -248,7 +248,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipadx = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(labelCorreoElectronico, gridBagConstraints);
 
         textoErrorContrasena1.setForeground(new java.awt.Color(255, 0, 0));
@@ -286,10 +286,10 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 21;
+        gridBagConstraints.gridwidth = 24;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 44, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(70, 49, 0, 0);
         getContentPane().add(botonContinuar, gridBagConstraints);
 
         checkTerminosYCondiciones.setBackground(new java.awt.Color(0, 0, 0));
@@ -303,10 +303,10 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 20;
+        gridBagConstraints.gridwidth = 17;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         getContentPane().add(checkTerminosYCondiciones, gridBagConstraints);
 
         textoErrorTerminos.setForeground(new java.awt.Color(255, 0, 0));
@@ -315,10 +315,10 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.ipadx = -2;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         getContentPane().add(textoErrorTerminos, gridBagConstraints);
 
         labelContrasena2.setForeground(new java.awt.Color(255, 255, 255));
@@ -329,7 +329,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(labelContrasena2, gridBagConstraints);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -338,42 +338,42 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 30;
+        gridBagConstraints.gridwidth = 33;
         gridBagConstraints.ipadx = 76;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(130, 840, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(200, 840, 0, 0);
         getContentPane().add(labelIniciarSesion, gridBagConstraints);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.gridwidth = 31;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -1276;
         gridBagConstraints.ipady = -82;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(130, 830, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(200, 830, 0, 0);
         getContentPane().add(fondoCabecera, gridBagConstraints);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 29;
+        gridBagConstraints.gridwidth = 32;
         gridBagConstraints.gridheight = 18;
         gridBagConstraints.ipadx = -2484;
         gridBagConstraints.ipady = -3282;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(160, 780, 0, 0);
         getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 31;
+        gridBagConstraints.gridwidth = 34;
         gridBagConstraints.gridheight = 19;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;

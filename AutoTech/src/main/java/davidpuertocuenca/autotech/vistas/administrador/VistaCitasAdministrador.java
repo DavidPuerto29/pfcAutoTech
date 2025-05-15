@@ -17,7 +17,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
      */
     public VistaCitasAdministrador() {
         initComponents();
-        setExtendedState(VistaVehiculosAdministrador.MAXIMIZED_BOTH);
+        setExtendedState(VistaCitasAdministrador.MAXIMIZED_BOTH);
         controlador.crearTablaCitas(tablaCitas, this);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }

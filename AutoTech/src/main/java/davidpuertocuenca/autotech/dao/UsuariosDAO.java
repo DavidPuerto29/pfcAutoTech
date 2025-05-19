@@ -16,6 +16,7 @@ import org.hibernate.Session;
  * @author David Puerto Cuenca
  */
 public class UsuariosDAO {
+    
     public static void crearUsuarioSql(Usuarios usuario) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();

@@ -5,7 +5,6 @@
 package davidpuertocuenca.autotech.controladores;
 
 import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Usuarios;
@@ -26,7 +25,6 @@ import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.citas.ModificarCita;
 import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;

@@ -5,7 +5,6 @@
 package davidpuertocuenca.autotech.vistas.administrador.citas;
 
 import davidpuertocuenca.autotech.clases.Citas;
-import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.actualizarCitaSql;

@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
  * @author David Puerto Cuenca
  */
 
-@NamedQuery(name = "get_usuarioTalleres_username", query = "FROM UsuariosTalleres p WHERE p.usuario = :username")
-@NamedQuery(name = "get_usuarioTalleres_dni", query = "FROM UsuariosTalleres p WHERE p.dni = :dniCliente")
-@NamedQuery(name = "get_usuarioTalleres_login", query = "FROM UsuariosTalleres p WHERE p.usuario = :username AND p.contrasena = :password")
-@NamedQuery(name = "get_usuarioTalleres", query = "FROM UsuariosTalleres p WHERE p.usuario = :username")
-@NamedQuery(name = "get_todos_usuariosTalleres", query = "FROM UsuariosTalleres q ORDER BY q.usuario ASC")
+@NamedQuery(name = "get_usuarioTalleres_username", query = "FROM UsuariosTalleres p WHERE p.usuario = :username ORDER BY usuario ASC")
+@NamedQuery(name = "get_usuarioTalleres_dni", query = "FROM UsuariosTalleres p WHERE p.dni = :dniCliente ORDER BY usuario ASC")
+@NamedQuery(name = "get_usuarioTalleres_login", query = "FROM UsuariosTalleres p WHERE p.usuario = :username AND p.contrasena = :password ORDER BY usuario ASC")
+@NamedQuery(name = "get_usuarioTalleres", query = "FROM UsuariosTalleres p WHERE p.usuario = :username ORDER BY usuario ASC")
+@NamedQuery(name = "get_todos_usuariosTalleres", query = "FROM UsuariosTalleres q ORDER BY usuario ASC")
 @NoArgsConstructor
 @Data
 @Entity

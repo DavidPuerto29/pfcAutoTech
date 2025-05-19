@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
  * @author David Puerto Cuenca
  */ 
 @NamedQuery(name = "get_todas_citas_matricula", query = "FROM Citas q Where q.vehiculo.matricula = :matricula ORDER BY numeroCita ASC")
-@NamedQuery(name = "get_todas_citas", query = "FROM Citas q")
-@NamedQuery(name = "get_cita", query = "FROM Citas q Where q.numeroCita = :identificacion ")
-@NamedQuery(name = "get_citas_taller_horario", query = "FROM Citas c WHERE c.taller = :taller AND c.fecha = :fecha") 
+@NamedQuery(name = "get_todas_citas", query = "FROM Citas q ORDER BY numeroCita ASC")
+@NamedQuery(name = "get_cita", query = "FROM Citas q Where q.numeroCita = :identificacion ORDER BY numeroCita ASC")
+@NamedQuery(name = "get_citas_taller_horario", query = "FROM Citas c WHERE c.taller = :taller AND c.fecha = :fecha ORDER BY numeroCita ASC") 
 @Entity @NoArgsConstructor @Data
 public class Citas {
     

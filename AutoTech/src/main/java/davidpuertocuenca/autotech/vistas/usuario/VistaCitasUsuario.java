@@ -30,7 +30,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     public VistaCitasUsuario(Vehiculos vehiculo, Usuarios usuario) {
         initComponents();
         this.vehiculo = vehiculo;
-        this.usuario = this.usuario;
+        this.usuario = usuario;
         setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
         controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 

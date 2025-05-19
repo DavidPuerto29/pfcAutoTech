@@ -557,6 +557,20 @@ public class AdministradorControlador {
                     }
             }
          }
+         
+         public void cargarTalleresUsuarioTallerComboBox(JComboBox boxTalleres, UsuariosTalleres usuarioTaller){
+            boxTalleres.removeAllItems(); 
+
+            boxTalleres.addItem("Seleccione un taller:");
+                for (Talleres taller : obtenerTodosTalleresSql()) {
+                    boxTalleres.addItem(taller.getNombre()); 
+                    if(usuarioTaller.getTaller() != null){
+                        if(usuarioTaller.getTaller().getNombre().equals(taller.getNombre())){
+                            boxTalleres.setSelectedItem(taller.getNombre());
+                        }
+                    }
+                }
+         }
         
          public boolean comprobarCitasIgualesVehiculo(Date fecha, Vehiculos vehiculo){
             List<Citas> citasVehiculo = obtenerTodasCitasMatriculaSql(vehiculo);
@@ -776,18 +790,17 @@ public class AdministradorControlador {
         }
     }
      
-     public void vistaAsignarTallerAEmpleado(JTable tablaTalleres, JFrame vista){
+     public void vistaAsignarTallerAEmpleado(JTable tablaEmpleados, JFrame vista){
         try{
-            DialogAsignarTallerEmpleado vate = new DialogAsignarTallerEmpleado(vista, true, obtenerUsuarioTallerPorDniSql((String) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0)));
+            DialogAsignarTallerEmpleado vate = new DialogAsignarTallerEmpleado(vista, true, obtenerUsuarioTallerPorDniSql((String) tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
                 vate.setVisible(true);
-                    vista.dispose();
+                    //Al finalizar se actualiza la tabla.
+                    crearTablaEmpleados(tablaEmpleados);
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un empleado de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
      
-    
-    
     public void vistaModificarUsuario(JTable tablaUsuarios, JFrame vista){
         try{
             ModificarUsuarios mu = new ModificarUsuarios(obtenerUsuarioSql((String) tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0)));

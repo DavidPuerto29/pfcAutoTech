@@ -26,6 +26,7 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.usuarioTaller = usuarioTaller;
+        controlador.cargarTalleresUsuarioTallerComboBox(jComboBoxTallerAsignado, usuarioTaller);
     }
 
     /**
@@ -43,6 +44,7 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
         jButtonModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Asignar Taller");
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {

@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
  *
  * @author David Puerto Cuenca
  */
-@NamedQuery(name = "get_todos_talleres", query = "FROM Talleres q ")
-@NamedQuery(name = "get_taller", query = "FROM Talleres q Where q.numeroTaller = :identificacion ")
-@NamedQuery(name = "get_taller_cif", query = "FROM Talleres q Where q.cif = :identificacion ")
-@NamedQuery(name = "get_taller_nombre", query = "FROM Talleres q Where q.nombre = :identificacion ")
+@NamedQuery(name = "get_todos_talleres", query = "FROM Talleres q ORDER BY nombre ASC")
+@NamedQuery(name = "get_taller", query = "FROM Talleres q Where q.numeroTaller = :identificacion ORDER BY nombre ASC")
+@NamedQuery(name = "get_taller_cif", query = "FROM Talleres q Where q.cif = :identificacion ORDER BY nombre ASC")
+@NamedQuery(name = "get_taller_nombre", query = "FROM Talleres q Where q.nombre = :identificacion ORDER BY nombre ASC")
 @Entity @NoArgsConstructor @Data
 public class Talleres {
     

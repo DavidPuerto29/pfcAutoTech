@@ -24,12 +24,14 @@ import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso2;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.ModificarVehiculoUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
+import davidpuertocuenca.autotech.vistas.usuario.citas.ModificarCita;
 import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.Box;
@@ -232,14 +234,19 @@ public class UsuarioControlador {
             if(taller.getCitasMaximas() != null){
                boxHorario.addItem("Seleccione una hora."); 
                
+                  //Primero se convierte la hora de la cita al formato requerido.
+                  Calendar cal = Calendar.getInstance();
+                  cal.setTime(cita.getFecha());
+                  String horaCita = String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
+
                    for (String hora : horas) {
                        if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
                            boxHorario.addItem(hora);
-                                if(hora.equals(cita.getFecha())){
+                                if (hora.equals(horaCita)) {
                                     boxHorario.setSelectedItem(hora);
                                 }
-                       }
-                   }
+                           }
+                  }
            }
         }
     }
@@ -311,6 +318,16 @@ public class UsuarioControlador {
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void vistaModificarCita(JTable tablaCitas, Usuarios usuario, Vehiculos vehiculo, JFrame vista){
+        try{
+            ModificarCita mc = new ModificarCita(usuario, vehiculo, obtenerCitaPorNumeroSql((Long) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 0)));
+                mc.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

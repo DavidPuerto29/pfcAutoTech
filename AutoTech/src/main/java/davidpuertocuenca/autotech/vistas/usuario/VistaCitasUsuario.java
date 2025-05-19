@@ -225,7 +225,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_JMenuItemPedirCitaActionPerformed
 
     private void JMenuItemModificarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarCitaActionPerformed
-        
+        controlador.vistaModificarCita(tablaCitasVehiculo, usuario, vehiculo, this);
     }//GEN-LAST:event_JMenuItemModificarCitaActionPerformed
 
     private void JMenuItemCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCancelarCitaActionPerformed

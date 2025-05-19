@@ -11,16 +11,13 @@ import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
-import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,7 +33,7 @@ public class PedirCita extends javax.swing.JFrame {
      */
     public PedirCita() {
         initComponents();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        setExtendedState(PedirCita.MAXIMIZED_BOTH);
         reiniciarEtiquetas();
         controlador.cargarTalleresComboBox(boxTalleres);
        
@@ -52,7 +49,7 @@ public class PedirCita extends javax.swing.JFrame {
     
     public PedirCita(Usuarios usuario, Vehiculos vehiculo) {
         initComponents();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        setExtendedState(PedirCita.MAXIMIZED_BOTH);
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
@@ -95,17 +92,23 @@ public class PedirCita extends javax.swing.JFrame {
         }
         
         //En caso de que el usuario no haya introducido el motivo de la cita.
-        if(areaDescripcion.getText().isEmpty()){
+        if(textDescripcion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorMotivo.setText("Debe describir el motivo.");
                     textoErrorMotivo.setVisible(true);   
         }
-
+        
+        Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
+       
+        //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
+        if(!controlador.comprobarCitasIgualesVehiculo(fechaFinal, vehiculo)){
+            formatoCorrecto = false;
+                JOptionPane.showMessageDialog(this, "Este vehículo ya tiene una cita programada para la fecha y hora indicadas.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
         if(formatoCorrecto){
-            Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
-            
-            cita = new Citas(fechaFinal, vehiculo, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()), areaDescripcion.getText(), 1);
-                return true;
+                cita = new Citas(fechaFinal, vehiculo, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()), textDescripcion.getText(), 1);
+                    return true;
         }
         return false;
     }
@@ -118,6 +121,7 @@ public class PedirCita extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         boxHorario = new javax.swing.JComboBox();
         labelFecha = new javax.swing.JLabel();
@@ -127,8 +131,7 @@ public class PedirCita extends javax.swing.JFrame {
         textoErrorTaller = new javax.swing.JLabel();
         textoErrorMotivo = new javax.swing.JLabel();
         labelTaller = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        areaDescripcion = new javax.swing.JTextArea();
+        textDescripcion = new javax.swing.JTextField();
         calendarioDiasCita = new com.toedter.calendar.JCalendar();
         boxTalleres = new javax.swing.JComboBox<>();
         botonCancelar = new javax.swing.JButton();
@@ -141,7 +144,7 @@ public class PedirCita extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pedir Cita");
         setMinimumSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una hora." }));
         boxHorario.addActionListener(new java.awt.event.ActionListener() {
@@ -149,60 +152,119 @@ public class PedirCita extends javax.swing.JFrame {
                 boxHorarioActionPerformed(evt);
             }
         });
-        getContentPane().add(boxHorario);
-        boxHorario.setBounds(960, 570, 220, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 77;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        getContentPane().add(boxHorario, gridBagConstraints);
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
         labelFecha.setText("Fecha");
-        getContentPane().add(labelFecha);
-        labelFecha.setBounds(960, 370, 120, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipadx = 89;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        getContentPane().add(labelFecha, gridBagConstraints);
 
         labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
-        labelMotivo.setText("Motivo");
+        labelMotivo.setText("Breve descripción");
         labelMotivo.setToolTipText("");
-        getContentPane().add(labelMotivo);
-        labelMotivo.setBounds(960, 660, 120, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.ipadx = 27;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 960, 0, 0);
+        getContentPane().add(labelMotivo, gridBagConstraints);
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
         labelHorario.setText("Horario");
-        getContentPane().add(labelHorario);
-        labelHorario.setBounds(960, 550, 120, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(19, 960, 0, 0);
+        getContentPane().add(labelHorario, gridBagConstraints);
 
         textoErrorHora.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorHora.setText("Debe seleccionar una hora.");
-        getContentPane().add(textoErrorHora);
-        textoErrorHora.setBounds(960, 620, 180, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        getContentPane().add(textoErrorHora, gridBagConstraints);
 
         textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTaller.setText("Debe seleccionar un taller.");
-        getContentPane().add(textoErrorTaller);
-        textoErrorTaller.setBounds(960, 340, 180, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        getContentPane().add(textoErrorTaller, gridBagConstraints);
 
         textoErrorMotivo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMotivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMotivo.setText("Debe describir el motivo.");
         textoErrorMotivo.setToolTipText("");
-        getContentPane().add(textoErrorMotivo);
-        textoErrorMotivo.setBounds(960, 770, 180, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 25;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        getContentPane().add(textoErrorMotivo, gridBagConstraints);
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
-        getContentPane().add(labelTaller);
-        labelTaller.setBounds(960, 270, 120, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 91;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 960, 0, 0);
+        getContentPane().add(labelTaller, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 156;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 960, 0, 0);
+        getContentPane().add(textDescripcion, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        getContentPane().add(calendarioDiasCita, gridBagConstraints);
 
-        areaDescripcion.setColumns(20);
-        areaDescripcion.setRows(5);
-        jScrollPane1.setViewportView(areaDescripcion);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(960, 680, 234, 86);
-        getContentPane().add(calendarioDiasCita);
-        calendarioDiasCita.setBounds(960, 390, 191, 141);
-
-        getContentPane().add(boxTalleres);
-        boxTalleres.setBounds(960, 290, 220, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 148;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        getContentPane().add(boxTalleres, gridBagConstraints);
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -210,8 +272,13 @@ public class PedirCita extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(980, 830, 100, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 980, 0, 0);
+        getContentPane().add(botonCancelar, gridBagConstraints);
 
         botonPedir.setText("Pedir");
         botonPedir.addActionListener(new java.awt.event.ActionListener() {
@@ -219,26 +286,60 @@ public class PedirCita extends javax.swing.JFrame {
                 botonPedirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonPedir);
-        botonPedir.setBounds(1120, 830, 72, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(40, 40, 0, 0);
+        getContentPane().add(botonPedir, gridBagConstraints);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("Pedir Cita");
-        getContentPane().add(labelIniciarSesion);
-        labelIniciarSesion.setBounds(1000, 200, 150, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 48;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(200, 1000, 0, 0);
+        getContentPane().add(labelIniciarSesion, gridBagConstraints);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera);
-        fondoCabecera.setBounds(960, 200, 180, 50);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -1566;
+        gridBagConstraints.ipady = -82;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(200, 960, 0, 0);
+        getContentPane().add(fondoCabecera, gridBagConstraints);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin);
-        fondoLogin.setBounds(780, 90, 560, 800);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridheight = 15;
+        gridBagConstraints.ipadx = -2464;
+        gridBagConstraints.ipady = -3232;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
+        getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 2140, 1080);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridheight = 16;
+        gridBagConstraints.ipadx = 220;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(fondoPantalla, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -294,7 +395,6 @@ public class PedirCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea areaDescripcion;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonPedir;
     private javax.swing.JComboBox boxHorario;
@@ -303,12 +403,12 @@ public class PedirCita extends javax.swing.JFrame {
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHorario;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelMotivo;
     private javax.swing.JLabel labelTaller;
+    private javax.swing.JTextField textDescripcion;
     private javax.swing.JLabel textoErrorHora;
     private javax.swing.JLabel textoErrorMotivo;
     private javax.swing.JLabel textoErrorTaller;

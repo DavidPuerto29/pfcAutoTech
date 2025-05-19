@@ -30,6 +30,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.Box;
 import javax.swing.JComboBox;
@@ -195,6 +196,17 @@ public class UsuarioControlador {
             }
     }
     
+    public void cargarTalleresSeleccionadoComboBox(JComboBox boxTalleres, Citas cita){
+        boxTalleres.removeAllItems(); 
+          
+        for (Talleres taller : obtenerTodosTalleresSql()) {
+            boxTalleres.addItem(taller.getNombre()); 
+                if (taller.getNombre().equals(cita.getTaller().getNombre())) {
+                    boxTalleres.setSelectedItem(taller.getNombre());
+                }
+        }
+    }
+    
     public void cargarTalleresComboBox(JComboBox boxTalleres){
         boxTalleres.removeAllItems(); 
             boxTalleres.addItem("Seleccione un taller."); 
@@ -202,6 +214,36 @@ public class UsuarioControlador {
                     boxTalleres.addItem(taller.getNombre()); 
                 }
     }
+    
+    public void cargarHorariosCitasSeleccionadoJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller, Citas cita){
+        //Para asegurar que no hay ningun dato guardado.
+        boxHorario.removeAllItems();
+        
+        String[] horas = {
+        "08:00", "08:30", "09:00", "09:30", "10:00", 
+        "10:30", "11:00", "11:30", "12:00", "12:30", 
+        "13:00", "13:30", "14:00", "14:30", "15:00", 
+        "15:30", "16:00", "16:30", "17:00", "17:30", 
+        "18:00", "18:30", "19:00", "19:30", "20:00",
+        "20:30"
+        };
+         
+        if(taller != null){
+            if(taller.getCitasMaximas() != null){
+               boxHorario.addItem("Seleccione una hora."); 
+               
+                   for (String hora : horas) {
+                       if(obtenerNumeroCitasSql(taller, LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalTime.parse(hora))) != taller.getCitasMaximas()){
+                           boxHorario.addItem(hora);
+                                if(hora.equals(cita.getFecha())){
+                                    boxHorario.setSelectedItem(hora);
+                                }
+                       }
+                   }
+           }
+        }
+    }
+    
     
     public void cargarHorariosCitasJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller){
         //Para asegurar que no hay ningun dato guardado.
@@ -226,6 +268,18 @@ public class UsuarioControlador {
                    }
            }
         }
+    }
+    
+    public boolean comprobarCitasIgualesVehiculo(Date fecha, Vehiculos vehiculo){
+        List<Citas> citasVehiculo = obtenerTodasCitasMatriculaSql(vehiculo);
+        
+        for(Citas cita : citasVehiculo){
+            //Para asegurarse de que la comprobación es correcta.
+            if(Math.abs(cita.getFecha().getTime() - fecha.getTime()) < 1000){
+                return false;
+            }
+        }
+        return true;
     }
     
     public void vistaCitas(JTable tablaVehiculos, Usuarios usuario, JFrame vista){

@@ -75,5 +75,14 @@ public class CitasDAO {
             return 0;
         }
     }
+    
+    public static boolean actualizarCitaSql(Citas cita){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            session.getTransaction().begin();
+                session.merge(cita);
+                    session.getTransaction().commit();
+                        return true;
+        }
+    }
 
 }

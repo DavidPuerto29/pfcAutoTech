@@ -11,6 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import java.util.List;
@@ -26,7 +28,10 @@ import lombok.NoArgsConstructor;
 @NamedQuery(name = "get_usuario_login", query = "FROM Usuarios p WHERE p.usuario = :username AND p.contrasena = :password")
 @NamedQuery(name = "get_usuario", query = "FROM Usuarios p WHERE p.usuario = :username")
 @NamedQuery(name = "get_todos_usuarios", query = "FROM Usuarios q ORDER BY q.usuario ASC")
-@Entity @NoArgsConstructor @Data
+@NoArgsConstructor
+@Data
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuarios {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;

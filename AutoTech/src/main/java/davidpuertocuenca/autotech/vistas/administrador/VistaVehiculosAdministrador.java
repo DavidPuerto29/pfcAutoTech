@@ -83,10 +83,10 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1864;
-        gridBagConstraints.ipady = 870;
+        gridBagConstraints.ipadx = 1964;
+        gridBagConstraints.ipady = 1091;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -111,7 +111,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = -66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -122,8 +122,8 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 

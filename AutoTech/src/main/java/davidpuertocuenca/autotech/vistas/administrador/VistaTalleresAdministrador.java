@@ -39,6 +39,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuTalleres = new javax.swing.JMenu();
+        jMenuItemEmpleados = new javax.swing.JMenuItem();
         JMenuItemAnadirTaller = new javax.swing.JMenuItem();
         JMenuItemModificarTaller = new javax.swing.JMenuItem();
         JMenuItemEliminarTaller = new javax.swing.JMenuItem();
@@ -108,10 +109,10 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1964;
-        gridBagConstraints.ipady = 1091;
+        gridBagConstraints.ipadx = 19894;
+        gridBagConstraints.ipady = 891;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -122,10 +123,10 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipady = -201;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 17920);
         getContentPane().add(fondoPantalla, gridBagConstraints);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -143,6 +144,14 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         jMenuTalleres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenuTalleres.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuTalleres.setPreferredSize(new java.awt.Dimension(100, 40));
+
+        jMenuItemEmpleados.setText("Empleados");
+        jMenuItemEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmpleadosActionPerformed(evt);
+            }
+        });
+        jMenuTalleres.add(jMenuItemEmpleados);
 
         JMenuItemAnadirTaller.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemAnadirTaller.setText("Añadir");
@@ -281,6 +290,10 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         controlador.vistaVehiculos(this);
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
 
+    private void jMenuItemEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmpleadosActionPerformed
+        controlador.vistaEmpleados(this);
+    }//GEN-LAST:event_jMenuItemEmpleadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +342,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
+    private javax.swing.JMenuItem jMenuItemEmpleados;
     private javax.swing.JMenu jMenuTalleres;
     private javax.swing.JMenu jMenuUsuarios;
     private javax.swing.JMenu jMenuVehiculos;

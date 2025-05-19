@@ -8,6 +8,7 @@ import com.toedter.calendar.JCalendar;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
+import davidpuertocuenca.autotech.clases.UsuariosTalleres;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
@@ -45,9 +46,11 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerTodosUsuariosTalleresSql;
 import davidpuertocuenca.autotech.vistas.administrador.citas.ModificarCitaAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.talleres.VistaEmpleadosTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -160,6 +163,73 @@ public class AdministradorControlador {
             for (int i = 0; i < tablaClientes.getColumnCount(); i++) {
                 tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                     tablaClientes.getColumnModel().getColumn(i).setResizable(false);
+            }
+    }
+    
+    public void crearTablaEmpleados(JTable tablaEmpleados) { 
+        Object[] cabecera = new Object[]{"Dni", "Usuario", "Nombre", "Apellidos", "Taller Asignado"}; 
+        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
+            //Edicion de celdas deshabilida.
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;  
+            }
+        };
+        tablaEmpleados.setModel(miModelo);
+        tablaEmpleados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaEmpleados.getTableHeader().setReorderingAllowed(false);
+
+
+            List<UsuariosTalleres> usuarioTalleres = new ArrayList(obtenerTodosUsuariosTalleresSql());
+          
+            for(UsuariosTalleres usuarioTaller : usuarioTalleres){
+                Object[] fila = new Object[5];
+                fila[0] = usuarioTaller.getDni();
+                fila[1] = usuarioTaller.getUsuario();
+                fila[2] = usuarioTaller.getNombre();
+                fila[3] = usuarioTaller.getApellidos();
+                if(usuarioTaller.getTaller() == null){
+                    fila[4] = "No Asignado";
+                }else{
+                    fila[4] = usuarioTaller.getTaller().getNombre();
+                }
+                    miModelo.addRow(fila);
+            }
+         
+            //Dimensiones de la tabla.
+            tablaEmpleados.setRowHeight(40);
+            TableColumn columnaDni = tablaEmpleados.getColumn("Dni");
+            columnaDni.setMinWidth(100);
+            columnaDni.setMaxWidth(600);
+            columnaDni.setPreferredWidth(300); 
+            
+            TableColumn columnaUsuario = tablaEmpleados.getColumn("Usuario");
+            columnaUsuario.setMinWidth(100);
+            columnaUsuario.setMaxWidth(600);
+            columnaUsuario.setPreferredWidth(300); 
+            
+            TableColumn columnaNombre = tablaEmpleados.getColumn("Nombre");
+            columnaNombre.setMinWidth(100);
+            columnaNombre.setMaxWidth(600);
+            columnaNombre.setPreferredWidth(300); 
+            
+            TableColumn columnaApellidos= tablaEmpleados.getColumn("Apellidos");
+            columnaApellidos.setMinWidth(100);
+            columnaApellidos.setMaxWidth(600);
+            columnaApellidos.setPreferredWidth(300); 
+            
+            TableColumn columnaTallerAsignado = tablaEmpleados.getColumn("Taller Asignado");
+            columnaTallerAsignado.setMinWidth(100);
+            columnaTallerAsignado.setMaxWidth(600);
+            columnaTallerAsignado.setPreferredWidth(300);             
+           
+            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            tablaEmpleados.getTableHeader().setResizingAllowed(false);
+            //Usado para centrar el texto de las celdas.
+            for (int i = 0; i < tablaEmpleados.getColumnCount(); i++) {
+                tablaEmpleados.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+                    tablaEmpleados.getColumnModel().getColumn(i).setResizable(false);
             }
     }
     
@@ -642,6 +712,12 @@ public class AdministradorControlador {
     public void vistaTalleres(JFrame vista){
         VistaTalleresAdministrador vta = new VistaTalleresAdministrador();
             vta.setVisible(true);
+                vista.dispose();
+    }
+    
+    public void vistaEmpleados(JFrame vista){
+        VistaEmpleadosTallerAdministrador veta = new VistaEmpleadosTallerAdministrador();
+            veta.setVisible(true);
                 vista.dispose();
     }
     

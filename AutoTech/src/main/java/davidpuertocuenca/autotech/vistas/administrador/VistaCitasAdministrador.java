@@ -5,6 +5,8 @@
 package davidpuertocuenca.autotech.vistas.administrador;
 
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
+import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,7 +53,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Citas Adminsitrador");
+        setTitle("Citas Administrador");
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -243,7 +245,11 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMenuItemModificarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemModificarCitaActionPerformed
-        
+        try{
+            controlador.vistaModificarCita(tablaCitas, obtenerVehiculoMatriculaSql((String) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 4)), this);
+         }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(this, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_JMenuItemModificarCitaActionPerformed
 
     private void JMenuItemEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemEliminarCitaActionPerformed

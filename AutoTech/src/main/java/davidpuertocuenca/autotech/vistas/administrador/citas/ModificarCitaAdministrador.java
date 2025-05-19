@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.usuario.citas;
+package davidpuertocuenca.autotech.vistas.administrador.citas;
 
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
-import davidpuertocuenca.autotech.controladores.UsuarioControlador;
+import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.actualizarCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import java.beans.PropertyChangeEvent;
@@ -22,26 +22,24 @@ import javax.swing.JOptionPane;
  *
  * @author David  Puerto Cuenca
  */
-public class ModificarCita extends javax.swing.JFrame {
-    private UsuarioControlador controlador = new UsuarioControlador();
+public class ModificarCitaAdministrador extends javax.swing.JFrame {
+    private AdministradorControlador controlador = new AdministradorControlador();
     private Citas cita;
-    private Usuarios usuario;
     private Vehiculos vehiculo;
     /**
      * Creates new form ModificarCita
      */
     
-    public ModificarCita() {
+    public ModificarCitaAdministrador() {
         initComponents();
-        setExtendedState(ModificarCita.MAXIMIZED_BOTH);
+        setExtendedState(ModificarCitaAdministrador.MAXIMIZED_BOTH);
         reiniciarEtiquetas();
         rellenarCampos();
     }
     
-    public ModificarCita(Usuarios usuario, Vehiculos vehiculo, Citas cita) {
+    public ModificarCitaAdministrador(Vehiculos vehiculo, Citas cita) {
         initComponents();
-        setExtendedState(ModificarCita.MAXIMIZED_BOTH);
-        this.usuario = usuario;
+        setExtendedState(ModificarCitaAdministrador.MAXIMIZED_BOTH);
         this.vehiculo = vehiculo;
         this.cita = cita;
         reiniciarEtiquetas();
@@ -162,7 +160,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 77;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 850, 0, 0);
         getContentPane().add(boxHorario, gridBagConstraints);
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,7 +170,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.ipadx = 89;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 850, 0, 0);
         getContentPane().add(labelFecha, gridBagConstraints);
 
         labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,7 +181,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridy = 10;
         gridBagConstraints.ipadx = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 850, 0, 0);
         getContentPane().add(labelMotivo, gridBagConstraints);
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,7 +191,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridy = 7;
         gridBagConstraints.ipadx = 80;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(19, 850, 0, 0);
         getContentPane().add(labelHorario, gridBagConstraints);
 
         textoErrorHora.setForeground(new java.awt.Color(255, 0, 0));
@@ -205,7 +203,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 850, 0, 0);
         getContentPane().add(textoErrorHora, gridBagConstraints);
 
         textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
@@ -217,7 +215,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 850, 0, 0);
         getContentPane().add(textoErrorTaller, gridBagConstraints);
 
         textoErrorMotivo.setForeground(new java.awt.Color(255, 0, 0));
@@ -230,7 +228,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 25;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 850, 0, 0);
         getContentPane().add(textoErrorMotivo, gridBagConstraints);
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,23 +238,23 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 850, 0, 0);
         getContentPane().add(labelTaller, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 156;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(14, 850, 0, 0);
         getContentPane().add(textDescripcion, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 850, 0, 0);
         getContentPane().add(calendarioDiasCita, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -266,7 +264,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 148;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 850, 0, 0);
         getContentPane().add(boxTalleres, gridBagConstraints);
 
         botonCancelar.setText("Cancelar");
@@ -280,7 +278,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.gridy = 13;
         gridBagConstraints.ipadx = 24;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 980, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(40, 870, 0, 0);
         getContentPane().add(botonCancelar, gridBagConstraints);
 
         botonModificar.setText("Modificar");
@@ -307,7 +305,7 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(206, 978, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(206, 868, 0, 0);
         getContentPane().add(labelIniciarSesion, gridBagConstraints);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
@@ -319,28 +317,28 @@ public class ModificarCita extends javax.swing.JFrame {
         gridBagConstraints.ipadx = -1566;
         gridBagConstraints.ipady = -82;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(200, 960, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(200, 850, 0, 0);
         getContentPane().add(fondoCabecera, gridBagConstraints);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.gridheight = 15;
         gridBagConstraints.ipadx = -2464;
         gridBagConstraints.ipady = -3232;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(90, 670, 0, 0);
         getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridwidth = 10;
         gridBagConstraints.gridheight = 16;
-        gridBagConstraints.ipadx = 220;
+        gridBagConstraints.ipadx = 110;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 
@@ -352,13 +350,13 @@ public class ModificarCita extends javax.swing.JFrame {
     }//GEN-LAST:event_boxHorarioActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+        controlador.vistaCitas(this);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         if(modificarCita()){
             actualizarCitaSql(cita);
-                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+                controlador.vistaCitas(this);
         }
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -379,20 +377,21 @@ public class ModificarCita extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarCita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCitaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarCita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCitaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarCita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCitaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarCita.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarCitaAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarCita().setVisible(true);
+                new ModificarCitaAdministrador().setVisible(true);
             }
         });
     }

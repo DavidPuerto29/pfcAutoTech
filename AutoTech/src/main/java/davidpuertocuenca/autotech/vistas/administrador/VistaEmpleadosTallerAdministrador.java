@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package davidpuertocuenca.autotech.vistas.administrador.talleres;
+package davidpuertocuenca.autotech.vistas.administrador;
 
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
@@ -46,7 +46,6 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleados Administrador");
-        setMaximumSize(new java.awt.Dimension(19920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -138,6 +137,11 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
         jMenuTalleres.setPreferredSize(new java.awt.Dimension(100, 40));
 
         jMenuItemAsignarTaller.setText("Asignar Taller");
+        jMenuItemAsignarTaller.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAsignarTallerActionPerformed(evt);
+            }
+        });
         jMenuTalleres.add(jMenuItemAsignarTaller);
 
         jMenuItemEmpleados.setText("Volver a talleres");
@@ -180,6 +184,10 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
     private void jMenuItemEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmpleadosActionPerformed
         controlador.vistaTalleres(this);
     }//GEN-LAST:event_jMenuItemEmpleadosActionPerformed
+
+    private void jMenuItemAsignarTallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAsignarTallerActionPerformed
+        controlador.vistaAsignarTallerAEmpleado(tablaEmpleados, this);
+    }//GEN-LAST:event_jMenuItemAsignarTallerActionPerformed
 
     /**
      * @param args the command line arguments

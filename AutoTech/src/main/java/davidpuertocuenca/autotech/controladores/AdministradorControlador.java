@@ -16,6 +16,7 @@ import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerNumeroCitasSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.eliminarTallerSql;
+import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
@@ -46,11 +47,14 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
+import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.actualizarUsuarioTallerSql;
 import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerTodosUsuariosTalleresSql;
+import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerUsuarioTallerPorDniSql;
 import davidpuertocuenca.autotech.vistas.administrador.citas.ModificarCitaAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
-import davidpuertocuenca.autotech.vistas.administrador.talleres.VistaEmpleadosTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.VistaEmpleadosTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.empleados.DialogAsignarTallerEmpleado;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -58,6 +62,7 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 
 /**
  *
@@ -601,6 +606,12 @@ public class AdministradorControlador {
         crearTablaCitas(tablaCitas, vista);
     }
     
+    public void modificarTallerEmpleado(UsuariosTalleres usuarioTaller, JComboBox comboBoxTalleres, JDialog vista){
+        usuarioTaller.setTaller(obtenerTallerPorNombreSql((String)comboBoxTalleres.getSelectedItem()));
+            actualizarUsuarioTallerSql(usuarioTaller);
+                vista.dispose();
+    }
+    
     public void eliminarTaller(JTable tablaTalleres, JFrame vista){
         try{
             Talleres taller = obtenerTallerPorNumeroSql((Long) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0));
@@ -764,6 +775,17 @@ public class AdministradorControlador {
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+     
+     public void vistaAsignarTallerAEmpleado(JTable tablaTalleres, JFrame vista){
+        try{
+            DialogAsignarTallerEmpleado vate = new DialogAsignarTallerEmpleado(vista, true, obtenerUsuarioTallerPorDniSql((String) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0)));
+                vate.setVisible(true);
+                    vista.dispose();
+        }catch (ArrayIndexOutOfBoundsException e){
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un empleado de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+     
     
     
     public void vistaModificarUsuario(JTable tablaUsuarios, JFrame vista){

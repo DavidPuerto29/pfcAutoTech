@@ -246,6 +246,8 @@ public class UsuarioControlador {
                            }
                   }
            }
+        }else{
+            boxHorario.addItem("Seleccione un taller."); 
         }
     }
     

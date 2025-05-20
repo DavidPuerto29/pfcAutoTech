@@ -10,6 +10,8 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
 import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -34,6 +36,23 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         this.usuario = usuario;
         reiniciarEtiquetas();
         mostrarDatos();
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener finalizarRegistroListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finalizarModificarUsuario();
+            }
+         };
+
+        fieldUsuario.addActionListener(finalizarRegistroListener);
+        fieldNombre.addActionListener(finalizarRegistroListener);
+        fieldApellidos.addActionListener(finalizarRegistroListener);
+        fieldCorreo.addActionListener(finalizarRegistroListener);
+        fieldDni.addActionListener(finalizarRegistroListener);
+        fieldTelefono.addActionListener(finalizarRegistroListener);
+        fieldDireccion.addActionListener(finalizarRegistroListener);
+        
     }
 
     private void reiniciarEtiquetas(){
@@ -169,6 +188,12 @@ public class ModificarUsuarios extends javax.swing.JFrame {
             return false;
         }
     }
+        
+        private void finalizarModificarUsuario(){
+            if(modificarUsuario() == true){
+                controlador.vistaUsuarios(this);
+            }
+        }
         
     /**
      * This method is called from within the constructor to initialize the form.
@@ -531,9 +556,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if(modificarUsuario() == true){
-            controlador.vistaUsuarios(this);
-        }
+        finalizarModificarUsuario();
     }//GEN-LAST:event_botonModificarActionPerformed
 
     /**

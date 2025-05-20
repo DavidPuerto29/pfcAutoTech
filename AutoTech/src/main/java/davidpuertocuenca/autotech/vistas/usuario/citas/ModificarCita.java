@@ -108,6 +108,8 @@ public class ModificarCita extends javax.swing.JFrame {
                     textoErrorMotivo.setVisible(true);   
         }
 
+        try{
+            
         Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
        
         //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
@@ -123,6 +125,12 @@ public class ModificarCita extends javax.swing.JFrame {
                 cita.setDescripcion(textDescripcion.getText());
                     return true;
         }
+        return false;
+        
+        }catch (java.time.format.DateTimeParseException e){
+                controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+        }
+        
         return false;
     }
         

@@ -406,7 +406,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("Modificar Vehículo");
+        labelIniciarSesion.setText("Añadir Vehículo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;

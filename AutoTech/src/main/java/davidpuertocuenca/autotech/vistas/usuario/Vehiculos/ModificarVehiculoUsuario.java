@@ -9,6 +9,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -34,6 +36,21 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         reiniciarEtiquetas();
         mostrarDatos();
         setExtendedState(ModificarVehiculoUsuario.MAXIMIZED_BOTH);
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener ModificarVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modificarVehiculoFinalizar();
+            }
+         };
+
+        fieldMatricula.addActionListener(ModificarVehiculoListener);
+        fieldMarca.addActionListener(ModificarVehiculoListener);
+        fieldModelo.addActionListener(ModificarVehiculoListener);
+        fieldAnoMatriculacion.addActionListener(ModificarVehiculoListener);
+        fieldColor.addActionListener(ModificarVehiculoListener);
+        
     }
 
     private void reiniciarEtiquetas(){ 
@@ -140,6 +157,14 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
             return false;
         }
     }
+    
+    private void modificarVehiculoFinalizar(){
+        if(modificarVehiculo()){
+            actualizarVehiculoSql(vehiculo);
+                controlador.vistaVehiculos(this, cliente);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

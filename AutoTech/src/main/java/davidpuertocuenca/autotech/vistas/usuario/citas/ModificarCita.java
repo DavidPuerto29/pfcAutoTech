@@ -10,6 +10,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.actualizarCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.time.LocalDateTime;
@@ -54,6 +56,16 @@ public class ModificarCita extends javax.swing.JFrame {
                 controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
             }
         });
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener ModificarVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finalizarModificarCita();
+            }
+         };
+        
+         textDescripcion.addActionListener(ModificarVehiculoListener);
     }
     
         private void reiniciarEtiquetas(){
@@ -113,6 +125,13 @@ public class ModificarCita extends javax.swing.JFrame {
         }
         return false;
     }
+        
+        private void finalizarModificarCita(){
+            if(modificarCita()){
+            actualizarCitaSql(cita);
+                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+           }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -356,10 +375,7 @@ public class ModificarCita extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        if(modificarCita()){
-            actualizarCitaSql(cita);
-                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
-        }
+        finalizarModificarCita();
     }//GEN-LAST:event_botonModificarActionPerformed
 
     /**

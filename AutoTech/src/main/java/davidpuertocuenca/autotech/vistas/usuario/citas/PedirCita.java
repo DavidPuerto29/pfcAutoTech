@@ -11,6 +11,8 @@ import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.time.LocalDateTime;
@@ -45,6 +47,16 @@ public class PedirCita extends javax.swing.JFrame {
             }
          });
         
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener ModificarVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crearCita();
+            }
+         };
+        
+         textDescripcion.addActionListener(ModificarVehiculoListener);
+         
     }
     
     public PedirCita(Usuarios usuario, Vehiculos vehiculo) {
@@ -111,6 +123,13 @@ public class PedirCita extends javax.swing.JFrame {
                     return true;
         }
         return false;
+    }
+    
+    private void crearCita(){
+        if(anadirCita()){
+            crearCitaSql(cita);
+                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
+        }
     }
  
     /**
@@ -351,10 +370,7 @@ public class PedirCita extends javax.swing.JFrame {
     }//GEN-LAST:event_boxHorarioActionPerformed
 
     private void botonPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPedirActionPerformed
-        if(anadirCita()){
-            crearCitaSql(cita);
-                controlador.vistaCitasConVehiculo(vehiculo, usuario, this);
-        }
+        crearCita();
     }//GEN-LAST:event_botonPedirActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

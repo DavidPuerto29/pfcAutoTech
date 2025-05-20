@@ -9,6 +9,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -33,6 +35,18 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
         setExtendedState(AnadirVehiculoPaso2.MAXIMIZED_BOTH);
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener RegistroVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registroVehiculo();
+            }
+         };
+
+        fieldMarca.addActionListener(RegistroVehiculoListener);
+        fieldModelo.addActionListener(RegistroVehiculoListener);
+        fieldColor.addActionListener(RegistroVehiculoListener);
     }
 
     private void reiniciarEtiquetas(){
@@ -75,6 +89,15 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
                 return true;
         }else{
             return false;
+        }
+    }
+    
+    private void registroVehiculo(){
+        if(registrarVehiculo()){
+            crearVehiculoSql(vehiculo);
+                VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
+                    vvc.setVisible(true);
+                        this.dispose();
         }
     }
     
@@ -291,12 +314,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
-        if(registrarVehiculo()){
-            crearVehiculoSql(vehiculo);
-                VistaVehiculosUsuario vvc = new VistaVehiculosUsuario(cliente);
-                    vvc.setVisible(true);
-                        this.dispose();
-        }
+        registroVehiculo();
     }//GEN-LAST:event_botonAnadirActionPerformed
 
     /**

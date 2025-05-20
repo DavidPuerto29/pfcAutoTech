@@ -8,6 +8,8 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.controladores.RegistroControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.crearUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -30,6 +32,20 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         reiniciarEtiquetas();
         setExtendedState(RegistroUsuariosPaso2.MAXIMIZED_BOTH);
         this.cliente = cliente;
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener finalizarRegistroListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finalizarRegistro();
+            }
+         };
+
+        fieldNombre.addActionListener(finalizarRegistroListener);
+        fieldApellidos.addActionListener(finalizarRegistroListener);
+        fieldDni.addActionListener(finalizarRegistroListener);
+        fieldTelefono.addActionListener(finalizarRegistroListener);
+        fieldDireccion.addActionListener(finalizarRegistroListener);
     }
 
      private void reiniciarEtiquetas(){
@@ -121,6 +137,13 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
                                 return true;
         }else{
             return false;
+        }
+    }
+    
+    
+    private void finalizarRegistro(){
+        if(registrarCliente()){
+            controlador.vistaLoginClientes(this);
         }
     }
     
@@ -413,9 +436,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldNombreActionPerformed
 
     private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
-         if(registrarCliente()){
-            controlador.vistaLoginClientes(this);
-        }
+         finalizarRegistro();
     }//GEN-LAST:event_botonFinalizarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed

@@ -9,6 +9,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +35,18 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         this.cliente = cliente;
         reiniciarEtiquetas();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
+        
+        //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener RegistroVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registroVehiculo();
+            }
+         };
+
+        fieldMatricula.addActionListener(RegistroVehiculoListener);
+        fieldAnoMatriculacion.addActionListener(RegistroVehiculoListener);
+        fieldNumeroBastidor.addActionListener(RegistroVehiculoListener);
     }
 
     private void reiniciarEtiquetas(){
@@ -122,6 +136,12 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                 return true;
         }else{
             return false;
+        }
+    }
+    
+    private void registroVehiculo(){
+        if(registrarVehiculo()){
+            controlador.vistaAnadirVehiculoPaso2(this, cliente, vehiculo);
         }
     }
     /**
@@ -337,9 +357,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        if(registrarVehiculo()){
-            controlador.vistaAnadirVehiculoPaso2(this, cliente, vehiculo);
-        }
+        registroVehiculo();
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**

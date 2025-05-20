@@ -25,6 +25,10 @@ import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import davidpuertocuenca.autotech.vistas.usuario.citas.ModificarCita;
 import davidpuertocuenca.autotech.vistas.usuario.citas.PedirCita;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -43,6 +47,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 /**
@@ -66,19 +71,67 @@ public class UsuarioControlador {
         jMenuBar1.add(jMenu5);
     }
     
-    public void crearTablaVehiculos(JTable tablaVehiculos, Usuarios usuario){
-        Object[] cabecera = new Object[]{"Matrícula", "Marca", "Modelo", "Año De Matriculación", "Color", "Citas Reservadas", "Número De Bastidor"}; 
-        DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
-            //Edicion de celdas deshabilida.
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;  
-            }
-        };
-        tablaVehiculos.setModel(miModelo);
-        tablaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaVehiculos.getTableHeader().setReorderingAllowed(false);
+    public void aplicarEstiloTabla(JTable tabla) {
+        // Configuración básica
+        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabla.setShowGrid(true);
+        tabla.setGridColor(new Color(200, 200, 200)); 
+        tabla.setIntercellSpacing(new Dimension(1, 1));
+        tabla.setRowHeight(28);
+        tabla.setFont(new Font("Segoe UI", Font.PLAIN, 14)); 
 
+        // Cabecera 
+        JTableHeader header = tabla.getTableHeader();
+        header.setReorderingAllowed(false);
+        header.setResizingAllowed(false);
+        header.setBackground(new Color(235, 235, 235)); // Gris clarito
+        header.setForeground(new Color(50, 50, 50)); // Gris oscuro
+        header.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        header.setOpaque(true);
+
+        // Centrar contenido de las celdas
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tabla.getColumnCount(); i++) {
+            TableColumn columna = tabla.getColumnModel().getColumn(i);
+            columna.setCellRenderer(centerRenderer);
+            columna.setResizable(false);
+            columna.setMinWidth(120);
+            columna.setPreferredWidth(200);
+            columna.setMaxWidth(500);
+        }
+
+        // Fondo para filas.
+        tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            private final Color EVEN_COLOR = new Color(245, 245, 245);
+            private final Color ODD_COLOR = Color.WHITE;
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (!isSelected) {
+                    c.setBackground(row % 2 == 0 ? EVEN_COLOR : ODD_COLOR);
+                } else {
+                    c.setBackground(new Color(184, 207, 229)); // Color de selección
+                }
+                setHorizontalAlignment(SwingConstants.CENTER);
+                return c;
+            }
+        });
+    }
+
+    public void crearTablaVehiculos(JTable tablaVehiculos, Usuarios usuario){
+         Object[] cabecera = new Object[]{"Matrícula", "Marca", "Modelo", "Año De Matriculación", "Color", "Citas Reservadas", "Número De Bastidor"}; 
+         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
+                 @Override
+                 public boolean isCellEditable(int row, int column) {
+                     return false;
+                 }
+         };
+        
+        tablaVehiculos.setModel(miModelo);
+        
             List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosClienteSql(usuario));
            
             for(Vehiculos Vehiculo : vehiculos){
@@ -92,52 +145,9 @@ public class UsuarioControlador {
                 fila[6] = Vehiculo.getNumeroBastidor();
                     miModelo.addRow(fila);
             }
-         
-            //Dimensiones de la tabla.
-            tablaVehiculos.setRowHeight(40);
-            TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");
-            columnaMatricula.setMinWidth(100);
-            columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(300); 
             
-            TableColumn columnaMarca = tablaVehiculos.getColumn("Marca");
-            columnaMarca.setMinWidth(100);
-            columnaMarca.setMaxWidth(600);
-            columnaMarca.setPreferredWidth(300); 
+            aplicarEstiloTabla(tablaVehiculos);
             
-            TableColumn columnaModelo = tablaVehiculos.getColumn("Modelo");
-            columnaModelo.setMinWidth(100);
-            columnaModelo.setMaxWidth(600);
-            columnaModelo.setPreferredWidth(300); 
-            
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
-            columnaAnoMatriculacion.setMinWidth(100);
-            columnaAnoMatriculacion.setMaxWidth(600);
-            columnaAnoMatriculacion.setPreferredWidth(300); 
-            
-            TableColumn columnaColor = tablaVehiculos.getColumn("Color");
-            columnaColor.setMinWidth(100);
-            columnaColor.setMaxWidth(600);
-            columnaColor.setPreferredWidth(300); 
-            
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
-            columnaCitas.setMinWidth(100);
-            columnaCitas.setMaxWidth(600);
-            columnaCitas.setPreferredWidth(300);
-            
-            TableColumn columnaBastidor = tablaVehiculos.getColumn("Número De Bastidor");
-            columnaBastidor.setMinWidth(100);
-            columnaBastidor.setMaxWidth(600);
-            columnaBastidor.setPreferredWidth(300); 
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaVehiculos.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaVehiculos.getColumnCount(); i++) {
-                tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaVehiculos.getColumnModel().getColumn(i).setResizable(false);
-            }
     }
     
     public void crearTablaCitas(JTable tablaCitasVehiculo, Vehiculos vehiculo){
@@ -194,6 +204,8 @@ public class UsuarioControlador {
                 tablaCitasVehiculo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                     tablaCitasVehiculo.getColumnModel().getColumn(i).setResizable(false);
             }
+            
+
     }
     
     public void cargarTalleresSeleccionadoComboBox(JComboBox boxTalleres, Citas cita){

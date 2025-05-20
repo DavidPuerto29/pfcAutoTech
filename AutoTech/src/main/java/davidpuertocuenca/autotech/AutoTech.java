@@ -4,9 +4,11 @@
 
 package davidpuertocuenca.autotech;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import davidpuertocuenca.autotech.dao.HibernateUtil;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -14,6 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class AutoTech {
     public static void main(String[] args) {
+        
+         try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         
         if(HibernateUtil.getSessionFactory() != null){ //Funciona pero ver a ver si hay algo mas correcto
             LoginClientes test = new LoginClientes();
                 test.setVisible(true);

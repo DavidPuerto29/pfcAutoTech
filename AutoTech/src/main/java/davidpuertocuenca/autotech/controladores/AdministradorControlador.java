@@ -56,6 +56,8 @@ import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerA
 import davidpuertocuenca.autotech.vistas.administrador.VistaEmpleadosTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.empleados.DialogAsignarTallerEmpleado;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -169,6 +171,11 @@ public class AdministradorControlador {
                 tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
                     tablaClientes.getColumnModel().getColumn(i).setResizable(false);
             }
+            
+                        tablaClientes.setShowGrid(true); // Muestra las líneas entre celdas
+tablaClientes.setGridColor(Color.LIGHT_GRAY); // Color de las líneas de la tabla
+tablaClientes.setRowHeight(24); // Altura de cada fila
+tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
     }
     
     public void crearTablaEmpleados(JTable tablaEmpleados) { 

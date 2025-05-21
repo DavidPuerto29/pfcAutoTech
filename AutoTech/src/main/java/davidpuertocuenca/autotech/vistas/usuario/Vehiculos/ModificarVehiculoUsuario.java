@@ -11,12 +11,14 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 public class ModificarVehiculoUsuario extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private Vehiculos vehiculo;
     private Usuarios cliente;
     private UsuarioControlador controlador = new UsuarioControlador();
@@ -54,11 +56,16 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     }
 
     private void reiniciarEtiquetas(){ 
-        textoErrorAnoMatriculacion.setVisible(false);
-        textoErrorModelo.setVisible(false);
-        labelErrorMatricula.setVisible(false);
-        textoErrorMarca.setVisible(false);
-        textoErrorColor.setVisible(false);
+        textoErrorAnoMatriculacion.setText(" ");
+        textoErrorAnoMatriculacion.setIcon(null);
+        textoErrorModelo.setText(" ");
+        textoErrorModelo.setIcon(null);
+        labelErrorMatricula.setText(" ");
+        labelErrorMatricula.setIcon(null);
+        textoErrorMarca.setText(" ");
+        textoErrorMarca.setIcon(null);
+        textoErrorColor.setText(" ");
+        textoErrorColor.setIcon(null);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -80,27 +87,27 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         if (!fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$") && !fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[A-Z]{1,2}[0-9]{4}[A-Z]{0,2}$")) {      
             formatoCorrecto = false;
                 labelErrorMatricula.setText("Debe introducir una matrícula valida.");
-                    labelErrorMatricula.setVisible(true);
+                    labelErrorMatricula.setIcon(iconoError); 
         }
         
         //Comprobación de que la matrícula no este vacía.
         if(fieldMatricula.getText().isEmpty()){
             formatoCorrecto = false;
                 labelErrorMatricula.setText("Debe introducir una matrícula.");
-                    labelErrorMatricula.setVisible(true);   
+                    labelErrorMatricula.setIcon(iconoError); 
         }
         
         //Comprobación de que la matrícula no este registrada.
         if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null && !vehiculo.getMatricula().equals(fieldMatricula.getText())){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
-                    labelErrorMatricula.setVisible(true);    
+                    labelErrorMatricula.setIcon(iconoError); 
         }
         
        //Comprobación de que el año de matrículacion tenga el formato correcto. (0000)
         if(fieldAnoMatriculacion.getText().length() != 4 && !fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
+                textoErrorAnoMatriculacion.setIcon(iconoError); 
                     textoErrorAnoMatriculacion.setText("El formato no es el correcto.");         
         }
         
@@ -109,12 +116,12 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
             //Comprobacion de que el año no sea superior al actual ( > 2025)
             if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
                 formatoCorrecto = false;
-                    textoErrorAnoMatriculacion.setVisible(true);
+                    textoErrorAnoMatriculacion.setIcon(iconoError); 
                         textoErrorAnoMatriculacion.setText("El año de matrículacion no puede ser mayor que el año actual.");
             }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
+                textoErrorAnoMatriculacion.setIcon(iconoError); 
                     textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
         } 
         
@@ -122,28 +129,28 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         if(fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-                    textoErrorAnoMatriculacion.setVisible(true);   
+                    textoErrorAnoMatriculacion.setIcon(iconoError); 
         }
         
         //Comprobación de que el modelo no este vacío.
         if(fieldModelo.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorModelo.setText("Debe introducir un modelo.");
-                    textoErrorModelo.setVisible(true);   
+                    textoErrorModelo.setIcon(iconoError); 
         }
         
         //Comprobación de que el campo marca no este vacío.
         if(fieldMarca.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorMarca.setText("Debe introducir una marca.");
-                    textoErrorMarca.setVisible(true);   
+                    textoErrorMarca.setIcon(iconoError); 
         }
         
         //Comprobación de que el campo color no este vacío.
         if(fieldColor.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorColor.setText("Debe introducir un color.");
-                    textoErrorColor.setVisible(true);   
+                    textoErrorColor.setIcon(iconoError); 
         }
         
         if(formatoCorrecto){

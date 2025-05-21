@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class AutoTech {
     public static void main(String[] args) {
-        if(HibernateUtil.getSessionFactory() != null){ //Funciona pero ver a ver si hay algo mas correcto
+        if(HibernateUtil.getSessionFactory() != null){ 
             LoginClientes test = new LoginClientes();
                 test.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "No se ha podido establecer conexión con el servidor.", "Error de conexión", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No ha sido posible establecer conexión con el servidor.", "Error de conexión", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

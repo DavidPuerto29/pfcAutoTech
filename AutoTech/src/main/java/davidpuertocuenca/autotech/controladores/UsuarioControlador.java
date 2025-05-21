@@ -286,8 +286,8 @@ public class UsuarioControlador {
          crearTablaCitas(tablaCitasVehiculo, vehiculo);
     }
     
-    public void vistaAnadirVehiculo(JFrame vista, Usuarios usuario){
-        AnadirVehiculoPaso1 av = new AnadirVehiculoPaso1(usuario);
+    public void vistaAnadirVehiculo(JFrame vista, Usuarios usuario, Vehiculos vehiculo){
+        AnadirVehiculoPaso1 av = new AnadirVehiculoPaso1(usuario,vehiculo);
             av.setVisible(true);
                 vista.dispose();
     }

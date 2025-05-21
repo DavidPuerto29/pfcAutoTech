@@ -212,7 +212,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCerrarSesionActionPerformed
 
     private void JMenuItemAnadirVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAnadirVehiculoActionPerformed
-       controlador.vistaAnadirVehiculo(this, cliente);
+       controlador.vistaAnadirVehiculo(this, cliente, null);
     }//GEN-LAST:event_JMenuItemAnadirVehiculoActionPerformed
 
     /**

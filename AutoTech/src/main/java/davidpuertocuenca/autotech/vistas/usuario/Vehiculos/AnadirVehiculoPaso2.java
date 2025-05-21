@@ -11,12 +11,14 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author David
  */
 public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private Vehiculos vehiculo;
     private Usuarios cliente;
     private UsuarioControlador controlador = new UsuarioControlador();
@@ -50,9 +52,12 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     }
 
     private void reiniciarEtiquetas(){
-        textoErrorModelo.setVisible(false);
-        textoErrorMarca.setVisible(false);
-        textoErrorColor.setVisible(false);
+        textoErrorModelo.setText(" ");
+        textoErrorModelo.setIcon(null);
+        textoErrorMarca.setText(" ");
+        textoErrorMarca.setIcon(null);
+        textoErrorColor.setText(" ");
+        textoErrorColor.setIcon(null);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -72,14 +77,14 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         if(fieldColor.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorColor.setText("Debe introducir un color.");
-                    textoErrorColor.setVisible(true);   
+                    textoErrorColor.setIcon(iconoError); 
         }
         
         //Comprobación de que el modelo no este vacío.
         if(fieldModelo.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorModelo.setText("Debe introducir un modelo.");
-                    textoErrorModelo.setVisible(true);   
+                    textoErrorModelo.setIcon(iconoError);  
         }
         
         if(formatoCorrecto){
@@ -120,7 +125,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         labelColor = new javax.swing.JLabel();
         fieldColor = new javax.swing.JTextField();
         textoErrorColor = new javax.swing.JLabel();
-        botonCancelar = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
         botonAnadir = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
@@ -231,10 +236,10 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(textoErrorColor, gridBagConstraints);
 
-        botonCancelar.setText("Cancelar");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
+                botonVolverActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -242,7 +247,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         gridBagConstraints.gridy = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonVolver, gridBagConstraints);
 
         botonAnadir.setText("Añadir");
         botonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -309,9 +314,9 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        controlador.vistaVehiculos(this, cliente);
-    }//GEN-LAST:event_botonCancelarActionPerformed
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        controlador.vistaAnadirVehiculo(this, cliente, vehiculo);
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
         registroVehiculo();
@@ -355,7 +360,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAnadir;
-    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JTextField fieldColor;
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldModelo;

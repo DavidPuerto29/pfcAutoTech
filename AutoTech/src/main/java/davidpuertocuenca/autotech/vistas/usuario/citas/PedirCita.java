@@ -10,7 +10,6 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -19,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
  * @author David Puerto Cuenca
  */
 public class PedirCita extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private UsuarioControlador controlador = new UsuarioControlador();
     private Citas cita;
     private Usuarios usuario;
@@ -78,9 +79,12 @@ public class PedirCita extends javax.swing.JFrame {
     } 
     
     private void reiniciarEtiquetas(){
-        textoErrorTaller.setVisible(false);
-        textoErrorHora.setVisible(false);
-        textoErrorMotivo.setVisible(false);   
+        textoErrorTaller.setText(" ");
+        textoErrorTaller.setIcon(null);
+        textoErrorHora.setText(" ");
+        textoErrorHora.setIcon(null);
+        textoErrorMotivo.setText(" ");
+        textoErrorMotivo.setIcon(null);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -93,21 +97,21 @@ public class PedirCita extends javax.swing.JFrame {
         if(boxTalleres.getSelectedIndex() == 0){
             formatoCorrecto = false;
                 textoErrorTaller.setText("Debe seleccionar un taller.");
-                    textoErrorTaller.setVisible(true);   
+                    textoErrorTaller.setIcon(iconoError); 
         }
         
         //En caso de que el usuario no haya seleccionado una hora.
         if(boxHorario.getSelectedIndex() == 0){
             formatoCorrecto = false;
                 textoErrorHora.setText("Debe seleccionar una hora.");
-                    textoErrorHora.setVisible(true);   
+                    textoErrorHora.setIcon(iconoError); 
         }
         
         //En caso de que el usuario no haya introducido el motivo de la cita.
         if(textDescripcion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorMotivo.setText("Debe describir el motivo.");
-                    textoErrorMotivo.setVisible(true);   
+                    textoErrorMotivo.setIcon(iconoError); 
         }
         
         try{

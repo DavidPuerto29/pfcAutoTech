@@ -12,12 +12,14 @@ import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroB
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private Vehiculos vehiculo;
     private Usuarios cliente;
     private UsuarioControlador controlador = new UsuarioControlador();
@@ -30,9 +32,14 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
     }
     
-    public AnadirVehiculoPaso1(Usuarios cliente) {
+    public AnadirVehiculoPaso1(Usuarios cliente, Vehiculos vehiculo) {
         initComponents();
         this.cliente = cliente;
+        //En caso de que el usuario vuelva del paso 2 se matienen los datos.
+        if(vehiculo != null){
+            this.vehiculo = vehiculo;
+                cargarCamposVehiculo();
+        }
         reiniciarEtiquetas();
         setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         
@@ -48,11 +55,20 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         fieldAnoMatriculacion.addActionListener(RegistroVehiculoListener);
         fieldNumeroBastidor.addActionListener(RegistroVehiculoListener);
     }
+    
+    private void cargarCamposVehiculo(){
+        fieldMatricula.setText(vehiculo.getMatricula());
+        fieldAnoMatriculacion.setText(vehiculo.getAnoMatriculacion());
+        fieldNumeroBastidor.setText(vehiculo.getNumeroBastidor());
+    }
 
     private void reiniciarEtiquetas(){
-        labelErrorMatricula.setVisible(false);
-        textoErrorAnoMatriculacion.setVisible(false);
-        textoErrorNumeroBastidor.setVisible(false);
+        labelErrorMatricula.setText(" ");
+        labelErrorMatricula.setIcon(null);
+        textoErrorAnoMatriculacion.setText(" ");
+        textoErrorAnoMatriculacion.setIcon(null);
+        textoErrorNumeroBastidor.setText(" ");
+        textoErrorNumeroBastidor.setIcon(null);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -65,28 +81,28 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         if (!fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$") && !fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[A-Z]{1,2}[0-9]{4}[A-Z]{0,2}$")) {      
             formatoCorrecto = false;
                 labelErrorMatricula.setText("Debe introducir una matrícula valida.");
-                    labelErrorMatricula.setVisible(true);
+                    labelErrorMatricula.setIcon(iconoError);
         }
         
         //Comprobación de que la matrícula no este vacía.
         if(fieldMatricula.getText().isEmpty()){
             formatoCorrecto = false;
-                labelErrorMatricula.setText("Debe introducir una matrícula.");
-                    labelErrorMatricula.setVisible(true);   
+                labelErrorMatricula.setText("Debe introducir una matrícula.");  
+                        labelErrorMatricula.setIcon(iconoError);
         }
         
         //Comprobación de que la matrícula no este registrada.
         if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
            formatoCorrecto = false;
-                labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
-                    labelErrorMatricula.setVisible(true);    
+                labelErrorMatricula.setText("Esta matrícula ya esta registrada."); 
+                        labelErrorMatricula.setIcon(iconoError);
         }
         
         //Comprobación de que el año de matrículacion tenga el formato correcto. (0000)
         if(fieldAnoMatriculacion.getText().length() != 4 && !fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
                     textoErrorAnoMatriculacion.setText("El formato no es el correcto.");         
+                        textoErrorAnoMatriculacion.setIcon(iconoError);
         }
         
         //Comprobación de que el año de matrículacion sean números y no letras.
@@ -94,41 +110,41 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
             //Comprobacion de que el año no sea superior al actual ( > 2025)
             if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
                 formatoCorrecto = false;
-                    textoErrorAnoMatriculacion.setVisible(true);
                         textoErrorAnoMatriculacion.setText("El año de matrículacion no puede ser mayor que el año actual.");
+                            textoErrorAnoMatriculacion.setIcon(iconoError);
             }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
                     textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
+                        textoErrorAnoMatriculacion.setIcon(iconoError);
         } 
         
         //Comprobación de que el año de matrículacion no este vacío.
         if(fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-                    textoErrorAnoMatriculacion.setVisible(true);   
+                        textoErrorAnoMatriculacion.setIcon(iconoError);
         }
         
         //Comprobación de que el número de bastidor tenga el formato correcto (acepta mayúsculas y minúsculas).
         if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Za-hj-npr-z0-9]{17}$")) {
             formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor válido.");
-                    textoErrorNumeroBastidor.setVisible(true);
+                    textoErrorNumeroBastidor.setIcon(iconoError);
         }
 
         //Comprobación de que el numero de bastidor no este registrado.
         if(obtenerVehiculoNumeroBastidorSql(fieldNumeroBastidor.getText()) != null){
            formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
-                    textoErrorNumeroBastidor.setVisible(true);   
+                        textoErrorNumeroBastidor.setIcon(iconoError);
         }
         
         //Comprobación de que el campo numero de bastidor no este vacío.
         if(fieldNumeroBastidor.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
-                    textoErrorNumeroBastidor.setVisible(true);   
+                        textoErrorNumeroBastidor.setIcon(iconoError);
         }
         
         if(formatoCorrecto){
@@ -180,7 +196,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(120, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(80, 920, 0, 0);
         getContentPane().add(labelMatricula, gridBagConstraints);
 
         fieldMatricula.setToolTipText("");
@@ -214,7 +230,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(40, 920, 0, 0);
         getContentPane().add(labelAnoMatriculacion, gridBagConstraints);
 
         fieldAnoMatriculacion.setToolTipText("");
@@ -250,7 +266,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(50, 930, 0, 0);
         getContentPane().add(botonCancelar, gridBagConstraints);
 
         botonContinuar.setText("Continuar");
@@ -265,7 +281,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 13;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(50, 20, 0, 0);
         getContentPane().add(botonContinuar, gridBagConstraints);
 
         fieldNumeroBastidor.setToolTipText("");
@@ -299,7 +315,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
         getContentPane().add(labelNumeroBastidor, gridBagConstraints);
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

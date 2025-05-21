@@ -110,6 +110,15 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorCitasMaximas.setText("Debe introducir un número.");
         }
         
+        //Comprobación de que el numero maximo sean un número y no letras.
+        try {
+            Integer.parseInt(fieldCitasMaximas.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("El numero de citas no puede contener letras.");
+        } 
+        
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
@@ -137,7 +146,6 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 textoErrorIdentidicacionFiscal.setText("Este CIF ya esta registrado.");
                     textoErrorIdentidicacionFiscal.setVisible(true);    
         }
-        
         
         //Comprobación de que el CIF no este vacia.
         if(fieldIdentidicacionFiscal.getText().isEmpty()){

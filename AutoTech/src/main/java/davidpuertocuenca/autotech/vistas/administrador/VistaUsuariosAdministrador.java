@@ -87,20 +87,20 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
             }
         });
         tablaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tablaUsuarios.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        tablaUsuarios.setMaximumSize(new java.awt.Dimension(1300, 800));
         jScrollPane1.setViewportView(tablaUsuarios);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1964;
-        gridBagConstraints.ipady = 1091;
+        gridBagConstraints.ipadx = 1864;
+        gridBagConstraints.ipady = 1110;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
         botonRefrescar.setBackground(new java.awt.Color(255, 255, 255));
@@ -116,7 +116,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 44;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 134, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 120, 0, 0);
         getContentPane().add(botonRefrescar, gridBagConstraints);
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -129,7 +129,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 1233;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 30, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
         getContentPane().add(labelGestionarClientes, gridBagConstraints);
 
         CabeceraClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
@@ -138,10 +138,9 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = -66;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
         getContentPane().add(CabeceraClientes, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
@@ -149,7 +148,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.gridheight = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
 

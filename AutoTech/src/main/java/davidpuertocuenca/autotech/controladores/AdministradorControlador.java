@@ -50,14 +50,13 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.actualizarUsuarioTallerSql;
 import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerTodosUsuariosTalleresSql;
 import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerUsuarioTallerPorDniSql;
+import davidpuertocuenca.autotech.util.Estilos;
 import davidpuertocuenca.autotech.vistas.administrador.citas.ModificarCitaAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaEmpleadosTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.empleados.DialogAsignarTallerEmpleado;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -71,6 +70,7 @@ import javax.swing.JDialog;
  * @author David Puerto Cuenca
  */
 public class AdministradorControlador {
+    Estilos estilos = new Estilos();
        
     public void cerrarSesion(JFrame vista){
         if(JOptionPane.showOptionDialog(vista, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
@@ -97,7 +97,6 @@ public class AdministradorControlador {
             }
         };
         tablaClientes.setModel(miModelo);
-        tablaClientes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaClientes.getTableHeader().setReorderingAllowed(false);
 
 
@@ -119,63 +118,8 @@ public class AdministradorControlador {
                 }
                     miModelo.addRow(fila);
             }
-         
-            //Dimensiones de la tabla.
-            tablaClientes.setRowHeight(40);
-            TableColumn columnaFecha = tablaClientes.getColumn("Usuario");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
             
-            TableColumn columnaCliente = tablaClientes.getColumn("Dni");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300); 
-            
-            TableColumn columnaEnvios = tablaClientes.getColumn("Nombre");
-            columnaEnvios.setMinWidth(100);
-            columnaEnvios.setMaxWidth(600);
-            columnaEnvios.setPreferredWidth(300); 
-            
-            TableColumn columnaCiudad = tablaClientes.getColumn("Apellidos");
-            columnaCiudad.setMinWidth(100);
-            columnaCiudad.setMaxWidth(600);
-            columnaCiudad.setPreferredWidth(300); 
-            
-            TableColumn columnaCorreo = tablaClientes.getColumn("Correo Electrónico");
-            columnaCorreo.setMinWidth(100);
-            columnaCorreo.setMaxWidth(600);
-            columnaCorreo.setPreferredWidth(300); 
-            
-            TableColumn columnaTelefono = tablaClientes.getColumn("Número De Teléfono");
-            columnaTelefono.setMinWidth(100);
-            columnaTelefono.setMaxWidth(600);
-            columnaTelefono.setPreferredWidth(300); 
-            
-            TableColumn columnaDireccion = tablaClientes.getColumn("Dirección");
-            columnaDireccion.setMinWidth(100);
-            columnaDireccion.setMaxWidth(600);
-            columnaDireccion.setPreferredWidth(300); 
-            
-            TableColumn columnaAdministrador = tablaClientes.getColumn("Es Administrador");
-            columnaAdministrador.setMinWidth(100);
-            columnaAdministrador.setMaxWidth(600);
-            columnaAdministrador.setPreferredWidth(300); 
-            
-           
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaClientes.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaClientes.getColumnCount(); i++) {
-                tablaClientes.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaClientes.getColumnModel().getColumn(i).setResizable(false);
-            }
-            
-                        tablaClientes.setShowGrid(true); // Muestra las líneas entre celdas
-tablaClientes.setGridColor(Color.LIGHT_GRAY); // Color de las líneas de la tabla
-tablaClientes.setRowHeight(24); // Altura de cada fila
-tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
+            estilos.aplicarEstiloTablas(tablaClientes);
     }
     
     public void crearTablaEmpleados(JTable tablaEmpleados) { 
@@ -188,7 +132,6 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
             }
         };
         tablaEmpleados.setModel(miModelo);
-        tablaEmpleados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaEmpleados.getTableHeader().setReorderingAllowed(false);
 
 
@@ -208,41 +151,7 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
                     miModelo.addRow(fila);
             }
          
-            //Dimensiones de la tabla.
-            tablaEmpleados.setRowHeight(40);
-            TableColumn columnaDni = tablaEmpleados.getColumn("Dni");
-            columnaDni.setMinWidth(100);
-            columnaDni.setMaxWidth(600);
-            columnaDni.setPreferredWidth(300); 
-            
-            TableColumn columnaUsuario = tablaEmpleados.getColumn("Usuario");
-            columnaUsuario.setMinWidth(100);
-            columnaUsuario.setMaxWidth(600);
-            columnaUsuario.setPreferredWidth(300); 
-            
-            TableColumn columnaNombre = tablaEmpleados.getColumn("Nombre");
-            columnaNombre.setMinWidth(100);
-            columnaNombre.setMaxWidth(600);
-            columnaNombre.setPreferredWidth(300); 
-            
-            TableColumn columnaApellidos= tablaEmpleados.getColumn("Apellidos");
-            columnaApellidos.setMinWidth(100);
-            columnaApellidos.setMaxWidth(600);
-            columnaApellidos.setPreferredWidth(300); 
-            
-            TableColumn columnaTallerAsignado = tablaEmpleados.getColumn("Taller Asignado");
-            columnaTallerAsignado.setMinWidth(100);
-            columnaTallerAsignado.setMaxWidth(600);
-            columnaTallerAsignado.setPreferredWidth(300);             
-           
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaEmpleados.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaEmpleados.getColumnCount(); i++) {
-                tablaEmpleados.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaEmpleados.getColumnModel().getColumn(i).setResizable(false);
-            }
+            estilos.aplicarEstiloTablas(tablaEmpleados);
     }
     
     public void crearTablaCitas(JTable tablaCitas, JFrame vista){
@@ -255,7 +164,6 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
             }
         };
         tablaCitas.setModel(miModelo);
-        tablaCitas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaCitas.getTableHeader().setReorderingAllowed(false);
                 
             List<Citas> citas = new ArrayList(obtenerTodasCitasSql());
@@ -278,51 +186,7 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
                     miModelo.addRow(fila);
             }
          
-            //Dimensiones de la tabla.
-            tablaCitas.setRowHeight(40);
-            TableColumn columnaNumeroCita = tablaCitas.getColumn("Numero De Cita");
-            columnaNumeroCita.setMinWidth(100);
-            columnaNumeroCita.setMaxWidth(600);
-            columnaNumeroCita.setPreferredWidth(300); 
-            
-            TableColumn columnaFecha = tablaCitas.getColumn("Fecha");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaTaller = tablaCitas.getColumn("Nombre Del Taller");
-            columnaTaller.setMinWidth(100);
-            columnaTaller.setMaxWidth(600);
-            columnaTaller.setPreferredWidth(300); 
-            
-            TableColumn columnaDescripcionr = tablaCitas.getColumn("Descripción");
-            columnaDescripcionr.setMinWidth(100);
-            columnaDescripcionr.setMaxWidth(600);
-            columnaDescripcionr.setPreferredWidth(300); 
-            
-            TableColumn columnaMatricula = tablaCitas.getColumn("Matrícula");
-            columnaMatricula.setMinWidth(100);
-            columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(300);
-            
-            TableColumn columnaCliente = tablaCitas.getColumn("Cliente");
-            columnaCliente.setMinWidth(100);
-            columnaCliente.setMaxWidth(600);
-            columnaCliente.setPreferredWidth(300);
-            
-            TableColumn columnaEstado = tablaCitas.getColumn("Estado");
-            columnaEstado.setMinWidth(100);
-            columnaEstado.setMaxWidth(600);
-            columnaEstado.setPreferredWidth(300);
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaCitas.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaCitas.getColumnCount(); i++) {
-                tablaCitas.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaCitas.getColumnModel().getColumn(i).setResizable(false);
-            }
+            estilos.aplicarEstiloTablas(tablaCitas);
     }
     
     public void crearTablaTalleres(JTable tablaTalleres, JFrame vista){
@@ -336,7 +200,6 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
         };
         
         tablaTalleres.setModel(miModelo);
-        tablaTalleres.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaTalleres.getTableHeader().setReorderingAllowed(false);
 
             List<Talleres> talleres = new ArrayList(obtenerTodosTalleresSql());
@@ -353,53 +216,7 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
                     miModelo.addRow(fila);
             }
          
-            //Dimensiones de la tabla.
-            tablaTalleres.setRowHeight(40);
-            
-            TableColumn columnaNumeroTaller = tablaTalleres.getColumn("Número De Taller");
-            columnaNumeroTaller.setMinWidth(100);
-            columnaNumeroTaller.setMaxWidth(600);
-            columnaNumeroTaller.setPreferredWidth(300); 
-            
-            TableColumn columnaNombre = tablaTalleres.getColumn("Nombre");
-            columnaNombre.setMinWidth(100);
-            columnaNombre.setMaxWidth(600);
-            columnaNombre.setPreferredWidth(300); 
-            
-            TableColumn columnaDireccion = tablaTalleres.getColumn("Dirección");
-            columnaDireccion.setMinWidth(100);
-            columnaDireccion.setMaxWidth(600);
-            columnaDireccion.setPreferredWidth(300); 
-            
-            TableColumn columnaCodigoPostal = tablaTalleres.getColumn("Código Postal");
-            columnaCodigoPostal.setMinWidth(100);
-            columnaCodigoPostal.setMaxWidth(600);
-            columnaCodigoPostal.setPreferredWidth(300); 
-            
-            TableColumn columnaTelefono = tablaTalleres.getColumn("Teléfono");
-            columnaTelefono.setMinWidth(100);
-            columnaTelefono.setMaxWidth(600);
-            columnaTelefono.setPreferredWidth(300); 
-            
-            TableColumn columnaLocalidad = tablaTalleres.getColumn("Localidad");
-            columnaLocalidad.setMinWidth(100);
-            columnaLocalidad.setMaxWidth(600);
-            columnaLocalidad.setPreferredWidth(300); 
-            
-            TableColumn columnaIdentificaciónFiscal = tablaTalleres.getColumn("Identificación Fiscal");
-            columnaIdentificaciónFiscal.setMinWidth(100);
-            columnaIdentificaciónFiscal.setMaxWidth(600);
-            columnaIdentificaciónFiscal.setPreferredWidth(300); 
-            
-           
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaTalleres.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaTalleres.getColumnCount(); i++) {
-                tablaTalleres.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaTalleres.getColumnModel().getColumn(i).setResizable(false);
-            }
+            estilos.aplicarEstiloTablas(tablaTalleres);
     }
     
     public void crearTablaVehiculos(JTable tablaVehiculos, JFrame vista){
@@ -412,7 +229,6 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
             }
         };
         tablaVehiculos.setModel(miModelo);
-        tablaVehiculos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaVehiculos.getTableHeader().setReorderingAllowed(false);
                 
             List<Vehiculos> vehiculos = new ArrayList(obtenerTodosVehiculosSql());
@@ -429,51 +245,7 @@ tablaClientes.setIntercellSpacing(new Dimension(1, 1)); // Espacio entre celdas
                     miModelo.addRow(fila);
             }
          
-            //Dimensiones de la tabla.
-            tablaVehiculos.setRowHeight(40);
-            TableColumn columnaMatricula = tablaVehiculos.getColumn("Matrícula");
-            columnaMatricula.setMinWidth(100);
-            columnaMatricula.setMaxWidth(600);
-            columnaMatricula.setPreferredWidth(300); 
-            
-            TableColumn columnaMarca = tablaVehiculos.getColumn("Marca");
-            columnaMarca.setMinWidth(100);
-            columnaMarca.setMaxWidth(600);
-            columnaMarca.setPreferredWidth(300); 
-            
-            TableColumn columnaModelo = tablaVehiculos.getColumn("Modelo");
-            columnaModelo.setMinWidth(100);
-            columnaModelo.setMaxWidth(600);
-            columnaModelo.setPreferredWidth(300); 
-            
-            TableColumn columnaAnoMatriculacion = tablaVehiculos.getColumn("Año De Matriculación");
-            columnaAnoMatriculacion.setMinWidth(100);
-            columnaAnoMatriculacion.setMaxWidth(600);
-            columnaAnoMatriculacion.setPreferredWidth(300); 
-            
-            TableColumn columnaColor = tablaVehiculos.getColumn("Color");
-            columnaColor.setMinWidth(100);
-            columnaColor.setMaxWidth(600);
-            columnaColor.setPreferredWidth(300); 
-            
-            TableColumn columnaCitas = tablaVehiculos.getColumn("Citas Reservadas");
-            columnaCitas.setMinWidth(100);
-            columnaCitas.setMaxWidth(600);
-            columnaCitas.setPreferredWidth(300);
-            
-            TableColumn columnaBastidor = tablaVehiculos.getColumn("Número De Bastidor");
-            columnaBastidor.setMinWidth(100);
-            columnaBastidor.setMaxWidth(600);
-            columnaBastidor.setPreferredWidth(300); 
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaVehiculos.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaVehiculos.getColumnCount(); i++) {
-                tablaVehiculos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                     tablaVehiculos.getColumnModel().getColumn(i).setResizable(false);
-            }
+            estilos.aplicarEstiloTablas(tablaVehiculos);
     }
     
         public void cargarClientesSeleccionadoComboBox(JComboBox comboBoxUsuarios, Vehiculos vehiculo){

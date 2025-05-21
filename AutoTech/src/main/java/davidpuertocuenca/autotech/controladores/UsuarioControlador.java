@@ -17,6 +17,7 @@ import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTodosTalleresSql
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.eliminarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerTodosVehiculosClienteSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import davidpuertocuenca.autotech.util.Estilos;
 import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso2;
@@ -55,6 +56,7 @@ import javax.swing.table.TableColumn;
  * @author David Puerto Cuenca
  */
 public class UsuarioControlador {
+    Estilos estilos = new Estilos();
     
     public void cerrarSesion(JFrame vista){
         if(JOptionPane.showOptionDialog(vista, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
@@ -69,56 +71,6 @@ public class UsuarioControlador {
         jMenuBar1.remove(jMenu5);
         jMenuBar1.add(Box.createHorizontalGlue());
         jMenuBar1.add(jMenu5);
-    }
-    
-    public void aplicarEstiloTabla(JTable tabla) {
-        // Configuración básica
-        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tabla.setShowGrid(true);
-        tabla.setGridColor(new Color(200, 200, 200)); 
-        tabla.setIntercellSpacing(new Dimension(1, 1));
-        tabla.setRowHeight(28);
-        tabla.setFont(new Font("Segoe UI", Font.PLAIN, 14)); 
-
-        // Cabecera 
-        JTableHeader header = tabla.getTableHeader();
-        header.setReorderingAllowed(false);
-        header.setResizingAllowed(false);
-        header.setBackground(new Color(235, 235, 235)); // Gris clarito
-        header.setForeground(new Color(50, 50, 50)); // Gris oscuro
-        header.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        header.setOpaque(true);
-
-        // Centrar contenido de las celdas
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-
-        for (int i = 0; i < tabla.getColumnCount(); i++) {
-            TableColumn columna = tabla.getColumnModel().getColumn(i);
-            columna.setCellRenderer(centerRenderer);
-            columna.setResizable(false);
-            columna.setMinWidth(120);
-            columna.setPreferredWidth(200);
-            columna.setMaxWidth(500);
-        }
-
-        // Fondo para filas.
-        tabla.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            private final Color EVEN_COLOR = new Color(245, 245, 245);
-            private final Color ODD_COLOR = Color.WHITE;
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
-                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (!isSelected) {
-                    c.setBackground(row % 2 == 0 ? EVEN_COLOR : ODD_COLOR);
-                } else {
-                    c.setBackground(new Color(184, 207, 229)); // Color de selección
-                }
-                setHorizontalAlignment(SwingConstants.CENTER);
-                return c;
-            }
-        });
     }
 
     public void crearTablaVehiculos(JTable tablaVehiculos, Usuarios usuario){
@@ -146,7 +98,7 @@ public class UsuarioControlador {
                     miModelo.addRow(fila);
             }
             
-            aplicarEstiloTabla(tablaVehiculos);
+            estilos.aplicarEstiloTablas(tablaVehiculos);
             
     }
     
@@ -160,7 +112,6 @@ public class UsuarioControlador {
             }
         };
         tablaCitasVehiculo.setModel(miModelo);
-        tablaCitasVehiculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tablaCitasVehiculo.getTableHeader().setReorderingAllowed(false);
 
             List<Citas> citas = new ArrayList(obtenerTodasCitasMatriculaSql(vehiculo));
@@ -174,38 +125,7 @@ public class UsuarioControlador {
                     miModelo.addRow(fila);
             } 
             
-            //Dimensiones de la tabla.
-            tablaCitasVehiculo.setRowHeight(40);
-            TableColumn columnaNumeroCita = tablaCitasVehiculo.getColumn("Número de cita");
-            columnaNumeroCita.setMinWidth(100);
-            columnaNumeroCita.setMaxWidth(600);
-            columnaNumeroCita.setPreferredWidth(300); 
-            
-            TableColumn columnaFecha = tablaCitasVehiculo.getColumn("Fecha");
-            columnaFecha.setMinWidth(100);
-            columnaFecha.setMaxWidth(600);
-            columnaFecha.setPreferredWidth(300); 
-            
-            TableColumn columnaAnoVehiculo = tablaCitasVehiculo.getColumn("Vehiculo");
-            columnaAnoVehiculo.setMinWidth(100);
-            columnaAnoVehiculo.setMaxWidth(600);
-            columnaAnoVehiculo.setPreferredWidth(300); 
-            
-            TableColumn columnaTaller = tablaCitasVehiculo.getColumn("Taller");
-            columnaTaller.setMinWidth(100);
-            columnaTaller.setMaxWidth(600);
-            columnaTaller.setPreferredWidth(300); 
-            
-            DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-            centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            tablaCitasVehiculo.getTableHeader().setResizingAllowed(false);
-            //Usado para centrar el texto de las celdas.
-            for (int i = 0; i < tablaCitasVehiculo.getColumnCount(); i++) {
-                tablaCitasVehiculo.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-                    tablaCitasVehiculo.getColumnModel().getColumn(i).setResizable(false);
-            }
-            
-
+            estilos.aplicarEstiloTablas(tablaCitasVehiculo);
     }
     
     public void cargarTalleresSeleccionadoComboBox(JComboBox boxTalleres, Citas cita){

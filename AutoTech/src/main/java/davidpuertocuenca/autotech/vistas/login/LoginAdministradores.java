@@ -5,8 +5,11 @@
 package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.controladores.LoginControlador;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -37,6 +40,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
                controlador.iniciarSesionAdministradores(textUsuario.getText(), textContrasena.getPassword(), LoginAdministradores.this); 
             }
         });
+
     }
 
 
@@ -65,7 +69,9 @@ public class LoginAdministradores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         textUsuario.setToolTipText("Usuario");

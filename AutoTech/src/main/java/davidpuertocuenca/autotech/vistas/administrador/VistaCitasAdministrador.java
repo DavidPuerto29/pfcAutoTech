@@ -173,7 +173,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuUsuarios.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemUsuarios.setText("Menu De Usuarios");
+        JMenuItemUsuarios.setText("Menú De Usuarios");
         JMenuItemUsuarios.setToolTipText("");
         JMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +192,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemVehiculos.setText("Menu De Vehículos");
+        JMenuItemVehiculos.setText("Menú De Vehículos");
         JMenuItemVehiculos.setToolTipText("");
         JMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +211,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenu4.setPreferredSize(new java.awt.Dimension(100, 40));
 
         jMenuItemTalleres.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItemTalleres.setText("Menu De Talleres");
+        jMenuItemTalleres.setText("Menú De Talleres");
         jMenuItemTalleres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemTalleresActionPerformed(evt);

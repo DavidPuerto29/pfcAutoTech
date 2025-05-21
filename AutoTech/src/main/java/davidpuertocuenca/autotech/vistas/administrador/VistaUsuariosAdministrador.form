@@ -53,7 +53,7 @@
                     <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                       <KeyStroke key="Ctrl+A"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Hacer Administrador"/>
+                    <Property name="text" type="java.lang.String" value="Asignar rol de administrador"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemAdministradorActionPerformed"/>
@@ -64,7 +64,8 @@
                     <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                       <KeyStroke key="Ctrl+Q"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Quitar Administrador"/>
+                    <Property name="text" type="java.lang.String" value="Revocar rol de administrador"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuQuitarAdministradorActionPerformed"/>
@@ -117,7 +118,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+V"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Menu De Veh&#xed;culos"/>
+                <Property name="text" type="java.lang.String" value="Men&#xfa; De Veh&#xed;culos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -147,7 +148,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+V"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Menu De Citas"/>
+                <Property name="text" type="java.lang.String" value="Men&#xfa; De Citas"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -177,7 +178,7 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+T"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Menu De Talleres"/>
+                <Property name="text" type="java.lang.String" value="Men&#xfa; De Talleres"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>

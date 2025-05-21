@@ -145,7 +145,7 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
         });
         jMenuTalleres.add(jMenuItemAsignarTaller);
 
-        jMenuItemEmpleados.setText("Volver a talleres");
+        jMenuItemEmpleados.setText("Menú De Talleres");
         jMenuItemEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEmpleadosActionPerformed(evt);

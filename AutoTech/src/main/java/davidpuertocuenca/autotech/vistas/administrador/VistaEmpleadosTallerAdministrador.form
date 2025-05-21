@@ -50,7 +50,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmpleados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Volver a talleres"/>
+                <Property name="text" type="java.lang.String" value="Men&#xfa; De Talleres"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEmpleadosActionPerformed"/>

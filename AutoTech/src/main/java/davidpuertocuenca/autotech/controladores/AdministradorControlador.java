@@ -84,7 +84,7 @@ public class AdministradorControlador {
     }
     
     public void crearTablaClientes(JTable tablaClientes) { 
-        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número De Teléfono","Dirección","Es Administrador"}; 
+        Object[] cabecera = new Object[]{"Usuario","Dni","Nombre","Apellidos", "Correo Electrónico", "Número De Teléfono","Dirección","Administrador"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -260,7 +260,7 @@ public class AdministradorControlador {
                 }
         }
 
-                public void cargarHorariosCitasSeleccionadoJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller, Citas cita){
+            public void cargarHorariosCitasSeleccionadoJComboBox(JCalendar calendarioDiasCita, JComboBox<String> boxHorario, Talleres taller, Citas cita){
             //Para asegurar que no hay ningun dato guardado.
             boxHorario.removeAllItems();
 
@@ -363,7 +363,7 @@ public class AdministradorControlador {
             if(cliente == null){
                 JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
             }
-                if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                     eliminarUsuarioSql(cliente);        
                 }
          }catch (ArrayIndexOutOfBoundsException e){
@@ -377,9 +377,9 @@ public class AdministradorControlador {
         try{
             Citas cita = obtenerCitaPorNumeroSql((Long) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 0));
             if(cita == null){
-                JOptionPane.showMessageDialog(vista, "La cita seleccionada no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE); 
+                JOptionPane.showMessageDialog(vista, "La cita no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE); 
             }
-                if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                     eliminarCitaSql(cita);        
                 }
          }catch (ArrayIndexOutOfBoundsException e){
@@ -399,9 +399,9 @@ public class AdministradorControlador {
         try{
             Talleres taller = obtenerTallerPorNumeroSql((Long) tablaTalleres.getValueAt(tablaTalleres.getSelectedRow(), 0));
                 if(taller == null){
-                    JOptionPane.showMessageDialog(vista, "El taller seleccionado no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+                    JOptionPane.showMessageDialog(vista, "El taller no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
                 }
-                    if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                         eliminarTallerSql(taller);        
                     }
          }catch (ArrayIndexOutOfBoundsException e){
@@ -417,7 +417,7 @@ public class AdministradorControlador {
                 if(vehiculo == null){
                     JOptionPane.showMessageDialog(vista, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
                 }
-                    if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                         eliminarVehiculoSql(vehiculo);        
                     }
          }catch (ArrayIndexOutOfBoundsException e){
@@ -436,18 +436,13 @@ public class AdministradorControlador {
         try{
              Usuarios cliente = obtenerUsuarioSql((String) tablaClientes.getValueAt(tablaClientes.getSelectedRow(), 0));
              if(cliente.isAdministrador()){
-                  if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                  if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      if(cliente == null){
                          JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE); 
+                     }else{
+                           cliente.setAdministrador(false);
+                                actualizarUsuarioSql(cliente);
                      }
-                     cliente.setAdministrador(false);
-                          if(actualizarUsuarioSql(cliente)){
-                              JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
-                          }else{
-                             JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
-                          }
-                  }else{
-                       JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                   }
              }
              //Siempre al finalizar actualiza la tabla.
@@ -465,21 +460,17 @@ public class AdministradorControlador {
              }
              
              if(!cliente.isAdministrador()){
-                 if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                 if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      cliente.setAdministrador(true);
-                         if(actualizarUsuarioSql(cliente)){
-                             JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);   //ALOMEJOR ES DEMASIADO DIALOG
-                         }else{
-                             JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
-                         }
+                            actualizarUsuarioSql(cliente);
                  }
              }else{
-                 JOptionPane.showMessageDialog(vista, "Este usuario ya es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                 JOptionPane.showMessageDialog(vista, "Este usuario ya es administrador", "Información", JOptionPane.INFORMATION_MESSAGE);
              }
              //Siempre al finalizar actualiza la tabla.
              crearTablaClientes(tablaClientes);
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -531,7 +522,7 @@ public class AdministradorControlador {
                 mv.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -547,7 +538,7 @@ public class AdministradorControlador {
                 mta.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
      
@@ -558,7 +549,7 @@ public class AdministradorControlador {
                     //Al finalizar se actualiza la tabla.
                     crearTablaEmpleados(tablaEmpleados);
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un empleado de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un empleado.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
      
@@ -568,7 +559,7 @@ public class AdministradorControlador {
                 mu.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

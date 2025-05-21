@@ -50,7 +50,7 @@ public class UsuarioControlador {
     Estilos estilos = new Estilos();
     
     public void cerrarSesion(JFrame vista){
-        if(JOptionPane.showOptionDialog(vista, "¿Desea cerrar sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+        if(JOptionPane.showOptionDialog(vista, "¿Desea cerrar la sesíon?", "Cerrar Sesíon", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
             LoginClientes login = new LoginClientes();
                 login.setVisible(true);
                     vista.dispose();
@@ -218,7 +218,7 @@ public class UsuarioControlador {
                 vcc.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -240,7 +240,7 @@ public class UsuarioControlador {
                 mv.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -250,7 +250,7 @@ public class UsuarioControlador {
                 mc.setVisible(true);
                     vista.dispose();
         }catch (ArrayIndexOutOfBoundsException e){
-              JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+              JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -260,11 +260,11 @@ public class UsuarioControlador {
                 if(vehiculo == null){
                     JOptionPane.showMessageDialog(vista, "El vehículo no ha sido encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                    if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea realizar esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                         eliminarVehiculoSql(vehiculo);
                     }
         }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
         //Siempre al finalizar actualiza la tabla.
         crearTablaVehiculos(tablaVehiculos, usuario);
@@ -276,11 +276,11 @@ public class UsuarioControlador {
                 if(vehiculo == null){
                     JOptionPane.showMessageDialog(vista, "La cita no ha sido encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                    if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
+                    if(JOptionPane.showOptionDialog(vista, "¿Está seguro de que desea proceder con esta acción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                         eliminarCitaSql(cita);
                     }
          }catch (ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita.", "Información", JOptionPane.INFORMATION_MESSAGE);
          }
          //Siempre al finalizar actualiza la tabla.
          crearTablaCitas(tablaCitasVehiculo, vehiculo);

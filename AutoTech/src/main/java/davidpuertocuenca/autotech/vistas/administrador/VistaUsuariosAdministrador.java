@@ -171,7 +171,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         JMenuGestionClientes.setText("Gestión");
 
         JMenuItemAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemAdministrador.setText("Hacer Administrador");
+        JMenuItemAdministrador.setText("Asignar rol de administrador");
         JMenuItemAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMenuItemAdministradorActionPerformed(evt);
@@ -180,7 +180,8 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         JMenuGestionClientes.add(JMenuItemAdministrador);
 
         jMenuQuitarAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuQuitarAdministrador.setText("Quitar Administrador");
+        jMenuQuitarAdministrador.setText("Revocar rol de administrador");
+        jMenuQuitarAdministrador.setToolTipText("");
         jMenuQuitarAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuQuitarAdministradorActionPerformed(evt);
@@ -219,7 +220,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemVehiculos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemVehiculos.setText("Menu De Vehículos");
+        JMenuItemVehiculos.setText("Menú De Vehículos");
         JMenuItemVehiculos.setToolTipText("");
         JMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +239,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemCitas.setText("Menu De Citas");
+        JMenuItemCitas.setText("Menú De Citas");
         JMenuItemCitas.setToolTipText("");
         JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,7 +258,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenu4.setPreferredSize(new java.awt.Dimension(100, 40));
 
         JMenuItemTalleres.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemTalleres.setText("Menu De Talleres");
+        JMenuItemTalleres.setText("Menú De Talleres");
         JMenuItemTalleres.setToolTipText("");
         JMenuItemTalleres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

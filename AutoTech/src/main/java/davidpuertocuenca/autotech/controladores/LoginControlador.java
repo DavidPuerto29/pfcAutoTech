@@ -31,10 +31,10 @@ public class LoginControlador {
                 if(cliente.isAdministrador()){
                     vistaAdministrador(vista);
                 }else{
-                   JOptionPane.showMessageDialog(vista, "No eres administrador, en caso erróneo contacte con el servicio técnico.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(vista, "No tiene permisos de administrador. Si considera que se trata de un error, contacte con el servicio técnico.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
                 }
         }else{
-            JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de búsqueda", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado. Por favor, verifique los datos introducidos e inténtelo nuevamente.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         } 
     }
     
@@ -55,7 +55,7 @@ public class LoginControlador {
         }else{
             //Se limpia el array para aumentar la seguridad.
             java.util.Arrays.fill(contrasena, '\0');
-                JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado, por favor compruebe los datos y vuelva a intentarlo.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "El usuario no ha sido encontrado. Por favor, verifique los datos introducidos e inténtelo nuevamente.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
         }
     }
     

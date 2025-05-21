@@ -109,7 +109,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorCitasMaximas.setVisible(true);
-                    textoErrorCitasMaximas.setText("El numero maximo no puede contener letras.");
+                    textoErrorCitasMaximas.setText("No se permiten letras.");
         } 
         
         //Comprobación de que el numero maximo de citas no este vacio.
@@ -132,7 +132,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorCodigoPostal.setVisible(true);
-                    textoErrorCodigoPostal.setText("El código postal no puede contener letras.");
+                    textoErrorCodigoPostal.setText("No se permiten letras.");
         } 
 
         //Comprobación de que la dirección no este vacia.
@@ -185,6 +185,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         botonCancelar = new javax.swing.JButton();
         botonAnadir = new javax.swing.JButton();
@@ -220,7 +221,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -228,8 +229,13 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar);
-        botonCancelar.setBounds(1000, 910, 76, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 23;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 1000, 0, 0);
+        getContentPane().add(botonCancelar, gridBagConstraints);
 
         botonAnadir.setText("Añadir");
         botonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -237,137 +243,305 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                 botonAnadirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAnadir);
-        botonAnadir.setBounds(1150, 910, 83, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 23;
+        gridBagConstraints.gridwidth = 22;
+        gridBagConstraints.ipadx = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
+        getContentPane().add(botonAnadir, gridBagConstraints);
 
         fieldCitasMaximas.setToolTipText("");
-        getContentPane().add(fieldCitasMaximas);
-        fieldCitasMaximas.setBounds(990, 820, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 21;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldCitasMaximas, gridBagConstraints);
 
         textoErrorCitasMaximas.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCitasMaximas.setText("Debe introducir un número.");
         textoErrorCitasMaximas.setToolTipText("");
-        getContentPane().add(textoErrorCitasMaximas);
-        textoErrorCitasMaximas.setBounds(990, 870, 250, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 79;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorCitasMaximas, gridBagConstraints);
 
         labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
         labelCitasMaximas.setText("Citas Maximas");
-        getContentPane().add(labelCitasMaximas);
-        labelCitasMaximas.setBounds(990, 800, 110, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 34;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelCitasMaximas, gridBagConstraints);
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorLocalidad.setText("Debe introducir una localidad.");
         textoErrorLocalidad.setToolTipText("");
-        getContentPane().add(textoErrorLocalidad);
-        textoErrorLocalidad.setBounds(990, 770, 212, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridwidth = 12;
+        gridBagConstraints.ipadx = 29;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorLocalidad, gridBagConstraints);
 
         fieldLocalidad.setToolTipText("");
-        getContentPane().add(fieldLocalidad);
-        fieldLocalidad.setBounds(990, 720, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldLocalidad, gridBagConstraints);
 
         labelLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         labelLocalidad.setText("Localidad");
-        getContentPane().add(labelLocalidad);
-        labelLocalidad.setBounds(990, 700, 111, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelLocalidad, gridBagConstraints);
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         textoErrorTelefono.setToolTipText("");
-        getContentPane().add(textoErrorTelefono);
-        textoErrorTelefono.setBounds(990, 670, 211, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 38;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorTelefono, gridBagConstraints);
 
         fieldTelefono.setToolTipText("");
-        getContentPane().add(fieldTelefono);
-        fieldTelefono.setBounds(990, 620, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldTelefono, gridBagConstraints);
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        getContentPane().add(labelTelefono);
-        labelTelefono.setBounds(990, 600, 110, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 63;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelTelefono, gridBagConstraints);
 
         textoErrorCodigoPostal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCodigoPostal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
-        getContentPane().add(textoErrorCodigoPostal);
-        textoErrorCodigoPostal.setBounds(990, 570, 250, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 49;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorCodigoPostal, gridBagConstraints);
 
         fieldCodigoPostal.setToolTipText("");
-        getContentPane().add(fieldCodigoPostal);
-        fieldCodigoPostal.setBounds(990, 520, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldCodigoPostal, gridBagConstraints);
 
         labelCodigoPostal.setForeground(new java.awt.Color(255, 255, 255));
         labelCodigoPostal.setText("Código Postal");
-        getContentPane().add(labelCodigoPostal);
-        labelCodigoPostal.setBounds(990, 500, 110, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelCodigoPostal, gridBagConstraints);
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
-        getContentPane().add(textoErrorDireccion);
-        textoErrorDireccion.setBounds(990, 370, 220, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 16;
+        gridBagConstraints.ipadx = 39;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorDireccion, gridBagConstraints);
 
         fieldIdentidicacionFiscal.setToolTipText("");
-        getContentPane().add(fieldIdentidicacionFiscal);
-        fieldIdentidicacionFiscal.setBounds(990, 420, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldIdentidicacionFiscal, gridBagConstraints);
 
         labelIdentidicacionFiscal.setForeground(new java.awt.Color(255, 255, 255));
         labelIdentidicacionFiscal.setText("Identificación Fiscal");
-        getContentPane().add(labelIdentidicacionFiscal);
-        labelIdentidicacionFiscal.setBounds(990, 400, 150, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 46;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelIdentidicacionFiscal, gridBagConstraints);
 
         textoErrorIdentidicacionFiscal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorIdentidicacionFiscal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorIdentidicacionFiscal.setText("Debe introducir un cif.");
         textoErrorIdentidicacionFiscal.setToolTipText("");
-        getContentPane().add(textoErrorIdentidicacionFiscal);
-        textoErrorIdentidicacionFiscal.setBounds(990, 470, 210, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.ipadx = 68;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorIdentidicacionFiscal, gridBagConstraints);
 
         fieldDireccion.setToolTipText("");
-        getContentPane().add(fieldDireccion);
-        fieldDireccion.setBounds(990, 320, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldDireccion, gridBagConstraints);
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        getContentPane().add(labelDireccion);
-        labelDireccion.setBounds(990, 300, 110, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelDireccion, gridBagConstraints);
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        getContentPane().add(textoErrorNombre);
-        textoErrorNombre.setBounds(990, 270, 189, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorNombre, gridBagConstraints);
 
         fieldNombre.setToolTipText("");
-        getContentPane().add(fieldNombre);
-        fieldNombre.setBounds(990, 220, 250, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 28;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldNombre, gridBagConstraints);
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre Del Taller");
-        getContentPane().add(labelNombre);
-        labelNombre.setBounds(990, 200, 112, 16);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 990, 0, 0);
+        getContentPane().add(labelNombre, gridBagConstraints);
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelAnadirTaller.setText("Añadir Taller");
-        getContentPane().add(labelAnadirTaller);
-        labelAnadirTaller.setBounds(1000, 120, 218, 40);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 21;
+        gridBagConstraints.ipadx = 84;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(120, 1000, 0, 0);
+        getContentPane().add(labelAnadirTaller, gridBagConstraints);
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera);
-        fondoCabecera.setBounds(990, 120, 210, 50);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = -1536;
+        gridBagConstraints.ipady = -82;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(120, 990, 0, 0);
+        getContentPane().add(fondoCabecera, gridBagConstraints);
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin);
-        fondoLogin.setBounds(790, 90, 610, 870);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 29;
+        gridBagConstraints.gridheight = 25;
+        gridBagConstraints.ipadx = -2414;
+        gridBagConstraints.ipady = -3162;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(90, 790, 0, 0);
+        getContentPane().add(fondoLogin, gridBagConstraints);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 2140, 1080);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 30;
+        gridBagConstraints.gridheight = 26;
+        gridBagConstraints.ipadx = 220;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(fondoPantalla, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

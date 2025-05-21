@@ -103,6 +103,15 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorDireccion.setText("Debe introducir una dirección.");
         }
         
+        //Comprobación de que el numero maximo sean un número y no letras.
+        try {
+            Integer.parseInt(fieldCitasMaximas.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("El numero maximo no puede contener letras.");
+        } 
+        
         //Comprobación de que el numero maximo de citas no este vacio.
         if(fieldCitasMaximas.getText().isEmpty()){
             formatoCorrecto = false;
@@ -110,21 +119,21 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorCitasMaximas.setText("Debe introducir un número.");
         }
         
-        //Comprobación de que el numero maximo sean un número y no letras.
-        try {
-            Integer.parseInt(fieldCitasMaximas.getText()); 
-        }catch (NumberFormatException e) {
-            formatoCorrecto = false;
-                textoErrorCitasMaximas.setVisible(true);
-                    textoErrorCitasMaximas.setText("El numero de citas no puede contener letras.");
-        } 
-        
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
                 textoErrorCodigoPostal.setVisible(true);
                     textoErrorCodigoPostal.setText("Debe introducir un código postal válido.");
         }
+        
+        //Comprobación de que el código postal sean números y no letras.
+        try {
+            Integer.parseInt(fieldCodigoPostal.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCodigoPostal.setVisible(true);
+                    textoErrorCodigoPostal.setText("El código postal no puede contener letras.");
+        } 
 
         //Comprobación de que la dirección no este vacia.
         if(fieldCodigoPostal.getText().isEmpty()){
@@ -240,7 +249,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorCitasMaximas.setText("Debe introducir un número.");
         textoErrorCitasMaximas.setToolTipText("");
         getContentPane().add(textoErrorCitasMaximas);
-        textoErrorCitasMaximas.setBounds(990, 870, 210, 20);
+        textoErrorCitasMaximas.setBounds(990, 870, 250, 20);
 
         labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
         labelCitasMaximas.setText("Citas Maximas");
@@ -284,7 +293,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
         getContentPane().add(textoErrorCodigoPostal);
-        textoErrorCodigoPostal.setBounds(990, 570, 211, 20);
+        textoErrorCodigoPostal.setBounds(990, 570, 250, 20);
 
         fieldCodigoPostal.setToolTipText("");
         getContentPane().add(fieldCodigoPostal);
@@ -300,7 +309,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
         getContentPane().add(textoErrorDireccion);
-        textoErrorDireccion.setBounds(990, 370, 191, 20);
+        textoErrorDireccion.setBounds(990, 370, 220, 20);
 
         fieldIdentidicacionFiscal.setToolTipText("");
         getContentPane().add(fieldIdentidicacionFiscal);
@@ -309,7 +318,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         labelIdentidicacionFiscal.setForeground(new java.awt.Color(255, 255, 255));
         labelIdentidicacionFiscal.setText("Identificación Fiscal");
         getContentPane().add(labelIdentidicacionFiscal);
-        labelIdentidicacionFiscal.setBounds(990, 400, 110, 16);
+        labelIdentidicacionFiscal.setBounds(990, 400, 150, 16);
 
         textoErrorIdentidicacionFiscal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorIdentidicacionFiscal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N

@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));

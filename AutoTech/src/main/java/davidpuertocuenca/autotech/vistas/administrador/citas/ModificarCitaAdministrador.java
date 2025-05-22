@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +25,7 @@ import javax.swing.JOptionPane;
  * @author David  Puerto Cuenca
  */
 public class ModificarCitaAdministrador extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private AdministradorControlador controlador = new AdministradorControlador();
     private Citas cita;
     private Vehiculos vehiculo;
@@ -67,9 +69,12 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     }
     
         private void reiniciarEtiquetas(){
-            textoErrorTaller.setVisible(false);
-            textoErrorHora.setVisible(false);
-            textoErrorMotivo.setVisible(false);   
+        textoErrorTaller.setText(" ");
+        textoErrorTaller.setIcon(null);
+        textoErrorHora.setText(" ");
+        textoErrorHora.setIcon(null);
+        textoErrorMotivo.setText(" ");
+        textoErrorMotivo.setIcon(null); 
             this.revalidate(); 
             this.repaint(); 
         }
@@ -89,23 +94,25 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
         if(boxTalleres.getSelectedIndex() == 0){
             formatoCorrecto = false;
                 textoErrorTaller.setText("Debe seleccionar un taller.");
-                    textoErrorTaller.setVisible(true);   
+                    textoErrorTaller.setIcon(iconoError); 
         }
         
         //En caso de que el usuario no haya seleccionado una hora.
         if(boxHorario.getSelectedIndex() == 0){
             formatoCorrecto = false;
                 textoErrorHora.setText("Debe seleccionar una hora.");
-                    textoErrorHora.setVisible(true);   
+                    textoErrorHora.setIcon(iconoError); 
         }
         
         //En caso de que el usuario no haya introducido el motivo de la cita.
         if(textDescripcion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorMotivo.setText("Debe describir el motivo.");
-                    textoErrorMotivo.setVisible(true);   
+                    textoErrorMotivo.setIcon(iconoError); 
         }
 
+        try{
+            
         Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
        
         //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
@@ -121,6 +128,12 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
                 cita.setDescripcion(textDescripcion.getText());
                     return true;
         }
+        return false;
+        
+        }catch (java.time.format.DateTimeParseException e){
+                controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+        }
+        
         return false;
     }
         

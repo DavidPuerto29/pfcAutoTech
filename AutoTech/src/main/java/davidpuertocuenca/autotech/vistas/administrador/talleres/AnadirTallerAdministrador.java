@@ -10,12 +10,14 @@ import static davidpuertocuenca.autotech.dao.TalleresDAO.crearTallerSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorCifSql;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class AnadirTallerAdministrador extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form AnadirTallerAdministrador
@@ -44,13 +46,20 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
     }
     
     private void reiniciarEtiquetas(){
-        textoErrorNombre.setVisible(false);
-        textoErrorTelefono.setVisible(false);
-        textoErrorIdentidicacionFiscal.setVisible(false);
-        textoErrorDireccion.setVisible(false);
-        textoErrorLocalidad.setVisible(false);
-        textoErrorCodigoPostal.setVisible(false);
-        textoErrorCitasMaximas.setVisible(false);
+        textoErrorNombre.setText(" ");
+        textoErrorNombre.setIcon(null);
+        textoErrorTelefono.setText(" ");
+        textoErrorTelefono.setIcon(null);
+        textoErrorIdentidicacionFiscal.setText(" ");
+        textoErrorIdentidicacionFiscal.setIcon(null); 
+        textoErrorDireccion.setText(" ");
+        textoErrorDireccion.setIcon(null); 
+        textoErrorLocalidad.setText(" ");
+        textoErrorLocalidad.setIcon(null); 
+        textoErrorCodigoPostal.setText(" ");
+        textoErrorCodigoPostal.setIcon(null); 
+        textoErrorCitasMaximas.setText(" ");
+        textoErrorCitasMaximas.setIcon(null); 
         this.revalidate(); 
         this.repaint(); 
     }
@@ -62,14 +71,14 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         //Comprobación de que el nombre no este vacio.
         if(fieldNombre.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorNombre.setVisible(true);
+                textoErrorNombre.setIcon(iconoError); 
                     textoErrorNombre.setText("Debe introducir un nombre.");
         }
         
         //Comprobación de que la localidad no este vacia.
         if(fieldLocalidad.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorLocalidad.setVisible(true);
+                textoErrorLocalidad.setIcon(iconoError); 
                     textoErrorLocalidad.setText("Debe introducir una localidad.");
         }
   
@@ -78,28 +87,28 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
             Integer.parseInt(fieldTelefono.getText()); 
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("El teléfono no puede contener letras.");
         } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
         if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("El formato no es el correcto.");         
         }
         
         //Comprobación de que el teléfono no este vacio.
         if(fieldTelefono.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("Debe introducir un teléfono.");
         }
         
         //Comprobación de que la dirección no este vacia.
         if(fieldDireccion.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorDireccion.setVisible(true);
+                textoErrorDireccion.setIcon(iconoError); 
                     textoErrorDireccion.setText("Debe introducir una dirección.");
         }
         
@@ -108,21 +117,21 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
             Integer.parseInt(fieldCitasMaximas.getText()); 
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorCitasMaximas.setVisible(true);
+                textoErrorCitasMaximas.setIcon(iconoError); 
                     textoErrorCitasMaximas.setText("No se permiten letras.");
         } 
         
         //Comprobación de que el numero maximo de citas no este vacio.
         if(fieldCitasMaximas.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorCitasMaximas.setVisible(true);
+                textoErrorCitasMaximas.setIcon(iconoError); 
                     textoErrorCitasMaximas.setText("Debe introducir un número.");
         }
         
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
-                textoErrorCodigoPostal.setVisible(true);
+                textoErrorCodigoPostal.setIcon(iconoError); 
                     textoErrorCodigoPostal.setText("Debe introducir un código postal válido.");
         }
         
@@ -131,21 +140,21 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
             Integer.parseInt(fieldCodigoPostal.getText()); 
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorCodigoPostal.setVisible(true);
+                textoErrorCodigoPostal.setIcon(iconoError); 
                     textoErrorCodigoPostal.setText("No se permiten letras.");
         } 
 
         //Comprobación de que la dirección no este vacia.
         if(fieldCodigoPostal.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorCodigoPostal.setVisible(true);
+                textoErrorCodigoPostal.setIcon(iconoError); 
                     textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         }
         
         // Comprobación de que el CIF tenga el formato correcto.
         if (!fieldIdentidicacionFiscal.getText().matches("^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
             formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
+                textoErrorIdentidicacionFiscal.setIcon(iconoError); 
                     textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF válido.");
         }
         
@@ -153,13 +162,13 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         if(obtenerTallerPorCifSql(fieldIdentidicacionFiscal.getText()) != null){
            formatoCorrecto = false;
                 textoErrorIdentidicacionFiscal.setText("Este CIF ya esta registrado.");
-                    textoErrorIdentidicacionFiscal.setVisible(true);    
+                    textoErrorIdentidicacionFiscal.setIcon(iconoError); 
         }
         
         //Comprobación de que el CIF no este vacia.
         if(fieldIdentidicacionFiscal.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorIdentidicacionFiscal.setVisible(true);
+                textoErrorIdentidicacionFiscal.setIcon(iconoError); 
                     textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF.");
         }
         

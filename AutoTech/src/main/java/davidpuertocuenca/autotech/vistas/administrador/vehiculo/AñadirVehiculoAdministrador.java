@@ -10,13 +10,17 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuari
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private AdministradorControlador controlador = new AdministradorControlador();
     /**
      * Creates new form AñadirVehiculoAdministrador
@@ -26,15 +30,36 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         reiniciarEtiquetas();
         setExtendedState(AñadirVehiculoAdministrador.MAXIMIZED_BOTH);
         controlador.cargarClientesComboBox(comboBoxClientes);
+        
+         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
+         ActionListener RegistroVehiculoListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anadirVehiculo();
+            }
+         };
+
+        fieldMatricula.addActionListener(RegistroVehiculoListener);
+        fieldAnoMatriculacion.addActionListener(RegistroVehiculoListener);
+        fieldNumeroBastidor.addActionListener(RegistroVehiculoListener);
+        fieldMarca.addActionListener(RegistroVehiculoListener);
+        fieldModelo.addActionListener(RegistroVehiculoListener);
+        fieldColor.addActionListener(RegistroVehiculoListener);
     }
     
     private void reiniciarEtiquetas(){
-        textoErrorAnoMatriculacion.setVisible(false);
-        textoErrorModelo.setVisible(false);
-        labelErrorMatricula.setVisible(false);
-        textoErrorMarca.setVisible(false);
-        textoErrorColor.setVisible(false);
-        textoErrorNumeroBastidor.setVisible(false);
+        labelErrorMatricula.setText(" ");
+        labelErrorMatricula.setIcon(null);
+        textoErrorAnoMatriculacion.setText(" ");
+        textoErrorAnoMatriculacion.setIcon(null);
+        textoErrorNumeroBastidor.setText(" ");
+        textoErrorNumeroBastidor.setIcon(null);
+        textoErrorModelo.setText(" ");
+        textoErrorModelo.setIcon(null);
+        textoErrorMarca.setText(" ");
+        textoErrorMarca.setIcon(null);
+        textoErrorColor.setText(" ");
+        textoErrorColor.setIcon(null);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -47,27 +72,27 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         if (!fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}$") && !fieldMatricula.getText().trim().toUpperCase().replaceAll("[\\s\\-]", "").matches("^[A-Z]{1,2}[0-9]{4}[A-Z]{0,2}$")) {      
             formatoCorrecto = false;
                 labelErrorMatricula.setText("Debe introducir una matrícula valida.");
-                    labelErrorMatricula.setVisible(true);
+                    labelErrorMatricula.setIcon(iconoError);
         }
         
         //Comprobación de que la matrícula no este vacía.
         if(fieldMatricula.getText().isEmpty()){
             formatoCorrecto = false;
                 labelErrorMatricula.setText("Debe introducir una matrícula.");
-                    labelErrorMatricula.setVisible(true);   
+                    labelErrorMatricula.setIcon(iconoError);
         }
         
         //Comprobación de que la matrícula no este registrada.
         if(obtenerVehiculoMatriculaSql(fieldMatricula.getText()) != null){
            formatoCorrecto = false;
                 labelErrorMatricula.setText("Esta matrícula ya esta registrada.");
-                    labelErrorMatricula.setVisible(true);    
+                    labelErrorMatricula.setIcon(iconoError);
         }
         
        //Comprobación de que el año de matrículacion tenga el formato correcto. (0000)
         if(fieldAnoMatriculacion.getText().length() != 4 && !fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
+                textoErrorAnoMatriculacion.setIcon(iconoError);
                     textoErrorAnoMatriculacion.setText("El formato no es el correcto.");         
         }
         
@@ -76,12 +101,12 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
             //Comprobacion de que el año no sea superior al actual ( > 2025)
             if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
                 formatoCorrecto = false;
-                    textoErrorAnoMatriculacion.setVisible(true);
+                    textoErrorAnoMatriculacion.setIcon(iconoError);
                         textoErrorAnoMatriculacion.setText("El año de matrículacion no puede ser mayor que el año actual.");
         }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorAnoMatriculacion.setVisible(true);
+                textoErrorAnoMatriculacion.setIcon(iconoError);
                     textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
         } 
         
@@ -89,49 +114,49 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         if(fieldAnoMatriculacion.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-                    textoErrorAnoMatriculacion.setVisible(true);   
+                    textoErrorAnoMatriculacion.setIcon(iconoError);
         }
         
         //Comprobación de que el modelo no este vacío.
         if(fieldModelo.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorModelo.setText("Debe introducir un modelo.");
-                    textoErrorModelo.setVisible(true);   
+                    textoErrorModelo.setIcon(iconoError);
         }
         
         //Comprobación de que el campo marca no este vacío.
         if(fieldMarca.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorMarca.setText("Debe introducir una marca.");
-                    textoErrorMarca.setVisible(true);   
+                    textoErrorMarca.setIcon(iconoError);
         }
         
         //Comprobación de que el campo color no este vacío.
         if(fieldColor.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorColor.setText("Debe introducir un color.");
-                    textoErrorColor.setVisible(true);   
+                    textoErrorColor.setIcon(iconoError);
         }
         
         //Comprobación de que el número de bastidor tenga el formato correcto (acepta mayúsculas y minúsculas).
         if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Za-hj-npr-z0-9]{17}$")) {
             formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor válido.");
-                    textoErrorNumeroBastidor.setVisible(true);
+                    textoErrorNumeroBastidor.setIcon(iconoError);
         }
         
         //Comprobación de que el numero de bastidor no este registrado.
         if(obtenerVehiculoNumeroBastidorSql(fieldNumeroBastidor.getText()) != null){
            formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
-                    textoErrorNumeroBastidor.setVisible(true);   
+                    textoErrorNumeroBastidor.setIcon(iconoError);
         }
         
         //Comprobación de que el campo numero de bastidor no este vacío.
         if(fieldNumeroBastidor.getText().isEmpty()){
             formatoCorrecto = false;
                 textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
-                    textoErrorNumeroBastidor.setVisible(true);   
+                    textoErrorNumeroBastidor.setIcon(iconoError);
         }
         
         if(formatoCorrecto){

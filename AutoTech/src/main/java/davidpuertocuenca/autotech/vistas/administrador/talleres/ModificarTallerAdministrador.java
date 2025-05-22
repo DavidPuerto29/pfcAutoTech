@@ -10,12 +10,14 @@ import static davidpuertocuenca.autotech.dao.TalleresDAO.actualizarTallerSql;
 import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author David Puerto Cuenca
  */
 public class ModificarTallerAdministrador extends javax.swing.JFrame {
+    private ImageIcon iconoError = new ImageIcon(getClass().getResource("/icons/error_prov.png"));
     private AdministradorControlador controlador = new AdministradorControlador();
     private Talleres taller;
     /**
@@ -48,15 +50,22 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldCodigoPostal.addActionListener(finalizarRegistroListener);
         fieldTelefono.addActionListener(finalizarRegistroListener);
         fieldLocalidad.addActionListener(finalizarRegistroListener);
-
+        fieldCitasMaximas.addActionListener(finalizarRegistroListener);
     }
     
     private void reiniciarEtiquetas(){
-        textoErrorNombre.setVisible(false);
-        textoErrorTelefono.setVisible(false);
-        textoErrorDireccion.setVisible(false);
-        textoErrorLocalidad.setVisible(false);
-        textoErrorCodigoPostal.setVisible(false);
+        textoErrorNombre.setText(" ");
+        textoErrorNombre.setIcon(null);
+        textoErrorTelefono.setText(" ");
+        textoErrorTelefono.setIcon(null);
+        textoErrorDireccion.setText(" ");
+        textoErrorDireccion.setIcon(null); 
+        textoErrorLocalidad.setText(" ");
+        textoErrorLocalidad.setIcon(null); 
+        textoErrorCodigoPostal.setText(" ");
+        textoErrorCodigoPostal.setIcon(null); 
+        textoErrorCitasMaximas.setText(" ");
+        textoErrorCitasMaximas.setIcon(null); 
         this.revalidate(); 
         this.repaint(); 
     }
@@ -67,6 +76,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldCodigoPostal.setText(taller.getCodigoPostal());
         fieldTelefono.setText(taller.getTelefono());
         fieldLocalidad.setText(taller.getLocalidad());
+        fieldCitasMaximas.setText(String.valueOf(taller.getCitasMaximas()));
     }
 
         private boolean registrarTaller(){
@@ -76,14 +86,14 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         //Comprobación de que el nombre no este vacio.
         if(fieldNombre.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorNombre.setVisible(true);
+                textoErrorNombre.setIcon(iconoError); 
                     textoErrorNombre.setText("Debe introducir un nombre.");
         }
         
         //Comprobación de que la localidad no este vacia.
         if(fieldLocalidad.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorLocalidad.setVisible(true);
+                textoErrorLocalidad.setIcon(iconoError); 
                     textoErrorLocalidad.setText("Debe introducir una localidad.");
         }
   
@@ -92,42 +102,67 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
             Integer.parseInt(fieldTelefono.getText()); 
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("El teléfono no puede contener letras.");
         } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
         if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("El formato no es el correcto.");         
         }
         
         //Comprobación de que el teléfono no este vacio.
         if(fieldTelefono.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorTelefono.setVisible(true);
+                textoErrorTelefono.setIcon(iconoError); 
                     textoErrorTelefono.setText("Debe introducir un teléfono.");
         }
         
         //Comprobación de que la dirección no este vacia.
         if(fieldDireccion.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorDireccion.setVisible(true);
+                textoErrorDireccion.setIcon(iconoError); 
                     textoErrorDireccion.setText("Debe introducir una dirección.");
+        }
+        
+        //Comprobación de que el numero maximo sean un número y no letras.
+        try {
+            Integer.parseInt(fieldCitasMaximas.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setIcon(iconoError); 
+                    textoErrorCitasMaximas.setText("No se permiten letras.");
+        } 
+        
+        //Comprobación de que el numero maximo de citas no este vacio.
+        if(fieldCitasMaximas.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setIcon(iconoError); 
+                    textoErrorCitasMaximas.setText("Debe introducir un número.");
         }
         
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
-                textoErrorCodigoPostal.setVisible(true);
+                textoErrorCodigoPostal.setIcon(iconoError); 
                     textoErrorCodigoPostal.setText("Debe introducir un código postal válido.");
         }
+        
+        //Comprobación de que el código postal sean números y no letras.
+        try {
+            Integer.parseInt(fieldCodigoPostal.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCodigoPostal.setIcon(iconoError); 
+                    textoErrorCodigoPostal.setText("No se permiten letras.");
+        } 
 
         //Comprobación de que la dirección no este vacia.
         if(fieldCodigoPostal.getText().isEmpty()){
             formatoCorrecto = false;
-                textoErrorCodigoPostal.setVisible(true);
+                textoErrorCodigoPostal.setIcon(iconoError); 
                     textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         }
         
@@ -136,9 +171,10 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                     taller.setDireccion(fieldDireccion.getText());
                         taller.setCodigoPostal(fieldCodigoPostal.getText());
                             taller.setTelefono(fieldTelefono.getText());
-                                taller.setLocalidad(fieldLocalidad.getText());
-                                    actualizarTallerSql(taller);
-                                        return true;
+                                taller.setCitasMaximas(Integer.valueOf(fieldCitasMaximas.getText()));
+                                    taller.setLocalidad(fieldLocalidad.getText());
+                                        actualizarTallerSql(taller);
+                                            return true;
         }else{
             return false;
         }
@@ -160,7 +196,6 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         textoErrorLocalidad = new javax.swing.JLabel();
@@ -176,6 +211,9 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldDireccion = new javax.swing.JTextField();
         labelDireccion = new javax.swing.JLabel();
         textoErrorNombre = new javax.swing.JLabel();
+        fieldCitasMaximas = new javax.swing.JTextField();
+        textoErrorCitasMaximas = new javax.swing.JLabel();
+        labelCitasMaximas = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
         labelNombre = new javax.swing.JLabel();
         labelAnadirTaller = new javax.swing.JLabel();
@@ -188,16 +226,6 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("AÑADIR CIF Y NUM MAX");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 117;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 840, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
-
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,10 +234,9 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 1000, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 1000, 0, 0);
         getContentPane().add(botonCancelar, gridBagConstraints);
 
         botonModificar.setText("Modificar");
@@ -219,12 +246,12 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.ipadx = 11;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 60, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 60, 0, 0);
         getContentPane().add(botonModificar, gridBagConstraints);
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
@@ -233,8 +260,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         textoErrorLocalidad.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 19;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 27;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -243,9 +270,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldLocalidad.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -256,8 +282,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         labelLocalidad.setText("Localidad");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 17;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 59;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -269,8 +295,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         textoErrorTelefono.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 37;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -279,8 +305,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldTelefono.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -291,8 +317,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         labelTelefono.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 63;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -305,7 +331,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -315,7 +341,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -327,7 +353,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 36;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -340,7 +366,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -350,7 +376,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -362,7 +388,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
@@ -374,17 +400,52 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 19;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
         getContentPane().add(textoErrorNombre, gridBagConstraints);
 
+        fieldCitasMaximas.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 186;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
+        getContentPane().add(fieldCitasMaximas, gridBagConstraints);
+
+        textoErrorCitasMaximas.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorCitasMaximas.setText("Debe introducir un número.");
+        textoErrorCitasMaximas.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 79;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(textoErrorCitasMaximas, gridBagConstraints);
+
+        labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
+        labelCitasMaximas.setText("Citas Maximas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 34;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
+        getContentPane().add(labelCitasMaximas, gridBagConstraints);
+
         fieldNombre.setToolTipText("");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.ipadx = 186;
         gridBagConstraints.ipady = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -396,7 +457,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 990, 0, 0);
@@ -408,7 +469,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.ipadx = 86;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -419,7 +480,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = -1536;
         gridBagConstraints.ipady = -82;
@@ -431,8 +492,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.gridheight = 21;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridheight = 22;
         gridBagConstraints.ipadx = -2414;
         gridBagConstraints.ipady = -3222;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -443,8 +504,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.gridheight = 22;
+        gridBagConstraints.gridwidth = 11;
+        gridBagConstraints.gridheight = 23;
         gridBagConstraints.ipadx = 220;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         getContentPane().add(fondoPantalla, gridBagConstraints);
@@ -501,6 +562,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JTextField fieldCitasMaximas;
     private javax.swing.JTextField fieldCodigoPostal;
     private javax.swing.JTextField fieldDireccion;
     private javax.swing.JTextField fieldLocalidad;
@@ -509,13 +571,14 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelAnadirTaller;
+    private javax.swing.JLabel labelCitasMaximas;
     private javax.swing.JLabel labelCodigoPostal;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelLocalidad;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
+    private javax.swing.JLabel textoErrorCitasMaximas;
     private javax.swing.JLabel textoErrorCodigoPostal;
     private javax.swing.JLabel textoErrorDireccion;
     private javax.swing.JLabel textoErrorLocalidad;

@@ -296,7 +296,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
         getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 840, 420));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

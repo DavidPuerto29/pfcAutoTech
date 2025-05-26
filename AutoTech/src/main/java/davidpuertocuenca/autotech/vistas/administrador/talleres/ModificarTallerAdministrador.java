@@ -7,7 +7,6 @@ package davidpuertocuenca.autotech.vistas.administrador.talleres;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.actualizarTallerSql;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,14 +22,12 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
      */
     public ModificarTallerAdministrador() {
         initComponents();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         mostrarDatos();
         reiniciarEtiquetas();
     }
     
     public ModificarTallerAdministrador(Talleres taller) {
         initComponents();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         this.taller = taller;
         mostrarDatos();
         reiniciarEtiquetas();
@@ -117,6 +114,23 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                     textoErrorDireccion.setText("Debe introducir una dirección.");
         }
         
+        //Comprobación de que el numero maximo de citas sea un número y no letras.
+        try {
+            Integer.parseInt(fieldCitasMaximas.getText()); 
+        }catch (NumberFormatException e) {
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("El campo debe ser un numero.");
+        } 
+        
+        //Comprobación de que el numero maximo de citas no este vacio.
+        if(fieldCitasMaximas.getText().isEmpty()){
+            formatoCorrecto = false;
+                textoErrorCitasMaximas.setVisible(true);
+                    textoErrorCitasMaximas.setText("Debe introducir un número.");
+        }
+        
+        
         // Comprobación de que el código postal tenga el formato correcto.
         if (!fieldCodigoPostal.getText().matches("^[0-9]{5}$")) {
             formatoCorrecto = false;
@@ -136,9 +150,10 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                     taller.setDireccion(fieldDireccion.getText());
                         taller.setCodigoPostal(fieldCodigoPostal.getText());
                             taller.setTelefono(fieldTelefono.getText());
-                                taller.setLocalidad(fieldLocalidad.getText());
-                                    actualizarTallerSql(taller);
-                                        return true;
+                                taller.setCitasMaximas(Integer.valueOf(fieldCitasMaximas.getText()));
+                                    taller.setLocalidad(fieldLocalidad.getText());
+                                        actualizarTallerSql(taller);
+                                            return true;
         }else{
             return false;
         }
@@ -158,9 +173,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         textoErrorLocalidad = new javax.swing.JLabel();
@@ -178,6 +191,9 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         textoErrorNombre = new javax.swing.JLabel();
         fieldNombre = new javax.swing.JTextField();
         labelNombre = new javax.swing.JLabel();
+        fieldCitasMaximas = new javax.swing.JTextField();
+        textoErrorCitasMaximas = new javax.swing.JLabel();
+        labelCitasMaximas = new javax.swing.JLabel();
         labelAnadirTaller = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
         fondoLogin = new javax.swing.JLabel();
@@ -185,20 +201,10 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Modificar Taller");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(700, 500));
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setText("AÑADIR CIF");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 117;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 840, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,13 +212,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 1000, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -220,236 +220,98 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 19;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.ipadx = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 60, 0, 0);
-        getContentPane().add(botonModificar, gridBagConstraints);
+        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 92, -1));
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorLocalidad.setText("Debe introducir una localidad.");
         textoErrorLocalidad.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 27;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorLocalidad, gridBagConstraints);
+        getContentPane().add(textoErrorLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 210, -1));
 
         fieldLocalidad.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldLocalidad, gridBagConstraints);
+        getContentPane().add(fieldLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 250, 40));
 
         labelLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         labelLocalidad.setText("Localidad");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 59;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelLocalidad, gridBagConstraints);
+        getContentPane().add(labelLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 110, -1));
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         textoErrorTelefono.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 37;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorTelefono, gridBagConstraints);
+        getContentPane().add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 210, -1));
 
         fieldTelefono.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldTelefono, gridBagConstraints);
+        getContentPane().add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 250, 40));
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 63;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelTelefono, gridBagConstraints);
+        getContentPane().add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 110, -1));
 
         textoErrorCodigoPostal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCodigoPostal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorCodigoPostal, gridBagConstraints);
+        getContentPane().add(textoErrorCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 210, -1));
 
         fieldCodigoPostal.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldCodigoPostal, gridBagConstraints);
+        getContentPane().add(fieldCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 250, 40));
 
         labelCodigoPostal.setForeground(new java.awt.Color(255, 255, 255));
         labelCodigoPostal.setText("Código Postal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelCodigoPostal, gridBagConstraints);
+        getContentPane().add(labelCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, 110, -1));
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorDireccion, gridBagConstraints);
+        getContentPane().add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 190, -1));
 
         fieldDireccion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldDireccion, gridBagConstraints);
+        getContentPane().add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 250, 40));
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(labelDireccion, gridBagConstraints);
+        getContentPane().add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 110, -1));
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 990, 0, 0);
-        getContentPane().add(textoErrorNombre, gridBagConstraints);
+        getContentPane().add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 190, -1));
 
         fieldNombre.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 990, 0, 0);
-        getContentPane().add(fieldNombre, gridBagConstraints);
+        getContentPane().add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 250, 40));
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre Del Taller");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 990, 0, 0);
-        getContentPane().add(labelNombre, gridBagConstraints);
+        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 110, -1));
+
+        fieldCitasMaximas.setToolTipText("");
+        getContentPane().add(fieldCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 250, 40));
+
+        textoErrorCitasMaximas.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorCitasMaximas.setText("Debe introducir un número.");
+        textoErrorCitasMaximas.setToolTipText("");
+        getContentPane().add(textoErrorCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 210, -1));
+
+        labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
+        labelCitasMaximas.setText("Citas Maximas");
+        getContentPane().add(labelCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 110, -1));
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelAnadirTaller.setText("Modificar Taller");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.ipadx = 86;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(170, 1000, 0, 0);
-        getContentPane().add(labelAnadirTaller, gridBagConstraints);
+        getContentPane().add(labelAnadirTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 190, 40));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -1536;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(170, 990, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 210, 50));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.gridheight = 21;
-        gridBagConstraints.ipadx = -2414;
-        gridBagConstraints.ipady = -3222;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 790, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 920, 400));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.gridheight = 22;
-        gridBagConstraints.ipadx = 220;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -503,6 +365,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonModificar;
+    private javax.swing.JTextField fieldCitasMaximas;
     private javax.swing.JTextField fieldCodigoPostal;
     private javax.swing.JTextField fieldDireccion;
     private javax.swing.JTextField fieldLocalidad;
@@ -511,13 +374,14 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel fondoCabecera;
     private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelAnadirTaller;
+    private javax.swing.JLabel labelCitasMaximas;
     private javax.swing.JLabel labelCodigoPostal;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelLocalidad;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelTelefono;
+    private javax.swing.JLabel textoErrorCitasMaximas;
     private javax.swing.JLabel textoErrorCodigoPostal;
     private javax.swing.JLabel textoErrorDireccion;
     private javax.swing.JLabel textoErrorLocalidad;

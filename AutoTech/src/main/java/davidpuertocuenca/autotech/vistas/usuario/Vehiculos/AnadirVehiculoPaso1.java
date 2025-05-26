@@ -185,7 +185,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
         labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         labelErrorMatricula.setText("Matrícula ya registrada.");
-        getContentPane().add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 170, -1));
+        getContentPane().add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 210, -1));
 
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
@@ -197,7 +197,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorAnoMatriculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-        getContentPane().add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
+        getContentPane().add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 210, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +221,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         textoErrorNumeroBastidor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNumeroBastidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
-        getContentPane().add(textoErrorNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 190, -1));
+        getContentPane().add(textoErrorNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 220, -1));
 
         labelNumeroBastidor.setForeground(new java.awt.Color(255, 255, 255));
         labelNumeroBastidor.setText("Número De Bastidor");

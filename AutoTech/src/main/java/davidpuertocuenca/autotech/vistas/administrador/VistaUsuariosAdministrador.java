@@ -19,7 +19,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
      */
     public VistaUsuariosAdministrador() {
         initComponents();
-        setExtendedState(VistaUsuariosAdministrador.MAXIMIZED_BOTH);
 
         controlador.crearTablaClientes(tablaUsuarios);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5);
@@ -34,14 +33,13 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        organizadorVista = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
         botonRefrescar = new javax.swing.JButton();
         labelGestionarClientes = new javax.swing.JLabel();
         CabeceraClientes = new javax.swing.JLabel();
-        fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuUsuarios = new javax.swing.JMenu();
         JMenuGestionClientes = new javax.swing.JMenu();
@@ -60,10 +58,14 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vista General Administrador");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        getContentPane().setLayout(null);
+
+        organizadorVista.setBackground(new java.awt.Color(255, 255, 255));
+        organizadorVista.setLayout(null);
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
@@ -90,18 +92,8 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         tablaUsuarios.setMaximumSize(new java.awt.Dimension(1300, 800));
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1864;
-        gridBagConstraints.ipady = 1110;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        getContentPane().add(jScrollPane1, gridBagConstraints);
+        organizadorVista.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 90, 1250, 560);
 
         botonRefrescar.setBackground(new java.awt.Color(255, 255, 255));
         botonRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icono_actualizar_prov .png"))); // NOI18N
@@ -110,47 +102,21 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
                 botonRefrescarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 44;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 120, 0, 0);
-        getContentPane().add(botonRefrescar, gridBagConstraints);
+        organizadorVista.add(botonRefrescar);
+        botonRefrescar.setBounds(1170, 20, 80, 50);
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
         labelGestionarClientes.setText("Gestión De Usuarios");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 1233;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
-        getContentPane().add(labelGestionarClientes, gridBagConstraints);
+        organizadorVista.add(labelGestionarClientes);
+        labelGestionarClientes.setBounds(20, 10, 510, 70);
 
         CabeceraClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = -66;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        getContentPane().add(CabeceraClientes, gridBagConstraints);
+        organizadorVista.add(CabeceraClientes);
+        CabeceraClientes.setBounds(10, 10, 1250, 66);
 
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(organizadorVista);
+        organizadorVista.setBounds(0, 0, 1270, 670);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -375,7 +341,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemTalleres;
     private javax.swing.JMenuItem JMenuItemVehiculos;
     private javax.swing.JButton botonRefrescar;
-    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -386,6 +351,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuVehiculos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelGestionarClientes;
+    private javax.swing.JPanel organizadorVista;
     private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables
 }

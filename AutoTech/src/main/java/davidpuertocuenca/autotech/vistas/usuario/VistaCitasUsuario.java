@@ -73,7 +73,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         labelCitasDelVehiculo.setForeground(new java.awt.Color(255, 255, 255));
         labelCitasDelVehiculo.setText("Citas Del Vehículo");
         organizadorVista.add(labelCitasDelVehiculo);
-        labelCitasDelVehiculo.setBounds(20, 0, 510, 80);
+        labelCitasDelVehiculo.setBounds(20, 10, 510, 70);
 
         tablaCitasVehiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

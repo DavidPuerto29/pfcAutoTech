@@ -22,7 +22,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
      */
     public VistaCitasUsuario() {
         initComponents();
-        setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
          controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
@@ -31,7 +30,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         initComponents();
         this.vehiculo = vehiculo;
         this.usuario = usuario;
-        setExtendedState(VistaCitasUsuario.MAXIMIZED_BOTH);
         controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
@@ -44,13 +42,12 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        organizadorVista = new javax.swing.JPanel();
+        labelCitasDelVehiculo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCitasVehiculo = new javax.swing.JTable();
-        labelCitasDelVehiculo = new javax.swing.JLabel();
         CabeceraVehiculos = new javax.swing.JLabel();
-        fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuClientes = new javax.swing.JMenu();
         JMenuItemPedirCita = new javax.swing.JMenuItem();
@@ -63,7 +60,20 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Citas Del Vehículo");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        organizadorVista.setBackground(new java.awt.Color(255, 255, 255));
+        organizadorVista.setLayout(null);
+
+        labelCitasDelVehiculo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        labelCitasDelVehiculo.setForeground(new java.awt.Color(255, 255, 255));
+        labelCitasDelVehiculo.setText("Citas Del Vehículo");
+        organizadorVista.add(labelCitasDelVehiculo);
+        labelCitasDelVehiculo.setBounds(20, 0, 510, 80);
 
         tablaCitasVehiculo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,52 +96,14 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaCitasVehiculo);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1864;
-        gridBagConstraints.ipady = 900;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        getContentPane().add(jScrollPane1, gridBagConstraints);
-
-        labelCitasDelVehiculo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelCitasDelVehiculo.setForeground(new java.awt.Color(255, 255, 255));
-        labelCitasDelVehiculo.setText("Citas Del Vehículo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 128;
-        gridBagConstraints.ipady = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
-        getContentPane().add(labelCitasDelVehiculo, gridBagConstraints);
+        organizadorVista.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 90, 1250, 560);
 
         CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.ipady = -66;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        getContentPane().add(CabeceraVehiculos, gridBagConstraints);
+        organizadorVista.add(CabeceraVehiculos);
+        CabeceraVehiculos.setBounds(10, 10, 1250, 66);
 
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 4;
-        gridBagConstraints.ipady = 509;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(organizadorVista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 670));
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,13 +256,13 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemPedirCita;
     private javax.swing.JMenuItem JMenuItemVehículos;
     private javax.swing.JMenu Vehículos;
-    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuClientes;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCitasDelVehiculo;
+    private javax.swing.JPanel organizadorVista;
     private javax.swing.JTable tablaCitasVehiculo;
     // End of variables declaration//GEN-END:variables
 }

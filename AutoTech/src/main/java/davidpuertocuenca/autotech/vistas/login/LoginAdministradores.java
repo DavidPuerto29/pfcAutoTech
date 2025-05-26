@@ -23,7 +23,6 @@ public class LoginAdministradores extends javax.swing.JFrame {
      */
     public LoginAdministradores() {
         initComponents();
-        setExtendedState(LoginAdministradores.MAXIMIZED_BOTH);
         
         //Método para acceder al programa pulsando enter.
         textContrasena.addActionListener(new ActionListener() {
@@ -52,7 +51,6 @@ public class LoginAdministradores extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         textUsuario = new javax.swing.JTextField();
         botonIniciarSesion = new javax.swing.JToggleButton();
@@ -69,21 +67,14 @@ public class LoginAdministradores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(700, 600));
+        setMinimumSize(new java.awt.Dimension(700, 600));
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textUsuario.setToolTipText("Usuario");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 154;
-        gridBagConstraints.ipady = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(14, 946, 0, 0);
-        getContentPane().add(textUsuario, gridBagConstraints);
+        getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 218, 42));
 
         botonIniciarSesion.setText("Login");
         botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -91,13 +82,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonIniciarSesionActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
-        getContentPane().add(botonIniciarSesion, gridBagConstraints);
+        getContentPane().add(botonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, -1, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,25 +90,10 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 0, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, -1, -1));
 
         textContrasena.setToolTipText("Contraseña");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 154;
-        gridBagConstraints.ipady = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 946, 0, 0);
-        getContentPane().add(textContrasena, gridBagConstraints);
+        getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 218, 42));
 
         botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
         botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -131,90 +101,32 @@ public class LoginAdministradores extends javax.swing.JFrame {
                 botonMostrarContrasenaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = -5;
-        gridBagConstraints.ipady = -4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 2, 0, 0);
-        getContentPane().add(botonMostrarContrasena, gridBagConstraints);
+        getContentPane().add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 60, 40));
 
         labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena.setText("Contraseña");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 946, 0, 0);
-        getContentPane().add(labelContrasena, gridBagConstraints);
+        getContentPane().add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 80, -1));
 
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Usuario");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 946, 0, 0);
-        getContentPane().add(labelUsuario1, gridBagConstraints);
+        getContentPane().add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 60, -1));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/logo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(330, 0, 0, 0);
-        getContentPane().add(logo, gridBagConstraints);
+        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("Iniciar Sesión");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 966, 0, 0);
-        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 148, 40));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -1521;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 926, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 225, 50));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 11;
-        gridBagConstraints.gridheight = 11;
-        gridBagConstraints.ipadx = -2614;
-        gridBagConstraints.ipady = -3542;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(300, 856, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 410, 450));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/login_test.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.gridheight = 12;
-        gridBagConstraints.ipadx = 210;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 88, 0, 2);
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2068, 1180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

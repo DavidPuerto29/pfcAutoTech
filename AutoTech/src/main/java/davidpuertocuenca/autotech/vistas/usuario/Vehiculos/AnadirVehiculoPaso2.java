@@ -26,7 +26,6 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     public AnadirVehiculoPaso2() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoPaso2.MAXIMIZED_BOTH);
     }
     
     public AnadirVehiculoPaso2(Usuarios cliente, Vehiculos vehiculo) {
@@ -34,7 +33,6 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoPaso2.MAXIMIZED_BOTH);
         
         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
          ActionListener RegistroVehiculoListener = new ActionListener() {
@@ -109,7 +107,6 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         labelMarca = new javax.swing.JLabel();
         fieldMarca = new javax.swing.JTextField();
@@ -129,107 +126,47 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Añadir Vehículo Paso 2");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelMarca.setForeground(new java.awt.Color(255, 255, 255));
         labelMarca.setText("Marca");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 87;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 920, 0, 0);
-        getContentPane().add(labelMarca, gridBagConstraints);
+        getContentPane().add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 120, -1));
 
         fieldMarca.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldMarca, gridBagConstraints);
+        getContentPane().add(fieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 250, 40));
 
         textoErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMarca.setText("Debe introducir una marca.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorMarca, gridBagConstraints);
+        getContentPane().add(textoErrorMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 180, -1));
 
         labelModelo.setForeground(new java.awt.Color(255, 255, 255));
         labelModelo.setText("Modelo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 78;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(labelModelo, gridBagConstraints);
+        getContentPane().add(labelModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 120, -1));
 
         fieldModelo.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldModelo, gridBagConstraints);
+        getContentPane().add(fieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 250, 40));
 
         textoErrorModelo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorModelo.setText("Debe introducir un modelo.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorModelo, gridBagConstraints);
+        getContentPane().add(textoErrorModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
 
         labelColor.setForeground(new java.awt.Color(255, 255, 255));
         labelColor.setText("Color");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 91;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
-        getContentPane().add(labelColor, gridBagConstraints);
+        getContentPane().add(labelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 120, -1));
 
         fieldColor.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 14;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldColor, gridBagConstraints);
+        getContentPane().add(fieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 250, 40));
 
         textoErrorColor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorColor.setText("Debe introducir un color,");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorColor, gridBagConstraints);
+        getContentPane().add(textoErrorColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, -1, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -237,12 +174,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, -1, -1));
 
         botonAnadir.setText("Añadir");
         botonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -250,61 +182,21 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
                 botonAnadirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 10;
-        gridBagConstraints.ipadx = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 30, 0, 0);
-        getContentPane().add(botonAnadir, gridBagConstraints);
+        getContentPane().add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 90, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("[○●] Paso 2: Añadir Vehículo(Con mas estilo)");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 17;
-        gridBagConstraints.ipadx = 43;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(340, 830, 0, 0);
-        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 518, 40));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 15;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -1256;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(340, 820, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 490, 50));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 16;
-        gridBagConstraints.gridheight = 13;
-        gridBagConstraints.ipadx = -2484;
-        gridBagConstraints.ipady = -3232;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 540, 550));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 18;
-        gridBagConstraints.gridheight = 14;
-        gridBagConstraints.ipadx = 220;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

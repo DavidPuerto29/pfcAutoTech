@@ -27,14 +27,12 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     public AnadirVehiculoPaso1() {
         initComponents();
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
     }
     
     public AnadirVehiculoPaso1(Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
         reiniciarEtiquetas();
-        setExtendedState(AnadirVehiculoPaso1.MAXIMIZED_BOTH);
         
         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
          ActionListener RegistroVehiculoListener = new ActionListener() {
@@ -152,7 +150,6 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         labelMatricula = new javax.swing.JLabel();
         fieldMatricula = new javax.swing.JTextField();
@@ -172,72 +169,35 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Añadir Vehículo Paso 1");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
         labelMatricula.setText("Matrícula");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(120, 920, 0, 0);
-        getContentPane().add(labelMatricula, gridBagConstraints);
+        getContentPane().add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, -1, -1));
 
         fieldMatricula.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 18;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldMatricula, gridBagConstraints);
+        getContentPane().add(fieldMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 250, 40));
 
         labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
         labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         labelErrorMatricula.setText("Matrícula ya registrada.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 22;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 920, 0, 0);
-        getContentPane().add(labelErrorMatricula, gridBagConstraints);
+        getContentPane().add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 170, -1));
 
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(labelAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(labelAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 120, -1));
 
         fieldAnoMatriculacion.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 18;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(fieldAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 40));
 
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorAnoMatriculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorAnoMatriculacion, gridBagConstraints);
+        getContentPane().add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,13 +205,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
-        getContentPane().add(botonCancelar, gridBagConstraints);
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, -1, -1));
 
         botonContinuar.setText("Continuar");
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -259,95 +213,33 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                 botonContinuarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.gridwidth = 13;
-        gridBagConstraints.ipadx = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 10, 0, 0);
-        getContentPane().add(botonContinuar, gridBagConstraints);
+        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 90, -1));
 
         fieldNumeroBastidor.setToolTipText("");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 9;
-        gridBagConstraints.gridwidth = 18;
-        gridBagConstraints.ipadx = 186;
-        gridBagConstraints.ipady = 18;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(4, 920, 0, 0);
-        getContentPane().add(fieldNumeroBastidor, gridBagConstraints);
+        getContentPane().add(fieldNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 250, 40));
 
         textoErrorNumeroBastidor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNumeroBastidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.ipadx = 17;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 920, 0, 0);
-        getContentPane().add(textoErrorNumeroBastidor, gridBagConstraints);
+        getContentPane().add(textoErrorNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 190, -1));
 
         labelNumeroBastidor.setForeground(new java.awt.Color(255, 255, 255));
         labelNumeroBastidor.setText("Número De Bastidor");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 11;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 920, 0, 0);
-        getContentPane().add(labelNumeroBastidor, gridBagConstraints);
+        getContentPane().add(labelNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 120, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("[●○] Paso 1: Añadir Vehículo(Con mas estilo)");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 21;
-        gridBagConstraints.ipadx = 76;
-        gridBagConstraints.ipady = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(190, 840, 0, 0);
-        getContentPane().add(labelIniciarSesion, gridBagConstraints);
+        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 551, 40));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 19;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = -1256;
-        gridBagConstraints.ipady = -82;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(190, 830, 0, 0);
-        getContentPane().add(fondoCabecera, gridBagConstraints);
+        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 490, 50));
 
         fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 20;
-        gridBagConstraints.gridheight = 13;
-        gridBagConstraints.ipadx = -2464;
-        gridBagConstraints.ipady = -3232;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(90, 780, 0, 0);
-        getContentPane().add(fondoLogin, gridBagConstraints);
+        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 560, 570));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 22;
-        gridBagConstraints.gridheight = 14;
-        gridBagConstraints.ipadx = 220;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(fondoPantalla, gridBagConstraints);
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

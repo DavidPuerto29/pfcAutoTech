@@ -22,7 +22,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
      */
     public VistaVehiculosUsuario() {
         initComponents();
-        setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
         controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
@@ -30,7 +29,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     public VistaVehiculosUsuario(Usuarios cliente) {
         initComponents();
         this.cliente = cliente;
-        setExtendedState(VistaVehiculosUsuario.MAXIMIZED_BOTH);
         controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
@@ -44,6 +42,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        organizadorVista = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVehiculos = new javax.swing.JTable();
         labelVehiculos = new javax.swing.JLabel();
@@ -62,10 +61,14 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mis Vehículos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setMinimumSize(new java.awt.Dimension(700, 500));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(null);
+
+        organizadorVista.setBackground(new java.awt.Color(255, 255, 255));
+        organizadorVista.setLayout(null);
 
         tablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,18 +91,21 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaVehiculos);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 80, 1900, 940);
+        organizadorVista.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 90, 1250, 560);
 
         labelVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelVehiculos.setForeground(new java.awt.Color(255, 255, 255));
         labelVehiculos.setText("Mis Vehículos");
-        getContentPane().add(labelVehiculos);
+        organizadorVista.add(labelVehiculos);
         labelVehiculos.setBounds(20, 0, 510, 80);
 
         CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
-        getContentPane().add(CabeceraVehiculos);
-        CabeceraVehiculos.setBounds(10, 10, 1910, 66);
+        organizadorVista.add(CabeceraVehiculos);
+        CabeceraVehiculos.setBounds(10, 10, 1250, 66);
+
+        getContentPane().add(organizadorVista);
+        organizadorVista.setBounds(0, 0, 1270, 670);
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla);
@@ -279,6 +285,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelVehiculos;
+    private javax.swing.JPanel organizadorVista;
     private javax.swing.JTable tablaVehiculos;
     // End of variables declaration//GEN-END:variables
 }

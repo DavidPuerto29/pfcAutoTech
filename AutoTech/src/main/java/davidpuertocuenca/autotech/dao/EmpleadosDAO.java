@@ -4,88 +4,88 @@
  */
 package davidpuertocuenca.autotech.dao;
 
-
-import davidpuertocuenca.autotech.clases.UsuariosTalleres;
+import davidpuertocuenca.autotech.clases.Empleados;
 import jakarta.persistence.NoResultException;
 import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.hibernate.Session;
+
 
 /**
  *
  * @author David Puerto Cuenca
  */
-public class UsuariosTalleresDAO {
-        public static void crearUsuarioTallerSql(UsuariosTalleres usuario) {
+public class EmpleadosDAO {
+    public static void crearEmpleadoSql(Empleados empleado) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.getTransaction().begin();
-                session.persist(usuario);
+                session.persist(empleado);
                     session.getTransaction().commit();
         }
     }
     
-    public static void eliminarUsuarioTallerSql(UsuariosTalleres usuario){
+    public static void eliminarEmpleadoSql(Empleados empleado){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
-                session.remove(usuario);
+                session.remove(empleado);
                     session.getTransaction().commit();
         }
     }
     
-    public static UsuariosTalleres obtenerUsuarioTallerPorUsuarioSql(String usuario){
+    public static Empleados obtenerEmpleadoPorUsuarioSql(String empleado){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<UsuariosTalleres> q = session.createNamedQuery("get_usuarioTalleres_username", UsuariosTalleres.class);
-                q.setParameter("username", usuario);
-                    return (UsuariosTalleres) q.getSingleResult();
+            Query<Empleados> q = session.createNamedQuery("get_empleados_username", Empleados.class);
+                q.setParameter("username", empleado);
+                    return (Empleados) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
     }
     
-    public static UsuariosTalleres obtenerUsuarioTallerPorDniSql(String dni){
+    public static Empleados obtenerEmpleadoPorDniSql(String dni){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<UsuariosTalleres> q = session.createNamedQuery("get_usuarioTalleres_dni", UsuariosTalleres.class);
+            Query<Empleados> q = session.createNamedQuery("get_empleados_dni", Empleados.class);
                 q.setParameter("dniCliente", dni);
-                    return (UsuariosTalleres) q.getSingleResult();
+                    return (Empleados) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
     }
     
-    public static UsuariosTalleres loginUsuarioTallerSql(String usuario,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
+    public static Empleados loginEmpleadoSql(String empleado,String contrasena){    //Creo que obsoleto - PUEDE Q SOBRE COMPROBAR A FINAL DE PROYECTO
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<UsuariosTalleres> q = session.createNamedQuery("get_usuarioTalleres_login", UsuariosTalleres.class);
-                q.setParameter("username", usuario);
+            Query<Empleados> q = session.createNamedQuery("get_empleados_login", Empleados.class);
+                q.setParameter("username", empleado);
                     q.setParameter("password", contrasena);
-                        return (UsuariosTalleres) q.getSingleResult();
+                        return (Empleados) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }
     }
     
-     public static List<UsuariosTalleres> obtenerTodosUsuariosTalleresSql(){
+     public static List<Empleados> obtenerTodosEmpleadosSql(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<UsuariosTalleres> q = session.createNamedQuery("get_todos_usuariosTalleres", UsuariosTalleres.class);
+            Query<Empleados> q = session.createNamedQuery("get_todos_empleados", Empleados.class);
                 return q.getResultList();
         } catch (NoResultException e) {
             return null;
         }
     }
     
-     public static boolean actualizarUsuarioTallerSql(UsuariosTalleres usuario){
+     public static boolean actualizarEmpleadoSql(Empleados empleado){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             session.getTransaction().begin();
-                session.merge(usuario);
+                session.merge(empleado);
                     session.getTransaction().commit();
                         return true;
         }
      }
      
-     public static UsuariosTalleres obtenerUsuarioTallerSql(String usuario){  
+     public static Empleados obtenerEmpleadosSql(String empleado){  
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Query<UsuariosTalleres> q = session.createNamedQuery("get_usuarioTalleres", UsuariosTalleres.class);
-                q.setParameter("username", usuario);
-                    return (UsuariosTalleres) q.getSingleResult();
+            Query<Empleados> q = session.createNamedQuery("get_empleados", Empleados.class);
+                q.setParameter("username", empleado);
+                    return (Empleados) q.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }

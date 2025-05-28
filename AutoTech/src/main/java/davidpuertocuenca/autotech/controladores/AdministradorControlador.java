@@ -8,13 +8,16 @@ import com.toedter.calendar.JCalendar;
 import davidpuertocuenca.autotech.clases.Citas;
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
-import davidpuertocuenca.autotech.clases.UsuariosTalleres;
+import davidpuertocuenca.autotech.clases.Empleados;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerNumeroCitasSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasMatriculaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerTodasCitasSql;
+import static davidpuertocuenca.autotech.dao.EmpleadosDAO.actualizarEmpleadoSql;
+import static davidpuertocuenca.autotech.dao.EmpleadosDAO.obtenerEmpleadoPorDniSql;
+import static davidpuertocuenca.autotech.dao.EmpleadosDAO.obtenerTodosEmpleadosSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.eliminarTallerSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNumeroSql;
@@ -34,11 +37,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import davidpuertocuenca.autotech.vistas.administrador.usuarios.ModificarUsuarios;
@@ -47,9 +46,6 @@ import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.eliminarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerTodosUsuariosSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioSql;
-import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.actualizarUsuarioTallerSql;
-import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerTodosUsuariosTalleresSql;
-import static davidpuertocuenca.autotech.dao.UsuariosTalleresDAO.obtenerUsuarioTallerPorDniSql;
 import davidpuertocuenca.autotech.util.Estilos;
 import davidpuertocuenca.autotech.vistas.administrador.citas.ModificarCitaAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
@@ -135,9 +131,9 @@ public class AdministradorControlador {
         tablaEmpleados.getTableHeader().setReorderingAllowed(false);
 
 
-            List<UsuariosTalleres> usuarioTalleres = new ArrayList(obtenerTodosUsuariosTalleresSql());
+            List<Empleados> empleados = new ArrayList(obtenerTodosEmpleadosSql());
           
-            for(UsuariosTalleres usuarioTaller : usuarioTalleres){
+            for(Empleados usuarioTaller : empleados){
                 Object[] fila = new Object[5];
                 fila[0] = usuarioTaller.getDni();
                 fila[1] = usuarioTaller.getUsuario();
@@ -337,7 +333,7 @@ public class AdministradorControlador {
             }
          }
          
-         public void cargarTalleresUsuarioTallerComboBox(JComboBox boxTalleres, UsuariosTalleres usuarioTaller){
+         public void cargarTalleresUsuarioTallerComboBox(JComboBox boxTalleres, Empleados usuarioTaller){
             boxTalleres.removeAllItems(); 
 
             boxTalleres.addItem("Seleccione un taller:");
@@ -399,9 +395,9 @@ public class AdministradorControlador {
         crearTablaCitas(tablaCitas, vista);
     }
     
-    public void modificarTallerEmpleado(UsuariosTalleres usuarioTaller, JComboBox comboBoxTalleres, JDialog vista){
+    public void modificarTallerEmpleado(Empleados usuarioTaller, JComboBox comboBoxTalleres, JDialog vista){
         usuarioTaller.setTaller(obtenerTallerPorNombreSql((String)comboBoxTalleres.getSelectedItem()));
-            actualizarUsuarioTallerSql(usuarioTaller);
+            actualizarEmpleadoSql(usuarioTaller);
                 vista.dispose();
     }
     
@@ -571,7 +567,7 @@ public class AdministradorControlador {
      
      public void vistaAsignarTallerAEmpleado(JTable tablaEmpleados, JFrame vista){
         try{
-            DialogAsignarTallerEmpleado vate = new DialogAsignarTallerEmpleado(vista, true, obtenerUsuarioTallerPorDniSql((String) tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
+            DialogAsignarTallerEmpleado vate = new DialogAsignarTallerEmpleado(vista, true, obtenerEmpleadoPorDniSql((String) tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0)));
                 vate.setVisible(true);
                     //Al finalizar se actualiza la tabla.
                     crearTablaEmpleados(tablaEmpleados);

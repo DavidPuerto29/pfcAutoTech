@@ -4,7 +4,7 @@
  */
 package davidpuertocuenca.autotech.vistas.administrador.empleados;
 
-import davidpuertocuenca.autotech.clases.UsuariosTalleres;
+import davidpuertocuenca.autotech.clases.Empleados;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 
 /**
@@ -13,7 +13,7 @@ import davidpuertocuenca.autotech.controladores.AdministradorControlador;
  */
 public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
     private AdministradorControlador controlador = new AdministradorControlador();
-    private UsuariosTalleres usuarioTaller;
+    private Empleados usuarioTaller;
     /**
      * Creates new form vistaAsignarTallerEmpleado
      */
@@ -22,7 +22,7 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
         initComponents();
     }
     
-    public DialogAsignarTallerEmpleado(java.awt.Frame parent, boolean modal, UsuariosTalleres usuarioTaller) {
+    public DialogAsignarTallerEmpleado(java.awt.Frame parent, boolean modal, Empleados usuarioTaller) {
         super(parent, modal);
         initComponents();
         this.usuarioTaller = usuarioTaller;

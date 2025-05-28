@@ -47,6 +47,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldCodigoPostal.addActionListener(finalizarRegistroListener);
         fieldTelefono.addActionListener(finalizarRegistroListener);
         fieldLocalidad.addActionListener(finalizarRegistroListener);
+        fieldCitasMaximas.addActionListener(finalizarRegistroListener);
 
     }
     
@@ -56,6 +57,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         textoErrorDireccion.setVisible(false);
         textoErrorLocalidad.setVisible(false);
         textoErrorCodigoPostal.setVisible(false);
+        textoErrorCitasMaximas.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -66,6 +68,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         fieldCodigoPostal.setText(taller.getCodigoPostal());
         fieldTelefono.setText(taller.getTelefono());
         fieldLocalidad.setText(taller.getLocalidad());
+        fieldCitasMaximas.setText(String.valueOf(taller.getCitasMaximas()));
     }
 
         private boolean registrarTaller(){
@@ -205,7 +208,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         setTitle("Modificar Taller");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonCancelar.setText("Cancelar");
@@ -313,7 +317,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 920, 400));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

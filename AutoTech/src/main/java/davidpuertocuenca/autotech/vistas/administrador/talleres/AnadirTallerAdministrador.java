@@ -237,75 +237,75 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCitasMaximas.setText("Debe introducir un número.");
         textoErrorCitasMaximas.setToolTipText("");
-        getContentPane().add(textoErrorCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 210, -1));
+        getContentPane().add(textoErrorCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 250, -1));
 
         labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
         labelCitasMaximas.setText("Citas Maximas");
-        getContentPane().add(labelCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 110, -1));
+        getContentPane().add(labelCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 260, 250, -1));
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorLocalidad.setText("Debe introducir una localidad.");
         textoErrorLocalidad.setToolTipText("");
-        getContentPane().add(textoErrorLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 212, -1));
+        getContentPane().add(textoErrorLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 250, -1));
 
         fieldLocalidad.setToolTipText("");
         getContentPane().add(fieldLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 250, 40));
 
         labelLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         labelLocalidad.setText("Localidad");
-        getContentPane().add(labelLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 111, -1));
+        getContentPane().add(labelLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 250, -1));
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         textoErrorTelefono.setToolTipText("");
-        getContentPane().add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 211, -1));
+        getContentPane().add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 250, -1));
 
         fieldTelefono.setToolTipText("");
         getContentPane().add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 250, 40));
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        getContentPane().add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 110, -1));
+        getContentPane().add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 250, -1));
 
         textoErrorCodigoPostal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCodigoPostal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
-        getContentPane().add(textoErrorCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 211, -1));
+        getContentPane().add(textoErrorCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, 250, -1));
 
         fieldCodigoPostal.setToolTipText("");
         getContentPane().add(fieldCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, 250, 40));
 
         labelCodigoPostal.setForeground(new java.awt.Color(255, 255, 255));
         labelCodigoPostal.setText("Código Postal");
-        getContentPane().add(labelCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 110, -1));
+        getContentPane().add(labelCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 250, -1));
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
-        getContentPane().add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 191, -1));
+        getContentPane().add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 250, -1));
 
         fieldDireccion.setToolTipText("");
         getContentPane().add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 250, 40));
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        getContentPane().add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 110, -1));
+        getContentPane().add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 250, -1));
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        getContentPane().add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 189, -1));
+        getContentPane().add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 250, -1));
 
         fieldNombre.setToolTipText("");
         getContentPane().add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 250, 40));
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre Del Taller");
-        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 112, -1));
+        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 250, -1));
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,13 +317,13 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
 
         labelIdentidicacionFiscal1.setForeground(new java.awt.Color(255, 255, 255));
         labelIdentidicacionFiscal1.setText("Identificación Fiscal");
-        getContentPane().add(labelIdentidicacionFiscal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 110, -1));
+        getContentPane().add(labelIdentidicacionFiscal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 250, -1));
 
         textoErrorIdentidicacionFiscal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorIdentidicacionFiscal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorIdentidicacionFiscal.setText("Debe introducir un cif.");
         textoErrorIdentidicacionFiscal.setToolTipText("");
-        getContentPane().add(textoErrorIdentidicacionFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 210, -1));
+        getContentPane().add(textoErrorIdentidicacionFiscal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 250, -1));
 
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 210, 50));
@@ -332,7 +332,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 920, 490));
 
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

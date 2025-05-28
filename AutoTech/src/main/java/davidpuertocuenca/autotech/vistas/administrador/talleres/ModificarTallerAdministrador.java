@@ -22,12 +22,14 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
      */
     public ModificarTallerAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         mostrarDatos();
         reiniciarEtiquetas();
     }
     
     public ModificarTallerAdministrador(Talleres taller) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.taller = taller;
         mostrarDatos();
         reiniciarEtiquetas();

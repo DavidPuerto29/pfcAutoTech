@@ -25,11 +25,13 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
      */
     public ModificarVehiculoUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
     }
     
      public ModificarVehiculoUsuario(Vehiculos vehiculo, Usuarios cliente) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();

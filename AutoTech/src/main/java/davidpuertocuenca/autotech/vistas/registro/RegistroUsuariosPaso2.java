@@ -23,11 +23,13 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
      */
     public RegistroUsuariosPaso2() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
     }
     
     public RegistroUsuariosPaso2(Usuarios cliente) {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         this.cliente = cliente;
         
@@ -105,7 +107,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
         } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
-        if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
+        if (!fieldTelefono.getText().trim().matches("\\d{9}") && !fieldTelefono.getText().trim().isEmpty()) {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El formato no es el correcto.");         
@@ -255,7 +257,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
                 botonFinalizarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 80, 20));
+        getContentPane().add(botonFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 100, 20));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -263,7 +265,7 @@ public class RegistroUsuariosPaso2 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, 90, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));

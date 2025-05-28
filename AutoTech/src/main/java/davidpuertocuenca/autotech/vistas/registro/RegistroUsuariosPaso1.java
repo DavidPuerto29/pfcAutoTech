@@ -10,7 +10,6 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.controladores.RegistroControlador;
 import java.util.Arrays;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
-import davidpuertocuenca.autotech.vistas.login.LoginAdministradores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +26,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
      */
     public RegistroUsuariosPaso1() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         
         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
@@ -213,7 +213,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, -1, -1));
+        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 90, -1));
 
         botonContinuar.setText("Continuar");
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +221,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
                 botonContinuarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 85, -1));
+        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 100, -1));
 
         checkTerminosYCondiciones.setBackground(new java.awt.Color(0, 0, 0));
         checkTerminosYCondiciones.setForeground(new java.awt.Color(255, 255, 255));
@@ -236,7 +236,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         textoErrorTerminos.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTerminos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTerminos.setText("Debe aceptar los términos.");
-        getContentPane().add(textoErrorTerminos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 210, -1));
+        getContentPane().add(textoErrorTerminos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 210, -1));
 
         labelContrasena2.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena2.setText("Contraseña");

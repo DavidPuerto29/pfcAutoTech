@@ -10,7 +10,6 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
-import davidpuertocuenca.autotech.vistas.usuario.Vehiculos.AnadirVehiculoPaso1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -35,6 +34,7 @@ public class PedirCita extends javax.swing.JFrame {
      */
     public PedirCita() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         controlador.cargarTalleresComboBox(boxTalleres);
        
@@ -50,6 +50,7 @@ public class PedirCita extends javax.swing.JFrame {
     
     public PedirCita(Usuarios usuario, Vehiculos vehiculo) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();

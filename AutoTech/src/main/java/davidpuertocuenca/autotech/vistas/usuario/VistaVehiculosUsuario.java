@@ -6,9 +6,6 @@ package davidpuertocuenca.autotech.vistas.usuario;
 
 import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JMenuBar;
 
 /**
  *
@@ -22,12 +19,14 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
      */
     public VistaVehiculosUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
     public VistaVehiculosUsuario(Usuarios cliente) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.cliente = cliente;
         controlador.crearTablaVehiculos(tablaVehiculos, this.cliente);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 

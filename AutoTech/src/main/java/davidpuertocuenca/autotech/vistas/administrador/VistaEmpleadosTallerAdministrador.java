@@ -17,6 +17,7 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
      */
     public VistaEmpleadosTallerAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador.crearTablaEmpleados(tablaEmpleados);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }

@@ -10,7 +10,7 @@ import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class VistaCitasUsuario extends javax.swing.JFrame {
     private Vehiculos vehiculo;
@@ -22,12 +22,14 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
      */
     public VistaCitasUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
          controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }
     
     public VistaCitasUsuario(Vehiculos vehiculo, Usuarios usuario) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.vehiculo = vehiculo;
         this.usuario = usuario;
         controlador.crearTablaCitas(tablaCitasVehiculo, vehiculo);

@@ -9,7 +9,6 @@ import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
-import davidpuertocuenca.autotech.vistas.usuario.VistaCitasUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,12 +24,14 @@ public class ModificarUsuarios extends javax.swing.JFrame {
      */
     public ModificarUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         mostrarDatos();
     }
     
     public ModificarUsuarios(Usuarios usuario) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.usuario = usuario;
         reiniciarEtiquetas();
         mostrarDatos();
@@ -80,7 +81,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         boolean formatoCorrecto = true;
         
         //Comprobación de que el usuario no esta ya en uso.
-        if(obtenerUsuarioPorUsuarioSql(fieldUsuario.getText()) != null){
+        if(obtenerUsuarioPorUsuarioSql(fieldUsuario.getText()) != null && !usuario.getUsuario().equals(fieldUsuario.getText())){
             formatoCorrecto = false;
                 textoErrorUsuario.setText("Usuario ya en uso.");
                     textoErrorUsuario.setVisible(true);            
@@ -108,7 +109,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         }
         
                 //Comprobación de que el dni no esta ya en uso.
-        if(obtenerUsuarioPorDniSql(fieldDni.getText()) != null){
+        if(obtenerUsuarioPorDniSql(fieldDni.getText()) != null && !usuario.getDni().equals(fieldDni.getText())){
             formatoCorrecto = false;
                 textoErrorDni.setText("Dni ya en uso.");
                     textoErrorDni.setVisible(true);            
@@ -152,7 +153,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
-        if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
+        if (!fieldTelefono.getText().trim().matches("\\d{9}") && !fieldTelefono.getText().trim().isEmpty()) {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El formato no es el correcto.");         

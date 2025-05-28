@@ -5,11 +5,8 @@
 package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.controladores.LoginControlador;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -23,6 +20,7 @@ public class LoginAdministradores extends javax.swing.JFrame {
      */
     public LoginAdministradores() {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         //Método para acceder al programa pulsando enter.
         textContrasena.addActionListener(new ActionListener() {

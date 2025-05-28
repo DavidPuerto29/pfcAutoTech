@@ -22,12 +22,14 @@ public class ModificarVehiculo extends javax.swing.JFrame {
      */
     public ModificarVehiculo() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         mostrarDatos();
     }
     
      public ModificarVehiculo(Vehiculos vehiculo) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
         mostrarDatos();

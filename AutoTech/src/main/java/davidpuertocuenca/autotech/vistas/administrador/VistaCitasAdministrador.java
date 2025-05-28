@@ -19,6 +19,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
      */
     public VistaCitasAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador.crearTablaCitas(tablaCitas, this);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }

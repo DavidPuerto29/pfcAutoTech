@@ -18,6 +18,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
      */
     public VistaVehiculosAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador.crearTablaVehiculos(tablaVehiculos, this);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }

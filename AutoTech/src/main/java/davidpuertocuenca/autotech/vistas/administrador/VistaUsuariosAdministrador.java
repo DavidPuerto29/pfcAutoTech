@@ -19,7 +19,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
      */
     public VistaUsuariosAdministrador() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         controlador.crearTablaClientes(tablaUsuarios);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5);
     }

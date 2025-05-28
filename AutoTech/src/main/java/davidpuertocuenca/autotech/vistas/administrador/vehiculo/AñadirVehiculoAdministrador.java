@@ -23,6 +23,7 @@ public class AñadirVehiculoAdministrador extends javax.swing.JFrame {
      */
     public AñadirVehiculoAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         controlador.cargarClientesComboBox(comboBoxClientes);
     }

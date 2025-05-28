@@ -22,6 +22,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
      */
     public AnadirTallerAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         
         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.

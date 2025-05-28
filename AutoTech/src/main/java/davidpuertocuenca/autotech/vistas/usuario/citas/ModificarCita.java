@@ -35,12 +35,14 @@ public class ModificarCita extends javax.swing.JFrame {
     
     public ModificarCita() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         rellenarCampos();
     }
     
     public ModificarCita(Usuarios usuario, Vehiculos vehiculo, Citas cita) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         this.cita = cita;

@@ -17,6 +17,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
      */
     public VistaTalleresAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         controlador.crearTablaTalleres(tablaTalleres, this);
         controlador.colocarCerrarSesion(jMenuBar1, jMenu5); 
     }

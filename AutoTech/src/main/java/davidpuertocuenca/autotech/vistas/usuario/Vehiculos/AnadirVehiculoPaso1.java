@@ -26,11 +26,13 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
      */
     public AnadirVehiculoPaso1() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
     }
     
     public AnadirVehiculoPaso1(Usuarios cliente) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.cliente = cliente;
         reiniciarEtiquetas();
         

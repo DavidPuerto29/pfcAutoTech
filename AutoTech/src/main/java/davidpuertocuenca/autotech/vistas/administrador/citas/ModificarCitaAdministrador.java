@@ -33,12 +33,14 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     
     public ModificarCitaAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         reiniciarEtiquetas();
         rellenarCampos();
     }
     
     public ModificarCitaAdministrador(Vehiculos vehiculo, Citas cita) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.vehiculo = vehiculo;
         this.cita = cita;
         reiniciarEtiquetas();

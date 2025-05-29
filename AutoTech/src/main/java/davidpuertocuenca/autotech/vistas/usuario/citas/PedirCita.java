@@ -10,6 +10,10 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.crearCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloComboBox;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloJCalendar;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -35,6 +39,14 @@ public class PedirCita extends javax.swing.JFrame {
     public PedirCita() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonPedir);
+        aplicarEstiloTextField(textDescripcion);
+        aplicarEstiloComboBox(boxTalleres);
+        aplicarEstiloComboBox(boxHorario);
+        aplicarEstiloJCalendar(calendarioDiasCita);
+
         reiniciarEtiquetas();
         controlador.cargarTalleresComboBox(boxTalleres);
        
@@ -51,6 +63,14 @@ public class PedirCita extends javax.swing.JFrame {
     public PedirCita(Usuarios usuario, Vehiculos vehiculo) {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonPedir);
+        aplicarEstiloTextField(textDescripcion);
+        aplicarEstiloComboBox(boxTalleres);
+        aplicarEstiloComboBox(boxHorario);
+        aplicarEstiloJCalendar(calendarioDiasCita);
+        
         this.usuario = usuario;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
@@ -146,6 +166,7 @@ public class PedirCita extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FormularioCita = new javax.swing.JPanel();
         boxHorario = new javax.swing.JComboBox();
         labelFecha = new javax.swing.JLabel();
         labelMotivo = new javax.swing.JLabel();
@@ -160,8 +181,6 @@ public class PedirCita extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         botonPedir = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,50 +191,52 @@ public class PedirCita extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        FormularioCita.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una hora." }));
         boxHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxHorarioActionPerformed(evt);
             }
         });
-        getContentPane().add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 220, 40));
+        FormularioCita.add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 250, 40));
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
         labelFecha.setText("Fecha");
-        getContentPane().add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 119, -1));
+        FormularioCita.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 119, -1));
 
         labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
         labelMotivo.setText("Breve descripción");
         labelMotivo.setToolTipText("");
-        getContentPane().add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 121, -1));
+        FormularioCita.add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 121, -1));
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
         labelHorario.setText("Horario");
-        getContentPane().add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, 121, -1));
+        FormularioCita.add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 121, -1));
 
         textoErrorHora.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorHora.setText("Debe seleccionar una hora.");
-        getContentPane().add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 181, -1));
+        FormularioCita.add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 250, -1));
 
         textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTaller.setText("Debe seleccionar un taller.");
-        getContentPane().add(textoErrorTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 182, -1));
+        FormularioCita.add(textoErrorTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 250, -1));
 
         textoErrorMotivo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMotivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMotivo.setText("Debe describir el motivo.");
         textoErrorMotivo.setToolTipText("");
-        getContentPane().add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, 183, -1));
+        FormularioCita.add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 250, -1));
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
-        getContentPane().add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 121, -1));
-        getContentPane().add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 530, 220, 40));
-        getContentPane().add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 191, 143));
+        FormularioCita.add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 121, -1));
+        FormularioCita.add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 250, 40));
+        FormularioCita.add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 143));
 
-        getContentPane().add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 220, 40));
+        FormularioCita.add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 250, 40));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,28 +244,25 @@ public class PedirCita extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 620, 100, -1));
+        FormularioCita.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 100, 30));
 
-        botonPedir.setText("Pedir");
+        botonPedir.setText("Solicitar");
         botonPedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonPedirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 620, -1, -1));
+        FormularioCita.add(botonPedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 100, 30));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("Pedir Cita");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 150, 40));
+        labelIniciarSesion.setText("AutoTech – Solicitud de Cita");
+        FormularioCita.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 320, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 180, 50));
+        getContentPane().add(FormularioCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 520, 620));
+        FormularioCita.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 560, 650));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
@@ -298,13 +316,12 @@ public class PedirCita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FormularioCita;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonPedir;
     private javax.swing.JComboBox boxHorario;
     private javax.swing.JComboBox<String> boxTalleres;
     private com.toedter.calendar.JCalendar calendarioDiasCita;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHorario;

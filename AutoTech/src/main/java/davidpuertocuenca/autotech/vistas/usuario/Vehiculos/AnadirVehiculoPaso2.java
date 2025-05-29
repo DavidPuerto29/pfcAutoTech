@@ -8,13 +8,15 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.crearVehiculoSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import davidpuertocuenca.autotech.vistas.usuario.VistaVehiculosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  *
- * @author David
+ * @author David Puerto Cuenca
  */
 public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     private Vehiculos vehiculo;
@@ -26,12 +28,25 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     public AnadirVehiculoPaso2() {
         initComponents();
         this.setLocationRelativeTo(null);
+         //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonAnadir);
+        aplicarEstiloTextField(fieldMarca);
+        aplicarEstiloTextField(fieldModelo);
+        aplicarEstiloTextField(fieldColor);
         reiniciarEtiquetas();
     }
     
     public AnadirVehiculoPaso2(Usuarios cliente, Vehiculos vehiculo) {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonAnadir);
+        aplicarEstiloTextField(fieldMarca);
+        aplicarEstiloTextField(fieldModelo);
+        aplicarEstiloTextField(fieldColor);
+        
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
@@ -110,6 +125,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formularioVehiculo = new javax.swing.JPanel();
         labelMarca = new javax.swing.JLabel();
         fieldMarca = new javax.swing.JTextField();
         textoErrorMarca = new javax.swing.JLabel();
@@ -122,8 +138,6 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         botonAnadir = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,41 +148,43 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        formularioVehiculo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelMarca.setForeground(new java.awt.Color(255, 255, 255));
         labelMarca.setText("Marca");
-        getContentPane().add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 120, -1));
+        formularioVehiculo.add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 250, -1));
 
         fieldMarca.setToolTipText("");
-        getContentPane().add(fieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 250, 40));
+        formularioVehiculo.add(fieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 250, 40));
 
         textoErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMarca.setText("Debe introducir una marca.");
-        getContentPane().add(textoErrorMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 180, -1));
+        formularioVehiculo.add(textoErrorMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 250, -1));
 
         labelModelo.setForeground(new java.awt.Color(255, 255, 255));
         labelModelo.setText("Modelo");
-        getContentPane().add(labelModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 120, -1));
+        formularioVehiculo.add(labelModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 250, -1));
 
         fieldModelo.setToolTipText("");
-        getContentPane().add(fieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 250, 40));
+        formularioVehiculo.add(fieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 250, 40));
 
         textoErrorModelo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorModelo.setText("Debe introducir un modelo.");
-        getContentPane().add(textoErrorModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
+        formularioVehiculo.add(textoErrorModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 250, -1));
 
         labelColor.setForeground(new java.awt.Color(255, 255, 255));
         labelColor.setText("Color");
-        getContentPane().add(labelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 120, -1));
+        formularioVehiculo.add(labelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, -1));
 
         fieldColor.setToolTipText("");
-        getContentPane().add(fieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 250, 40));
+        formularioVehiculo.add(fieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 40));
 
         textoErrorColor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorColor.setText("Debe introducir un color,");
-        getContentPane().add(textoErrorColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, -1, -1));
+        formularioVehiculo.add(textoErrorColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 240, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +192,7 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 530, -1, -1));
+        formularioVehiculo.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 100, 30));
 
         botonAnadir.setText("Añadir");
         botonAnadir.addActionListener(new java.awt.event.ActionListener() {
@@ -184,20 +200,17 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
                 botonAnadirActionPerformed(evt);
             }
         });
-        getContentPane().add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 90, -1));
+        formularioVehiculo.add(botonAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 100, 30));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("[○●] Paso 2: Añadir Vehículo(Con mas estilo)");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 518, 40));
+        labelIniciarSesion.setText("AutoTech - Paso 2 de 2: Añadir Vehículo");
+        formularioVehiculo.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 470, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 490, 50));
+        getContentPane().add(formularioVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 520, 440));
+        formularioVehiculo.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 540, 550));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
@@ -253,9 +266,8 @@ public class AnadirVehiculoPaso2 extends javax.swing.JFrame {
     private javax.swing.JTextField fieldColor;
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldModelo;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioVehiculo;
     private javax.swing.JLabel labelColor;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelMarca;

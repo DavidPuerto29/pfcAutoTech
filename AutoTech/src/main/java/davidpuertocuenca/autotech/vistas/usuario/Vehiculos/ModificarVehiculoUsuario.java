@@ -9,6 +9,8 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.actualizarVehiculoSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,12 +28,30 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     public ModificarVehiculoUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldMarca);
+        aplicarEstiloTextField(fieldModelo);
+        aplicarEstiloTextField(fieldColor);
+        aplicarEstiloTextField(fieldAnoMatriculacion);
+        aplicarEstiloTextField(fieldMatricula);
+        
         reiniciarEtiquetas();
     }
     
      public ModificarVehiculoUsuario(Vehiculos vehiculo, Usuarios cliente) {
         initComponents();
         this.setLocationRelativeTo(null);
+         //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldMarca);
+        aplicarEstiloTextField(fieldModelo);
+        aplicarEstiloTextField(fieldColor);
+        aplicarEstiloTextField(fieldAnoMatriculacion);
+        aplicarEstiloTextField(fieldMatricula);
+        
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         reiniciarEtiquetas();
@@ -174,6 +194,7 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formularioVehiculo = new javax.swing.JPanel();
         labelAnoMatriculacion = new javax.swing.JLabel();
         fieldAnoMatriculacion = new javax.swing.JTextField();
         textoErrorAnoMatriculacion = new javax.swing.JLabel();
@@ -192,8 +213,6 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         textoErrorColor = new javax.swing.JLabel();
         labelColor = new javax.swing.JLabel();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,29 +223,31 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        formularioVehiculo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
-        getContentPane().add(labelAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 120, -1));
+        formularioVehiculo.add(labelAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 250, -1));
 
         fieldAnoMatriculacion.setToolTipText("");
-        getContentPane().add(fieldAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 250, 40));
+        formularioVehiculo.add(fieldAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 250, 40));
 
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorAnoMatriculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-        getContentPane().add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, -1, -1));
+        formularioVehiculo.add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 250, -1));
 
         labelModelo.setForeground(new java.awt.Color(255, 255, 255));
         labelModelo.setText("Modelo");
-        getContentPane().add(labelModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 121, -1));
+        formularioVehiculo.add(labelModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 250, -1));
 
         fieldModelo.setToolTipText("");
-        getContentPane().add(fieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 350, 250, 40));
+        formularioVehiculo.add(fieldModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 250, 40));
 
         textoErrorModelo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorModelo.setText("Debe introducir un modelo.");
-        getContentPane().add(textoErrorModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 390, -1, -1));
+        formularioVehiculo.add(textoErrorModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 250, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +255,7 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 620, -1, -1));
+        formularioVehiculo.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 100, 30));
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,56 +263,53 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 620, -1, -1));
+        formularioVehiculo.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 550, 100, 30));
 
         fieldMatricula.setToolTipText("");
-        getContentPane().add(fieldMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 40));
+        formularioVehiculo.add(fieldMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 250, 40));
 
         labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
         labelMatricula.setText("Matrícula");
-        getContentPane().add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 60, -1));
+        formularioVehiculo.add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 250, -1));
 
         labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
         labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         labelErrorMatricula.setText("Matrícula ya registrada.");
-        getContentPane().add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 170, -1));
+        formularioVehiculo.add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 250, -1));
 
         textoErrorMarca.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMarca.setText("Debe introducir una marca.");
-        getContentPane().add(textoErrorMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 180, -1));
+        formularioVehiculo.add(textoErrorMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 250, -1));
 
         fieldMarca.setToolTipText("");
-        getContentPane().add(fieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 250, 40));
+        formularioVehiculo.add(fieldMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 40));
 
         labelMarca.setForeground(new java.awt.Color(255, 255, 255));
         labelMarca.setText("Marca");
-        getContentPane().add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 120, -1));
+        formularioVehiculo.add(labelMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 250, -1));
 
         fieldColor.setToolTipText("");
-        getContentPane().add(fieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 540, 250, 40));
+        formularioVehiculo.add(fieldColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 250, 40));
 
         textoErrorColor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorColor.setText("Debe introducir un color,");
-        getContentPane().add(textoErrorColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 580, -1, -1));
+        formularioVehiculo.add(textoErrorColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 250, -1));
 
         labelColor.setForeground(new java.awt.Color(255, 255, 255));
         labelColor.setText("Color");
-        getContentPane().add(labelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, 120, -1));
+        formularioVehiculo.add(labelColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 250, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("Modificar Vehículo");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 227, 40));
+        labelIniciarSesion.setText("AutoTech – Edita Tu Vehículo");
+        formularioVehiculo.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 350, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 490, 50));
+        getContentPane().add(formularioVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 520, 620));
+        formularioVehiculo.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 560, 630));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 690));
 
         pack();
@@ -354,9 +372,8 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField fieldMarca;
     private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldModelo;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioVehiculo;
     private javax.swing.JLabel labelAnoMatriculacion;
     private javax.swing.JLabel labelColor;
     private javax.swing.JLabel labelErrorMatricula;

@@ -4,6 +4,9 @@
  */
 package davidpuertocuenca.autotech.util;
 
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDayChooser;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
@@ -15,12 +18,14 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.BasicPasswordFieldUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -193,4 +198,88 @@ public class Estilos {
                 });
     }
      
+            public static void aplicarEstiloComboBox(JComboBox<?> comboBox) {
+                int radio = 20;
+                int alto = 40;
+                Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
+                Color colorFondo = Color.WHITE;
+                Color colorBorde = new Color(33, 150, 243); // Azul AutoTech
+
+                comboBox.setPreferredSize(new Dimension(180, alto));
+                comboBox.setFont(fuente);
+                comboBox.setForeground(Color.BLACK);
+                comboBox.setBackground(colorFondo);
+                comboBox.setOpaque(false);
+                comboBox.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
+
+                // UI personalizada para pintar borde redondeado
+                comboBox.setUI(new BasicComboBoxUI() {
+                    @Override
+                    public void paint(Graphics g, JComponent c) {
+                        Graphics2D g2 = (Graphics2D) g.create();
+                        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                        // Fondo
+                        g2.setColor(colorFondo);
+                        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), radio, radio);
+
+                        // Borde
+                        g2.setColor(colorBorde);
+                        g2.setStroke(new BasicStroke(2));
+                        g2.drawRoundRect(1, 1, c.getWidth() - 3, c.getHeight() - 3, radio, radio);
+
+                        g2.dispose();
+                        super.paint(g, c);
+                    }
+                });
+
+                // Editor (si es editable)
+                if (comboBox.isEditable()) {
+                    Component editor = comboBox.getEditor().getEditorComponent();
+                    if (editor instanceof JTextField) {
+                        JTextField textField = (JTextField) editor;
+                        textField.setFont(fuente);
+                        textField.setBackground(colorFondo);
+                        textField.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+                    }
+                }
+            }
+    
+    public static void aplicarEstiloJCalendar(JCalendar calendario) {
+            Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
+            Color azulAutoTech = new Color(33, 150, 243);
+            Color fondo = Color.WHITE;
+            Color texto = Color.BLACK;
+            Color rojoDomingo = new Color(244, 67, 54);
+
+            calendario.setFont(fuente);
+            calendario.setBackground(fondo);
+            calendario.setForeground(texto);
+            calendario.setSundayForeground(rojoDomingo);
+            calendario.setWeekdayForeground(texto);
+
+            // Estilizamos el JDayChooser internamente
+            JDayChooser dayChooser = calendario.getDayChooser();
+            dayChooser.setBackground(fondo);
+            dayChooser.setDecorationBackgroundColor(fondo);
+            dayChooser.setSundayForeground(rojoDomingo);
+            dayChooser.setWeekdayForeground(texto);
+            dayChooser.setForeground(texto);
+              
+            Component[] dias = dayChooser.getDayPanel().getComponents();
+
+            for (Component c : dias) {
+                if (c instanceof JButton boton) {
+                    boton.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+                    boton.setBackground(Color.WHITE);
+                    boton.setForeground(Color.BLACK);
+                    boton.setFocusPainted(false);
+                    boton.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+                }
+}
+
+            // Borde externo
+            calendario.setBorder(BorderFactory.createLineBorder(azulAutoTech, 2, true));
+    }
+    
 }

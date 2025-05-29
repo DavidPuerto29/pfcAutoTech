@@ -9,6 +9,7 @@ import davidpuertocuenca.autotech.vistas.login.LoginClientes;
 import davidpuertocuenca.autotech.vistas.registro.RegistroUsuariosPaso2;
 import davidpuertocuenca.autotech.vistas.registro.legal.TerminosYCondiciones;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,13 @@ public class RegistroControlador {
        LoginClientes lgc = new LoginClientes();
             lgc.setVisible(true);
                 vista.dispose(); 
+    }
+    
+    public void vistaLoginClientesFinalizarRegistro(JFrame vista){
+        JOptionPane.showMessageDialog(vista, "Su cuenta ha sido creada correctamente. ¡Bienvenido a AutoTech!", "Bienvenido a AutoTech", JOptionPane.INFORMATION_MESSAGE);
+            LoginClientes lgc = new LoginClientes();
+                 lgc.setVisible(true);
+                     vista.dispose(); 
     }
     
     public void vistaRegistroPasoDos(JFrame vista, Usuarios usuario){

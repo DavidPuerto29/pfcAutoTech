@@ -10,6 +10,9 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.controladores.RegistroControlador;
 import java.util.Arrays;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloPasswordField;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +30,14 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
     public RegistroUsuariosPaso1() {
         initComponents();
         this.setLocationRelativeTo(null);
+         //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonContinuar);
+        aplicarEstiloTextField(fieldUsuario);
+        aplicarEstiloTextField(fieldCorreo);
+        aplicarEstiloPasswordField(fieldContrasena);
+        aplicarEstiloPasswordField(fieldContrasenaVerificar);
+        
         reiniciarEtiquetas();
         
         //Listener para poder pasar al siguiente paso pulsando enter desde los textFields.
@@ -49,7 +60,6 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         textoErrorContrasena.setVisible(false);
         textoErrorContrasena1.setVisible(false);
         textoErrorCorreoElectronico.setVisible(false);
-        textoErrorTerminos.setVisible(false);
         this.revalidate(); 
         this.repaint(); 
     }
@@ -105,11 +115,6 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
                     textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
         }
         
-        //Comprobación de que el usuario haya aceptado los terminos.
-        if(aceptacionTerminos == false){
-            textoErrorTerminos.setVisible(true);
-        }
-        
         if(formatoCorrecto){
             String randormizador = generarRandomizador();
             char[] contasenaChar = fieldContrasena.getPassword();
@@ -138,25 +143,23 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fieldUsuario = new javax.swing.JTextField();
-        textoErrorUsuario = new javax.swing.JLabel();
-        fieldContrasena = new javax.swing.JPasswordField();
-        fieldContrasenaVerificar = new javax.swing.JPasswordField();
-        textoErrorContrasena = new javax.swing.JLabel();
+        formularioRegistro = new javax.swing.JPanel();
+        labelCorreoElectronico = new javax.swing.JLabel();
         fieldCorreo = new javax.swing.JTextField();
         textoErrorCorreoElectronico = new javax.swing.JLabel();
-        labelUsuario1 = new javax.swing.JLabel();
         labelContrasena = new javax.swing.JLabel();
-        labelCorreoElectronico = new javax.swing.JLabel();
+        fieldContrasena = new javax.swing.JPasswordField();
         textoErrorContrasena1 = new javax.swing.JLabel();
+        labelContrasena2 = new javax.swing.JLabel();
+        fieldContrasenaVerificar = new javax.swing.JPasswordField();
+        textoErrorContrasena = new javax.swing.JLabel();
+        checkTerminosYCondiciones = new javax.swing.JCheckBox();
+        fieldUsuario = new javax.swing.JTextField();
+        textoErrorUsuario = new javax.swing.JLabel();
+        labelUsuario1 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
         botonContinuar = new javax.swing.JButton();
-        checkTerminosYCondiciones = new javax.swing.JCheckBox();
-        textoErrorTerminos = new javax.swing.JLabel();
-        labelContrasena2 = new javax.swing.JLabel();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,61 +170,39 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fieldUsuario.setToolTipText("");
-        getContentPane().add(fieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 250, 40));
+        formularioRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textoErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorUsuario.setText("Usuario ya en uso.");
-        getContentPane().add(textoErrorUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 250, -1));
-        getContentPane().add(fieldContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 250, 40));
-        getContentPane().add(fieldContrasenaVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 250, 40));
-
-        textoErrorContrasena.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorContrasena.setText("Las contraseñas no coinciden.");
-        getContentPane().add(textoErrorContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 250, -1));
+        labelCorreoElectronico.setForeground(new java.awt.Color(255, 255, 255));
+        labelCorreoElectronico.setText("Correo Electronico");
+        formularioRegistro.add(labelCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 250, -1));
 
         fieldCorreo.setToolTipText("");
-        getContentPane().add(fieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 250, 40));
+        formularioRegistro.add(fieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 250, 40));
 
         textoErrorCorreoElectronico.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCorreoElectronico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
-        getContentPane().add(textoErrorCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 250, -1));
-
-        labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
-        labelUsuario1.setText("Usuario");
-        getContentPane().add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
+        formularioRegistro.add(textoErrorCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 250, -1));
 
         labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena.setText("Contraseña");
-        getContentPane().add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 80, -1));
-
-        labelCorreoElectronico.setForeground(new java.awt.Color(255, 255, 255));
-        labelCorreoElectronico.setText("Correo Electronico");
-        getContentPane().add(labelCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 120, -1));
+        formularioRegistro.add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, -1));
+        formularioRegistro.add(fieldContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 40));
 
         textoErrorContrasena1.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorContrasena1.setText("Las contraseñas no coinciden.");
-        getContentPane().add(textoErrorContrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 340, 250, -1));
+        formularioRegistro.add(textoErrorContrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 250, -1));
 
-        botonCancelar.setText("Cancelar");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 90, -1));
+        labelContrasena2.setForeground(new java.awt.Color(255, 255, 255));
+        labelContrasena2.setText("Contraseña");
+        formularioRegistro.add(labelContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 250, -1));
+        formularioRegistro.add(fieldContrasenaVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 250, 40));
 
-        botonContinuar.setText("Continuar");
-        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonContinuarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 530, 100, -1));
+        textoErrorContrasena.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorContrasena.setText("Las contraseñas no coinciden.");
+        formularioRegistro.add(textoErrorContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 250, -1));
 
         checkTerminosYCondiciones.setBackground(new java.awt.Color(0, 0, 0));
         checkTerminosYCondiciones.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,29 +212,45 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
                 checkTerminosYCondicionesActionPerformed(evt);
             }
         });
-        getContentPane().add(checkTerminosYCondiciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 210, -1));
+        formularioRegistro.add(checkTerminosYCondiciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 250, -1));
 
-        textoErrorTerminos.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorTerminos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorTerminos.setText("Debe aceptar los términos.");
-        getContentPane().add(textoErrorTerminos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 210, -1));
+        fieldUsuario.setToolTipText("");
+        formularioRegistro.add(fieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 250, 40));
 
-        labelContrasena2.setForeground(new java.awt.Color(255, 255, 255));
-        labelContrasena2.setText("Contraseña");
-        getContentPane().add(labelContrasena2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 90, -1));
+        textoErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorUsuario.setText("Usuario ya en uso.");
+        formularioRegistro.add(textoErrorUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 250, -1));
+
+        labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
+        labelUsuario1.setText("Usuario");
+        formularioRegistro.add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 250, -1));
+
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        formularioRegistro.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 100, 30));
+
+        botonContinuar.setText("Continuar");
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
+        formularioRegistro.add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 100, 30));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("[●○] Paso 1: Crear cuenta(Con mas estilo)");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 520, 40));
+        labelIniciarSesion.setText("AutoTech - Paso 1 de 2: Crear tu cuenta");
+        formularioRegistro.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 460, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 470, 50));
+        getContentPane().add(formularioRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 520, 590));
+        formularioRegistro.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 540, 620));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
@@ -271,7 +268,6 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         if(controlador.vistaTerminosCondiciones(this)){
             checkTerminosYCondiciones.setSelected(true);
                 aceptacionTerminos = true;
-                    textoErrorTerminos.setVisible(false);
         }else{
             checkTerminosYCondiciones.setSelected(false);
                 aceptacionTerminos = false;
@@ -324,9 +320,8 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
     private javax.swing.JPasswordField fieldContrasenaVerificar;
     private javax.swing.JTextField fieldCorreo;
     private javax.swing.JTextField fieldUsuario;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioRegistro;
     private javax.swing.JLabel labelContrasena;
     private javax.swing.JLabel labelContrasena2;
     private javax.swing.JLabel labelCorreoElectronico;
@@ -335,7 +330,6 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
     private javax.swing.JLabel textoErrorContrasena;
     private javax.swing.JLabel textoErrorContrasena1;
     private javax.swing.JLabel textoErrorCorreoElectronico;
-    private javax.swing.JLabel textoErrorTerminos;
     private javax.swing.JLabel textoErrorUsuario;
     // End of variables declaration//GEN-END:variables
 }

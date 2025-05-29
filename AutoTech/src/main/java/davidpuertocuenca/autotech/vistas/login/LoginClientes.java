@@ -107,8 +107,8 @@ public class LoginClientes extends javax.swing.JFrame {
         formularioLogin.add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 40, 40));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/logo.png"))); // NOI18N
-        formularioLogin.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
-        formularioLogin.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 218, 42));
+        formularioLogin.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        formularioLogin.add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 222, 42));
 
         botonRegistro.setText("Crear cuenta");
         botonRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public class LoginClientes extends javax.swing.JFrame {
             }
         });
         formularioLogin.add(botonRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 130, 30));
-        formularioLogin.add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, 42));
+        formularioLogin.add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 222, 42));
 
         labelContrasena.setBackground(new java.awt.Color(255, 255, 255));
         labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,7 +132,7 @@ public class LoginClientes extends javax.swing.JFrame {
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("Iniciar Sesión");
-        formularioLogin.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 148, 40));
+        formularioLogin.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 148, 40));
 
         labelUsuario1.setBackground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));

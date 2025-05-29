@@ -5,6 +5,7 @@
 package davidpuertocuenca.autotech.vistas.login;
 
 import davidpuertocuenca.autotech.controladores.LoginControlador;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -51,17 +52,17 @@ public class LoginAdministradores extends javax.swing.JFrame {
     private void initComponents() {
 
         textUsuario = new javax.swing.JTextField();
+        botonMostrarContrasena = new javax.swing.JToggleButton();
         botonIniciarSesion = new javax.swing.JToggleButton();
         botonCancelar = new javax.swing.JButton();
         textContrasena = new javax.swing.JPasswordField();
-        botonMostrarContrasena = new javax.swing.JToggleButton();
         labelContrasena = new javax.swing.JLabel();
         labelUsuario1 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         labelIniciarSesion = new javax.swing.JLabel();
         fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión Administrador");
@@ -73,6 +74,19 @@ public class LoginAdministradores extends javax.swing.JFrame {
 
         textUsuario.setToolTipText("Usuario");
         getContentPane().add(textUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 218, 42));
+
+        botonMostrarContrasena.setBackground(new java.awt.Color(255, 255, 255));
+        botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
+        botonMostrarContrasena.setBorder(null);
+        botonMostrarContrasena.setContentAreaFilled(false);
+        botonMostrarContrasena.setFocusPainted(false);
+        botonMostrarContrasena.setOpaque(true);
+        botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMostrarContrasenaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, -1, -1));
 
         botonIniciarSesion.setText("Login");
         botonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -93,14 +107,6 @@ public class LoginAdministradores extends javax.swing.JFrame {
         textContrasena.setToolTipText("Contraseña");
         getContentPane().add(textContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 218, 42));
 
-        botonMostrarContrasena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png"))); // NOI18N
-        botonMostrarContrasena.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMostrarContrasenaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonMostrarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 60, 40));
-
         labelContrasena.setForeground(new java.awt.Color(255, 255, 255));
         labelContrasena.setText("Contraseña");
         getContentPane().add(labelContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 80, -1));
@@ -120,11 +126,12 @@ public class LoginAdministradores extends javax.swing.JFrame {
         fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
         getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 225, 50));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 410, 450));
-
         fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/login_test.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2068, 1180));
+        getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 570));
+
+        jPanel1.setBackground(new Color(20, 20, 20, 120));
+        jPanel1.setOpaque(false);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 410, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,11 +146,11 @@ public class LoginAdministradores extends javax.swing.JFrame {
 
     private void botonMostrarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMostrarContrasenaActionPerformed
         if (textContrasena.getEchoChar() == '\u0000') {
-               textContrasena.setEchoChar('•'); 
-                    botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png")));
-         } else {
-               textContrasena.setEchoChar('\u0000'); 
-                     botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconOcultarContrasena.png")));
+            textContrasena.setEchoChar('•');
+            botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconMostrarContrasena.png")));
+        } else {
+            textContrasena.setEchoChar('\u0000');
+            botonMostrarContrasena.setIcon(new ImageIcon(getClass().getResource("/icons/IconOcultarContrasena.png")));
         }
     }//GEN-LAST:event_botonMostrarContrasenaActionPerformed
 
@@ -187,8 +194,8 @@ public class LoginAdministradores extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonIniciarSesion;
     private javax.swing.JToggleButton botonMostrarContrasena;
     private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelContrasena;
     private javax.swing.JLabel labelIniciarSesion;
     private javax.swing.JLabel labelUsuario1;

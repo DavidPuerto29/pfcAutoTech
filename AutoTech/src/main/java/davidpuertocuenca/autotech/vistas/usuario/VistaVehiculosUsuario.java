@@ -46,7 +46,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         tablaVehiculos = new javax.swing.JTable();
         labelVehiculos = new javax.swing.JLabel();
         CabeceraVehiculos = new javax.swing.JLabel();
-        fondoPantalla = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuClientes = new javax.swing.JMenu();
         JMenuItemAnadirVehiculo = new javax.swing.JMenuItem();
@@ -105,10 +104,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
 
         getContentPane().add(organizadorVista);
         organizadorVista.setBounds(0, 0, 1270, 670);
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_vistaGeneral_prov.jpg"))); // NOI18N
-        getContentPane().add(fondoPantalla);
-        fondoPantalla.setBounds(0, 0, 1920, 1030);
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
         jMenuBar1.setBorder(null);
@@ -276,7 +271,6 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemCitas;
     private javax.swing.JMenuItem JMenuItemEliminarVehiculo;
     private javax.swing.JMenuItem JMenuItemModificarVehiculo;
-    private javax.swing.JLabel fondoPantalla;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;

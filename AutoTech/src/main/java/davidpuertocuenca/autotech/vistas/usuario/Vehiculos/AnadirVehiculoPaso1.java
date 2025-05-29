@@ -9,6 +9,9 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloPasswordField;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,12 +30,25 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     public AnadirVehiculoPaso1() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonContinuar);
+        aplicarEstiloTextField(fieldMatricula);
+        aplicarEstiloTextField(fieldAnoMatriculacion);
+        aplicarEstiloTextField(fieldNumeroBastidor);
+        
         reiniciarEtiquetas();
     }
     
     public AnadirVehiculoPaso1(Usuarios cliente) {
         initComponents();
         this.setLocationRelativeTo(null);
+         //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonContinuar);
+        aplicarEstiloTextField(fieldMatricula);
+        aplicarEstiloTextField(fieldAnoMatriculacion);
+        aplicarEstiloTextField(fieldNumeroBastidor);
         this.cliente = cliente;
         reiniciarEtiquetas();
         
@@ -95,12 +111,12 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
             if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
                 formatoCorrecto = false;
                     textoErrorAnoMatriculacion.setVisible(true);
-                        textoErrorAnoMatriculacion.setText("El año de matrículacion no puede ser mayor que el año actual.");
+                        textoErrorAnoMatriculacion.setText("Año de matriculación inválido");
             }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setVisible(true);
-                    textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
+                    textoErrorAnoMatriculacion.setText("Año de matriculación inválido.");
         } 
         
         //Comprobación de que el año de matrículacion no este vacío.
@@ -113,14 +129,14 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         //Comprobación de que el número de bastidor tenga el formato correcto (acepta mayúsculas y minúsculas).
         if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Za-hj-npr-z0-9]{17}$")) {
             formatoCorrecto = false;
-                textoErrorNumeroBastidor.setText("Debe introducir un número de bastidor válido.");
+                textoErrorNumeroBastidor.setText("Número de bastidor no válido.");
                     textoErrorNumeroBastidor.setVisible(true);
         }
 
         //Comprobación de que el numero de bastidor no este registrado.
         if(obtenerVehiculoNumeroBastidorSql(fieldNumeroBastidor.getText()) != null){
            formatoCorrecto = false;
-                textoErrorNumeroBastidor.setText("Numero de bastidor ya registrado.");
+                textoErrorNumeroBastidor.setText("Número de bastidor ya registrado.");
                     textoErrorNumeroBastidor.setVisible(true);   
         }
         
@@ -153,6 +169,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formularioVehiculo = new javax.swing.JPanel();
         labelMatricula = new javax.swing.JLabel();
         fieldMatricula = new javax.swing.JTextField();
         labelErrorMatricula = new javax.swing.JLabel();
@@ -165,8 +182,6 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         textoErrorNumeroBastidor = new javax.swing.JLabel();
         labelNumeroBastidor = new javax.swing.JLabel();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,29 +192,31 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        formularioVehiculo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelMatricula.setForeground(new java.awt.Color(255, 255, 255));
         labelMatricula.setText("Matrícula");
-        getContentPane().add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, -1, -1));
+        formularioVehiculo.add(labelMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 250, -1));
 
         fieldMatricula.setToolTipText("");
-        getContentPane().add(fieldMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 250, 40));
+        formularioVehiculo.add(fieldMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 250, 40));
 
         labelErrorMatricula.setForeground(new java.awt.Color(255, 0, 0));
         labelErrorMatricula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         labelErrorMatricula.setText("Matrícula ya registrada.");
-        getContentPane().add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 210, -1));
+        formularioVehiculo.add(labelErrorMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 250, -1));
 
         labelAnoMatriculacion.setForeground(new java.awt.Color(255, 255, 255));
         labelAnoMatriculacion.setText("Año De Matriculación");
-        getContentPane().add(labelAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 120, -1));
+        formularioVehiculo.add(labelAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 250, -1));
 
         fieldAnoMatriculacion.setToolTipText("");
-        getContentPane().add(fieldAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 40));
+        formularioVehiculo.add(fieldAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 250, 40));
 
         textoErrorAnoMatriculacion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorAnoMatriculacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorAnoMatriculacion.setText("Debe introducir un año.");
-        getContentPane().add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 210, -1));
+        formularioVehiculo.add(textoErrorAnoMatriculacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 250, -1));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +224,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, -1, -1));
+        formularioVehiculo.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 100, 30));
 
         botonContinuar.setText("Continuar");
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -215,32 +232,29 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
                 botonContinuarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 90, -1));
+        formularioVehiculo.add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 100, 30));
 
         fieldNumeroBastidor.setToolTipText("");
-        getContentPane().add(fieldNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, 250, 40));
+        formularioVehiculo.add(fieldNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 250, 40));
 
         textoErrorNumeroBastidor.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNumeroBastidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNumeroBastidor.setText("Debe introducir un bastidor.");
-        getContentPane().add(textoErrorNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 490, 220, -1));
+        formularioVehiculo.add(textoErrorNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 250, -1));
 
         labelNumeroBastidor.setForeground(new java.awt.Color(255, 255, 255));
         labelNumeroBastidor.setText("Número De Bastidor");
-        getContentPane().add(labelNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 120, -1));
+        formularioVehiculo.add(labelNumeroBastidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 250, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("[●○] Paso 1: Añadir Vehículo(Con mas estilo)");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 551, 40));
+        labelIniciarSesion.setText("AutoTech - Paso 1 de 2: Añadir Vehículo");
+        formularioVehiculo.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 470, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, 490, 50));
+        getContentPane().add(formularioVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 520, 440));
+        formularioVehiculo.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 560, 570));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
@@ -298,9 +312,8 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
     private javax.swing.JTextField fieldAnoMatriculacion;
     private javax.swing.JTextField fieldMatricula;
     private javax.swing.JTextField fieldNumeroBastidor;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioVehiculo;
     private javax.swing.JLabel labelAnoMatriculacion;
     private javax.swing.JLabel labelErrorMatricula;
     private javax.swing.JLabel labelIniciarSesion;

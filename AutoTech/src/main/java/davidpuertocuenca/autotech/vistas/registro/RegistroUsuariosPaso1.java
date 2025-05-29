@@ -245,7 +245,7 @@ public class RegistroUsuariosPaso1 extends javax.swing.JFrame {
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         labelIniciarSesion.setText("AutoTech - Paso 1 de 2: Crear tu cuenta");
-        formularioRegistro.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 460, 40));
+        formularioRegistro.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 460, 40));
 
         getContentPane().add(formularioRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 520, 590));
         formularioRegistro.setBackground(new java.awt.Color(0, 0, 0, 120));

@@ -52,6 +52,7 @@ import davidpuertocuenca.autotech.vistas.administrador.citas.ModificarCitaAdmini
 import davidpuertocuenca.autotech.vistas.administrador.talleres.AnadirTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.talleres.ModificarTallerAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.VistaEmpleadosTallerAdministrador;
+import davidpuertocuenca.autotech.vistas.administrador.citas.DialogCambiarEstadoCitaAdministrador;
 import davidpuertocuenca.autotech.vistas.administrador.empleados.DialogAsignarTallerEmpleado;
 import davidpuertocuenca.autotech.vistas.administrador.vehiculo.AñadirVehiculoAdministrador;
 import java.time.LocalDateTime;
@@ -569,6 +570,15 @@ public class AdministradorControlador {
                 mca.setVisible(true);
                     vista.dispose();
     }
+    
+        public void vistaDialogCamiarEstado(JFrame vista, JTable tablaCitasTaller){
+            try{
+                DialogCambiarEstadoCitaAdministrador eca = new DialogCambiarEstadoCitaAdministrador(vista, true, obtenerCitaPorNumeroSql((Long) tablaCitasTaller.getValueAt(tablaCitasTaller.getSelectedRow(), 0)));
+                    eca.setVisible(true);
+            }catch (ArrayIndexOutOfBoundsException e){
+                  JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
+             }
+        }
     
      public void vistaModificarTaller(JTable tablaTalleres, JFrame vista){
         try{

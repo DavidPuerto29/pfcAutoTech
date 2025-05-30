@@ -41,6 +41,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuVehiculos2 = new javax.swing.JMenu();
         JMenuItemModificarCita = new javax.swing.JMenuItem();
+        jMenuItemCambiarEstadoCita = new javax.swing.JMenuItem();
         JMenuItemEliminarCita = new javax.swing.JMenuItem();
         jMenuUsuarios = new javax.swing.JMenu();
         JMenuItemUsuarios = new javax.swing.JMenuItem();
@@ -124,6 +125,14 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
             }
         });
         jMenuVehiculos2.add(JMenuItemModificarCita);
+
+        jMenuItemCambiarEstadoCita.setText("Cambiar Estado");
+        jMenuItemCambiarEstadoCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCambiarEstadoCitaActionPerformed(evt);
+            }
+        });
+        jMenuVehiculos2.add(jMenuItemCambiarEstadoCita);
 
         JMenuItemEliminarCita.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemEliminarCita.setText("Eliminar");
@@ -243,6 +252,10 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
          controlador.vistaTalleres(this);
     }//GEN-LAST:event_jMenuItemTalleresActionPerformed
 
+    private void jMenuItemCambiarEstadoCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCambiarEstadoCitaActionPerformed
+        controlador.vistaDialogCamiarEstado(this, tablaCitas);
+    }//GEN-LAST:event_jMenuItemCambiarEstadoCitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +301,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemCambiarEstadoCita;
     private javax.swing.JMenuItem jMenuItemCerrarSesion;
     private javax.swing.JMenuItem jMenuItemTalleres;
     private javax.swing.JMenu jMenuUsuarios;

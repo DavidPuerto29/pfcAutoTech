@@ -7,6 +7,9 @@ package davidpuertocuenca.autotech.vistas.administrador.talleres;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.actualizarTallerSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloComboBox;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +26,16 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     public ModificarTallerAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldNombre);
+        aplicarEstiloTextField(fieldDireccion);
+        aplicarEstiloTextField(fieldCodigoPostal);
+        aplicarEstiloTextField(fieldTelefono);
+        aplicarEstiloTextField(fieldLocalidad);
+        aplicarEstiloTextField(fieldCitasMaximas);
+        
         mostrarDatos();
         reiniciarEtiquetas();
     }
@@ -30,6 +43,16 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     public ModificarTallerAdministrador(Talleres taller) {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldNombre);
+        aplicarEstiloTextField(fieldDireccion);
+        aplicarEstiloTextField(fieldCodigoPostal);
+        aplicarEstiloTextField(fieldTelefono);
+        aplicarEstiloTextField(fieldLocalidad);
+        aplicarEstiloTextField(fieldCitasMaximas);
+        
         this.taller = taller;
         mostrarDatos();
         reiniciarEtiquetas();
@@ -179,6 +202,7 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formularioTaller = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         textoErrorLocalidad = new javax.swing.JLabel();
@@ -200,8 +224,6 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         textoErrorCitasMaximas = new javax.swing.JLabel();
         labelCitasMaximas = new javax.swing.JLabel();
         labelAnadirTaller = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -212,13 +234,15 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        formularioTaller.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
+        formularioTaller.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 100, 30));
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,97 +250,94 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 450, 92, -1));
+        formularioTaller.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 100, 30));
 
         textoErrorLocalidad.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorLocalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorLocalidad.setText("Debe introducir una localidad.");
         textoErrorLocalidad.setToolTipText("");
-        getContentPane().add(textoErrorLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 210, -1));
+        formularioTaller.add(textoErrorLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 250, -1));
 
         fieldLocalidad.setToolTipText("");
-        getContentPane().add(fieldLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 250, 40));
+        formularioTaller.add(fieldLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 250, 40));
 
         labelLocalidad.setForeground(new java.awt.Color(255, 255, 255));
         labelLocalidad.setText("Localidad");
-        getContentPane().add(labelLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 110, -1));
+        formularioTaller.add(labelLocalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 250, -1));
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
         textoErrorTelefono.setToolTipText("");
-        getContentPane().add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 210, -1));
+        formularioTaller.add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 250, -1));
 
         fieldTelefono.setToolTipText("");
-        getContentPane().add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 250, 40));
+        formularioTaller.add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 250, 40));
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        getContentPane().add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 110, -1));
+        formularioTaller.add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
 
         textoErrorCodigoPostal.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCodigoPostal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCodigoPostal.setText("Debe introducir un código postal.");
         textoErrorCodigoPostal.setToolTipText("");
-        getContentPane().add(textoErrorCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 290, 210, -1));
+        formularioTaller.add(textoErrorCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 250, -1));
 
         fieldCodigoPostal.setToolTipText("");
-        getContentPane().add(fieldCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 240, 250, 40));
+        formularioTaller.add(fieldCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 250, 40));
 
         labelCodigoPostal.setForeground(new java.awt.Color(255, 255, 255));
         labelCodigoPostal.setText("Código Postal");
-        getContentPane().add(labelCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, 110, -1));
+        formularioTaller.add(labelCodigoPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 250, -1));
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección");
         textoErrorDireccion.setToolTipText("");
-        getContentPane().add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 190, -1));
+        formularioTaller.add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 250, -1));
 
         fieldDireccion.setToolTipText("");
-        getContentPane().add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 250, 40));
+        formularioTaller.add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 250, 40));
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        getContentPane().add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 110, -1));
+        formularioTaller.add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 250, -1));
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        getContentPane().add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 190, -1));
+        formularioTaller.add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 250, -1));
 
         fieldNombre.setToolTipText("");
-        getContentPane().add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 250, 40));
+        formularioTaller.add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 250, 40));
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre Del Taller");
-        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 110, -1));
+        formularioTaller.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 250, -1));
 
         fieldCitasMaximas.setToolTipText("");
-        getContentPane().add(fieldCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, 250, 40));
+        formularioTaller.add(fieldCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 250, 40));
 
         textoErrorCitasMaximas.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCitasMaximas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCitasMaximas.setText("Debe introducir un número.");
         textoErrorCitasMaximas.setToolTipText("");
-        getContentPane().add(textoErrorCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 210, -1));
+        formularioTaller.add(textoErrorCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 250, -1));
 
         labelCitasMaximas.setForeground(new java.awt.Color(255, 255, 255));
         labelCitasMaximas.setText("Citas Maximas");
-        getContentPane().add(labelCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 110, -1));
+        formularioTaller.add(labelCitasMaximas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 250, -1));
 
         labelAnadirTaller.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelAnadirTaller.setForeground(new java.awt.Color(255, 255, 255));
-        labelAnadirTaller.setText("Modificar Taller");
-        getContentPane().add(labelAnadirTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 190, 40));
+        labelAnadirTaller.setText("AutoTech – Modificar Taller");
+        formularioTaller.add(labelAnadirTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 310, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 210, 50));
+        getContentPane().add(formularioTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 840, 420));
+        formularioTaller.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 920, 400));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 760));
 
         pack();
@@ -377,9 +398,8 @@ public class ModificarTallerAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextField fieldLocalidad;
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioTaller;
     private javax.swing.JLabel labelAnadirTaller;
     private javax.swing.JLabel labelCitasMaximas;
     private javax.swing.JLabel labelCodigoPostal;

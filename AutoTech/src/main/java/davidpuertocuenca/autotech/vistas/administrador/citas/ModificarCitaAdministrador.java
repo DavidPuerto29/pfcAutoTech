@@ -9,6 +9,10 @@ import davidpuertocuenca.autotech.clases.Vehiculos;
 import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.CitasDAO.actualizarCitaSql;
 import static davidpuertocuenca.autotech.dao.TalleresDAO.obtenerTallerPorNombreSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloComboBox;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloJCalendar;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -16,6 +20,7 @@ import java.beans.PropertyChangeListener;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -34,6 +39,14 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     public ModificarCitaAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(textDescripcion);
+        aplicarEstiloComboBox(boxTalleres);
+        aplicarEstiloComboBox(boxHorario);
+        aplicarEstiloJCalendar(calendarioDiasCita);
+        
         reiniciarEtiquetas();
         rellenarCampos();
     }
@@ -41,6 +54,14 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     public ModificarCitaAdministrador(Vehiculos vehiculo, Citas cita) {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(textDescripcion);
+        aplicarEstiloComboBox(boxTalleres);
+        aplicarEstiloComboBox(boxHorario);
+        aplicarEstiloJCalendar(calendarioDiasCita);
+        
         this.vehiculo = vehiculo;
         this.cita = cita;
         reiniciarEtiquetas();
@@ -106,20 +127,25 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
                     textoErrorMotivo.setVisible(true);   
         }
 
-        Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
-       
-        //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
-        if(!controlador.comprobarCitasIgualesVehiculo(fechaFinal, vehiculo)){
-            formatoCorrecto = false;
-                JOptionPane.showMessageDialog(this, "Este vehículo ya tiene una cita programada para la fecha y hora indicadas.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        if(formatoCorrecto){
-                cita.setFecha(fechaFinal);
-                cita.setVehiculo(vehiculo);
-                cita.setTaller(obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
-                cita.setDescripcion(textDescripcion.getText());
-                    return true;
+        try{
+            Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
+
+            //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
+            if(!controlador.comprobarCitasIgualesVehiculo(fechaFinal, vehiculo)){
+                formatoCorrecto = false;
+                    JOptionPane.showMessageDialog(this, "Este vehículo ya tiene una cita programada para la fecha y hora indicadas.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            if(formatoCorrecto){
+                    cita.setFecha(fechaFinal);
+                    cita.setVehiculo(vehiculo);
+                    cita.setTaller(obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
+                    cita.setDescripcion(textDescripcion.getText());
+                        return true;
+            }
+            return false;
+        }catch (DateTimeParseException e){
+            controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
         }
         return false;
     }
@@ -140,22 +166,21 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        boxHorario = new javax.swing.JComboBox();
-        labelFecha = new javax.swing.JLabel();
-        labelMotivo = new javax.swing.JLabel();
-        labelHorario = new javax.swing.JLabel();
+        formularioCita = new javax.swing.JPanel();
         textoErrorHora = new javax.swing.JLabel();
-        textoErrorTaller = new javax.swing.JLabel();
-        textoErrorMotivo = new javax.swing.JLabel();
-        labelTaller = new javax.swing.JLabel();
-        textDescripcion = new javax.swing.JTextField();
         calendarioDiasCita = new com.toedter.calendar.JCalendar();
-        boxTalleres = new javax.swing.JComboBox<>();
-        botonCancelar = new javax.swing.JButton();
-        botonModificar = new javax.swing.JButton();
         labelIniciarSesion = new javax.swing.JLabel();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
+        textoErrorMotivo = new javax.swing.JLabel();
+        labelHorario = new javax.swing.JLabel();
+        textDescripcion = new javax.swing.JTextField();
+        labelFecha = new javax.swing.JLabel();
+        botonModificar = new javax.swing.JButton();
+        boxHorario = new javax.swing.JComboBox();
+        textoErrorTaller = new javax.swing.JLabel();
+        labelTaller = new javax.swing.JLabel();
+        botonCancelar = new javax.swing.JButton();
+        boxTalleres = new javax.swing.JComboBox<>();
+        labelMotivo = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,58 +191,33 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una hora." }));
-        boxHorario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boxHorarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 220, 40));
-
-        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
-        labelFecha.setText("Fecha");
-        getContentPane().add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 120, -1));
-
-        labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
-        labelMotivo.setText("Breve descripción");
-        labelMotivo.setToolTipText("");
-        getContentPane().add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 120, -1));
-
-        labelHorario.setForeground(new java.awt.Color(255, 255, 255));
-        labelHorario.setText("Horario");
-        getContentPane().add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 120, -1));
+        formularioCita.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textoErrorHora.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorHora.setText("Debe seleccionar una hora.");
-        getContentPane().add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 180, -1));
+        formularioCita.add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 250, -1));
+        formularioCita.add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 250, 143));
 
-        textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
-        textoErrorTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
-        textoErrorTaller.setText("Debe seleccionar un taller.");
-        getContentPane().add(textoErrorTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 180, -1));
+        labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        labelIniciarSesion.setText("AutoTech – Modificar Cita");
+        formularioCita.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 290, 40));
 
         textoErrorMotivo.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorMotivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMotivo.setText("Debe describir el motivo.");
         textoErrorMotivo.setToolTipText("");
-        getContentPane().add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 180, -1));
+        formularioCita.add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, 250, -1));
 
-        labelTaller.setForeground(new java.awt.Color(255, 255, 255));
-        labelTaller.setText("Taller");
-        getContentPane().add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 120, -1));
-        getContentPane().add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 490, 250, 40));
-        getContentPane().add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, 143));
+        labelHorario.setForeground(new java.awt.Color(255, 255, 255));
+        labelHorario.setText("Horario");
+        formularioCita.add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 250, -1));
+        formularioCita.add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, 250, 40));
 
-        getContentPane().add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 220, 40));
-
-        botonCancelar.setText("Cancelar");
-        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 590, 100, -1));
+        labelFecha.setForeground(new java.awt.Color(255, 255, 255));
+        labelFecha.setText("Fecha");
+        formularioCita.add(labelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 120, -1));
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,20 +225,44 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
+        formularioCita.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 100, 30));
 
-        labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("Modificar cita");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 150, 40));
+        boxHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una hora." }));
+        boxHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxHorarioActionPerformed(evt);
+            }
+        });
+        formularioCita.add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 250, 40));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 180, 50));
+        textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
+        textoErrorTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
+        textoErrorTaller.setText("Debe seleccionar un taller.");
+        formularioCita.add(textoErrorTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 250, -1));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 370, 600));
+        labelTaller.setForeground(new java.awt.Color(255, 255, 255));
+        labelTaller.setText("Taller");
+        formularioCita.add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 250, -1));
 
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+        formularioCita.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 100, 30));
+
+        formularioCita.add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 250, 40));
+
+        labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
+        labelMotivo.setText("Breve descripción");
+        labelMotivo.setToolTipText("");
+        formularioCita.add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 120, -1));
+
+        getContentPane().add(formularioCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 520, 620));
+        formularioCita.setBackground(new java.awt.Color(0, 0, 0, 120));
+
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         pack();
@@ -298,9 +322,8 @@ public class ModificarCitaAdministrador extends javax.swing.JFrame {
     private javax.swing.JComboBox boxHorario;
     private javax.swing.JComboBox<String> boxTalleres;
     private com.toedter.calendar.JCalendar calendarioDiasCita;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioCita;
     private javax.swing.JLabel labelFecha;
     private javax.swing.JLabel labelHorario;
     private javax.swing.JLabel labelIniciarSesion;

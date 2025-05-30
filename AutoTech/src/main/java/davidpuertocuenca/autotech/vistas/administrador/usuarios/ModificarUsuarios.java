@@ -9,6 +9,9 @@ import davidpuertocuenca.autotech.controladores.AdministradorControlador;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.actualizarUsuarioSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorDniSql;
 import static davidpuertocuenca.autotech.dao.UsuariosDAO.obtenerUsuarioPorUsuarioSql;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloComboBox;
+import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,6 +28,17 @@ public class ModificarUsuarios extends javax.swing.JFrame {
     public ModificarUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldUsuario);
+        aplicarEstiloTextField(fieldNombre);
+        aplicarEstiloTextField(fieldApellidos);
+        aplicarEstiloTextField(fieldCorreo);
+        aplicarEstiloTextField(fieldDni);
+        aplicarEstiloTextField(fieldTelefono);
+        aplicarEstiloTextField(fieldDireccion);
+                
         reiniciarEtiquetas();
         mostrarDatos();
     }
@@ -32,6 +46,17 @@ public class ModificarUsuarios extends javax.swing.JFrame {
     public ModificarUsuarios(Usuarios usuario) {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Estilos FrontEnd
+        aplicarEstiloBoton(botonCancelar);
+        aplicarEstiloBoton(botonModificar);
+        aplicarEstiloTextField(fieldUsuario);
+        aplicarEstiloTextField(fieldNombre);
+        aplicarEstiloTextField(fieldApellidos);
+        aplicarEstiloTextField(fieldCorreo);
+        aplicarEstiloTextField(fieldDni);
+        aplicarEstiloTextField(fieldTelefono);
+        aplicarEstiloTextField(fieldDireccion);
+        
         this.usuario = usuario;
         reiniciarEtiquetas();
         mostrarDatos();
@@ -203,6 +228,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        formularioUsuario = new javax.swing.JPanel();
         fieldCorreo = new javax.swing.JTextField();
         labelCorreoElectronico = new javax.swing.JLabel();
         textoErrorCorreoElectronico = new javax.swing.JLabel();
@@ -227,8 +253,6 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         labelNombre = new javax.swing.JLabel();
         botonModificar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        fondoCabecera = new javax.swing.JLabel();
-        fondoLogin = new javax.swing.JLabel();
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -239,87 +263,89 @@ public class ModificarUsuarios extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        formularioUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         fieldCorreo.setToolTipText("");
-        getContentPane().add(fieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 250, 40));
+        formularioUsuario.add(fieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 250, 40));
 
         labelCorreoElectronico.setForeground(new java.awt.Color(255, 255, 255));
         labelCorreoElectronico.setText("Correo Electrónico");
-        getContentPane().add(labelCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        formularioUsuario.add(labelCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
 
         textoErrorCorreoElectronico.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorCorreoElectronico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
-        getContentPane().add(textoErrorCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 251, -1));
+        formularioUsuario.add(textoErrorCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 251, -1));
 
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Usuario");
-        getContentPane().add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+        formularioUsuario.add(labelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 250, -1));
 
         fieldUsuario.setToolTipText("");
-        getContentPane().add(fieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 250, 40));
+        formularioUsuario.add(fieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 250, 40));
 
         textoErrorUsuario.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorUsuario.setText("Usuario ya en uso.");
-        getContentPane().add(textoErrorUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 159, -1));
+        formularioUsuario.add(textoErrorUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 250, -1));
 
         labelIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         labelIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        labelIniciarSesion.setText("Modificar Usuario");
-        getContentPane().add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 219, 40));
+        labelIniciarSesion.setText("AutoTech – Modificar Usuario");
+        formularioUsuario.add(labelIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 350, 40));
 
         textoErrorDireccion.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDireccion.setText("Debe introducir una dirección.");
-        getContentPane().add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, -1, -1));
+        formularioUsuario.add(textoErrorDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 250, -1));
 
         fieldDireccion.setToolTipText("");
-        getContentPane().add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 250, 40));
+        formularioUsuario.add(fieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 250, 40));
 
         labelDireccion.setForeground(new java.awt.Color(255, 255, 255));
         labelDireccion.setText("Dirección");
-        getContentPane().add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+        formularioUsuario.add(labelDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 250, -1));
 
         textoErrorTelefono.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorTelefono.setText("Debe introducir un teléfono.");
-        getContentPane().add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, 230, -1));
+        formularioUsuario.add(textoErrorTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 250, -1));
 
         fieldTelefono.setToolTipText("");
-        getContentPane().add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, 250, 40));
+        formularioUsuario.add(fieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 250, 40));
 
         labelTelefono.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefono.setText("Teléfono");
-        getContentPane().add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, -1, -1));
+        formularioUsuario.add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 250, -1));
 
         textoErrorDni.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorDni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorDni.setText("El formato no es correcto.");
-        getContentPane().add(textoErrorDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 220, -1));
+        formularioUsuario.add(textoErrorDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 250, -1));
 
         fieldDni.setToolTipText("");
-        getContentPane().add(fieldDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 250, 40));
+        formularioUsuario.add(fieldDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 250, 40));
 
         labelDni.setForeground(new java.awt.Color(255, 255, 255));
         labelDni.setText("Dni");
-        getContentPane().add(labelDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, -1, -1));
+        formularioUsuario.add(labelDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 250, -1));
 
         textoErrorApellidos.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorApellidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorApellidos.setText("Debe introducir un apellido.");
-        getContentPane().add(textoErrorApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 230, -1));
+        formularioUsuario.add(textoErrorApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 250, -1));
 
         fieldApellidos.setToolTipText("");
-        getContentPane().add(fieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 190, 250, 40));
+        formularioUsuario.add(fieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 250, 40));
 
         labelApellidos.setForeground(new java.awt.Color(255, 255, 255));
         labelApellidos.setText("Apellidos");
-        getContentPane().add(labelApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, 80, -1));
+        formularioUsuario.add(labelApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 250, -1));
 
         textoErrorNombre.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorNombre.setText("Debe introducir un nombre.");
-        getContentPane().add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 171, -1));
+        formularioUsuario.add(textoErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 250, -1));
 
         fieldNombre.setToolTipText("");
         fieldNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -327,11 +353,11 @@ public class ModificarUsuarios extends javax.swing.JFrame {
                 fieldNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 250, 40));
+        formularioUsuario.add(fieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 250, 40));
 
         labelNombre.setForeground(new java.awt.Color(255, 255, 255));
         labelNombre.setText("Nombre");
-        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+        formularioUsuario.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 250, -1));
 
         botonModificar.setText("Modificar");
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -339,7 +365,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
                 botonModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 520, -1, -1));
+        formularioUsuario.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 100, 30));
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -347,15 +373,12 @@ public class ModificarUsuarios extends javax.swing.JFrame {
                 botonCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, -1, -1));
+        formularioUsuario.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 100, 30));
 
-        fondoCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cabecera_prov.png"))); // NOI18N
-        getContentPane().add(fondoCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 210, 50));
+        getContentPane().add(formularioUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 840, 420));
+        formularioUsuario.setBackground(new java.awt.Color(0, 0, 0, 120));
 
-        fondoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login_prov .jpg"))); // NOI18N
-        getContentPane().add(fondoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 940, 490));
-
-        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_prov.jpg"))); // NOI18N
+        fondoPantalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_formularios.jpg"))); // NOI18N
         getContentPane().add(fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 690));
 
         pack();
@@ -419,9 +442,8 @@ public class ModificarUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField fieldNombre;
     private javax.swing.JTextField fieldTelefono;
     private javax.swing.JTextField fieldUsuario;
-    private javax.swing.JLabel fondoCabecera;
-    private javax.swing.JLabel fondoLogin;
     private javax.swing.JLabel fondoPantalla;
+    private javax.swing.JPanel formularioUsuario;
     private javax.swing.JLabel labelApellidos;
     private javax.swing.JLabel labelCorreoElectronico;
     private javax.swing.JLabel labelDireccion;

@@ -130,23 +130,24 @@ public class PedirCita extends javax.swing.JFrame {
         }
         
         try{
-        Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
+            Date fechaFinal = Date.from(LocalDateTime.of(calendarioDiasCita.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),LocalTime.parse((String) boxHorario.getSelectedItem())).atZone(ZoneId.systemDefault()).toInstant());
+
+            //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
+            if(!controlador.comprobarCitasIgualesVehiculo(fechaFinal, vehiculo)){
+                formatoCorrecto = false;
+                    JOptionPane.showMessageDialog(this, "Este vehículo ya tiene una cita programada para la fecha y hora indicadas.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            if(formatoCorrecto){
+                    cita = new Citas(fechaFinal, vehiculo, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()), textDescripcion.getText(), 1);
+                        return true;
+            }
+            return false;
         
-        //Comprobación de que un vehiculo no puede tener dos citas el mismo dia y a la misma hora.
-        if(!controlador.comprobarCitasIgualesVehiculo(fechaFinal, vehiculo)){
-            formatoCorrecto = false;
-                JOptionPane.showMessageDialog(this, "Este vehículo ya tiene una cita programada para la fecha y hora indicadas.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        if(formatoCorrecto){
-                cita = new Citas(fechaFinal, vehiculo, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()), textDescripcion.getText(), 1);
-                    return true;
-        }
-        return false;
-        //REVISAR
         }catch (java.time.format.DateTimeParseException e){
                 controlador.cargarHorariosCitasJComboBox(calendarioDiasCita, boxHorario, obtenerTallerPorNombreSql((String) boxTalleres.getSelectedItem()));
         }
+        
         return false;
     }
     

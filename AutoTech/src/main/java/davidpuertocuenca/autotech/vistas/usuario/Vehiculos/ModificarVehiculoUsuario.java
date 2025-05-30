@@ -13,6 +13,7 @@ import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
 import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 /**
  *
@@ -126,16 +127,16 @@ public class ModificarVehiculoUsuario extends javax.swing.JFrame {
         
         //Comprobación de que el año de matrículacion sean números y no letras.
         try {
-            //Comprobacion de que el año no sea superior al actual ( > 2025)
-            if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
+            //Comprobacion de que el año no sea superior al actual  ni menor a 1950
+            if(Integer.parseInt(fieldAnoMatriculacion.getText()) > LocalDate.now().getYear() || Integer.parseInt(fieldAnoMatriculacion.getText()) < 1950){
                 formatoCorrecto = false;
                     textoErrorAnoMatriculacion.setVisible(true);
-                        textoErrorAnoMatriculacion.setText("El año de matrículacion no puede ser mayor que el año actual.");
-            }
+                        textoErrorAnoMatriculacion.setText("Año de matriculación inválido.");
+        }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setVisible(true);
-                    textoErrorAnoMatriculacion.setText("El año de matrículacion no puede contener letras.");
+                    textoErrorAnoMatriculacion.setText("Año de matriculación inválido.");
         } 
         
         //Comprobación de que el año de matrículacion no este vacío.

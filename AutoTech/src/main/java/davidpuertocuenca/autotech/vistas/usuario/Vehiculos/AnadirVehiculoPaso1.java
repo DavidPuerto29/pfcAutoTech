@@ -10,10 +10,10 @@ import davidpuertocuenca.autotech.controladores.UsuarioControlador;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoMatriculaSql;
 import static davidpuertocuenca.autotech.dao.VehiculosDAO.obtenerVehiculoNumeroBastidorSql;
 import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloBoton;
-import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloPasswordField;
 import static davidpuertocuenca.autotech.util.Estilos.aplicarEstiloTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -107,12 +107,12 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         
         //Comprobación de que el año de matrículacion sean números y no letras.
         try {
-            //Comprobacion de que el año no sea superior al actual ( > 2025)
-            if(Integer.parseInt(fieldAnoMatriculacion.getText()) > 2025){
+            //Comprobacion de que el año no sea superior al actual  ni menor a 1950
+            if(Integer.parseInt(fieldAnoMatriculacion.getText()) > LocalDate.now().getYear() || Integer.parseInt(fieldAnoMatriculacion.getText()) < 1950){
                 formatoCorrecto = false;
                     textoErrorAnoMatriculacion.setVisible(true);
-                        textoErrorAnoMatriculacion.setText("Año de matriculación inválido");
-            }
+                        textoErrorAnoMatriculacion.setText("Año de matriculación inválido.");
+        }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorAnoMatriculacion.setVisible(true);
@@ -129,7 +129,7 @@ public class AnadirVehiculoPaso1 extends javax.swing.JFrame {
         //Comprobación de que el número de bastidor tenga el formato correcto (acepta mayúsculas y minúsculas).
         if (!fieldNumeroBastidor.getText().matches("^[A-HJ-NPR-Za-hj-npr-z0-9]{17}$")) {
             formatoCorrecto = false;
-                textoErrorNumeroBastidor.setText("Número de bastidor no válido.");
+                textoErrorNumeroBastidor.setText("Número de bastidor inválido.");
                     textoErrorNumeroBastidor.setVisible(true);
         }
 

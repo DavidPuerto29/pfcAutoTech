@@ -10,6 +10,7 @@ import davidpuertocuenca.autotech.clases.Usuarios;
 import davidpuertocuenca.autotech.clases.Talleres;
 import davidpuertocuenca.autotech.clases.Empleados;
 import davidpuertocuenca.autotech.clases.Vehiculos;
+import static davidpuertocuenca.autotech.dao.CitasDAO.actualizarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.eliminarCitaSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerCitaPorNumeroSql;
 import static davidpuertocuenca.autotech.dao.CitasDAO.obtenerNumeroCitasSql;
@@ -346,6 +347,22 @@ public class AdministradorControlador {
                     }
                 }
          }
+         
+         public void modificarEstadoCita(Citas cita, JComboBox comboBoxEstadoCita, JDialog vista){
+            cita.setEstadoCita(comboBoxEstadoCita.getSelectedIndex() + 1);
+                actualizarCitaSql(cita);
+                    vista.dispose();
+         }
+         
+         public void cargarEstadoCitaComboBox(JComboBox comboBoxEstadoCita, Citas cita){
+            comboBoxEstadoCita.removeAllItems(); 
+                comboBoxEstadoCita.addItem("Pendiente"); 
+                comboBoxEstadoCita.addItem("En proceso"); 
+                comboBoxEstadoCita.addItem("Listo para recoger"); 
+                comboBoxEstadoCita.addItem("Finalizada"); 
+                                //Se añade uno para evitar que el JComboBox se descuadre debido al array.
+                               comboBoxEstadoCita.setSelectedIndex(cita.getEstadoCita() - 1);
+        }
         
          public boolean comprobarCitasIgualesVehiculo(Date fecha, Vehiculos vehiculo){
             List<Citas> citasVehiculo = obtenerTodasCitasMatriculaSql(vehiculo);

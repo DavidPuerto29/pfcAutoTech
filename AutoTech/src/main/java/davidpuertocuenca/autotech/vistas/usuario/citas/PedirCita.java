@@ -199,7 +199,7 @@ public class PedirCita extends javax.swing.JFrame {
                 boxHorarioActionPerformed(evt);
             }
         });
-        FormularioCita.add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 250, 40));
+        FormularioCita.add(boxHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 250, 40));
 
         labelFecha.setForeground(new java.awt.Color(255, 255, 255));
         labelFecha.setText("Fecha");
@@ -208,16 +208,16 @@ public class PedirCita extends javax.swing.JFrame {
         labelMotivo.setForeground(new java.awt.Color(255, 255, 255));
         labelMotivo.setText("Breve descripción");
         labelMotivo.setToolTipText("");
-        FormularioCita.add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 121, -1));
+        FormularioCita.add(labelMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 121, -1));
 
         labelHorario.setForeground(new java.awt.Color(255, 255, 255));
         labelHorario.setText("Horario");
-        FormularioCita.add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 121, -1));
+        FormularioCita.add(labelHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 121, -1));
 
         textoErrorHora.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorHora.setText("Debe seleccionar una hora.");
-        FormularioCita.add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, 250, -1));
+        FormularioCita.add(textoErrorHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 250, -1));
 
         textoErrorTaller.setForeground(new java.awt.Color(255, 0, 0));
         textoErrorTaller.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
@@ -228,12 +228,12 @@ public class PedirCita extends javax.swing.JFrame {
         textoErrorMotivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/error_prov.png"))); // NOI18N
         textoErrorMotivo.setText("Debe describir el motivo.");
         textoErrorMotivo.setToolTipText("");
-        FormularioCita.add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 250, -1));
+        FormularioCita.add(textoErrorMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 250, -1));
 
         labelTaller.setForeground(new java.awt.Color(255, 255, 255));
         labelTaller.setText("Taller");
         FormularioCita.add(labelTaller, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 121, -1));
-        FormularioCita.add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 250, 40));
+        FormularioCita.add(textDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 250, 40));
         FormularioCita.add(calendarioDiasCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 143));
 
         FormularioCita.add(boxTalleres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 250, 40));

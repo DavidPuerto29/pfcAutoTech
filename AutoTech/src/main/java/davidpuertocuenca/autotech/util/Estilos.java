@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -245,41 +246,67 @@ public class Estilos {
                 }
             }
     
-    public static void aplicarEstiloJCalendar(JCalendar calendario) {
-            Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
-            Color azulAutoTech = new Color(33, 150, 243);
-            Color fondo = Color.WHITE;
-            Color texto = Color.BLACK;
-            Color rojoDomingo = new Color(244, 67, 54);
+public static void aplicarEstiloJCalendar(JCalendar calendar) {
+        int radio = 20;
+        Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
+        Color colorFondo = Color.WHITE;
+        Color colorBorde = new Color(33, 150, 243); // Azul AutoTech
 
-            calendario.setFont(fuente);
-            calendario.setBackground(fondo);
-            calendario.setForeground(texto);
-            calendario.setSundayForeground(rojoDomingo);
-            calendario.setWeekdayForeground(texto);
+        calendar.setBackground(colorFondo);
+        calendar.setForeground(Color.BLACK);
+        calendar.setFont(fuente);
+        calendar.setDecorationBackgroundColor(new Color(240, 240, 240)); // color para cabecera de mes y semana
 
-            // Estilizamos el JDayChooser internamente
-            JDayChooser dayChooser = calendario.getDayChooser();
-            dayChooser.setBackground(fondo);
-            dayChooser.setDecorationBackgroundColor(fondo);
-            dayChooser.setSundayForeground(rojoDomingo);
-            dayChooser.setWeekdayForeground(texto);
-            dayChooser.setForeground(texto);
-              
-            Component[] dias = dayChooser.getDayPanel().getComponents();
+        // Acceder a los componentes internos
+        JPanel panel = (JPanel) calendar.getComponent(0);
 
-            for (Component c : dias) {
-                if (c instanceof JButton boton) {
-                    boton.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-                    boton.setBackground(Color.WHITE);
-                    boton.setForeground(Color.BLACK);
-                    boton.setFocusPainted(false);
-                    boton.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-                }
-}
+        for (Component comp : panel.getComponents()) {
+            if (comp instanceof JComboBox) {
+                JComboBox<?> comboBox = (JComboBox<?>) comp;
+                comboBox.setPreferredSize(new Dimension(100, 30));
+                comboBox.setFont(fuente);
+                comboBox.setForeground(Color.BLACK);
+                comboBox.setBackground(colorFondo);
+                comboBox.setOpaque(false);
+                comboBox.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+                comboBox.setUI(new BasicComboBoxUI() {
+                    @Override
+                    public void paint(Graphics g, JComponent c) {
+                        Graphics2D g2 = (Graphics2D) g.create();
+                        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // Borde externo
-            calendario.setBorder(BorderFactory.createLineBorder(azulAutoTech, 2, true));
+                        g2.setColor(colorFondo);
+                        g2.fillRoundRect(0, 0, c.getWidth(), c.getHeight(), radio, radio);
+
+                        g2.setColor(colorBorde);
+                        g2.setStroke(new BasicStroke(2));
+                        g2.drawRoundRect(1, 1, c.getWidth() - 3, c.getHeight() - 3, radio, radio);
+
+                        g2.dispose();
+                        super.paint(g, c);
+                    }
+                });
+            } else if (comp instanceof JTable) {
+                JTable table = (JTable) comp;
+                table.setFont(fuente);
+                table.setRowHeight(30);
+                table.setGridColor(colorBorde);
+                table.setForeground(Color.BLACK);
+                table.setBackground(colorFondo);
+                
+                DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+                centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+                table.setDefaultRenderer(Object.class, centerRenderer);
+
+                JTableHeader header = table.getTableHeader();
+                header.setFont(fuente.deriveFont(Font.BOLD));
+                header.setBackground(new Color(220, 220, 220));
+                header.setForeground(Color.BLACK);
+            }
+        }
+
+        // Panel de decoración (parte superior)
+        calendar.getDayChooser().getDayPanel().setBackground(colorFondo);
     }
     
 }

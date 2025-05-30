@@ -103,7 +103,7 @@ public class UsuarioControlador {
     }
     
     public void crearTablaCitas(JTable tablaCitasVehiculo, Vehiculos vehiculo){
-        Object[] cabecera = new Object[]{"Número de cita","Fecha","Vehiculo","Taller"}; 
+        Object[] cabecera = new Object[]{"Número de cita","Fecha","Taller","Vehiculo", "Estado De La Cita"}; 
         DefaultTableModel miModelo = new DefaultTableModel(cabecera, 0){
             //Edicion de celdas deshabilida.
             @Override
@@ -117,11 +117,18 @@ public class UsuarioControlador {
             List<Citas> citas = new ArrayList(obtenerTodasCitasMatriculaSql(vehiculo));
            
             for(Citas Cita : citas){
-                Object[] fila = new Object[4];
+                Object[] fila = new Object[5];
                 fila[0] = Cita.getNumeroCita();
                 fila[1] = Cita.getFecha();
-                fila[2] = Cita.getVehiculo().getMatricula();
-                fila[3] = Cita.getTaller().getNombre();
+                fila[2] = Cita.getTaller().getNombre();
+                fila[3] = Cita.getVehiculo().getMatricula();
+                switch(Cita.getEstadoCita()){
+                    case 1 -> fila[4] = "Pendiente ";
+                    case 2 -> fila[4] = "En proceso ";
+                    case 3 -> fila[4] = "Listo para recoger ";
+                    case 4 -> fila[4] = "Finalizada  ";
+                        default -> fila[4] = "Error";
+                }
                     miModelo.addRow(fila);
             } 
             

@@ -48,7 +48,7 @@ public class DialogCambiarEstadoCitaAdministrador extends javax.swing.JDialog {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modificar Estado");
+        setTitle("Modificar Estado Cita");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -64,7 +64,7 @@ public class DialogCambiarEstadoCitaAdministrador extends javax.swing.JDialog {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        modificarEstado.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 80, -1));
+        modificarEstado.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, 30));
 
         modificarEstado.add(jComboBoxEstadoCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 39, 220, 32));
 
@@ -74,13 +74,13 @@ public class DialogCambiarEstadoCitaAdministrador extends javax.swing.JDialog {
                 jButtonModificarActionPerformed(evt);
             }
         });
-        modificarEstado.add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
+        modificarEstado.add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 100, 30));
 
-        getContentPane().add(modificarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 120));
+        getContentPane().add(modificarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 310, 140));
         modificarEstado.setBackground(new java.awt.Color(0, 0, 0, 120));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login.jpg"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 140));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -254,6 +254,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
 
     private void jMenuItemCambiarEstadoCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCambiarEstadoCitaActionPerformed
         controlador.vistaDialogCamiarEstado(this, tablaCitas);
+                    controlador.crearTablaCitas(tablaCitas, this);
     }//GEN-LAST:event_jMenuItemCambiarEstadoCitaActionPerformed
 
     /**

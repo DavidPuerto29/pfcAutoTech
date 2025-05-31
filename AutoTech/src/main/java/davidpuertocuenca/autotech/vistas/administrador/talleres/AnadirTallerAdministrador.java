@@ -96,7 +96,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         } 
           
         //Comprobación de que el teléfono tenga el formato correcto. (123546789)
-        if(fieldTelefono.getText().length() != 9 && !fieldTelefono.getText().isEmpty()){
+        if (!fieldTelefono.getText().trim().matches("\\d{9}") && !fieldTelefono.getText().trim().isEmpty()) {
             formatoCorrecto = false;
                 textoErrorTelefono.setVisible(true);
                     textoErrorTelefono.setText("El formato no es el correcto.");         
@@ -116,9 +116,13 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
                     textoErrorDireccion.setText("Debe introducir una dirección.");
         }
         
-        //Comprobación de que el numero maximo de citas sea un número y no letras.
+        //Comprobación de que el numero maximo de citas sea un número y no letras, tampoco que sea menor o igual a 0.
         try {
-            Integer.parseInt(fieldCitasMaximas.getText()); 
+            if(Integer.parseInt(fieldCitasMaximas.getText()) == 0 || Integer.parseInt(fieldCitasMaximas.getText()) < 0){
+                formatoCorrecto = false;
+                    textoErrorCitasMaximas.setVisible(true);
+                        textoErrorCitasMaximas.setText("Debe introducir un número válido.");
+            }
         }catch (NumberFormatException e) {
             formatoCorrecto = false;
                 textoErrorCitasMaximas.setVisible(true);
@@ -147,7 +151,7 @@ public class AnadirTallerAdministrador extends javax.swing.JFrame {
         }
         
         // Comprobación de que el CIF tenga el formato correcto.
-        if (!fieldIdentidicacionFiscal.getText().matches("^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
+        if (!fieldIdentidicacionFiscal.getText().matches("(?i)^[A-HJNP-SUVW][0-9]{7}[0-9A-J]$")) {
             formatoCorrecto = false;
                 textoErrorIdentidicacionFiscal.setVisible(true);
                     textoErrorIdentidicacionFiscal.setText("Debe introducir un CIF válido.");

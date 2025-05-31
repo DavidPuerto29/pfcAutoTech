@@ -54,7 +54,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         jMenuClientes = new javax.swing.JMenu();
         JMenuItemPedirCita = new javax.swing.JMenuItem();
         JMenuItemModificarCita = new javax.swing.JMenuItem();
-        JMenuItemCancelarCita = new javax.swing.JMenuItem();
         Vehículos = new javax.swing.JMenu();
         JMenuItemVehículos = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -141,15 +140,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         });
         jMenuClientes.add(JMenuItemModificarCita);
 
-        JMenuItemCancelarCita.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        JMenuItemCancelarCita.setText("Cancelar");
-        JMenuItemCancelarCita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMenuItemCancelarCitaActionPerformed(evt);
-            }
-        });
-        jMenuClientes.add(JMenuItemCancelarCita);
-
         jMenuBar1.add(jMenuClientes);
 
         Vehículos.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,10 +192,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         controlador.vistaModificarCita(tablaCitasVehiculo, usuario, vehiculo, this);
     }//GEN-LAST:event_JMenuItemModificarCitaActionPerformed
 
-    private void JMenuItemCancelarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemCancelarCitaActionPerformed
-        controlador.cancelarCitas(tablaCitasVehiculo, vehiculo, this);
-    }//GEN-LAST:event_JMenuItemCancelarCitaActionPerformed
-
     private void JMenuItemVehículosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehículosActionPerformed
         controlador.vistaVehiculos(this, usuario);
     }//GEN-LAST:event_JMenuItemVehículosActionPerformed
@@ -253,7 +239,6 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CabeceraVehiculos;
-    private javax.swing.JMenuItem JMenuItemCancelarCita;
     private javax.swing.JMenuItem JMenuItemModificarCita;
     private javax.swing.JMenuItem JMenuItemPedirCita;
     private javax.swing.JMenuItem JMenuItemVehículos;

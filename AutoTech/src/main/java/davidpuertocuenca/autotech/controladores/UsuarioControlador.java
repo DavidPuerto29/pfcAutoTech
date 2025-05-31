@@ -253,9 +253,14 @@ public class UsuarioControlador {
     
     public void vistaModificarCita(JTable tablaCitas, Usuarios usuario, Vehiculos vehiculo, JFrame vista){
         try{
-            ModificarCita mc = new ModificarCita(usuario, vehiculo, obtenerCitaPorNumeroSql((Long) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 0)));
-                mc.setVisible(true);
-                    vista.dispose();
+            Citas cita = obtenerCitaPorNumeroSql((Long) tablaCitas.getValueAt(tablaCitas.getSelectedRow(), 0));
+            if(cita.getEstadoCita() != 4){
+                ModificarCita mc = new ModificarCita(usuario, vehiculo,cita);
+                    mc.setVisible(true);
+                        vista.dispose();
+            }else{
+                JOptionPane.showMessageDialog(vista, "Las citas finalizadas no pueden ser modificadas..", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }

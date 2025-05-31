@@ -133,7 +133,7 @@ public class ModificarUsuarios extends javax.swing.JFrame {
                     textoErrorCorreoElectronico.setText("Debe introducir un correo electrónico.");
         }
         
-                //Comprobación de que el dni no esta ya en uso.
+        //Comprobación de que el dni no esta ya en uso.
         if(obtenerUsuarioPorDniSql(fieldDni.getText()) != null && !usuario.getDni().equals(fieldDni.getText())){
             formatoCorrecto = false;
                 textoErrorDni.setText("Dni ya en uso.");

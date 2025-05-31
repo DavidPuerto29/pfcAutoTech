@@ -116,7 +116,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuVehiculos.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuVehiculos.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemAnadirVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemAnadirVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemAnadirVehiculo.setText("Añadir");
         JMenuItemAnadirVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +153,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jMenuUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenuUsuarios.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemUsuarios.setText("Menu De Usuarios");
         JMenuItemUsuarios.setToolTipText("");
         JMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {

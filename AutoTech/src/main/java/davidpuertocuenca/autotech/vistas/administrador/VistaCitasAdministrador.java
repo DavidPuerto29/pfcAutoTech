@@ -126,6 +126,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         });
         jMenuVehiculos2.add(JMenuItemModificarCita);
 
+        jMenuItemCambiarEstadoCita.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemCambiarEstadoCita.setText("Cambiar Estado");
         jMenuItemCambiarEstadoCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +153,7 @@ public class VistaCitasAdministrador extends javax.swing.JFrame {
         jMenuUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenuUsuarios.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemUsuarios.setText("Menu De Usuarios");
         JMenuItemUsuarios.setToolTipText("");
         JMenuItemUsuarios.addActionListener(new java.awt.event.ActionListener() {

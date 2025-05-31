@@ -20,12 +20,14 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
     public DialogAsignarTallerEmpleado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public DialogAsignarTallerEmpleado(java.awt.Frame parent, boolean modal, Empleados usuarioTaller) {
         super(parent, modal);
         initComponents();
         this.usuarioTaller = usuarioTaller;
+        this.setLocationRelativeTo(null);
         controlador.cargarTalleresUsuarioTallerComboBox(jComboBoxTallerAsignado, usuarioTaller);
     }
 
@@ -37,19 +39,23 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        modificarEstado = new javax.swing.JPanel();
         jButtonCancelar = new javax.swing.JButton();
         jLabelTallerAsignado = new javax.swing.JLabel();
         jComboBoxTallerAsignado = new javax.swing.JComboBox<>();
         jButtonModificar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar Taller");
-        setMaximumSize(new java.awt.Dimension(350, 250));
-        setPreferredSize(new java.awt.Dimension(350, 250));
+        setMaximumSize(new java.awt.Dimension(340, 220));
+        setMinimumSize(new java.awt.Dimension(340, 220));
+        setPreferredSize(new java.awt.Dimension(340, 220));
         setResizable(false);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        modificarEstado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -57,31 +63,13 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
                 jButtonCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 16, 16, 0);
-        getContentPane().add(jButtonCancelar, gridBagConstraints);
+        modificarEstado.add(jButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, 30));
 
+        jLabelTallerAsignado.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTallerAsignado.setText("Taller Asignado:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 16, 0, 0);
-        getContentPane().add(jLabelTallerAsignado, gridBagConstraints);
+        modificarEstado.add(jLabelTallerAsignado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 142;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 16, 0, 19);
-        getContentPane().add(jComboBoxTallerAsignado, gridBagConstraints);
+        modificarEstado.add(jComboBoxTallerAsignado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 214, 32));
 
         jButtonModificar.setText("Modificar");
         jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,12 +77,13 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
                 jButtonModificarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 47, 16, 19);
-        getContentPane().add(jButtonModificar, gridBagConstraints);
+        modificarEstado.add(jButtonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 100, 30));
+
+        getContentPane().add(modificarEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 280, 140));
+        modificarEstado.setBackground(new java.awt.Color(0, 0, 0, 120));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/fondo_login.jpg"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,9 +140,11 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JComboBox<String> jComboBoxTallerAsignado;
     private javax.swing.JLabel jLabelTallerAsignado;
+    private javax.swing.JPanel modificarEstado;
     // End of variables declaration//GEN-END:variables
 }

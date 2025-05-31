@@ -42,6 +42,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmpleados">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+E"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Empleados"/>
               </Properties>
               <Events>
@@ -102,7 +105,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemUsuarios">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+C"/>
+                  <KeyStroke key="Ctrl+U"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Menu De Usuarios"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>

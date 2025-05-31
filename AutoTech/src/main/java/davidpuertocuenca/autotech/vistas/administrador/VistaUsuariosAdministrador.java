@@ -203,7 +203,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemCitas.setText("Menu De Citas");
         JMenuItemCitas.setToolTipText("");
         JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {

@@ -109,6 +109,7 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
         jMenuTalleres.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuTalleres.setPreferredSize(new java.awt.Dimension(100, 40));
 
+        jMenuItemAsignarTaller.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemAsignarTaller.setText("Asignar Taller");
         jMenuItemAsignarTaller.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +118,7 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
         });
         jMenuTalleres.add(jMenuItemAsignarTaller);
 
+        jMenuItemEmpleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemEmpleados.setText("Volver a talleres");
         jMenuItemEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

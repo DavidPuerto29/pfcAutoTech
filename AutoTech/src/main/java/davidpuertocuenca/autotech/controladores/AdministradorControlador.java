@@ -385,8 +385,6 @@ public class AdministradorControlador {
             }
                 if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                     eliminarUsuarioSql(cliente);        
-                }else{
-                    JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                 }
          }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -425,8 +423,6 @@ public class AdministradorControlador {
             }
                 if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                     eliminarTallerSql(taller);        
-                }else{
-                    JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                 }
          }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un taller de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -443,8 +439,6 @@ public class AdministradorControlador {
                 }
                     if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                         eliminarVehiculoSql(vehiculo);        
-                    }else{
-                        JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                     }
          }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un vehículo de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -468,12 +462,10 @@ public class AdministradorControlador {
                      }
                      cliente.setAdministrador(false);
                           if(actualizarUsuarioSql(cliente)){
-                              JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);  //ALOMEJOR ES DEMASIADO DIALOG
+                              
                           }else{
-                             JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
+                             JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  
                           }
-                  }else{
-                       JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                   }
              }else{
                   JOptionPane.showMessageDialog(vista, "Este usuario no es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -496,12 +488,10 @@ public class AdministradorControlador {
                  if(JOptionPane.showOptionDialog(vista, "¿Esta seguro de realizar esta opción?", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Sí", "No"},"No") == JOptionPane.YES_OPTION){
                      cliente.setAdministrador(true);
                          if(actualizarUsuarioSql(cliente)){
-                             JOptionPane.showMessageDialog(vista, "El usuario ha sido actualizado correctamente.", "Usuario actualizado", JOptionPane.INFORMATION_MESSAGE);   //ALOMEJOR ES DEMASIADO DIALOG
+                            
                          }else{
                              JOptionPane.showMessageDialog(vista, "Ha ocurrido un error inesperado", "Error", JOptionPane.ERROR_MESSAGE);  //REVISARRRR
                          }
-                 }else{
-                     JOptionPane.showMessageDialog(vista, "Operación cancelada.", "Información", JOptionPane.INFORMATION_MESSAGE); 
                  }
              }else{
                  JOptionPane.showMessageDialog(vista, "Este usuario ya es administrador.", "Información", JOptionPane.INFORMATION_MESSAGE);

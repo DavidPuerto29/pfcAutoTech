@@ -259,7 +259,8 @@ public class UsuarioControlador {
                     mc.setVisible(true);
                         vista.dispose();
             }else{
-                JOptionPane.showMessageDialog(vista, "Las citas finalizadas no pueden ser modificadas..", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Las citas finalizadas no pueden ser modificadas.", "Error", JOptionPane.ERROR_MESSAGE);
+                    crearTablaCitas(tablaCitas, vehiculo);
             }
         }catch (ArrayIndexOutOfBoundsException e){
               JOptionPane.showMessageDialog(vista, "Debe seleccionar una cita de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);

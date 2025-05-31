@@ -37,7 +37,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         organizadorVista = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        botonRefrescar = new javax.swing.JButton();
         labelGestionarClientes = new javax.swing.JLabel();
         CabeceraClientes = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -57,7 +56,7 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Vista General Administrador");
+        setTitle("AutoTech - Administrador");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -94,16 +93,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
 
         organizadorVista.add(jScrollPane1);
         jScrollPane1.setBounds(10, 90, 1250, 560);
-
-        botonRefrescar.setBackground(new java.awt.Color(255, 255, 255));
-        botonRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icono_actualizar_prov .png"))); // NOI18N
-        botonRefrescar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRefrescarActionPerformed(evt);
-            }
-        });
-        organizadorVista.add(botonRefrescar);
-        botonRefrescar.setBounds(1170, 20, 80, 50);
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,10 +246,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRefrescarActionPerformed
-       controlador.crearTablaClientes(tablaUsuarios);
-    }//GEN-LAST:event_botonRefrescarActionPerformed
-
     private void JMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemVehiculosActionPerformed
         controlador.vistaVehiculos(this);
     }//GEN-LAST:event_JMenuItemVehiculosActionPerformed
@@ -340,7 +325,6 @@ public class VistaUsuariosAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemModificarClientes;
     private javax.swing.JMenuItem JMenuItemTalleres;
     private javax.swing.JMenuItem JMenuItemVehiculos;
-    private javax.swing.JButton botonRefrescar;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;

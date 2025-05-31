@@ -234,7 +234,7 @@ public class ModificarVehiculo extends javax.swing.JFrame {
         fondoPantalla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Modificar Vehículo");
+        setTitle("AutoTech - Administrador");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

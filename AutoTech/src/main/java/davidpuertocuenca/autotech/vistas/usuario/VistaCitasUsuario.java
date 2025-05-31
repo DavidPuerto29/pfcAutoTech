@@ -60,7 +60,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Citas Del Vehículo");
+        setTitle("AutoTech - Usuario");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -122,7 +122,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         jMenuClientes.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemPedirCita.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemPedirCita.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemPedirCita.setText("Pedir Cita");
         JMenuItemPedirCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

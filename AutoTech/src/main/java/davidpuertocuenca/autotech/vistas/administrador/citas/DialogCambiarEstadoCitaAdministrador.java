@@ -48,7 +48,7 @@ public class DialogCambiarEstadoCitaAdministrador extends javax.swing.JDialog {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modificar Estado Cita");
+        setTitle("AutoTech - Administrador");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

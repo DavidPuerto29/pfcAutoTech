@@ -48,7 +48,7 @@ public class DialogAsignarTallerEmpleado extends javax.swing.JDialog {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Asignar Taller");
+        setTitle("AutoTech - Administrador");
         setMaximumSize(new java.awt.Dimension(340, 220));
         setMinimumSize(new java.awt.Dimension(340, 220));
         setPreferredSize(new java.awt.Dimension(340, 220));

@@ -57,7 +57,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         jMenuItemCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mis Vehículos");
+        setTitle("AutoTech - Usuario");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -123,7 +123,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         jMenuClientes.setMinimumSize(new java.awt.Dimension(50, 22));
         jMenuClientes.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemAnadirVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemAnadirVehiculo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         JMenuItemAnadirVehiculo.setText("Añadir");
         JMenuItemAnadirVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +159,7 @@ public class VistaVehiculosUsuario extends javax.swing.JFrame {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setPreferredSize(new java.awt.Dimension(100, 40));
 
-        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        JMenuItemCitas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         JMenuItemCitas.setText("Menu De Citas");
         JMenuItemCitas.setToolTipText("");
         JMenuItemCitas.addActionListener(new java.awt.event.ActionListener() {

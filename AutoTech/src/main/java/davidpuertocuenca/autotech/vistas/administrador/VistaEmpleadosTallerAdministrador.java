@@ -89,7 +89,7 @@ public class VistaEmpleadosTallerAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaEmpleados);
 
         organizadorVista.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 1250, 560);
+        jScrollPane1.setBounds(10, 90, 1250, 530);
 
         getContentPane().add(organizadorVista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
 

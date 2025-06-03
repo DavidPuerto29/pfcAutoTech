@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class AutoTech {
     public static void main(String[] args) {
-        if(HibernateUtil.getSessionFactory() != null){ //Funciona pero ver a ver si hay algo mas correcto
+        if(HibernateUtil.getSessionFactory() != null){ 
             LoginClientes test = new LoginClientes();
                 test.setVisible(true);
         }else{

@@ -86,7 +86,7 @@ public class VistaTalleresAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaTalleres);
 
         organizadorVista.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 1250, 560);
+        jScrollPane1.setBounds(10, 90, 1250, 530);
 
         labelGestionarClientes.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarClientes.setForeground(new java.awt.Color(255, 255, 255));

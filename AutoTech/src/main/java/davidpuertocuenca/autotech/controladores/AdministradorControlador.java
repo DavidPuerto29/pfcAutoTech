@@ -142,7 +142,8 @@ public class AdministradorControlador {
                 fila[2] = usuarioTaller.getNombre();
                 fila[3] = usuarioTaller.getApellidos();
                 if(usuarioTaller.getTaller() == null){
-                    fila[4] = "No Asignado";
+                    //Texto en negrita.
+                    fila[4] = "<html><b>No Asignado</b></html>";
                 }else{
                     fila[4] = usuarioTaller.getTaller().getNombre();
                 }
@@ -600,6 +601,5 @@ public class AdministradorControlador {
               JOptionPane.showMessageDialog(vista, "Debe seleccionar un usuario de la lista.", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
     
 }

@@ -107,13 +107,6 @@ public class ModificarCita extends javax.swing.JFrame {
         reiniciarEtiquetas();
         boolean formatoCorrecto = true;
         
-        //En caso de que el usuario no haya seleccionado un taller.
-        if(boxTalleres.getSelectedIndex() == 0){
-            formatoCorrecto = false;
-                textoErrorTaller.setText("Debe seleccionar un taller.");
-                    textoErrorTaller.setVisible(true);   
-        }
-        
         //En caso de que el usuario no haya seleccionado una hora.
         if(boxHorario.getSelectedIndex() == 0){
             formatoCorrecto = false;

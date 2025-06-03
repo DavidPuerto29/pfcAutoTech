@@ -98,7 +98,7 @@ public class VistaCitasUsuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaCitasVehiculo);
 
         organizadorVista.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 1250, 560);
+        jScrollPane1.setBounds(10, 90, 1250, 530);
 
         CabeceraVehiculos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stiles/cliente/cabecera_vehiculos_prov.jpg"))); // NOI18N
         organizadorVista.add(CabeceraVehiculos);

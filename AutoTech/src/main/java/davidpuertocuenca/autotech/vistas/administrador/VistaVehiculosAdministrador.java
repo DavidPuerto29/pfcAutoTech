@@ -85,7 +85,7 @@ public class VistaVehiculosAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaVehiculos);
 
         organizadorVista.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 90, 1250, 560);
+        jScrollPane1.setBounds(10, 90, 1250, 530);
 
         labelGestionarVehiculos.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelGestionarVehiculos.setForeground(new java.awt.Color(255, 255, 255));

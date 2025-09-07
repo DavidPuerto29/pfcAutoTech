@@ -1,4 +1,4 @@
-Proyecto de fin de grado hecho por David Puerto Cuenca.
+Proyecto fin de grado realizado por David Puerto Cuenca.
 
 Instrucciones de ejecución:
 

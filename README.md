@@ -1,4 +1,7 @@
-Aplicación destinada para la gestión de citas de vehiculos en talleres, esta aplicación esta destinada para el uso de los usuarios propietarios de vehiculos.
+🛠️ AutoTech – Gestión de Citas de Vehículos en Talleres 🛠️
+
+AutoTech es una aplicación diseñada para usuarios propietarios de vehículos y administradores.
+Permite a los clientes registrar, consultar y gestionar sus vehículos y citas, mientras que los administradores pueden controlar usuarios, talleres, empleados y citas de manera centralizada.
 
 ---
 

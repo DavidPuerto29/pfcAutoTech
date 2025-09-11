@@ -57,7 +57,7 @@ Al solicitar una cita, el usuario accede a un formulario para seleccionar los da
 
 ---
 
-Aquí se muestran las funcionalidades disponibles para el rol de **administrador**, incluyendo la gestión de clientes, talleres, empleados y citas.
+Aquí se muestran las funcionalidades disponibles para el rol de administrador, incluyendo la gestión de clientes, talleres, empleados y citas. Cabe recalcar que para acceder al login de administrador se debe pulsar Ctrl + T en la pantalla de login de usuarios.
 
 <div align="center">
    <img width="672" height="574" alt="-05 Iniciar sesion administrador" src="https://github.com/user-attachments/assets/f29d249f-6900-43a7-bf18-b0d7a27b6c11" />
@@ -88,3 +88,59 @@ Si el administrador decide modificar un vehículo, será dirigido a un formulari
    <img width="1260" height="706" alt="-01 Vista Talleres" src="https://github.com/user-attachments/assets/249933f1-b138-4367-be0a-55aa86843c5d" />
 </div>
 En el apartado de talleres, el administrador puede ver todos los talleres registrados en una tabla y gestionar cada uno, incluyendo añadir, modificar o eliminar registros, así como acceder al apartado de empleados de cada taller.
+
+<div align="center">
+  <img width="1252" height="700" alt="-04 Añadir taller" src="https://github.com/user-attachments/assets/d119fb78-b599-4b7a-8f01-a234f8a21d2b" />
+</div>
+Si el administrador decide añadir un taller, será dirigido a un formulario donde podrá completar los datos necesarios para registrar el taller.
+
+<div align="center">
+ <img width="1256" height="702" alt="-03 Vista asignar taller a empleados" src="https://github.com/user-attachments/assets/0e512b75-d30a-42be-8dab-ebb8ce3b806a" />
+</div>
+En el apartado de empleados, el administrador puede ver la lista de empleados registrados y asignar un taller a cada uno para completar la activación de su cuenta.
+
+---
+
+## 🛠️ Datos técnicos 🛠
+
+---
+
+La aplicación cifra las contraseñas combinándolas con un valor aleatorio (randomizador), almacenando ambos en la base de datos para mayor seguridad.
+
+<div align="center">
+   <img width="1284" height="620" alt="-01 Clase SHA 256" src="https://github.com/user-attachments/assets/04c46e73-6266-4556-a1ab-9be3a0b685ff" />
+</div>
+En una clase, siguiendo el patrón MVC, se implementan los métodos de cifrado con SHA-256, que posteriormente son invocados desde las clases controladoras para el registro e inicio de sesión.
+
+<div align="center">
+  <img width="1852" height="636" alt="-02 Llamada de cifrado en controlador" src="https://github.com/user-attachments/assets/1cb10beb-50d0-4447-bdf5-69b9a44f86af" />
+</div>
+En el controlador de inicio de sesión se invocan los métodos de la clase de cifrado, encargándose de la verificación y autenticación de credenciales al iniciar sesión.
+
+---
+
+## 🎧 Listeners y Controladores 
+
+---
+
+<div align="center">
+   <img width="1352" height="578" alt="-03 Fragmento listeners" src="https://github.com/user-attachments/assets/167e4a76-bbf0-4e4d-9ed9-ecf94e0c0d70" />
+</div>
+La aplicación utiliza listeners en la capa de vista para gestionar las acciones del usuario.  
+Por ejemplo, al pulsar un botón, el listener asociado invoca el controlador correspondiente, encargándose de procesar la lógica de la operación (inicio de sesión, registro, gestión de citas, etc.).
+
+---
+
+## 📂 Otras capas y utilidades
+
+---
+
+Además, el proyecto incluye otras capas y utilidades que soportan la funcionalidad principal:
+
+- **DAO (Data Access Objects):** Gestionan la comunicación con la base de datos mediante Hibernate.  
+- **Controladores:** Orquestan la lógica entre la vista y el modelo siguiendo el patrón MVC.  
+- **Utilidades:** Incluyen estilos personalizados para tablas y componentes gráficos.
+
+🎯Conclusión
+
+En conjunto, el proyecto demuestra buenas prácticas y una estructura sólida, aplicando el patrón MVC, persistencia con Hibernate y seguridad mediante cifrado de contraseñas. Aunque la interfaz en Swing no es el foco principal, la aplicación pone énfasis en la organización del código, la mantenibilidad y la posibilidad de evolucionar hacia interfaces más modernas o integración con APIs externas.

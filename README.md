@@ -59,6 +59,32 @@ Al solicitar una cita, el usuario accede a un formulario para seleccionar los da
 
 Aquí se muestran las funcionalidades disponibles para el rol de **administrador**, incluyendo la gestión de clientes, talleres, empleados y citas.
 
+<div align="center">
+   <img width="672" height="574" alt="-05 Iniciar sesion administrador" src="https://github.com/user-attachments/assets/f29d249f-6900-43a7-bf18-b0d7a27b6c11" />
+</div>
+Pantalla de inicio de sesión para administradores, donde los usuarios con este rol pueden autenticarse y acceder al panel de administración.
 
+<div align="center">
+  <img width="1260" height="706" alt="-01 Vista usuarios administrador" src="https://github.com/user-attachments/assets/cc66bbef-1c2e-4386-bf41-6ea6ecaac41c" />
+</div>
+Pantalla principal del administrador, donde se muestra una tabla con los usuarios registrados y se accede a las distintas gestiones. Además, permite navegar por los submenús para administrar talleres, vehículos y citas.
 
+<div align="center">
+ <img width="1262" height="700" alt="-02 Vista Mod Usuario" src="https://github.com/user-attachments/assets/0af35faf-8d88-45a1-8626-56f4027bb897" />
+</div>
+Si el administrador decide modificar un usuario, será dirigido a un formulario donde podrá actualizar los datos necesarios.
 
+<div align="center">
+   <img width="1262" height="710" alt="-03 Vista vehiculos administrador" src="https://github.com/user-attachments/assets/7d77bc65-84f2-410e-8543-75758a55f6d3" />
+</div>
+En el apartado de vehículos, el administrador puede ver todos los vehículos registrados en una tabla y gestionar cada uno de ellos, incluyendo la posibilidad de añadir, modificar o eliminar registros.
+
+<div align="center">
+  <img width="1262" height="714" alt="-04 Vista Modificar vehiculo administrador" src="https://github.com/user-attachments/assets/91f64de5-9f18-4306-aa95-d7910ea493d5" />
+</div>
+Si el administrador decide modificar un vehículo, será dirigido a un formulario donde podrá actualizar los datos del vehículo y el cliente al que está asociado.
+
+<div align="center">
+   <img width="1260" height="706" alt="-01 Vista Talleres" src="https://github.com/user-attachments/assets/249933f1-b138-4367-be0a-55aa86843c5d" />
+</div>
+En el apartado de talleres, el administrador puede ver todos los talleres registrados en una tabla y gestionar cada uno, incluyendo añadir, modificar o eliminar registros, así como acceder al apartado de empleados de cada taller.

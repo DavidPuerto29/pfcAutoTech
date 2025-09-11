@@ -1,4 +1,4 @@
-🛠️ AutoTech – Gestión de Citas de Vehículos en Talleres 🛠️
+🛠️ AutoTech – Gestión de Citas de Vehículos en Talleres 
 
 AutoTech es una aplicación diseñada para usuarios propietarios de vehículos y administradores.
 Permite a los clientes registrar, consultar y gestionar sus vehículos y citas, mientras que los administradores pueden controlar usuarios, talleres, empleados y citas de manera centralizada.
@@ -10,7 +10,7 @@ La aplicación se desarrolló en **Java Swing** en NetBeans según los requisito
 
 ---
 
-## ⚡ Demostración de la aplicación -
+## ⚡ Demostración de la aplicación 
 
 ---
 
@@ -56,7 +56,7 @@ Al solicitar una cita, el usuario accede a un formulario para seleccionar los da
 
 ---
 
-## 🛡️ Administración 🛡️
+## 🛡️ Administración 
 
 ---
 
@@ -104,7 +104,7 @@ En el apartado de empleados, el administrador puede ver la lista de empleados re
 
 ---
 
-## 🛠️ Datos técnicos 🛠
+## 🛠️ Datos técnicos 
 
 ---
 
